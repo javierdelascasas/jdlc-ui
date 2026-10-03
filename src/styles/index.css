@@ -2,6 +2,49 @@
 @import "tailwindcss";
 @import "./tokens.css";
 
+@theme {
+  --font-sans: var(--font-sans);
+  --font-heading: var(--font-heading);
+  --font-mono: var(--font-mono);
+
+  --color-primary: var(--color-primary);
+  --color-primary-hover: var(--color-primary-hover);
+  --color-primary-glow: var(--color-primary-glow);
+  --color-primary-content: var(--color-primary-content);
+
+  --color-accent: var(--color-accent);
+  --color-accent-subtle: var(--color-accent-subtle);
+  --color-accent-content: var(--color-accent-content);
+
+  --color-success: var(--color-success);
+  --color-success-content: var(--color-success-content);
+  --color-warning: var(--color-warning);
+  --color-warning-content: var(--color-warning-content);
+  --color-error: var(--color-error);
+  --color-error-content: var(--color-error-content);
+  --color-info: var(--color-info);
+  --color-info-content: var(--color-info-content);
+
+  --color-root: var(--bg-root);
+  --color-subtle: var(--bg-subtle);
+  --color-surface: var(--bg-surface);
+  --color-elevated: var(--bg-elevated);
+  --color-hover: var(--bg-hover);
+
+  --color-base-100: var(--bg-surface);
+  --color-base-200: var(--bg-elevated);
+  --color-base-300: var(--bg-root);
+  --color-base-content: var(--text-main);
+
+  --color-border-subtle: var(--border-subtle);
+  --color-border-medium: var(--border-medium);
+  --color-border-strong: var(--border-strong);
+
+  --color-text-main: var(--text-main);
+  --color-text-muted: var(--text-muted);
+  --color-text-dim: var(--text-dim);
+}
+
 @layer base {
   * {
     border-color: var(--border-subtle);
