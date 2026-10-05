@@ -78,7 +78,12 @@ export function ThemeProvider({ children, defaultTheme = 'linear', storageKey = 
 export function useTheme() {
   const ctx = useContext(ThemeContext);
   if (!ctx) {
-    throw new Error('useTheme must be used within ThemeProvider');
+    return {
+      theme: 'linear',
+      setTheme: () => {},
+      currentThemeConfig: THEMES[0],
+      availableThemes: THEMES,
+    };
   }
   return ctx;
 }
