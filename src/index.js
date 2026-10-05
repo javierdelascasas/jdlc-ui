@@ -27,3 +27,7 @@ export { Dialog } from './components/Dialog.jsx';
 export { Dropdown } from './components/Dropdown.jsx';
 export { Tabs } from './components/Tabs.jsx';
 export { ThemeSelector } from './components/ThemeSelector.jsx';
+export { AppSwitcher } from './components/AppSwitcher.jsx';
+
+// Suite Utilities
+export { SUITE_APPS, getSuiteAppUrl } from './lib/suiteUtils.js';
