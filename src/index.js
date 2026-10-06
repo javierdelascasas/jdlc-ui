@@ -28,6 +28,8 @@ export { Dropdown } from './components/Dropdown.jsx';
 export { Tabs } from './components/Tabs.jsx';
 export { ThemeSelector } from './components/ThemeSelector.jsx';
 export { AppSwitcher } from './components/AppSwitcher.jsx';
+export { ToastProvider, useToast } from './components/Toast.jsx';
+export { CommandPalette } from './components/CommandPalette.jsx';
 
 // Suite Utilities
 export { SUITE_APPS, getSuiteAppUrl } from './lib/suiteUtils.js';
