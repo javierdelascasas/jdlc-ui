@@ -17,6 +17,9 @@ import {
   Dropdown,
   Tabs,
   ThemeSelector,
+  AppSwitcher,
+  Avatar,
+  AvatarGroup,
 } from '../src/index.js';
 
 function Showcase() {
@@ -42,6 +45,7 @@ function Showcase() {
             </p>
           </div>
           <div className="flex items-center gap-3">
+            <AppSwitcher currentApp="taskflow" />
             <ThemeSelector />
             <Button variant="default" size="sm" onClick={() => setIsDialogOpen(true)}>
               Open Dialog
@@ -52,6 +56,7 @@ function Showcase() {
         {/* Navigation Tabs */}
         <Tabs
           tabs={[
+            { id: 'avatars', label: 'DiceBear Avatars' },
             { id: 'buttons', label: 'Buttons' },
             { id: 'badges', label: 'Badges' },
             { id: 'cards', label: 'Cards' },
@@ -61,6 +66,76 @@ function Showcase() {
           activeTab={activeTab}
           onChange={setActiveTab}
         />
+
+        {/* Section: DiceBear Avatars */}
+        {activeTab === 'avatars' && (
+          <div className="space-y-6">
+            <Card hover={false}>
+              <CardHeader>
+                <CardTitle>DiceBear 10.x Avatar Suits</CardTitle>
+                <CardDescription>
+                  Notionists, Moods, Critters, Bottts, and Fun Emoji rendered dynamically via seed.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="grid grid-cols-1 sm:grid-cols-5 gap-6 text-center">
+                <div className="flex flex-col items-center gap-2 p-4 bg-[var(--bg-elevated)] rounded-2xl border border-[var(--border-subtle)]">
+                  <Avatar seed="javier" suit="notionists" size="lg" status="online" />
+                  <span className="font-bold text-xs">Notionists</span>
+                  <span className="text-[10px] text-slate-400">Half-body hand-drawn</span>
+                </div>
+                <div className="flex flex-col items-center gap-2 p-4 bg-[var(--bg-elevated)] rounded-2xl border border-[var(--border-subtle)]">
+                  <Avatar seed="felix" suit="moods" size="lg" status="busy" />
+                  <span className="font-bold text-xs">Moods</span>
+                  <span className="text-[10px] text-slate-400">Emotive pastel faces</span>
+                </div>
+                <div className="flex flex-col items-center gap-2 p-4 bg-[var(--bg-elevated)] rounded-2xl border border-[var(--border-subtle)]">
+                  <Avatar seed="alex" suit="critters" size="lg" status="away" />
+                  <span className="font-bold text-xs">Critters</span>
+                  <span className="text-[10px] text-slate-400">Playful creatures</span>
+                </div>
+                <div className="flex flex-col items-center gap-2 p-4 bg-[var(--bg-elevated)] rounded-2xl border border-[var(--border-subtle)]">
+                  <Avatar seed="bot42" suit="bottts" size="lg" status="online" />
+                  <span className="font-bold text-xs">Bottts</span>
+                  <span className="text-[10px] text-slate-400">Retro robots</span>
+                </div>
+                <div className="flex flex-col items-center gap-2 p-4 bg-[var(--bg-elevated)] rounded-2xl border border-[var(--border-subtle)]">
+                  <Avatar seed="sunny" suit="fun-emoji" size="lg" />
+                  <span className="font-bold text-xs">Fun Emoji</span>
+                  <span className="text-[10px] text-slate-400">Expressive 3D emojis</span>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card hover={false}>
+              <CardHeader>
+                <CardTitle>Avatar Sizing &amp; Group Stacking</CardTitle>
+                <CardDescription>
+                  Sizes (xs, sm, md, lg, xl) and overlapping AvatarGroup component.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="flex items-center gap-4">
+                  <Avatar seed="s1" suit="notionists" size="xs" />
+                  <Avatar seed="s2" suit="notionists" size="sm" />
+                  <Avatar seed="s3" suit="notionists" size="md" status="online" />
+                  <Avatar seed="s4" suit="notionists" size="lg" />
+                  <Avatar seed="s5" suit="notionists" size="xl" status="busy" />
+                </div>
+                <div>
+                  <h4 className="text-xs font-semibold text-slate-400 mb-2">AvatarGroup Stack:</h4>
+                  <AvatarGroup max={4} size="md">
+                    <Avatar seed="u1" suit="notionists" />
+                    <Avatar seed="u2" suit="moods" />
+                    <Avatar seed="u3" suit="critters" />
+                    <Avatar seed="u4" suit="bottts" />
+                    <Avatar seed="u5" suit="fun-emoji" />
+                    <Avatar seed="u6" suit="notionists" />
+                  </AvatarGroup>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        )}
 
         {/* Section: Buttons */}
         {activeTab === 'buttons' && (

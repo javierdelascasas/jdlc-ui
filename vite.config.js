@@ -6,8 +6,13 @@ import { fileURLToPath } from 'url';
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
+  root: command === 'serve' ? resolve(__dirname, 'playground') : undefined,
   plugins: [react(), tailwindcss()],
+  server: {
+    port: 5176,
+    open: false,
+  },
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.js'),
@@ -32,4 +37,4 @@ export default defineConfig({
     },
     cssCodeSplit: false,
   },
-});
+}));
