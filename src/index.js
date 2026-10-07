@@ -30,6 +30,7 @@ export { ThemeSelector } from './components/ThemeSelector.jsx';
 export { AppSwitcher } from './components/AppSwitcher.jsx';
 export { ToastProvider, useToast } from './components/Toast.jsx';
 export { CommandPalette } from './components/CommandPalette.jsx';
+export { UserMenu } from './components/UserMenu.jsx';
 export {
   Avatar,
   AvatarGroup,
