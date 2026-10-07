@@ -2218,10 +2218,13 @@ function at({ tabs: e = [], activeTab: t, onChange: n, className: r }) {
 			return /* @__PURE__ */ l("button", {
 				type: "button",
 				onClick: () => n(e.id),
-				className: X("flex items-center gap-2 px-3 py-1.5 text-xs font-medium rounded-md transition-all duration-150 cursor-pointer select-none", r ? "bg-[var(--bg-elevated)] text-[var(--text-main)] shadow-sm border border-[var(--border-medium)]" : "text-slate-400 hover:text-slate-200 hover:bg-[var(--bg-hover)]/50"),
+				className: X("flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 text-xs font-medium rounded-md transition-all duration-150 cursor-pointer select-none", r ? "bg-[var(--bg-elevated)] text-[var(--text-main)] shadow-sm border border-[var(--border-medium)]" : "text-slate-400 hover:text-slate-200 hover:bg-[var(--bg-hover)]/50"),
 				children: [
-					i && /* @__PURE__ */ c(i, { className: "w-3.5 h-3.5" }),
-					/* @__PURE__ */ c("span", { children: e.label }),
+					i && /* @__PURE__ */ c(i, { className: "w-3.5 h-3.5 shrink-0" }),
+					/* @__PURE__ */ c("span", {
+						className: X(e.hideLabelOnMobile && "hidden sm:inline"),
+						children: e.label
+					}),
 					e.count !== void 0 && /* @__PURE__ */ c("span", {
 						className: X("px-1.5 py-0.5 rounded text-[10px] font-mono", r ? "bg-[var(--color-primary)]/20 text-[var(--color-primary-glow)]" : "bg-white/5 text-slate-500"),
 						children: e.count
@@ -3167,7 +3170,7 @@ function St({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "F
 				/* @__PURE__ */ l("div", {
 					className: "flex items-center justify-center flex-1 max-w-xl mx-2",
 					children: [u && u.length > 0 && /* @__PURE__ */ c("div", {
-						className: "hidden md:flex items-center",
+						className: X(b ? "hidden md:flex items-center" : "flex items-center"),
 						children: /* @__PURE__ */ c(at, {
 							tabs: u,
 							activeTab: d,

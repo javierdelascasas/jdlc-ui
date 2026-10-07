@@ -103,7 +103,7 @@ export function AppHeader({
         {/* Zone 2: Navigation & Context (Center) */}
         <div className="flex items-center justify-center flex-1 max-w-xl mx-2">
           {tabs && tabs.length > 0 && (
-            <div className="hidden md:flex items-center">
+            <div className={cn(mobileBottomTabs ? 'hidden md:flex items-center' : 'flex items-center')}>
               <Tabs tabs={tabs} activeTab={activeTab} onChange={onTabChange} />
             </div>
           )}

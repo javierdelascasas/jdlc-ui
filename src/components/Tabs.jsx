@@ -13,14 +13,14 @@ export function Tabs({ tabs = [], activeTab, onChange, className }) {
             type="button"
             onClick={() => onChange(tab.id)}
             className={cn(
-              'flex items-center gap-2 px-3 py-1.5 text-xs font-medium rounded-md transition-all duration-150 cursor-pointer select-none',
+              'flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 text-xs font-medium rounded-md transition-all duration-150 cursor-pointer select-none',
               isActive
                 ? 'bg-[var(--bg-elevated)] text-[var(--text-main)] shadow-sm border border-[var(--border-medium)]'
                 : 'text-slate-400 hover:text-slate-200 hover:bg-[var(--bg-hover)]/50'
             )}
           >
-            {Icon && <Icon className="w-3.5 h-3.5" />}
-            <span>{tab.label}</span>
+            {Icon && <Icon className="w-3.5 h-3.5 shrink-0" />}
+            <span className={cn(tab.hideLabelOnMobile && 'hidden sm:inline')}>{tab.label}</span>
             {tab.count !== undefined && (
               <span
                 className={cn(
