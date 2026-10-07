@@ -31,6 +31,7 @@ export { AppSwitcher } from './components/AppSwitcher.jsx';
 export { ToastProvider, useToast } from './components/Toast.jsx';
 export { CommandPalette } from './components/CommandPalette.jsx';
 export { UserMenu } from './components/UserMenu.jsx';
+export { AppHeader } from './components/AppHeader.jsx';
 export {
   Avatar,
   AvatarGroup,

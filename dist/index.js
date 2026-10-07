@@ -3096,4 +3096,129 @@ function xt({ user: e, displayName: t, avatarSeed: n, avatarSuit: r = "notionist
 	});
 }
 //#endregion
-export { ct as AppSwitcher, yt as Avatar, bt as AvatarGroup, Q as Badge, qe as Button, Je as Card, Qe as CardContent, Ze as CardDescription, $e as CardFooter, Ye as CardHeader, Xe as CardTitle, pt as CommandPalette, mt as DICEBEAR_SUITS, rt as Dialog, it as Dropdown, et as Input, st as SUITE_APPS, nt as Select, Z as THEMES, at as Tabs, tt as Textarea, Ge as ThemeProvider, ot as ThemeSelector, ut as ToastProvider, xt as UserMenu, X as cn, ht as getDiceBearAvatarUrl, $ as getSuiteAppUrl, Ke as useTheme, dt as useToast };
+//#region src/components/AppHeader.jsx
+function St({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "Flow", subtitle: r, icon: i, badge: a = "JDLC", statusBadge: o, onBrandClick: s, tabs: u, activeTab: d, onTabChange: f, centerContent: p, utilities: m, primaryAction: h, onOpenPalette: g, userMenu: _, showThemeSelector: v = !0, className: y, mobileBottomTabs: b = !1 }) {
+	return /* @__PURE__ */ l("header", {
+		className: X("sticky top-0 z-30 w-full border-b border-[var(--border-subtle)] bg-[var(--bg-root)]/90 backdrop-blur-md transition-colors duration-200", y),
+		children: [/* @__PURE__ */ l("div", {
+			className: "w-full px-4 sm:px-6 h-16 flex items-center justify-between gap-3 sm:gap-4",
+			children: [
+				/* @__PURE__ */ l("div", {
+					className: "flex items-center gap-2 sm:gap-3 shrink-0",
+					children: [/* @__PURE__ */ c(ct, { currentApp: e }), s ? /* @__PURE__ */ l("button", {
+						type: "button",
+						onClick: s,
+						className: "flex items-center gap-2.5 sm:gap-3 hover:opacity-85 active:scale-[0.98] transition-all focus:outline-none rounded-xl cursor-pointer text-left",
+						title: "Application Details",
+						children: [/* @__PURE__ */ c("div", {
+							className: "w-9 h-9 rounded-xl bg-gradient-to-tr from-[var(--color-primary)] to-[var(--color-accent)] flex items-center justify-center text-white shadow-md shadow-[var(--color-primary)]/20 shrink-0",
+							children: i
+						}), /* @__PURE__ */ l("div", { children: [/* @__PURE__ */ l("div", {
+							className: "flex items-center gap-2",
+							children: [
+								/* @__PURE__ */ l("span", {
+									className: "font-extrabold text-base sm:text-lg tracking-tight font-[var(--font-heading)] text-white",
+									children: [t, /* @__PURE__ */ c("span", {
+										className: "text-[var(--color-primary-glow)]",
+										children: n
+									})]
+								}),
+								a && /* @__PURE__ */ c(Q, {
+									variant: "subtle",
+									size: "xs",
+									className: "font-mono uppercase font-bold text-[9px] tracking-wider",
+									children: a
+								}),
+								o
+							]
+						}), r && /* @__PURE__ */ c("p", {
+							className: "text-[11px] text-slate-400 hidden lg:block leading-tight mt-0.5",
+							children: r
+						})] })]
+					}) : /* @__PURE__ */ l("div", {
+						className: "flex items-center gap-2.5 sm:gap-3",
+						children: [/* @__PURE__ */ c("div", {
+							className: "w-9 h-9 rounded-xl bg-gradient-to-tr from-[var(--color-primary)] to-[var(--color-accent)] flex items-center justify-center text-white shadow-md shadow-[var(--color-primary)]/20 shrink-0",
+							children: i
+						}), /* @__PURE__ */ l("div", { children: [/* @__PURE__ */ l("div", {
+							className: "flex items-center gap-2",
+							children: [
+								/* @__PURE__ */ l("span", {
+									className: "font-extrabold text-base sm:text-lg tracking-tight font-[var(--font-heading)] text-white",
+									children: [t, /* @__PURE__ */ c("span", {
+										className: "text-[var(--color-primary-glow)]",
+										children: n
+									})]
+								}),
+								a && /* @__PURE__ */ c(Q, {
+									variant: "subtle",
+									size: "xs",
+									className: "font-mono uppercase font-bold text-[9px] tracking-wider",
+									children: a
+								}),
+								o
+							]
+						}), r && /* @__PURE__ */ c("p", {
+							className: "text-[11px] text-slate-400 hidden lg:block leading-tight mt-0.5",
+							children: r
+						})] })]
+					})]
+				}),
+				/* @__PURE__ */ l("div", {
+					className: "flex items-center justify-center flex-1 max-w-xl mx-2",
+					children: [u && u.length > 0 && /* @__PURE__ */ c("div", {
+						className: "hidden md:flex items-center",
+						children: /* @__PURE__ */ c(at, {
+							tabs: u,
+							activeTab: d,
+							onChange: f
+						})
+					}), p]
+				}),
+				/* @__PURE__ */ l("div", {
+					className: "flex items-center gap-2 sm:gap-2.5 shrink-0",
+					children: [
+						m,
+						g && /* @__PURE__ */ l("button", {
+							type: "button",
+							onClick: g,
+							className: "hidden md:flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs text-slate-400 hover:text-white bg-[var(--bg-elevated)] border border-[var(--border-subtle)] hover:border-[var(--border-medium)] transition-colors cursor-pointer",
+							title: "Open Command Palette (⌘K)",
+							children: [/* @__PURE__ */ c("svg", {
+								viewBox: "0 0 20 20",
+								fill: "none",
+								stroke: "currentColor",
+								strokeWidth: "2",
+								className: "w-3.5 h-3.5",
+								children: /* @__PURE__ */ c("path", {
+									strokeLinecap: "round",
+									strokeLinejoin: "round",
+									d: "M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM19 19l-4.35-4.35"
+								})
+							}), /* @__PURE__ */ c("kbd", {
+								className: "text-[10px] font-mono opacity-80",
+								children: "⌘K"
+							})]
+						}),
+						h,
+						v && /* @__PURE__ */ c("div", {
+							className: "hidden sm:block",
+							children: /* @__PURE__ */ c(ot, { align: "right" })
+						}),
+						_
+					]
+				})
+			]
+		}), b && u && u.length > 0 && /* @__PURE__ */ c("div", {
+			className: "md:hidden border-t border-[var(--border-subtle)] px-3 py-1.5 bg-[var(--bg-root)]/95 flex justify-center",
+			children: /* @__PURE__ */ c(at, {
+				tabs: u,
+				activeTab: d,
+				onChange: f,
+				className: "w-full justify-center"
+			})
+		})]
+	});
+}
+//#endregion
+export { St as AppHeader, ct as AppSwitcher, yt as Avatar, bt as AvatarGroup, Q as Badge, qe as Button, Je as Card, Qe as CardContent, Ze as CardDescription, $e as CardFooter, Ye as CardHeader, Xe as CardTitle, pt as CommandPalette, mt as DICEBEAR_SUITS, rt as Dialog, it as Dropdown, et as Input, st as SUITE_APPS, nt as Select, Z as THEMES, at as Tabs, tt as Textarea, Ge as ThemeProvider, ot as ThemeSelector, ut as ToastProvider, xt as UserMenu, X as cn, ht as getDiceBearAvatarUrl, $ as getSuiteAppUrl, Ke as useTheme, dt as useToast };
