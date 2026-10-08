@@ -111,7 +111,7 @@
   /* Nordic Frost (Clean Studio / Electric Cobalt) */
   --color-primary: #2563EB;
   --color-primary-hover: #1D4ED8;
-  --color-primary-glow: #3B82F6;
+  --color-primary-glow: #1D4ED8;
   --color-primary-content: #FFFFFF;
 
   --color-accent: #0284C7;
@@ -124,21 +124,21 @@
   --bg-elevated: #FFFFFF;
   --bg-hover: #E2E8F0;
 
-  --border-subtle: rgba(15, 23, 42, 0.08);
-  --border-medium: rgba(15, 23, 42, 0.16);
-  --border-strong: rgba(37, 99, 235, 0.40);
-  --ring-focus: rgba(37, 99, 235, 0.35);
+  --border-subtle: rgba(15, 23, 42, 0.12);
+  --border-medium: rgba(15, 23, 42, 0.22);
+  --border-strong: rgba(37, 99, 235, 0.50);
+  --ring-focus: rgba(37, 99, 235, 0.40);
 
   --text-main: #0F172A;
-  --text-muted: #475569;
-  --text-dim: #64748B;
+  --text-muted: #334155;
+  --text-dim: #475569;
 }
 
 [data-theme="sandstone"] {
   /* Editorial Sandstone (Warm Alabaster / Burnt Terracotta) */
   --color-primary: #C2410C;
   --color-primary-hover: #9A3412;
-  --color-primary-glow: #EA580C;
+  --color-primary-glow: #9A3412;
   --color-primary-content: #FFFFFF;
 
   --color-accent: #0F766E;
@@ -151,12 +151,12 @@
   --bg-elevated: #FFFFFF;
   --bg-hover: #EBE5DC;
 
-  --border-subtle: rgba(68, 50, 30, 0.08);
-  --border-medium: rgba(68, 50, 30, 0.16);
-  --border-strong: rgba(194, 65, 12, 0.40);
-  --ring-focus: rgba(194, 65, 12, 0.35);
+  --border-subtle: rgba(68, 50, 30, 0.12);
+  --border-medium: rgba(68, 50, 30, 0.22);
+  --border-strong: rgba(194, 65, 12, 0.50);
+  --ring-focus: rgba(194, 65, 12, 0.40);
 
   --text-main: #1C1917;
-  --text-muted: #57534E;
-  --text-dim: #78716C;
+  --text-muted: #44403C;
+  --text-dim: #57534E;
 }

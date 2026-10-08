@@ -2000,16 +2000,16 @@ function $e({ children: e, className: t, ...n }) {
 function Q({ children: e, className: t, variant: n = "default", size: r = "md", dot: i = !1, ...a }) {
 	return /* @__PURE__ */ l("span", {
 		className: X("inline-flex items-center font-medium rounded-md tracking-wide select-none", {
-			default: "bg-slate-800 text-slate-200 border border-slate-700/60",
-			primary: "bg-[var(--color-primary)]/15 text-[var(--color-primary-glow)] border border-[var(--color-primary)]/30",
-			accent: "bg-[var(--color-accent)]/15 text-[var(--color-accent)] border border-[var(--color-accent)]/30",
-			success: "bg-emerald-500/15 text-emerald-300 border border-emerald-500/30",
-			warning: "bg-amber-500/15 text-amber-300 border border-amber-500/30",
-			danger: "bg-rose-500/15 text-rose-300 border border-rose-500/30",
-			error: "bg-rose-500/15 text-rose-300 border border-rose-500/30",
-			info: "bg-sky-500/15 text-sky-300 border border-sky-500/30",
-			neutral: "bg-white/5 text-slate-300 border border-white/10",
-			subtle: "bg-white/5 text-slate-400 border border-white/5"
+			default: "bg-[var(--bg-elevated)] text-[var(--text-main)] border border-[var(--border-subtle)]",
+			primary: "bg-[var(--color-primary)]/15 text-[var(--color-primary)] border border-[var(--color-primary)]/30 font-semibold",
+			accent: "bg-[var(--color-accent)]/15 text-[var(--color-accent)] border border-[var(--color-accent)]/30 font-semibold",
+			success: "bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30 font-semibold",
+			warning: "bg-amber-500/15 text-amber-800 dark:text-amber-300 border border-amber-500/30 font-semibold",
+			danger: "bg-rose-500/15 text-rose-700 dark:text-rose-300 border border-rose-500/30 font-semibold",
+			error: "bg-rose-500/15 text-rose-700 dark:text-rose-300 border border-rose-500/30 font-semibold",
+			info: "bg-sky-500/15 text-sky-700 dark:text-sky-300 border border-sky-500/30 font-semibold",
+			neutral: "bg-[var(--bg-subtle)] text-[var(--text-muted)] border border-[var(--border-subtle)] font-medium",
+			subtle: "bg-[var(--bg-subtle)] text-[var(--text-muted)] border border-[var(--border-subtle)] font-semibold"
 		}[n], {
 			xs: "text-[9px] px-1.5 py-0.25 gap-0.5",
 			sm: "text-[10px] px-1.5 py-0.5 gap-1",
@@ -2236,7 +2236,7 @@ function at({ tabs: e = [], activeTab: t, onChange: n, className: r }) {
 			return /* @__PURE__ */ l("button", {
 				type: "button",
 				onClick: () => n(e.id),
-				className: X("flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 text-xs font-medium rounded-md transition-all duration-150 cursor-pointer select-none", r ? "bg-[var(--bg-elevated)] text-[var(--text-main)] shadow-sm border border-[var(--border-medium)]" : "text-slate-400 hover:text-slate-200 hover:bg-[var(--bg-hover)]/50"),
+				className: X("flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 text-xs font-medium rounded-md transition-all duration-150 cursor-pointer select-none", r ? "bg-[var(--bg-elevated)] text-[var(--text-main)] shadow-sm border border-[var(--border-medium)]" : "text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-hover)]/60 font-medium"),
 				children: [
 					i && /* @__PURE__ */ c(i, { className: "w-3.5 h-3.5 shrink-0" }),
 					/* @__PURE__ */ c("span", {
@@ -2244,7 +2244,7 @@ function at({ tabs: e = [], activeTab: t, onChange: n, className: r }) {
 						children: e.label
 					}),
 					e.count !== void 0 && /* @__PURE__ */ c("span", {
-						className: X("px-1.5 py-0.5 rounded text-[10px] font-mono", r ? "bg-[var(--color-primary)]/20 text-[var(--color-primary-glow)]" : "bg-white/5 text-slate-500"),
+						className: X("px-1.5 py-0.5 rounded text-[10px] font-mono", r ? "bg-[var(--color-primary)]/20 text-[var(--color-primary-glow)] font-bold" : "bg-[var(--bg-elevated)] text-[var(--text-dim)] border border-[var(--border-subtle)]"),
 						children: e.count
 					})
 				]
@@ -2265,18 +2265,18 @@ function ot({ className: e, align: t = "right" }) {
 		})
 	})), s = /* @__PURE__ */ l("button", {
 		type: "button",
-		className: X("flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-[var(--bg-subtle)] hover:bg-[var(--bg-hover)] border border-[var(--border-subtle)] text-xs font-medium text-slate-300 transition-colors", e),
+		className: X("flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-[var(--bg-subtle)] hover:bg-[var(--bg-hover)] border border-[var(--border-subtle)] text-xs font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors cursor-pointer", e),
 		children: [
 			/* @__PURE__ */ c("span", {
 				className: "w-2.5 h-2.5 rounded-full shadow-sm",
 				style: { backgroundColor: a.primaryHex }
 			}),
 			/* @__PURE__ */ c("span", {
-				className: "hidden sm:inline",
+				className: "hidden sm:inline font-semibold",
 				children: a.name
 			}),
 			/* @__PURE__ */ c("svg", {
-				className: "w-3.5 h-3.5 text-slate-400 ml-0.5",
+				className: "w-3.5 h-3.5 text-[var(--text-dim)] ml-0.5",
 				fill: "none",
 				viewBox: "0 0 24 24",
 				stroke: "currentColor",
@@ -3153,7 +3153,7 @@ function St({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "F
 								o
 							]
 						}), r && /* @__PURE__ */ c("p", {
-							className: "text-[11px] text-slate-400 hidden lg:block leading-tight mt-0.5",
+							className: "text-[11px] text-[var(--text-muted)] hidden lg:block leading-tight mt-0.5",
 							children: r
 						})] })]
 					}) : /* @__PURE__ */ l("div", {
@@ -3180,7 +3180,7 @@ function St({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "F
 								o
 							]
 						}), r && /* @__PURE__ */ c("p", {
-							className: "text-[11px] text-slate-400 hidden lg:block leading-tight mt-0.5",
+							className: "text-[11px] text-[var(--text-muted)] hidden lg:block leading-tight mt-0.5",
 							children: r
 						})] })]
 					})]

@@ -66,7 +66,7 @@ export function AppHeader({
                   {statusBadge}
                 </div>
                 {subtitle && (
-                  <p className="text-[11px] text-slate-400 hidden lg:block leading-tight mt-0.5">
+                  <p className="text-[11px] text-[var(--text-muted)] hidden lg:block leading-tight mt-0.5">
                     {subtitle}
                   </p>
                 )}
@@ -91,7 +91,7 @@ export function AppHeader({
                   {statusBadge}
                 </div>
                 {subtitle && (
-                  <p className="text-[11px] text-slate-400 hidden lg:block leading-tight mt-0.5">
+                  <p className="text-[11px] text-[var(--text-muted)] hidden lg:block leading-tight mt-0.5">
                     {subtitle}
                   </p>
                 )}

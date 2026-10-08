@@ -22,7 +22,7 @@ export function ThemeSelector({ className, align = 'right' }) {
     <button
       type="button"
       className={cn(
-        'flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-[var(--bg-subtle)] hover:bg-[var(--bg-hover)] border border-[var(--border-subtle)] text-xs font-medium text-slate-300 transition-colors',
+        'flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-[var(--bg-subtle)] hover:bg-[var(--bg-hover)] border border-[var(--border-subtle)] text-xs font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors cursor-pointer',
         className
       )}
     >
@@ -30,8 +30,8 @@ export function ThemeSelector({ className, align = 'right' }) {
         className="w-2.5 h-2.5 rounded-full shadow-sm"
         style={{ backgroundColor: currentThemeConfig.primaryHex }}
       />
-      <span className="hidden sm:inline">{currentThemeConfig.name}</span>
-      <svg className="w-3.5 h-3.5 text-slate-400 ml-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <span className="hidden sm:inline font-semibold">{currentThemeConfig.name}</span>
+      <svg className="w-3.5 h-3.5 text-[var(--text-dim)] ml-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
       </svg>
     </button>
