@@ -2272,7 +2272,7 @@ function ot({ className: e, align: t = "right" }) {
 				style: { backgroundColor: a.primaryHex }
 			}),
 			/* @__PURE__ */ c("span", {
-				className: "hidden sm:inline font-semibold",
+				className: "font-semibold whitespace-nowrap",
 				children: a.name
 			}),
 			/* @__PURE__ */ c("svg", {
