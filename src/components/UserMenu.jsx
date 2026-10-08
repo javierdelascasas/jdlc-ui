@@ -99,20 +99,20 @@ export function UserMenu({
             />
             <div className="flex-1 min-w-0">
               <div className="flex items-center justify-between gap-1">
-                <span className="font-bold text-xs text-white truncate font-[var(--font-heading)]">
+                <span className="font-bold text-xs text-[var(--text-main)] truncate font-[var(--font-heading)]">
                   {name}
                 </span>
                 <Badge variant={isAuthenticated ? 'success' : 'subtle'} size="xs" className="font-mono text-[9px] py-0 px-1">
                   {isAuthenticated ? 'Connected' : 'Guest'}
                 </Badge>
               </div>
-              <p className="text-[11px] text-slate-400 truncate mt-0.5">{email}</p>
+              <p className="text-[11px] text-[var(--text-dim)] truncate mt-0.5">{email}</p>
             </div>
           </div>
 
           {/* Quick Preferences: Theme */}
           <div className="px-2 py-1.5 flex items-center justify-between text-xs border-b border-[var(--border-subtle)]">
-            <span className="text-slate-400 font-medium">Theme</span>
+            <span className="text-[var(--text-muted)] font-medium">Theme</span>
             <ThemeSelector align="right" />
           </div>
 
@@ -125,9 +125,9 @@ export function UserMenu({
                   setIsOpen(false);
                   onOpenProfile();
                 }}
-                className="w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs text-slate-300 hover:text-white hover:bg-[var(--bg-hover)] transition-colors cursor-pointer text-left"
+                className="w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-hover)] transition-colors cursor-pointer text-left"
               >
-                <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-slate-400">
+                <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-[var(--text-dim)]">
                   <path d="M10 8a3 3 0 100-6 3 3 0 000 6zM3.465 14.493a1.23 1.23 0 00.41 1.412A9.957 9.957 0 0010 18c2.31 0 4.438-.784 6.131-2.1.43-.333.604-.903.408-1.41a7.002 7.002 0 00-13.074.003z" />
                 </svg>
                 <span>Profile &amp; Settings</span>
@@ -141,9 +141,9 @@ export function UserMenu({
                   setIsOpen(false);
                   onOpenGuide();
                 }}
-                className="w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs text-slate-300 hover:text-white hover:bg-[var(--bg-hover)] transition-colors cursor-pointer text-left"
+                className="w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-hover)] transition-colors cursor-pointer text-left"
               >
-                <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-slate-400">
+                <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-[var(--text-dim)]">
                   <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a.75.75 0 000 1.5h.253a.25.25 0 01.244.304l-.459 2.066A1.75 1.75 0 0010.747 15H11a.75.75 0 000-1.5h-.253a.25.25 0 01-.244-.304l.459-2.066A1.75 1.75 0 009.253 9H9z" clipRule="evenodd" />
                 </svg>
                 <span>Handbook &amp; Guide</span>
@@ -162,10 +162,10 @@ export function UserMenu({
                   'w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs transition-colors cursor-pointer text-left',
                   item.danger
                     ? 'text-rose-400 hover:bg-rose-500/10'
-                    : 'text-slate-300 hover:text-white hover:bg-[var(--bg-hover)]'
+                    : 'text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-hover)]'
                 )}
               >
-                {item.icon && <span className="w-4 h-4 text-slate-400">{item.icon}</span>}
+                {item.icon && <span className="w-4 h-4 text-[var(--text-dim)]">{item.icon}</span>}
                 <span>{item.label}</span>
               </button>
             ))}

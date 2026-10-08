@@ -1847,6 +1847,24 @@ var Z = [
 		primaryHex: "#F59E0B",
 		bgHex: "#0C0C0E",
 		accentHex: "#FBBF24"
+	},
+	{
+		id: "frost",
+		name: "Nordic Frost",
+		description: "Crisp Ice Canvas & Precision Electric Cobalt",
+		primaryHex: "#2563EB",
+		bgHex: "#F8FAFC",
+		accentHex: "#0284C7",
+		isLight: !0
+	},
+	{
+		id: "sandstone",
+		name: "Editorial Sandstone",
+		description: "Warm Alabaster Canvas & Burnt Terracotta",
+		primaryHex: "#C2410C",
+		bgHex: "#FBF9F5",
+		accentHex: "#0F766E",
+		isLight: !0
 	}
 ], We = t({
 	theme: "linear",
@@ -1951,21 +1969,21 @@ function Ye({ children: e, className: t, ...n }) {
 }
 function Xe({ children: e, className: t, ...n }) {
 	return /* @__PURE__ */ c("h3", {
-		className: X("font-semibold text-slate-100 text-sm tracking-tight", t),
+		className: X("font-semibold text-[var(--text-main)] text-sm tracking-tight", t),
 		...n,
 		children: e
 	});
 }
 function Ze({ children: e, className: t, ...n }) {
 	return /* @__PURE__ */ c("p", {
-		className: X("text-xs text-slate-400 mt-0.5", t),
+		className: X("text-xs text-[var(--text-dim)] mt-0.5", t),
 		...n,
 		children: e
 	});
 }
 function Qe({ children: e, className: t, ...n }) {
 	return /* @__PURE__ */ c("div", {
-		className: X("text-sm text-slate-300", t),
+		className: X("text-sm text-[var(--text-muted)]", t),
 		...n,
 		children: e
 	});
@@ -2011,18 +2029,18 @@ function et({ className: e, type: t = "text", label: n, id: r, error: i, helperT
 		children: [
 			n && /* @__PURE__ */ c("label", {
 				htmlFor: u,
-				className: "block text-xs font-semibold text-slate-300 uppercase tracking-wider",
+				className: "block text-xs font-semibold text-[var(--text-muted)] uppercase tracking-wider",
 				children: n
 			}),
 			/* @__PURE__ */ l("div", {
 				className: "relative flex items-center",
 				children: [o && /* @__PURE__ */ c("div", {
-					className: "absolute left-3 pointer-events-none text-slate-400",
+					className: "absolute left-3 pointer-events-none text-[var(--text-dim)]",
 					children: /* @__PURE__ */ c(o, { className: "w-4 h-4" })
 				}), /* @__PURE__ */ c("input", {
 					id: u,
 					type: t,
-					className: X("w-full bg-[var(--bg-subtle)] text-slate-100 text-sm rounded-lg border border-[var(--border-subtle)] px-3 py-2 transition-all duration-150", "focus:outline-none focus:border-[var(--border-strong)] focus:ring-2 focus:ring-[var(--ring-focus)]", "placeholder:text-slate-500 disabled:opacity-50 disabled:cursor-not-allowed", o && "pl-9", i && "border-rose-500 focus:ring-rose-500/30", e),
+					className: X("w-full bg-[var(--bg-subtle)] text-[var(--text-main)] text-sm rounded-lg border border-[var(--border-subtle)] px-3 py-2 transition-all duration-150", "focus:outline-none focus:border-[var(--border-strong)] focus:ring-2 focus:ring-[var(--ring-focus)]", "placeholder:text-[var(--text-dim)] disabled:opacity-50 disabled:cursor-not-allowed", o && "pl-9", i && "border-rose-500 focus:ring-rose-500/30", e),
 					...s
 				})]
 			}),
@@ -2031,7 +2049,7 @@ function et({ className: e, type: t = "text", label: n, id: r, error: i, helperT
 				children: i
 			}),
 			a && !i && /* @__PURE__ */ c("p", {
-				className: "text-xs text-slate-400 mt-1",
+				className: "text-xs text-[var(--text-dim)] mt-1",
 				children: a
 			})
 		]
@@ -2044,13 +2062,13 @@ function tt({ className: e, label: t, id: n, error: r, helperText: i, rows: a = 
 		children: [
 			t && /* @__PURE__ */ c("label", {
 				htmlFor: s,
-				className: "block text-xs font-semibold text-slate-300 uppercase tracking-wider",
+				className: "block text-xs font-semibold text-[var(--text-muted)] uppercase tracking-wider",
 				children: t
 			}),
 			/* @__PURE__ */ c("textarea", {
 				id: s,
 				rows: a,
-				className: X("w-full bg-[var(--bg-subtle)] text-slate-100 text-sm rounded-lg border border-[var(--border-subtle)] p-3 transition-all duration-150", "focus:outline-none focus:border-[var(--border-strong)] focus:ring-2 focus:ring-[var(--ring-focus)]", "placeholder:text-slate-500 disabled:opacity-50 disabled:cursor-not-allowed resize-none", r && "border-rose-500 focus:ring-rose-500/30", e),
+				className: X("w-full bg-[var(--bg-subtle)] text-[var(--text-main)] text-sm rounded-lg border border-[var(--border-subtle)] p-3 transition-all duration-150", "focus:outline-none focus:border-[var(--border-strong)] focus:ring-2 focus:ring-[var(--ring-focus)]", "placeholder:text-[var(--text-dim)] disabled:opacity-50 disabled:cursor-not-allowed resize-none", r && "border-rose-500 focus:ring-rose-500/30", e),
 				...o
 			}),
 			r && /* @__PURE__ */ c("p", {
@@ -2058,7 +2076,7 @@ function tt({ className: e, label: t, id: n, error: r, helperText: i, rows: a = 
 				children: r
 			}),
 			i && !r && /* @__PURE__ */ c("p", {
-				className: "text-xs text-slate-400 mt-1",
+				className: "text-xs text-[var(--text-dim)] mt-1",
 				children: i
 			})
 		]
@@ -2071,17 +2089,17 @@ function nt({ className: e, label: t, id: n, error: r, helperText: i, children: 
 		children: [
 			t && /* @__PURE__ */ c("label", {
 				htmlFor: u,
-				className: "block text-xs font-semibold text-slate-300 uppercase tracking-wider",
+				className: "block text-xs font-semibold text-[var(--text-muted)] uppercase tracking-wider",
 				children: t
 			}),
 			/* @__PURE__ */ l("div", {
 				className: "relative flex items-center",
 				children: [o && /* @__PURE__ */ c("div", {
-					className: "absolute left-3 pointer-events-none text-slate-400",
+					className: "absolute left-3 pointer-events-none text-[var(--text-dim)]",
 					children: /* @__PURE__ */ c(o, { className: "w-4 h-4" })
 				}), /* @__PURE__ */ c("select", {
 					id: u,
-					className: X("w-full bg-[var(--bg-subtle)] text-slate-100 text-sm rounded-lg border border-[var(--border-subtle)] px-3 py-2 transition-all duration-150 cursor-pointer", "focus:outline-none focus:border-[var(--border-strong)] focus:ring-2 focus:ring-[var(--ring-focus)]", o && "pl-9", r && "border-rose-500 focus:ring-rose-500/30", e),
+					className: X("w-full bg-[var(--bg-subtle)] text-[var(--text-main)] text-sm rounded-lg border border-[var(--border-subtle)] px-3 py-2 transition-all duration-150 cursor-pointer", "focus:outline-none focus:border-[var(--border-strong)] focus:ring-2 focus:ring-[var(--ring-focus)]", o && "pl-9", r && "border-rose-500 focus:ring-rose-500/30", e),
 					...s,
 					children: a
 				})]
@@ -2091,7 +2109,7 @@ function nt({ className: e, label: t, id: n, error: r, helperText: i, children: 
 				children: r
 			}),
 			i && !r && /* @__PURE__ */ c("p", {
-				className: "text-xs text-slate-400 mt-1",
+				className: "text-xs text-[var(--text-dim)] mt-1",
 				children: i
 			})
 		]
@@ -2191,7 +2209,7 @@ function it({ trigger: e, items: t = [], align: n = "right", className: r }) {
 					onClick: (t) => {
 						t.preventDefault(), t.stopPropagation(), u(!1), e.onClick && e.onClick();
 					},
-					className: X("flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-xs font-medium text-slate-300 transition-colors hover:bg-[var(--bg-hover)] hover:text-white cursor-pointer", e.danger && "text-rose-400 hover:bg-rose-500/15 hover:text-rose-300", e.active && "bg-[var(--bg-elevated)] text-[var(--color-primary-glow)] font-semibold"),
+					className: X("flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-xs font-medium text-[var(--text-muted)] transition-colors hover:bg-[var(--bg-hover)] hover:text-[var(--text-main)] cursor-pointer", e.danger && "text-rose-400 hover:bg-rose-500/15 hover:text-rose-300", e.active && "bg-[var(--bg-elevated)] text-[var(--color-primary-glow)] font-semibold"),
 					children: [
 						n && /* @__PURE__ */ c(n, { className: "w-3.5 h-3.5 shrink-0" }),
 						/* @__PURE__ */ c("span", {
@@ -2372,7 +2390,7 @@ function ct({ currentApp: e = "taskflow", className: t, align: n = "left" }) {
 		children: [/* @__PURE__ */ c("button", {
 			type: "button",
 			onClick: () => a((e) => !e),
-			className: X("p-2 rounded-xl text-slate-400 hover:text-white hover:bg-[var(--bg-elevated)] border border-transparent hover:border-[var(--border-subtle)] transition-colors cursor-pointer flex items-center justify-center shrink-0", r && "bg-[var(--bg-elevated)] text-white border-[var(--border-subtle)]", t),
+			className: X("p-2 rounded-xl text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-elevated)] border border-transparent hover:border-[var(--border-subtle)] transition-colors cursor-pointer flex items-center justify-center shrink-0", r && "bg-[var(--bg-elevated)] text-[var(--text-main)] border-[var(--border-subtle)]", t),
 			title: "JDLC Cloud Suite Apps",
 			"aria-label": "JDLC Cloud Suite Apps",
 			"aria-expanded": r,
@@ -2434,7 +2452,7 @@ function ct({ currentApp: e = "taskflow", className: t, align: n = "left" }) {
 				/* @__PURE__ */ l("div", {
 					className: "flex items-center justify-between px-2.5 py-1.5 mb-1.5 border-b border-[var(--border-subtle)]",
 					children: [/* @__PURE__ */ c("span", {
-						className: "text-xs font-bold tracking-tight text-white font-[var(--font-heading)]",
+						className: "text-xs font-bold tracking-tight text-[var(--text-main)] font-[var(--font-heading)]",
 						children: "JDLC Suite"
 					}), /* @__PURE__ */ c(Q, {
 						variant: d ? "subtle" : "primary",
@@ -2452,7 +2470,7 @@ function ct({ currentApp: e = "taskflow", className: t, align: n = "left" }) {
 							onClick: (e) => {
 								n && (e.preventDefault(), a(!1));
 							},
-							className: X("flex items-center gap-3 p-2 rounded-xl transition-all", n ? "bg-[var(--bg-elevated)] border border-[var(--border-medium)] cursor-default" : "hover:bg-[var(--bg-hover)] border border-transparent hover:border-[var(--border-subtle)] cursor-pointer text-slate-300 hover:text-white"),
+							className: X("flex items-center gap-3 p-2 rounded-xl transition-all", n ? "bg-[var(--bg-elevated)] border border-[var(--border-medium)] cursor-default" : "hover:bg-[var(--bg-hover)] border border-transparent hover:border-[var(--border-subtle)] cursor-pointer text-[var(--text-muted)] hover:text-[var(--text-main)]"),
 							children: [/* @__PURE__ */ c("div", {
 								className: "w-8 h-8 rounded-lg flex items-center justify-center text-white shrink-0 shadow-sm",
 								style: { backgroundColor: t.color },
@@ -2462,7 +2480,7 @@ function ct({ currentApp: e = "taskflow", className: t, align: n = "left" }) {
 								children: [/* @__PURE__ */ l("div", {
 									className: "flex items-center justify-between gap-1.5",
 									children: [/* @__PURE__ */ c("span", {
-										className: "text-xs font-bold tracking-tight text-white font-[var(--font-heading)] truncate",
+										className: "text-xs font-bold tracking-tight text-[var(--text-main)] font-[var(--font-heading)] truncate",
 										children: t.name
 									}), n ? /* @__PURE__ */ c(Q, {
 										variant: "subtle",
@@ -2987,7 +3005,7 @@ function xt({ user: e, displayName: t, avatarSeed: n, avatarSuit: r = "notionist
 						children: [/* @__PURE__ */ l("div", {
 							className: "flex items-center justify-between gap-1",
 							children: [/* @__PURE__ */ c("span", {
-								className: "font-bold text-xs text-white truncate font-[var(--font-heading)]",
+								className: "font-bold text-xs text-[var(--text-main)] truncate font-[var(--font-heading)]",
 								children: x
 							}), /* @__PURE__ */ c(Q, {
 								variant: w ? "success" : "subtle",
@@ -2996,7 +3014,7 @@ function xt({ user: e, displayName: t, avatarSeed: n, avatarSuit: r = "notionist
 								children: w ? "Connected" : "Guest"
 							})]
 						}), /* @__PURE__ */ c("p", {
-							className: "text-[11px] text-slate-400 truncate mt-0.5",
+							className: "text-[11px] text-[var(--text-dim)] truncate mt-0.5",
 							children: S
 						})]
 					})]
@@ -3004,7 +3022,7 @@ function xt({ user: e, displayName: t, avatarSeed: n, avatarSuit: r = "notionist
 				/* @__PURE__ */ l("div", {
 					className: "px-2 py-1.5 flex items-center justify-between text-xs border-b border-[var(--border-subtle)]",
 					children: [/* @__PURE__ */ c("span", {
-						className: "text-slate-400 font-medium",
+						className: "text-[var(--text-muted)] font-medium",
 						children: "Theme"
 					}), /* @__PURE__ */ c(ot, { align: "right" })]
 				}),
@@ -3016,11 +3034,11 @@ function xt({ user: e, displayName: t, avatarSeed: n, avatarSuit: r = "notionist
 							onClick: () => {
 								v(!1), f();
 							},
-							className: "w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs text-slate-300 hover:text-white hover:bg-[var(--bg-hover)] transition-colors cursor-pointer text-left",
+							className: "w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-hover)] transition-colors cursor-pointer text-left",
 							children: [/* @__PURE__ */ c("svg", {
 								viewBox: "0 0 20 20",
 								fill: "currentColor",
-								className: "w-4 h-4 text-slate-400",
+								className: "w-4 h-4 text-[var(--text-dim)]",
 								children: /* @__PURE__ */ c("path", { d: "M10 8a3 3 0 100-6 3 3 0 000 6zM3.465 14.493a1.23 1.23 0 00.41 1.412A9.957 9.957 0 0010 18c2.31 0 4.438-.784 6.131-2.1.43-.333.604-.903.408-1.41a7.002 7.002 0 00-13.074.003z" })
 							}), /* @__PURE__ */ c("span", { children: "Profile & Settings" })]
 						}),
@@ -3029,11 +3047,11 @@ function xt({ user: e, displayName: t, avatarSeed: n, avatarSuit: r = "notionist
 							onClick: () => {
 								v(!1), p();
 							},
-							className: "w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs text-slate-300 hover:text-white hover:bg-[var(--bg-hover)] transition-colors cursor-pointer text-left",
+							className: "w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-hover)] transition-colors cursor-pointer text-left",
 							children: [/* @__PURE__ */ c("svg", {
 								viewBox: "0 0 20 20",
 								fill: "currentColor",
-								className: "w-4 h-4 text-slate-400",
+								className: "w-4 h-4 text-[var(--text-dim)]",
 								children: /* @__PURE__ */ c("path", {
 									fillRule: "evenodd",
 									d: "M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a.75.75 0 000 1.5h.253a.25.25 0 01.244.304l-.459 2.066A1.75 1.75 0 0010.747 15H11a.75.75 0 000-1.5h-.253a.25.25 0 01-.244-.304l.459-2.066A1.75 1.75 0 009.253 9H9z",
@@ -3046,9 +3064,9 @@ function xt({ user: e, displayName: t, avatarSeed: n, avatarSuit: r = "notionist
 							onClick: () => {
 								v(!1), e.onClick?.();
 							},
-							className: X("w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs transition-colors cursor-pointer text-left", e.danger ? "text-rose-400 hover:bg-rose-500/10" : "text-slate-300 hover:text-white hover:bg-[var(--bg-hover)]"),
+							className: X("w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs transition-colors cursor-pointer text-left", e.danger ? "text-rose-400 hover:bg-rose-500/10" : "text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-hover)]"),
 							children: [e.icon && /* @__PURE__ */ c("span", {
-								className: "w-4 h-4 text-slate-400",
+								className: "w-4 h-4 text-[var(--text-dim)]",
 								children: e.icon
 							}), /* @__PURE__ */ c("span", { children: e.label })]
 						}, t))
@@ -3120,7 +3138,7 @@ function St({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "F
 							className: "flex items-center gap-2",
 							children: [
 								/* @__PURE__ */ l("span", {
-									className: "font-extrabold text-base sm:text-lg tracking-tight font-[var(--font-heading)] text-white",
+									className: "font-extrabold text-base sm:text-lg tracking-tight font-[var(--font-heading)] text-[var(--text-main)]",
 									children: [t, /* @__PURE__ */ c("span", {
 										className: "text-[var(--color-primary-glow)]",
 										children: n
@@ -3147,7 +3165,7 @@ function St({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "F
 							className: "flex items-center gap-2",
 							children: [
 								/* @__PURE__ */ l("span", {
-									className: "font-extrabold text-base sm:text-lg tracking-tight font-[var(--font-heading)] text-white",
+									className: "font-extrabold text-base sm:text-lg tracking-tight font-[var(--font-heading)] text-[var(--text-main)]",
 									children: [t, /* @__PURE__ */ c("span", {
 										className: "text-[var(--color-primary-glow)]",
 										children: n
@@ -3185,7 +3203,7 @@ function St({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "F
 						g && /* @__PURE__ */ l("button", {
 							type: "button",
 							onClick: g,
-							className: "hidden md:flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs text-slate-400 hover:text-white bg-[var(--bg-elevated)] border border-[var(--border-subtle)] hover:border-[var(--border-medium)] transition-colors cursor-pointer",
+							className: "hidden md:flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] bg-[var(--bg-elevated)] border border-[var(--border-subtle)] hover:border-[var(--border-medium)] transition-colors cursor-pointer",
 							title: "Open Command Palette (⌘K)",
 							children: [/* @__PURE__ */ c("svg", {
 								viewBox: "0 0 20 20",

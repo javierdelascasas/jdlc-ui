@@ -106,3 +106,57 @@
   --border-strong: rgba(0, 120, 212, 0.45);
   --ring-focus: rgba(0, 120, 212, 0.45);
 }
+
+[data-theme="frost"] {
+  /* Nordic Frost (Clean Studio / Electric Cobalt) */
+  --color-primary: #2563EB;
+  --color-primary-hover: #1D4ED8;
+  --color-primary-glow: #3B82F6;
+  --color-primary-content: #FFFFFF;
+
+  --color-accent: #0284C7;
+  --color-accent-subtle: rgba(2, 132, 199, 0.12);
+  --color-accent-content: #FFFFFF;
+
+  --bg-root: #F8FAFC;
+  --bg-subtle: #F1F5F9;
+  --bg-surface: #FFFFFF;
+  --bg-elevated: #FFFFFF;
+  --bg-hover: #E2E8F0;
+
+  --border-subtle: rgba(15, 23, 42, 0.08);
+  --border-medium: rgba(15, 23, 42, 0.16);
+  --border-strong: rgba(37, 99, 235, 0.40);
+  --ring-focus: rgba(37, 99, 235, 0.35);
+
+  --text-main: #0F172A;
+  --text-muted: #475569;
+  --text-dim: #64748B;
+}
+
+[data-theme="sandstone"] {
+  /* Editorial Sandstone (Warm Alabaster / Burnt Terracotta) */
+  --color-primary: #C2410C;
+  --color-primary-hover: #9A3412;
+  --color-primary-glow: #EA580C;
+  --color-primary-content: #FFFFFF;
+
+  --color-accent: #0F766E;
+  --color-accent-subtle: rgba(15, 118, 110, 0.12);
+  --color-accent-content: #FFFFFF;
+
+  --bg-root: #FBF9F5;
+  --bg-subtle: #F3EFEA;
+  --bg-surface: #FFFFFF;
+  --bg-elevated: #FFFFFF;
+  --bg-hover: #EBE5DC;
+
+  --border-subtle: rgba(68, 50, 30, 0.08);
+  --border-medium: rgba(68, 50, 30, 0.16);
+  --border-strong: rgba(194, 65, 12, 0.40);
+  --ring-focus: rgba(194, 65, 12, 0.35);
+
+  --text-main: #1C1917;
+  --text-muted: #57534E;
+  --text-dim: #78716C;
+}

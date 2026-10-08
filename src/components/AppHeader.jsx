@@ -54,7 +54,7 @@ export function AppHeader({
               </div>
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="font-extrabold text-base sm:text-lg tracking-tight font-[var(--font-heading)] text-white">
+                  <span className="font-extrabold text-base sm:text-lg tracking-tight font-[var(--font-heading)] text-[var(--text-main)]">
                     {appName}
                     <span className="text-[var(--color-primary-glow)]">{appAccent}</span>
                   </span>
@@ -79,7 +79,7 @@ export function AppHeader({
               </div>
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="font-extrabold text-base sm:text-lg tracking-tight font-[var(--font-heading)] text-white">
+                  <span className="font-extrabold text-base sm:text-lg tracking-tight font-[var(--font-heading)] text-[var(--text-main)]">
                     {appName}
                     <span className="text-[var(--color-primary-glow)]">{appAccent}</span>
                   </span>
@@ -120,7 +120,7 @@ export function AppHeader({
             <button
               type="button"
               onClick={onOpenPalette}
-              className="hidden md:flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs text-slate-400 hover:text-white bg-[var(--bg-elevated)] border border-[var(--border-subtle)] hover:border-[var(--border-medium)] transition-colors cursor-pointer"
+              className="hidden md:flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] bg-[var(--bg-elevated)] border border-[var(--border-subtle)] hover:border-[var(--border-medium)] transition-colors cursor-pointer"
               title="Open Command Palette (⌘K)"
             >
               <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2" className="w-3.5 h-3.5">

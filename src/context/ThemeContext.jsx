@@ -33,6 +33,24 @@ export const THEMES = [
     bgHex: '#0C0C0E',
     accentHex: '#FBBF24',
   },
+  {
+    id: 'frost',
+    name: 'Nordic Frost',
+    description: 'Crisp Ice Canvas & Precision Electric Cobalt',
+    primaryHex: '#2563EB',
+    bgHex: '#F8FAFC',
+    accentHex: '#0284C7',
+    isLight: true,
+  },
+  {
+    id: 'sandstone',
+    name: 'Editorial Sandstone',
+    description: 'Warm Alabaster Canvas & Burnt Terracotta',
+    primaryHex: '#C2410C',
+    bgHex: '#FBF9F5',
+    accentHex: '#0F766E',
+    isLight: true,
+  },
 ];
 
 const ThemeContext = createContext({

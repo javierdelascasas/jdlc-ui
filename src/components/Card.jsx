@@ -26,7 +26,7 @@ export function CardHeader({ children, className, ...props }) {
 
 export function CardTitle({ children, className, ...props }) {
   return (
-    <h3 className={cn('font-semibold text-slate-100 text-sm tracking-tight', className)} {...props}>
+    <h3 className={cn('font-semibold text-[var(--text-main)] text-sm tracking-tight', className)} {...props}>
       {children}
     </h3>
   );
@@ -34,7 +34,7 @@ export function CardTitle({ children, className, ...props }) {
 
 export function CardDescription({ children, className, ...props }) {
   return (
-    <p className={cn('text-xs text-slate-400 mt-0.5', className)} {...props}>
+    <p className={cn('text-xs text-[var(--text-dim)] mt-0.5', className)} {...props}>
       {children}
     </p>
   );
@@ -42,7 +42,7 @@ export function CardDescription({ children, className, ...props }) {
 
 export function CardContent({ children, className, ...props }) {
   return (
-    <div className={cn('text-sm text-slate-300', className)} {...props}>
+    <div className={cn('text-sm text-[var(--text-muted)]', className)} {...props}>
       {children}
     </div>
   );

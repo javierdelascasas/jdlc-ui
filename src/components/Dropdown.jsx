@@ -53,7 +53,7 @@ export function Dropdown({ trigger, items = [], align = 'right', className }) {
                   item.onClick && item.onClick();
                 }}
                 className={cn(
-                  'flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-xs font-medium text-slate-300 transition-colors hover:bg-[var(--bg-hover)] hover:text-white cursor-pointer',
+                  'flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-xs font-medium text-[var(--text-muted)] transition-colors hover:bg-[var(--bg-hover)] hover:text-[var(--text-main)] cursor-pointer',
                   item.danger && 'text-rose-400 hover:bg-rose-500/15 hover:text-rose-300',
                   item.active && 'bg-[var(--bg-elevated)] text-[var(--color-primary-glow)] font-semibold'
                 )}

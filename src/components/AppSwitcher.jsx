@@ -56,8 +56,8 @@ export function AppSwitcher({ currentApp = 'taskflow', className, align = 'left'
         type="button"
         onClick={() => setIsOpen((prev) => !prev)}
         className={cn(
-          'p-2 rounded-xl text-slate-400 hover:text-white hover:bg-[var(--bg-elevated)] border border-transparent hover:border-[var(--border-subtle)] transition-colors cursor-pointer flex items-center justify-center shrink-0',
-          isOpen && 'bg-[var(--bg-elevated)] text-white border-[var(--border-subtle)]',
+          'p-2 rounded-xl text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-elevated)] border border-transparent hover:border-[var(--border-subtle)] transition-colors cursor-pointer flex items-center justify-center shrink-0',
+          isOpen && 'bg-[var(--bg-elevated)] text-[var(--text-main)] border-[var(--border-subtle)]',
           className
         )}
         title="JDLC Cloud Suite Apps"
@@ -87,7 +87,7 @@ export function AppSwitcher({ currentApp = 'taskflow', className, align = 'left'
         >
           {/* Header */}
           <div className="flex items-center justify-between px-2.5 py-1.5 mb-1.5 border-b border-[var(--border-subtle)]">
-            <span className="text-xs font-bold tracking-tight text-white font-[var(--font-heading)]">
+            <span className="text-xs font-bold tracking-tight text-[var(--text-main)] font-[var(--font-heading)]">
               JDLC Suite
             </span>
             <Badge variant={isLocal ? 'subtle' : 'primary'} size="xs" className="font-mono text-[9px]">
@@ -115,7 +115,7 @@ export function AppSwitcher({ currentApp = 'taskflow', className, align = 'left'
                     'flex items-center gap-3 p-2 rounded-xl transition-all',
                     isCurrent
                       ? 'bg-[var(--bg-elevated)] border border-[var(--border-medium)] cursor-default'
-                      : 'hover:bg-[var(--bg-hover)] border border-transparent hover:border-[var(--border-subtle)] cursor-pointer text-slate-300 hover:text-white'
+                      : 'hover:bg-[var(--bg-hover)] border border-transparent hover:border-[var(--border-subtle)] cursor-pointer text-[var(--text-muted)] hover:text-[var(--text-main)]'
                   )}
                 >
                   <div
@@ -126,7 +126,7 @@ export function AppSwitcher({ currentApp = 'taskflow', className, align = 'left'
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between gap-1.5">
-                      <span className="text-xs font-bold tracking-tight text-white font-[var(--font-heading)] truncate">
+                      <span className="text-xs font-bold tracking-tight text-[var(--text-main)] font-[var(--font-heading)] truncate">
                         {app.name}
                       </span>
                       {isCurrent ? (

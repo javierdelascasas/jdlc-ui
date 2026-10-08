@@ -6,13 +6,13 @@ export function Input({ className, type = 'text', label, id, error, helperText, 
   return (
     <div className="w-full space-y-1.5">
       {label && (
-        <label htmlFor={inputId} className="block text-xs font-semibold text-slate-300 uppercase tracking-wider">
+        <label htmlFor={inputId} className="block text-xs font-semibold text-[var(--text-muted)] uppercase tracking-wider">
           {label}
         </label>
       )}
       <div className="relative flex items-center">
         {Icon && (
-          <div className="absolute left-3 pointer-events-none text-slate-400">
+          <div className="absolute left-3 pointer-events-none text-[var(--text-dim)]">
             <Icon className="w-4 h-4" />
           </div>
         )}
@@ -20,9 +20,9 @@ export function Input({ className, type = 'text', label, id, error, helperText, 
           id={inputId}
           type={type}
           className={cn(
-            'w-full bg-[var(--bg-subtle)] text-slate-100 text-sm rounded-lg border border-[var(--border-subtle)] px-3 py-2 transition-all duration-150',
+            'w-full bg-[var(--bg-subtle)] text-[var(--text-main)] text-sm rounded-lg border border-[var(--border-subtle)] px-3 py-2 transition-all duration-150',
             'focus:outline-none focus:border-[var(--border-strong)] focus:ring-2 focus:ring-[var(--ring-focus)]',
-            'placeholder:text-slate-500 disabled:opacity-50 disabled:cursor-not-allowed',
+            'placeholder:text-[var(--text-dim)] disabled:opacity-50 disabled:cursor-not-allowed',
             Icon && 'pl-9',
             error && 'border-rose-500 focus:ring-rose-500/30',
             className
@@ -31,7 +31,7 @@ export function Input({ className, type = 'text', label, id, error, helperText, 
         />
       </div>
       {error && <p className="text-xs text-rose-400 mt-1">{error}</p>}
-      {helperText && !error && <p className="text-xs text-slate-400 mt-1">{helperText}</p>}
+      {helperText && !error && <p className="text-xs text-[var(--text-dim)] mt-1">{helperText}</p>}
     </div>
   );
 }
@@ -41,7 +41,7 @@ export function Textarea({ className, label, id, error, helperText, rows = 3, ..
   return (
     <div className="w-full space-y-1.5">
       {label && (
-        <label htmlFor={textareaId} className="block text-xs font-semibold text-slate-300 uppercase tracking-wider">
+        <label htmlFor={textareaId} className="block text-xs font-semibold text-[var(--text-muted)] uppercase tracking-wider">
           {label}
         </label>
       )}
@@ -49,16 +49,16 @@ export function Textarea({ className, label, id, error, helperText, rows = 3, ..
         id={textareaId}
         rows={rows}
         className={cn(
-          'w-full bg-[var(--bg-subtle)] text-slate-100 text-sm rounded-lg border border-[var(--border-subtle)] p-3 transition-all duration-150',
+          'w-full bg-[var(--bg-subtle)] text-[var(--text-main)] text-sm rounded-lg border border-[var(--border-subtle)] p-3 transition-all duration-150',
           'focus:outline-none focus:border-[var(--border-strong)] focus:ring-2 focus:ring-[var(--ring-focus)]',
-          'placeholder:text-slate-500 disabled:opacity-50 disabled:cursor-not-allowed resize-none',
+          'placeholder:text-[var(--text-dim)] disabled:opacity-50 disabled:cursor-not-allowed resize-none',
           error && 'border-rose-500 focus:ring-rose-500/30',
           className
         )}
         {...props}
       />
       {error && <p className="text-xs text-rose-400 mt-1">{error}</p>}
-      {helperText && !error && <p className="text-xs text-slate-400 mt-1">{helperText}</p>}
+      {helperText && !error && <p className="text-xs text-[var(--text-dim)] mt-1">{helperText}</p>}
     </div>
   );
 }
@@ -68,20 +68,20 @@ export function Select({ className, label, id, error, helperText, children, icon
   return (
     <div className="w-full space-y-1.5">
       {label && (
-        <label htmlFor={selectId} className="block text-xs font-semibold text-slate-300 uppercase tracking-wider">
+        <label htmlFor={selectId} className="block text-xs font-semibold text-[var(--text-muted)] uppercase tracking-wider">
           {label}
         </label>
       )}
       <div className="relative flex items-center">
         {Icon && (
-          <div className="absolute left-3 pointer-events-none text-slate-400">
+          <div className="absolute left-3 pointer-events-none text-[var(--text-dim)]">
             <Icon className="w-4 h-4" />
           </div>
         )}
         <select
           id={selectId}
           className={cn(
-            'w-full bg-[var(--bg-subtle)] text-slate-100 text-sm rounded-lg border border-[var(--border-subtle)] px-3 py-2 transition-all duration-150 cursor-pointer',
+            'w-full bg-[var(--bg-subtle)] text-[var(--text-main)] text-sm rounded-lg border border-[var(--border-subtle)] px-3 py-2 transition-all duration-150 cursor-pointer',
             'focus:outline-none focus:border-[var(--border-strong)] focus:ring-2 focus:ring-[var(--ring-focus)]',
             Icon && 'pl-9',
             error && 'border-rose-500 focus:ring-rose-500/30',
@@ -93,7 +93,7 @@ export function Select({ className, label, id, error, helperText, children, icon
         </select>
       </div>
       {error && <p className="text-xs text-rose-400 mt-1">{error}</p>}
-      {helperText && !error && <p className="text-xs text-slate-400 mt-1">{helperText}</p>}
+      {helperText && !error && <p className="text-xs text-[var(--text-dim)] mt-1">{helperText}</p>}
     </div>
   );
 }
