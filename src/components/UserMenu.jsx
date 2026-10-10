@@ -3,7 +3,9 @@ import { cn } from '../lib/utils.js';
 import { Avatar } from './Avatar.jsx';
 import { Badge } from './Badge.jsx';
 import { ThemeSelector } from './ThemeSelector.jsx';
+import { AvatarSelector } from './AvatarSelector.jsx';
 import { useTheme } from '../context/ThemeContext.jsx';
+import { useAvatar } from '../context/AvatarContext.jsx';
 
 /**
  * Standardized JDLC Suite User Profile & Account Menu.
@@ -13,7 +15,7 @@ export function UserMenu({
   user,
   displayName,
   avatarSeed,
-  avatarSuit = 'notionists',
+  avatarSuit = null,
   status = 'online',
   onSignIn,
   onSignOut,
@@ -26,6 +28,8 @@ export function UserMenu({
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef(null);
   const { currentThemeConfig } = useTheme();
+  const { suit: contextSuit } = useAvatar();
+  const effectiveSuit = avatarSuit || contextSuit || 'notionists';
 
   useEffect(() => {
     function handleClickOutside(e) {
@@ -60,7 +64,7 @@ export function UserMenu({
         <Avatar
           seed={seed}
           name={name}
-          suit={avatarSuit}
+          suit={effectiveSuit}
           size="xs"
           status={isAuthenticated ? status : undefined}
         />
@@ -93,7 +97,7 @@ export function UserMenu({
             <Avatar
               seed={seed}
               name={name}
-              suit={avatarSuit}
+              suit={effectiveSuit}
               size="md"
               status={isAuthenticated ? status : undefined}
             />
@@ -114,6 +118,12 @@ export function UserMenu({
           <div className="px-2 py-1.5 flex items-center justify-between text-xs border-b border-[var(--border-subtle)]">
             <span className="text-[var(--text-muted)] font-medium">Theme</span>
             <ThemeSelector align="right" />
+          </div>
+
+          {/* Quick Preferences: Avatar Set */}
+          <div className="px-2 py-1.5 flex items-center justify-between text-xs border-b border-[var(--border-subtle)]">
+            <span className="text-[var(--text-muted)] font-medium">Avatar Set</span>
+            <AvatarSelector align="right" seed={seed} />
           </div>
 
           {/* Application Navigation / Custom Actions */}

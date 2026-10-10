@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { AvatarProvider } from './AvatarContext.jsx';
 
 export const THEMES = [
   {
@@ -88,7 +89,9 @@ export function ThemeProvider({ children, defaultTheme = 'linear', storageKey = 
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme, currentThemeConfig, availableThemes: THEMES }}>
-      {children}
+      <AvatarProvider>
+        {children}
+      </AvatarProvider>
     </ThemeContext.Provider>
   );
 }

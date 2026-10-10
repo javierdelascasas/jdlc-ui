@@ -6,10 +6,13 @@ import { cn } from '../lib/utils.js';
  */
 export const DICEBEAR_SUITS = {
   notionists: 'notionists',
-  moods: 'moods',
-  critters: 'critters',
   bottts: 'bottts',
+  lorelei: 'lorelei',
+  critters: 'critters',
+  moods: 'moods',
   'fun-emoji': 'fun-emoji',
+  'pixel-art': 'pixel-art',
+  adventurer: 'adventurer',
 };
 
 /**

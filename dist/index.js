@@ -85,33 +85,33 @@ var f = (e, t) => {
 		return;
 	}
 	if (typeof e == "function") {
-		ee(e, t, n, r);
+		E(e, t, n, r);
 		return;
 	}
-	te(e, t, n, r);
+	ee(e, t, n, r);
 }, T = (e, t, n) => {
-	let r = e === "" ? t : E(t, e);
+	let r = e === "" ? t : D(t, e);
 	r.classGroupId = n;
-}, ee = (e, t, n, r) => {
-	if (ne(e)) {
+}, E = (e, t, n, r) => {
+	if (te(e)) {
 		C(e(r), t, n, r);
 		return;
 	}
 	t.validators === null && (t.validators = []), t.validators.push(p(n, e));
-}, te = (e, t, n, r) => {
+}, ee = (e, t, n, r) => {
 	let i = Object.entries(e), a = i.length;
 	for (let e = 0; e < a; e++) {
 		let [a, o] = i[e];
-		C(o, E(t, a), n, r);
+		C(o, D(t, a), n, r);
 	}
-}, E = (e, t) => {
+}, D = (e, t) => {
 	let n = e, r = t.split(h), i = r.length;
 	for (let e = 0; e < i; e++) {
 		let t = r[e], i = n.nextPart.get(t);
 		i || (i = m(), n.nextPart.set(t, i)), n = i;
 	}
 	return n;
-}, ne = (e) => "isThemeGetter" in e && e.isThemeGetter === !0, re = (e) => {
+}, te = (e) => "isThemeGetter" in e && e.isThemeGetter === !0, ne = (e) => {
 	if (e < 1) return {
 		get: () => void 0,
 		set: () => {}
@@ -129,19 +129,19 @@ var f = (e, t) => {
 			e in n ? n[e] = t : i(e, t);
 		}
 	};
-}, D = "!", O = ":", k = [], A = (e, t, n, r, i) => ({
+}, O = "!", k = ":", A = [], j = (e, t, n, r, i) => ({
 	modifiers: e,
 	hasImportantModifier: t,
 	baseClassName: n,
 	maybePostfixModifierPosition: r,
 	isExternal: i
-}), ie = (e) => {
+}), re = (e) => {
 	let { prefix: t, experimentalParseClassName: n } = e, r = (e) => {
 		let t = [], n = 0, r = 0, i = 0, a, o = e.length;
 		for (let s = 0; s < o; s++) {
 			let o = e[s];
 			if (n === 0 && r === 0) {
-				if (o === O) {
+				if (o === k) {
 					t.push(e.slice(i, s)), i = s + 1;
 					continue;
 				}
@@ -153,13 +153,13 @@ var f = (e, t) => {
 			o === "[" ? n++ : o === "]" ? n-- : o === "(" ? r++ : o === ")" && r--;
 		}
 		let s = t.length === 0 ? e : e.slice(i), c = s, l = !1;
-		s.endsWith(D) ? (c = s.slice(0, -1), l = !0) : s.startsWith(D) && (c = s.slice(1), l = !0);
+		s.endsWith(O) ? (c = s.slice(0, -1), l = !0) : s.startsWith(O) && (c = s.slice(1), l = !0);
 		let u = a && a > i ? a - i : void 0;
-		return A(t, l, c, u);
+		return j(t, l, c, u);
 	};
 	if (t) {
-		let e = t + O, n = r;
-		r = (t) => t.startsWith(e) ? n(t.slice(e.length)) : A(k, !1, t, void 0, !0);
+		let e = t + k, n = r;
+		r = (t) => t.startsWith(e) ? n(t.slice(e.length)) : j(A, !1, t, void 0, !0);
 	}
 	if (n) {
 		let e = r;
@@ -169,7 +169,7 @@ var f = (e, t) => {
 		});
 	}
 	return r;
-}, j = (e) => {
+}, M = (e) => {
 	let t = /* @__PURE__ */ new Map();
 	return e.orderSensitiveModifiers.forEach((e, n) => {
 		t.set(e, 1e6 + n);
@@ -181,18 +181,18 @@ var f = (e, t) => {
 		}
 		return r.length > 0 && (r.sort(), n.push(...r)), n;
 	};
-}, ae = (e) => ({
-	cache: re(e.cacheSize),
-	parseClassName: ie(e),
-	sortModifiers: j(e),
-	postfixLookupClassGroupIds: oe(e),
+}, ie = (e) => ({
+	cache: ne(e.cacheSize),
+	parseClassName: re(e),
+	sortModifiers: M(e),
+	postfixLookupClassGroupIds: ae(e),
 	...v(e)
-}), oe = (e) => {
+}), ae = (e) => {
 	let t = Object.create(null), n = e.postfixLookupClassGroups;
 	if (n) for (let e = 0; e < n.length; e++) t[n[e]] = !0;
 	return t;
-}, se = /\s+/, ce = (e, t) => {
-	let { parseClassName: n, getClassGroupId: r, getConflictingClassGroupIds: i, sortModifiers: a, postfixLookupClassGroupIds: o } = t, s = [], c = e.trim().split(se), l = "";
+}, oe = /\s+/, se = (e, t) => {
+	let { parseClassName: n, getClassGroupId: r, getConflictingClassGroupIds: i, sortModifiers: a, postfixLookupClassGroupIds: o } = t, s = [], c = e.trim().split(oe), l = "";
 	for (let e = c.length - 1; e >= 0; --e) {
 		let t = c[e], { isExternal: u, modifiers: d, hasImportantModifier: f, baseClassName: p, maybePostfixModifierPosition: m } = n(t);
 		if (u) {
@@ -216,7 +216,7 @@ var f = (e, t) => {
 			}
 			h = !1;
 		}
-		let _ = d.length === 0 ? "" : d.length === 1 ? d[0] : a(d).join(":"), v = f ? _ + D : _, y = v + g;
+		let _ = d.length === 0 ? "" : d.length === 1 ? d[0] : a(d).join(":"), v = f ? _ + O : _, y = v + g;
 		if (s.indexOf(y) > -1) continue;
 		s.push(y);
 		let b = i(g, h);
@@ -227,34 +227,34 @@ var f = (e, t) => {
 		l = t + (l.length > 0 ? " " + l : l);
 	}
 	return l;
-}, M = (...e) => {
+}, N = (...e) => {
 	let t = 0, n, r, i = "";
-	for (; t < e.length;) (n = e[t++]) && (r = N(n)) && (i && (i += " "), i += r);
+	for (; t < e.length;) (n = e[t++]) && (r = P(n)) && (i && (i += " "), i += r);
 	return i;
-}, N = (e) => {
+}, P = (e) => {
 	if (typeof e == "string") return e;
 	let t, n = "";
-	for (let r = 0; r < e.length; r++) e[r] && (t = N(e[r])) && (n && (n += " "), n += t);
+	for (let r = 0; r < e.length; r++) e[r] && (t = P(e[r])) && (n && (n += " "), n += t);
 	return n;
-}, P = (e, ...t) => {
-	let n, r, i, a, o = (o) => (n = ae(t.reduce((e, t) => t(e), e())), r = n.cache.get, i = n.cache.set, a = s, s(o)), s = (e) => {
+}, F = (e, ...t) => {
+	let n, r, i, a, o = (o) => (n = ie(t.reduce((e, t) => t(e), e())), r = n.cache.get, i = n.cache.set, a = s, s(o)), s = (e) => {
 		let t = r(e);
 		if (t) return t;
-		let a = ce(e, n);
+		let a = se(e, n);
 		return i(e, a), a;
 	};
-	return a = o, (...e) => a(M(...e));
-}, le = [], F = (e) => {
-	let t = (t) => t[e] || le;
+	return a = o, (...e) => a(N(...e));
+}, ce = [], I = (e) => {
+	let t = (t) => t[e] || ce;
 	return t.isThemeGetter = !0, t.themeKey = e, t;
-}, I = /^\[(?:(\w[\w-]*):)?(.+)\]$/i, ue = /^\((?:(\w[\w-]*):)?(.+)\)$/i, L = /^\d+(?:\.\d+)?\/\d+(?:\.\d+)?$/, R = /^(\d+(\.\d+)?)?(xs|sm|md|lg|xl)$/, de = /\d+(%|px|r?em|[sdl]?v([hwib]|min|max)|pt|pc|in|cm|mm|cap|ch|ex|r?lh|cq(w|h|i|b|min|max))|\b(calc|min|max|clamp)\(.+\)|^0$/, z = /^(rgba?|hsla?|hwb|(ok)?(lab|lch)|color-mix|color|light-dark)\(.+\)$/, fe = /^(inset_)?-?((\d+)?\.?(\d+)[a-z]+|0)_-?((\d+)?\.?(\d+)[a-z]+|0)/, pe = /^(url|image|image-set|cross-fade|element|(repeating-)?(linear|radial|conic)-gradient)\(.+\)$/, B = (e) => L.test(e), V = (e) => !!e && !Number.isNaN(Number(e)), H = (e) => !!e && Number.isInteger(Number(e)), me = (e) => e.endsWith("%") && V(e.slice(0, -1)), U = (e) => R.test(e), he = () => !0, ge = (e) => de.test(e) && !z.test(e), _e = () => !1, ve = (e) => fe.test(e), ye = (e) => pe.test(e), be = (e) => !W(e) && !K(e), xe = (e) => e.startsWith("@container") && (e[10] === "/" && e[11] !== void 0 || e[11] === "s" && e[16] !== void 0 && e.startsWith("-size/", 10) || e[11] === "n" && e[18] !== void 0 && e.startsWith("-normal/", 10)), Se = (e) => J(e, Le, _e), W = (e) => I.test(e), G = (e) => J(e, Re, ge), Ce = (e) => J(e, ze, V), we = (e) => J(e, Ve, he), Te = (e) => J(e, Be, _e), Ee = (e) => J(e, Fe, _e), De = (e) => J(e, Ie, ye), Oe = (e) => J(e, He, ve), K = (e) => ue.test(e), q = (e) => Y(e, Re), ke = (e) => Y(e, Be), Ae = (e) => Y(e, Fe), je = (e) => Y(e, Le), Me = (e) => Y(e, Ie), Ne = (e) => Y(e, He, !0), Pe = (e) => Y(e, Ve, !0), J = (e, t, n) => {
-	let r = I.exec(e);
+}, L = /^\[(?:(\w[\w-]*):)?(.+)\]$/i, le = /^\((?:(\w[\w-]*):)?(.+)\)$/i, ue = /^\d+(?:\.\d+)?\/\d+(?:\.\d+)?$/, de = /^(\d+(\.\d+)?)?(xs|sm|md|lg|xl)$/, fe = /\d+(%|px|r?em|[sdl]?v([hwib]|min|max)|pt|pc|in|cm|mm|cap|ch|ex|r?lh|cq(w|h|i|b|min|max))|\b(calc|min|max|clamp)\(.+\)|^0$/, R = /^(rgba?|hsla?|hwb|(ok)?(lab|lch)|color-mix|color|light-dark)\(.+\)$/, pe = /^(inset_)?-?((\d+)?\.?(\d+)[a-z]+|0)_-?((\d+)?\.?(\d+)[a-z]+|0)/, me = /^(url|image|image-set|cross-fade|element|(repeating-)?(linear|radial|conic)-gradient)\(.+\)$/, z = (e) => ue.test(e), B = (e) => !!e && !Number.isNaN(Number(e)), V = (e) => !!e && Number.isInteger(Number(e)), he = (e) => e.endsWith("%") && B(e.slice(0, -1)), H = (e) => de.test(e), ge = () => !0, _e = (e) => fe.test(e) && !R.test(e), ve = () => !1, ye = (e) => pe.test(e), be = (e) => me.test(e), xe = (e) => !U(e) && !G(e), Se = (e) => e.startsWith("@container") && (e[10] === "/" && e[11] !== void 0 || e[11] === "s" && e[16] !== void 0 && e.startsWith("-size/", 10) || e[11] === "n" && e[18] !== void 0 && e.startsWith("-normal/", 10)), Ce = (e) => q(e, Re, ve), U = (e) => L.test(e), W = (e) => q(e, ze, _e), we = (e) => q(e, Be, B), Te = (e) => q(e, He, ge), Ee = (e) => q(e, Ve, ve), De = (e) => q(e, Ie, ve), Oe = (e) => q(e, Le, be), ke = (e) => q(e, Ue, ye), G = (e) => le.test(e), K = (e) => J(e, ze), Ae = (e) => J(e, Ve), je = (e) => J(e, Ie), Me = (e) => J(e, Re), Ne = (e) => J(e, Le), Pe = (e) => J(e, Ue, !0), Fe = (e) => J(e, He, !0), q = (e, t, n) => {
+	let r = L.exec(e);
 	return r ? r[1] ? t(r[1]) : n(r[2]) : !1;
-}, Y = (e, t, n = !1) => {
-	let r = ue.exec(e);
+}, J = (e, t, n = !1) => {
+	let r = le.exec(e);
 	return r ? r[1] ? t(r[1]) : n : !1;
-}, Fe = (e) => e === "position" || e === "percentage", Ie = (e) => e === "image" || e === "url", Le = (e) => e === "length" || e === "size" || e === "bg-size", Re = (e) => e === "length", ze = (e) => e === "number", Be = (e) => e === "family-name", Ve = (e) => e === "number" || e === "weight", He = (e) => e === "shadow", Ue = /*#__PURE__*/ P(() => {
-	let e = F("color"), t = F("font"), n = F("text"), r = F("font-weight"), i = F("tracking"), a = F("leading"), o = F("breakpoint"), s = F("container"), c = F("spacing"), l = F("radius"), u = F("shadow"), d = F("inset-shadow"), f = F("text-shadow"), p = F("drop-shadow"), m = F("blur"), h = F("perspective"), g = F("aspect"), _ = F("ease"), v = F("animate"), y = () => [
+}, Ie = (e) => e === "position" || e === "percentage", Le = (e) => e === "image" || e === "url", Re = (e) => e === "length" || e === "size" || e === "bg-size", ze = (e) => e === "length", Be = (e) => e === "number", Ve = (e) => e === "family-name", He = (e) => e === "number" || e === "weight", Ue = (e) => e === "shadow", We = /*#__PURE__*/ F(() => {
+	let e = I("color"), t = I("font"), n = I("text"), r = I("font-weight"), i = I("tracking"), a = I("leading"), o = I("breakpoint"), s = I("container"), c = I("spacing"), l = I("radius"), u = I("shadow"), d = I("inset-shadow"), f = I("text-shadow"), p = I("drop-shadow"), m = I("blur"), h = I("perspective"), g = I("aspect"), _ = I("ease"), v = I("animate"), y = () => [
 		"auto",
 		"avoid",
 		"all",
@@ -279,8 +279,8 @@ var f = (e, t) => {
 		"left-bottom"
 	], x = () => [
 		...b(),
-		K,
-		W
+		G,
+		U
 	], S = () => [
 		"auto",
 		"hidden",
@@ -292,44 +292,44 @@ var f = (e, t) => {
 		"contain",
 		"none"
 	], w = () => [
-		K,
-		W,
+		G,
+		U,
 		c
 	], T = () => [
-		B,
+		z,
 		"full",
 		"auto",
 		...w()
-	], ee = () => [
-		H,
+	], E = () => [
+		V,
 		"none",
 		"subgrid",
-		K,
-		W
-	], te = () => [
+		G,
+		U
+	], ee = () => [
 		"auto",
 		{ span: [
 			"full",
-			H,
-			K,
-			W
+			V,
+			G,
+			U
 		] },
-		H,
-		K,
-		W
-	], E = () => [
-		H,
+		V,
+		G,
+		U
+	], D = () => [
+		V,
 		"auto",
-		K,
-		W
-	], ne = () => [
+		G,
+		U
+	], te = () => [
 		"auto",
 		"min",
 		"max",
 		"fr",
-		K,
-		W
-	], re = () => [
+		G,
+		U
+	], ne = () => [
 		"start",
 		"end",
 		"center",
@@ -340,15 +340,15 @@ var f = (e, t) => {
 		"baseline",
 		"center-safe",
 		"end-safe"
-	], D = () => [
+	], O = () => [
 		"start",
 		"end",
 		"center",
 		"stretch",
 		"center-safe",
 		"end-safe"
-	], O = () => ["auto", ...w()], k = () => [
-		B,
+	], k = () => ["auto", ...w()], A = () => [
+		z,
 		"auto",
 		"full",
 		"dvw",
@@ -361,9 +361,9 @@ var f = (e, t) => {
 		"max",
 		"fit",
 		...w()
-	], A = () => [
+	], j = () => [
 		s,
-		B,
+		z,
 		"screen",
 		"full",
 		"dvw",
@@ -373,8 +373,8 @@ var f = (e, t) => {
 		"max",
 		"fit",
 		...w()
-	], ie = () => [
-		B,
+	], re = () => [
+		z,
 		"screen",
 		"full",
 		"lh",
@@ -385,50 +385,50 @@ var f = (e, t) => {
 		"max",
 		"fit",
 		...w()
-	], j = () => [
+	], M = () => [
 		e,
-		K,
-		W
-	], ae = () => [
+		G,
+		U
+	], ie = () => [
 		...b(),
-		Ae,
-		Ee,
-		{ position: [K, W] }
-	], oe = () => ["no-repeat", { repeat: [
+		je,
+		De,
+		{ position: [G, U] }
+	], ae = () => ["no-repeat", { repeat: [
 		"",
 		"x",
 		"y",
 		"space",
 		"round"
-	] }], se = () => [
+	] }], oe = () => [
 		"auto",
 		"cover",
 		"contain",
-		je,
-		Se,
-		{ size: [K, W] }
-	], ce = () => [
-		me,
-		q,
-		G
-	], M = () => [
-		"",
-		"none",
-		"full",
-		l,
+		Me,
+		Ce,
+		{ size: [G, U] }
+	], se = () => [
+		he,
 		K,
 		W
 	], N = () => [
 		"",
-		V,
-		q,
-		G
+		"none",
+		"full",
+		l,
+		G,
+		U
 	], P = () => [
+		"",
+		B,
+		K,
+		W
+	], F = () => [
 		"solid",
 		"dashed",
 		"dotted",
 		"double"
-	], le = () => [
+	], ce = () => [
 		"normal",
 		"multiply",
 		"screen",
@@ -445,33 +445,33 @@ var f = (e, t) => {
 		"saturation",
 		"color",
 		"luminosity"
-	], I = () => [
-		V,
-		me,
-		Ae,
-		Ee
-	], ue = () => [
+	], L = () => [
+		B,
+		he,
+		je,
+		De
+	], le = () => [
 		"",
 		"none",
 		m,
-		K,
-		W
-	], L = () => [
+		G,
+		U
+	], ue = () => [
 		"none",
-		V,
-		K,
-		W
-	], R = () => [
-		"none",
-		V,
-		K,
-		W
-	], de = () => [
-		V,
-		K,
-		W
-	], z = () => [
 		B,
+		G,
+		U
+	], de = () => [
+		"none",
+		B,
+		G,
+		U
+	], fe = () => [
+		B,
+		G,
+		U
+	], R = () => [
+		z,
 		"full",
 		...w()
 	];
@@ -485,17 +485,17 @@ var f = (e, t) => {
 				"bounce"
 			],
 			aspect: ["video"],
-			blur: [U],
-			breakpoint: [U],
-			color: [he],
-			container: [U],
-			"drop-shadow": [U],
+			blur: [H],
+			breakpoint: [H],
+			color: [ge],
+			container: [H],
+			"drop-shadow": [H],
 			ease: [
 				"in",
 				"out",
 				"in-out"
 			],
-			font: [be],
+			font: [xe],
 			"font-weight": [
 				"thin",
 				"extralight",
@@ -507,7 +507,7 @@ var f = (e, t) => {
 				"extrabold",
 				"black"
 			],
-			"inset-shadow": [U],
+			"inset-shadow": [H],
 			leading: [
 				"none",
 				"tight",
@@ -524,11 +524,11 @@ var f = (e, t) => {
 				"distant",
 				"none"
 			],
-			radius: [U],
-			shadow: [U],
-			spacing: ["px", V],
-			text: [U],
-			"text-shadow": [U],
+			radius: [H],
+			shadow: [H],
+			spacing: ["px", B],
+			text: [H],
+			"text-shadow": [H],
 			tracking: [
 				"tighter",
 				"tight",
@@ -542,9 +542,9 @@ var f = (e, t) => {
 			aspect: [{ aspect: [
 				"auto",
 				"square",
-				B,
-				W,
-				K,
+				z,
+				U,
+				G,
 				g
 			] }],
 			container: ["container"],
@@ -552,15 +552,15 @@ var f = (e, t) => {
 				"",
 				"normal",
 				"size",
-				K,
-				W
+				G,
+				U
 			] }],
-			"container-named": [xe],
+			"container-named": [Se],
 			columns: [{ columns: [
-				V,
+				B,
 				"auto",
-				W,
-				K,
+				U,
+				G,
 				s
 			] }],
 			"break-after": [{ "break-after": y() }],
@@ -657,13 +657,13 @@ var f = (e, t) => {
 				"collapse"
 			],
 			z: [{ z: [
-				H,
+				V,
 				"auto",
-				K,
-				W
+				G,
+				U
 			] }],
 			basis: [{ basis: [
-				B,
+				z,
 				"full",
 				"auto",
 				s,
@@ -681,41 +681,41 @@ var f = (e, t) => {
 				"wrap-reverse"
 			] }],
 			flex: [{ flex: [
-				V,
 				B,
+				z,
 				"auto",
 				"initial",
 				"none",
-				W
+				U
 			] }],
 			grow: [{ grow: [
 				"",
-				V,
-				K,
-				W
+				B,
+				G,
+				U
 			] }],
 			shrink: [{ shrink: [
 				"",
-				V,
-				K,
-				W
+				B,
+				G,
+				U
 			] }],
 			order: [{ order: [
-				H,
+				V,
 				"first",
 				"last",
 				"none",
-				K,
-				W
+				G,
+				U
 			] }],
-			"grid-cols": [{ "grid-cols": ee() }],
-			"col-start-end": [{ col: te() }],
-			"col-start": [{ "col-start": E() }],
-			"col-end": [{ "col-end": E() }],
-			"grid-rows": [{ "grid-rows": ee() }],
-			"row-start-end": [{ row: te() }],
-			"row-start": [{ "row-start": E() }],
-			"row-end": [{ "row-end": E() }],
+			"grid-cols": [{ "grid-cols": E() }],
+			"col-start-end": [{ col: ee() }],
+			"col-start": [{ "col-start": D() }],
+			"col-end": [{ "col-end": D() }],
+			"grid-rows": [{ "grid-rows": E() }],
+			"row-start-end": [{ row: ee() }],
+			"row-start": [{ "row-start": D() }],
+			"row-end": [{ "row-end": D() }],
 			"grid-flow": [{ "grid-flow": [
 				"row",
 				"col",
@@ -723,24 +723,24 @@ var f = (e, t) => {
 				"row-dense",
 				"col-dense"
 			] }],
-			"auto-cols": [{ "auto-cols": ne() }],
-			"auto-rows": [{ "auto-rows": ne() }],
+			"auto-cols": [{ "auto-cols": te() }],
+			"auto-rows": [{ "auto-rows": te() }],
 			gap: [{ gap: w() }],
 			"gap-x": [{ "gap-x": w() }],
 			"gap-y": [{ "gap-y": w() }],
-			"justify-content": [{ justify: [...re(), "normal"] }],
-			"justify-items": [{ "justify-items": [...D(), "normal"] }],
-			"justify-self": [{ "justify-self": ["auto", ...D()] }],
-			"align-content": [{ content: ["normal", ...re()] }],
-			"align-items": [{ items: [...D(), { baseline: ["", "last"] }] }],
+			"justify-content": [{ justify: [...ne(), "normal"] }],
+			"justify-items": [{ "justify-items": [...O(), "normal"] }],
+			"justify-self": [{ "justify-self": ["auto", ...O()] }],
+			"align-content": [{ content: ["normal", ...ne()] }],
+			"align-items": [{ items: [...O(), { baseline: ["", "last"] }] }],
 			"align-self": [{ self: [
 				"auto",
-				...D(),
+				...O(),
 				{ baseline: ["", "last"] }
 			] }],
-			"place-content": [{ "place-content": re() }],
-			"place-items": [{ "place-items": [...D(), "baseline"] }],
-			"place-self": [{ "place-self": ["auto", ...D()] }],
+			"place-content": [{ "place-content": ne() }],
+			"place-items": [{ "place-items": [...O(), "baseline"] }],
+			"place-self": [{ "place-self": ["auto", ...O()] }],
 			p: [{ p: w() }],
 			px: [{ px: w() }],
 			py: [{ py: w() }],
@@ -752,38 +752,38 @@ var f = (e, t) => {
 			pr: [{ pr: w() }],
 			pb: [{ pb: w() }],
 			pl: [{ pl: w() }],
-			m: [{ m: O() }],
-			mx: [{ mx: O() }],
-			my: [{ my: O() }],
-			ms: [{ ms: O() }],
-			me: [{ me: O() }],
-			mbs: [{ mbs: O() }],
-			mbe: [{ mbe: O() }],
-			mt: [{ mt: O() }],
-			mr: [{ mr: O() }],
-			mb: [{ mb: O() }],
-			ml: [{ ml: O() }],
+			m: [{ m: k() }],
+			mx: [{ mx: k() }],
+			my: [{ my: k() }],
+			ms: [{ ms: k() }],
+			me: [{ me: k() }],
+			mbs: [{ mbs: k() }],
+			mbe: [{ mbe: k() }],
+			mt: [{ mt: k() }],
+			mr: [{ mr: k() }],
+			mb: [{ mb: k() }],
+			ml: [{ ml: k() }],
 			"space-x": [{ "space-x": w() }],
 			"space-x-reverse": ["space-x-reverse"],
 			"space-y": [{ "space-y": w() }],
 			"space-y-reverse": ["space-y-reverse"],
-			size: [{ size: k() }],
-			"inline-size": [{ inline: ["auto", ...A()] }],
-			"min-inline-size": [{ "min-inline": ["auto", ...A()] }],
-			"max-inline-size": [{ "max-inline": ["none", ...A()] }],
-			"block-size": [{ block: ["auto", ...ie()] }],
-			"min-block-size": [{ "min-block": ["auto", ...ie()] }],
-			"max-block-size": [{ "max-block": ["none", ...ie()] }],
+			size: [{ size: A() }],
+			"inline-size": [{ inline: ["auto", ...j()] }],
+			"min-inline-size": [{ "min-inline": ["auto", ...j()] }],
+			"max-inline-size": [{ "max-inline": ["none", ...j()] }],
+			"block-size": [{ block: ["auto", ...re()] }],
+			"min-block-size": [{ "min-block": ["auto", ...re()] }],
+			"max-block-size": [{ "max-block": ["none", ...re()] }],
 			w: [{ w: [
 				s,
 				"screen",
-				...k()
+				...A()
 			] }],
 			"min-w": [{ "min-w": [
 				s,
 				"screen",
 				"none",
-				...k()
+				...A()
 			] }],
 			"max-w": [{ "max-w": [
 				s,
@@ -791,37 +791,37 @@ var f = (e, t) => {
 				"none",
 				"prose",
 				{ screen: [o] },
-				...k()
+				...A()
 			] }],
 			h: [{ h: [
 				"screen",
 				"lh",
-				...k()
+				...A()
 			] }],
 			"min-h": [{ "min-h": [
 				"screen",
 				"lh",
 				"none",
-				...k()
+				...A()
 			] }],
 			"max-h": [{ "max-h": [
 				"screen",
 				"lh",
 				"none",
-				...k()
+				...A()
 			] }],
 			"font-size": [{ text: [
 				"base",
 				n,
-				q,
-				G
+				K,
+				W
 			] }],
 			"font-smoothing": ["antialiased", "subpixel-antialiased"],
 			"font-style": ["italic", "not-italic"],
 			"font-weight": [{ font: [
 				r,
-				Pe,
-				we
+				Fe,
+				Te
 			] }],
 			"font-stretch": [{ "font-stretch": [
 				"ultra-condensed",
@@ -833,15 +833,15 @@ var f = (e, t) => {
 				"expanded",
 				"extra-expanded",
 				"ultra-expanded",
-				me,
-				W
+				he,
+				U
 			] }],
 			"font-family": [{ font: [
-				ke,
-				Te,
+				Ae,
+				Ee,
 				t
 			] }],
-			"font-features": [{ "font-features": [W] }],
+			"font-features": [{ "font-features": [U] }],
 			"fvn-normal": ["normal-nums"],
 			"fvn-ordinal": ["ordinal"],
 			"fvn-slashed-zero": ["slashed-zero"],
@@ -850,14 +850,14 @@ var f = (e, t) => {
 			"fvn-fraction": ["diagonal-fractions", "stacked-fractions"],
 			tracking: [{ tracking: [
 				i,
-				K,
-				W
+				G,
+				U
 			] }],
 			"line-clamp": [{ "line-clamp": [
-				V,
+				B,
 				"none",
-				K,
-				Ce
+				G,
+				we
 			] }],
 			leading: [{ leading: [
 				"none",
@@ -866,16 +866,16 @@ var f = (e, t) => {
 			] }],
 			"list-image": [{ "list-image": [
 				"none",
-				K,
-				W
+				G,
+				U
 			] }],
 			"list-style-position": [{ list: ["inside", "outside"] }],
 			"list-style-type": [{ list: [
 				"disc",
 				"decimal",
 				"none",
-				K,
-				W
+				G,
+				U
 			] }],
 			"text-alignment": [{ text: [
 				"left",
@@ -885,28 +885,28 @@ var f = (e, t) => {
 				"start",
 				"end"
 			] }],
-			"placeholder-color": [{ placeholder: j() }],
-			"text-color": [{ text: j() }],
+			"placeholder-color": [{ placeholder: M() }],
+			"text-color": [{ text: M() }],
 			"text-decoration": [
 				"underline",
 				"overline",
 				"line-through",
 				"no-underline"
 			],
-			"text-decoration-style": [{ decoration: [...P(), "wavy"] }],
+			"text-decoration-style": [{ decoration: [...F(), "wavy"] }],
 			"text-decoration-thickness": [{ decoration: [
-				V,
+				B,
 				"from-font",
 				"auto",
-				K,
-				G
-			] }],
-			"text-decoration-color": [{ decoration: j() }],
-			"underline-offset": [{ "underline-offset": [
-				V,
-				"auto",
-				K,
+				G,
 				W
+			] }],
+			"text-decoration-color": [{ decoration: M() }],
+			"underline-offset": [{ "underline-offset": [
+				B,
+				"auto",
+				G,
+				U
 			] }],
 			"text-transform": [
 				"uppercase",
@@ -927,9 +927,9 @@ var f = (e, t) => {
 			] }],
 			indent: [{ indent: w() }],
 			"tab-size": [{ tab: [
-				H,
-				K,
-				W
+				V,
+				G,
+				U
 			] }],
 			"vertical-align": [{ align: [
 				"baseline",
@@ -940,8 +940,8 @@ var f = (e, t) => {
 				"text-bottom",
 				"sub",
 				"super",
-				K,
-				W
+				G,
+				U
 			] }],
 			whitespace: [{ whitespace: [
 				"normal",
@@ -969,8 +969,8 @@ var f = (e, t) => {
 			] }],
 			content: [{ content: [
 				"none",
-				K,
-				W
+				G,
+				U
 			] }],
 			"bg-attachment": [{ bg: [
 				"fixed",
@@ -988,9 +988,9 @@ var f = (e, t) => {
 				"padding",
 				"content"
 			] }],
-			"bg-position": [{ bg: ae() }],
-			"bg-repeat": [{ bg: oe() }],
-			"bg-size": [{ bg: se() }],
+			"bg-position": [{ bg: ie() }],
+			"bg-repeat": [{ bg: ae() }],
+			"bg-size": [{ bg: oe() }],
 			"bg-image": [{ bg: [
 				"none",
 				{
@@ -1005,142 +1005,142 @@ var f = (e, t) => {
 							"l",
 							"tl"
 						] },
-						H,
-						K,
-						W
+						V,
+						G,
+						U
 					],
 					radial: [
 						"",
-						K,
-						W
+						G,
+						U
 					],
 					conic: [
 						"",
-						H,
-						K,
-						W
+						V,
+						G,
+						U
 					]
 				},
-				Me,
-				De
+				Ne,
+				Oe
 			] }],
-			"bg-color": [{ bg: j() }],
-			"gradient-from-pos": [{ from: ce() }],
-			"gradient-via-pos": [{ via: ce() }],
-			"gradient-to-pos": [{ to: ce() }],
-			"gradient-from": [{ from: j() }],
-			"gradient-via": [{ via: j() }],
-			"gradient-to": [{ to: j() }],
-			rounded: [{ rounded: M() }],
-			"rounded-s": [{ "rounded-s": M() }],
-			"rounded-e": [{ "rounded-e": M() }],
-			"rounded-t": [{ "rounded-t": M() }],
-			"rounded-r": [{ "rounded-r": M() }],
-			"rounded-b": [{ "rounded-b": M() }],
-			"rounded-l": [{ "rounded-l": M() }],
-			"rounded-ss": [{ "rounded-ss": M() }],
-			"rounded-se": [{ "rounded-se": M() }],
-			"rounded-ee": [{ "rounded-ee": M() }],
-			"rounded-es": [{ "rounded-es": M() }],
-			"rounded-tl": [{ "rounded-tl": M() }],
-			"rounded-tr": [{ "rounded-tr": M() }],
-			"rounded-br": [{ "rounded-br": M() }],
-			"rounded-bl": [{ "rounded-bl": M() }],
-			"border-w": [{ border: N() }],
-			"border-w-x": [{ "border-x": N() }],
-			"border-w-y": [{ "border-y": N() }],
-			"border-w-s": [{ "border-s": N() }],
-			"border-w-e": [{ "border-e": N() }],
-			"border-w-bs": [{ "border-bs": N() }],
-			"border-w-be": [{ "border-be": N() }],
-			"border-w-t": [{ "border-t": N() }],
-			"border-w-r": [{ "border-r": N() }],
-			"border-w-b": [{ "border-b": N() }],
-			"border-w-l": [{ "border-l": N() }],
-			"divide-x": [{ "divide-x": N() }],
+			"bg-color": [{ bg: M() }],
+			"gradient-from-pos": [{ from: se() }],
+			"gradient-via-pos": [{ via: se() }],
+			"gradient-to-pos": [{ to: se() }],
+			"gradient-from": [{ from: M() }],
+			"gradient-via": [{ via: M() }],
+			"gradient-to": [{ to: M() }],
+			rounded: [{ rounded: N() }],
+			"rounded-s": [{ "rounded-s": N() }],
+			"rounded-e": [{ "rounded-e": N() }],
+			"rounded-t": [{ "rounded-t": N() }],
+			"rounded-r": [{ "rounded-r": N() }],
+			"rounded-b": [{ "rounded-b": N() }],
+			"rounded-l": [{ "rounded-l": N() }],
+			"rounded-ss": [{ "rounded-ss": N() }],
+			"rounded-se": [{ "rounded-se": N() }],
+			"rounded-ee": [{ "rounded-ee": N() }],
+			"rounded-es": [{ "rounded-es": N() }],
+			"rounded-tl": [{ "rounded-tl": N() }],
+			"rounded-tr": [{ "rounded-tr": N() }],
+			"rounded-br": [{ "rounded-br": N() }],
+			"rounded-bl": [{ "rounded-bl": N() }],
+			"border-w": [{ border: P() }],
+			"border-w-x": [{ "border-x": P() }],
+			"border-w-y": [{ "border-y": P() }],
+			"border-w-s": [{ "border-s": P() }],
+			"border-w-e": [{ "border-e": P() }],
+			"border-w-bs": [{ "border-bs": P() }],
+			"border-w-be": [{ "border-be": P() }],
+			"border-w-t": [{ "border-t": P() }],
+			"border-w-r": [{ "border-r": P() }],
+			"border-w-b": [{ "border-b": P() }],
+			"border-w-l": [{ "border-l": P() }],
+			"divide-x": [{ "divide-x": P() }],
 			"divide-x-reverse": ["divide-x-reverse"],
-			"divide-y": [{ "divide-y": N() }],
+			"divide-y": [{ "divide-y": P() }],
 			"divide-y-reverse": ["divide-y-reverse"],
 			"border-style": [{ border: [
-				...P(),
+				...F(),
 				"hidden",
 				"none"
 			] }],
 			"divide-style": [{ divide: [
-				...P(),
+				...F(),
 				"hidden",
 				"none"
 			] }],
-			"border-color": [{ border: j() }],
-			"border-color-x": [{ "border-x": j() }],
-			"border-color-y": [{ "border-y": j() }],
-			"border-color-s": [{ "border-s": j() }],
-			"border-color-e": [{ "border-e": j() }],
-			"border-color-bs": [{ "border-bs": j() }],
-			"border-color-be": [{ "border-be": j() }],
-			"border-color-t": [{ "border-t": j() }],
-			"border-color-r": [{ "border-r": j() }],
-			"border-color-b": [{ "border-b": j() }],
-			"border-color-l": [{ "border-l": j() }],
-			"divide-color": [{ divide: j() }],
+			"border-color": [{ border: M() }],
+			"border-color-x": [{ "border-x": M() }],
+			"border-color-y": [{ "border-y": M() }],
+			"border-color-s": [{ "border-s": M() }],
+			"border-color-e": [{ "border-e": M() }],
+			"border-color-bs": [{ "border-bs": M() }],
+			"border-color-be": [{ "border-be": M() }],
+			"border-color-t": [{ "border-t": M() }],
+			"border-color-r": [{ "border-r": M() }],
+			"border-color-b": [{ "border-b": M() }],
+			"border-color-l": [{ "border-l": M() }],
+			"divide-color": [{ divide: M() }],
 			"outline-style": [{ outline: [
-				...P(),
+				...F(),
 				"none",
 				"hidden"
 			] }],
 			"outline-offset": [{ "outline-offset": [
-				V,
-				K,
-				W
+				B,
+				G,
+				U
 			] }],
 			"outline-w": [{ outline: [
 				"",
-				V,
-				q,
-				G
+				B,
+				K,
+				W
 			] }],
-			"outline-color": [{ outline: j() }],
+			"outline-color": [{ outline: M() }],
 			shadow: [{ shadow: [
 				"",
 				"inner",
 				"none",
 				u,
-				Ne,
-				Oe
+				Pe,
+				ke
 			] }],
-			"shadow-color": [{ shadow: j() }],
+			"shadow-color": [{ shadow: M() }],
 			"inset-shadow": [{ "inset-shadow": [
 				"none",
 				d,
-				Ne,
-				Oe
+				Pe,
+				ke
 			] }],
-			"inset-shadow-color": [{ "inset-shadow": j() }],
-			"ring-w": [{ ring: N() }],
+			"inset-shadow-color": [{ "inset-shadow": M() }],
+			"ring-w": [{ ring: P() }],
 			"ring-w-inset": ["ring-inset"],
-			"ring-color": [{ ring: j() }],
-			"ring-offset-w": [{ "ring-offset": [V, G] }],
-			"ring-offset-color": [{ "ring-offset": j() }],
-			"inset-ring-w": [{ "inset-ring": N() }],
-			"inset-ring-color": [{ "inset-ring": j() }],
+			"ring-color": [{ ring: M() }],
+			"ring-offset-w": [{ "ring-offset": [B, W] }],
+			"ring-offset-color": [{ "ring-offset": M() }],
+			"inset-ring-w": [{ "inset-ring": P() }],
+			"inset-ring-color": [{ "inset-ring": M() }],
 			"text-shadow": [{ "text-shadow": [
 				"none",
 				f,
-				Ne,
-				Oe
+				Pe,
+				ke
 			] }],
-			"text-shadow-color": [{ "text-shadow": j() }],
+			"text-shadow-color": [{ "text-shadow": M() }],
 			opacity: [{ opacity: [
-				V,
-				K,
-				W
+				B,
+				G,
+				U
 			] }],
 			"mix-blend": [{ "mix-blend": [
-				...le(),
+				...ce(),
 				"plus-darker",
 				"plus-lighter"
 			] }],
-			"bg-blend": [{ "bg-blend": le() }],
+			"bg-blend": [{ "bg-blend": ce() }],
 			"mask-clip": [{ "mask-clip": [
 				"border",
 				"padding",
@@ -1155,51 +1155,51 @@ var f = (e, t) => {
 				"intersect",
 				"exclude"
 			] }],
-			"mask-image-linear-pos": [{ "mask-linear": [V] }],
-			"mask-image-linear-from-pos": [{ "mask-linear-from": I() }],
-			"mask-image-linear-to-pos": [{ "mask-linear-to": I() }],
-			"mask-image-linear-from-color": [{ "mask-linear-from": j() }],
-			"mask-image-linear-to-color": [{ "mask-linear-to": j() }],
-			"mask-image-t-from-pos": [{ "mask-t-from": I() }],
-			"mask-image-t-to-pos": [{ "mask-t-to": I() }],
-			"mask-image-t-from-color": [{ "mask-t-from": j() }],
-			"mask-image-t-to-color": [{ "mask-t-to": j() }],
-			"mask-image-r-from-pos": [{ "mask-r-from": I() }],
-			"mask-image-r-to-pos": [{ "mask-r-to": I() }],
-			"mask-image-r-from-color": [{ "mask-r-from": j() }],
-			"mask-image-r-to-color": [{ "mask-r-to": j() }],
-			"mask-image-b-from-pos": [{ "mask-b-from": I() }],
-			"mask-image-b-to-pos": [{ "mask-b-to": I() }],
-			"mask-image-b-from-color": [{ "mask-b-from": j() }],
-			"mask-image-b-to-color": [{ "mask-b-to": j() }],
-			"mask-image-l-from-pos": [{ "mask-l-from": I() }],
-			"mask-image-l-to-pos": [{ "mask-l-to": I() }],
-			"mask-image-l-from-color": [{ "mask-l-from": j() }],
-			"mask-image-l-to-color": [{ "mask-l-to": j() }],
-			"mask-image-x-from-pos": [{ "mask-x-from": I() }],
-			"mask-image-x-to-pos": [{ "mask-x-to": I() }],
-			"mask-image-x-from-color": [{ "mask-x-from": j() }],
-			"mask-image-x-to-color": [{ "mask-x-to": j() }],
-			"mask-image-y-from-pos": [{ "mask-y-from": I() }],
-			"mask-image-y-to-pos": [{ "mask-y-to": I() }],
-			"mask-image-y-from-color": [{ "mask-y-from": j() }],
-			"mask-image-y-to-color": [{ "mask-y-to": j() }],
-			"mask-image-radial": [{ "mask-radial": [K, W] }],
-			"mask-image-radial-from-pos": [{ "mask-radial-from": I() }],
-			"mask-image-radial-to-pos": [{ "mask-radial-to": I() }],
-			"mask-image-radial-from-color": [{ "mask-radial-from": j() }],
-			"mask-image-radial-to-color": [{ "mask-radial-to": j() }],
+			"mask-image-linear-pos": [{ "mask-linear": [B] }],
+			"mask-image-linear-from-pos": [{ "mask-linear-from": L() }],
+			"mask-image-linear-to-pos": [{ "mask-linear-to": L() }],
+			"mask-image-linear-from-color": [{ "mask-linear-from": M() }],
+			"mask-image-linear-to-color": [{ "mask-linear-to": M() }],
+			"mask-image-t-from-pos": [{ "mask-t-from": L() }],
+			"mask-image-t-to-pos": [{ "mask-t-to": L() }],
+			"mask-image-t-from-color": [{ "mask-t-from": M() }],
+			"mask-image-t-to-color": [{ "mask-t-to": M() }],
+			"mask-image-r-from-pos": [{ "mask-r-from": L() }],
+			"mask-image-r-to-pos": [{ "mask-r-to": L() }],
+			"mask-image-r-from-color": [{ "mask-r-from": M() }],
+			"mask-image-r-to-color": [{ "mask-r-to": M() }],
+			"mask-image-b-from-pos": [{ "mask-b-from": L() }],
+			"mask-image-b-to-pos": [{ "mask-b-to": L() }],
+			"mask-image-b-from-color": [{ "mask-b-from": M() }],
+			"mask-image-b-to-color": [{ "mask-b-to": M() }],
+			"mask-image-l-from-pos": [{ "mask-l-from": L() }],
+			"mask-image-l-to-pos": [{ "mask-l-to": L() }],
+			"mask-image-l-from-color": [{ "mask-l-from": M() }],
+			"mask-image-l-to-color": [{ "mask-l-to": M() }],
+			"mask-image-x-from-pos": [{ "mask-x-from": L() }],
+			"mask-image-x-to-pos": [{ "mask-x-to": L() }],
+			"mask-image-x-from-color": [{ "mask-x-from": M() }],
+			"mask-image-x-to-color": [{ "mask-x-to": M() }],
+			"mask-image-y-from-pos": [{ "mask-y-from": L() }],
+			"mask-image-y-to-pos": [{ "mask-y-to": L() }],
+			"mask-image-y-from-color": [{ "mask-y-from": M() }],
+			"mask-image-y-to-color": [{ "mask-y-to": M() }],
+			"mask-image-radial": [{ "mask-radial": [G, U] }],
+			"mask-image-radial-from-pos": [{ "mask-radial-from": L() }],
+			"mask-image-radial-to-pos": [{ "mask-radial-to": L() }],
+			"mask-image-radial-from-color": [{ "mask-radial-from": M() }],
+			"mask-image-radial-to-color": [{ "mask-radial-to": M() }],
 			"mask-image-radial-shape": [{ "mask-radial": ["circle", "ellipse"] }],
 			"mask-image-radial-size": [{ "mask-radial": [{
 				closest: ["side", "corner"],
 				farthest: ["side", "corner"]
 			}] }],
 			"mask-image-radial-pos": [{ "mask-radial-at": b() }],
-			"mask-image-conic-pos": [{ "mask-conic": [V] }],
-			"mask-image-conic-from-pos": [{ "mask-conic-from": I() }],
-			"mask-image-conic-to-pos": [{ "mask-conic-to": I() }],
-			"mask-image-conic-from-color": [{ "mask-conic-from": j() }],
-			"mask-image-conic-to-color": [{ "mask-conic-to": j() }],
+			"mask-image-conic-pos": [{ "mask-conic": [B] }],
+			"mask-image-conic-from-pos": [{ "mask-conic-from": L() }],
+			"mask-image-conic-to-pos": [{ "mask-conic-to": L() }],
+			"mask-image-conic-from-color": [{ "mask-conic-from": M() }],
+			"mask-image-conic-to-color": [{ "mask-conic-to": M() }],
 			"mask-mode": [{ mask: [
 				"alpha",
 				"luminance",
@@ -1213,117 +1213,117 @@ var f = (e, t) => {
 				"stroke",
 				"view"
 			] }],
-			"mask-position": [{ mask: ae() }],
-			"mask-repeat": [{ mask: oe() }],
-			"mask-size": [{ mask: se() }],
+			"mask-position": [{ mask: ie() }],
+			"mask-repeat": [{ mask: ae() }],
+			"mask-size": [{ mask: oe() }],
 			"mask-type": [{ "mask-type": ["alpha", "luminance"] }],
 			"mask-image": [{ mask: [
 				"none",
-				K,
-				W
+				G,
+				U
 			] }],
 			filter: [{ filter: [
 				"",
 				"none",
-				K,
-				W
+				G,
+				U
 			] }],
-			blur: [{ blur: ue() }],
+			blur: [{ blur: le() }],
 			brightness: [{ brightness: [
-				V,
-				K,
-				W
+				B,
+				G,
+				U
 			] }],
 			contrast: [{ contrast: [
-				V,
-				K,
-				W
+				B,
+				G,
+				U
 			] }],
 			"drop-shadow": [{ "drop-shadow": [
 				"",
 				"none",
 				p,
-				Ne,
-				Oe
+				Pe,
+				ke
 			] }],
-			"drop-shadow-color": [{ "drop-shadow": j() }],
+			"drop-shadow-color": [{ "drop-shadow": M() }],
 			grayscale: [{ grayscale: [
 				"",
-				V,
-				K,
-				W
+				B,
+				G,
+				U
 			] }],
 			"hue-rotate": [{ "hue-rotate": [
-				V,
-				K,
-				W
+				B,
+				G,
+				U
 			] }],
 			invert: [{ invert: [
 				"",
-				V,
-				K,
-				W
+				B,
+				G,
+				U
 			] }],
 			saturate: [{ saturate: [
-				V,
-				K,
-				W
+				B,
+				G,
+				U
 			] }],
 			sepia: [{ sepia: [
 				"",
-				V,
-				K,
-				W
+				B,
+				G,
+				U
 			] }],
 			"backdrop-filter": [{ "backdrop-filter": [
 				"",
 				"none",
-				K,
-				W
+				G,
+				U
 			] }],
-			"backdrop-blur": [{ "backdrop-blur": ue() }],
+			"backdrop-blur": [{ "backdrop-blur": le() }],
 			"backdrop-brightness": [{ "backdrop-brightness": [
-				V,
-				K,
-				W
+				B,
+				G,
+				U
 			] }],
 			"backdrop-contrast": [{ "backdrop-contrast": [
-				V,
-				K,
-				W
+				B,
+				G,
+				U
 			] }],
 			"backdrop-grayscale": [{ "backdrop-grayscale": [
 				"",
-				V,
-				K,
-				W
+				B,
+				G,
+				U
 			] }],
 			"backdrop-hue-rotate": [{ "backdrop-hue-rotate": [
-				V,
-				K,
-				W
+				B,
+				G,
+				U
 			] }],
 			"backdrop-invert": [{ "backdrop-invert": [
 				"",
-				V,
-				K,
-				W
+				B,
+				G,
+				U
 			] }],
 			"backdrop-opacity": [{ "backdrop-opacity": [
-				V,
-				K,
-				W
+				B,
+				G,
+				U
 			] }],
 			"backdrop-saturate": [{ "backdrop-saturate": [
-				V,
-				K,
-				W
+				B,
+				G,
+				U
 			] }],
 			"backdrop-sepia": [{ "backdrop-sepia": [
 				"",
-				V,
-				K,
-				W
+				B,
+				G,
+				U
 			] }],
 			"border-collapse": [{ border: ["collapse", "separate"] }],
 			"border-spacing": [{ "border-spacing": w() }],
@@ -1339,56 +1339,56 @@ var f = (e, t) => {
 				"shadow",
 				"transform",
 				"none",
-				K,
-				W
+				G,
+				U
 			] }],
 			"transition-behavior": [{ transition: ["normal", "discrete"] }],
 			duration: [{ duration: [
-				V,
+				B,
 				"initial",
-				K,
-				W
+				G,
+				U
 			] }],
 			ease: [{ ease: [
 				"linear",
 				"initial",
 				_,
-				K,
-				W
+				G,
+				U
 			] }],
 			delay: [{ delay: [
-				V,
-				K,
-				W
+				B,
+				G,
+				U
 			] }],
 			animate: [{ animate: [
 				"none",
 				v,
-				K,
-				W
+				G,
+				U
 			] }],
 			backface: [{ backface: ["hidden", "visible"] }],
 			perspective: [{ perspective: [
 				h,
-				K,
-				W
+				G,
+				U
 			] }],
 			"perspective-origin": [{ "perspective-origin": x() }],
-			rotate: [{ rotate: L() }],
-			"rotate-x": [{ "rotate-x": L() }],
-			"rotate-y": [{ "rotate-y": L() }],
-			"rotate-z": [{ "rotate-z": L() }],
-			scale: [{ scale: R() }],
-			"scale-x": [{ "scale-x": R() }],
-			"scale-y": [{ "scale-y": R() }],
-			"scale-z": [{ "scale-z": R() }],
+			rotate: [{ rotate: ue() }],
+			"rotate-x": [{ "rotate-x": ue() }],
+			"rotate-y": [{ "rotate-y": ue() }],
+			"rotate-z": [{ "rotate-z": ue() }],
+			scale: [{ scale: de() }],
+			"scale-x": [{ "scale-x": de() }],
+			"scale-y": [{ "scale-y": de() }],
+			"scale-z": [{ "scale-z": de() }],
 			"scale-3d": ["scale-3d"],
-			skew: [{ skew: de() }],
-			"skew-x": [{ "skew-x": de() }],
-			"skew-y": [{ "skew-y": de() }],
+			skew: [{ skew: fe() }],
+			"skew-x": [{ "skew-x": fe() }],
+			"skew-y": [{ "skew-y": fe() }],
 			transform: [{ transform: [
-				K,
-				W,
+				G,
+				U,
 				"",
 				"none",
 				"gpu",
@@ -1396,19 +1396,19 @@ var f = (e, t) => {
 			] }],
 			"transform-origin": [{ origin: x() }],
 			"transform-style": [{ transform: ["3d", "flat"] }],
-			translate: [{ translate: z() }],
-			"translate-x": [{ "translate-x": z() }],
-			"translate-y": [{ "translate-y": z() }],
-			"translate-z": [{ "translate-z": z() }],
+			translate: [{ translate: R() }],
+			"translate-x": [{ "translate-x": R() }],
+			"translate-y": [{ "translate-y": R() }],
+			"translate-z": [{ "translate-z": R() }],
 			"translate-none": ["translate-none"],
 			zoom: [{ zoom: [
-				H,
-				K,
-				W
+				V,
+				G,
+				U
 			] }],
-			accent: [{ accent: j() }],
+			accent: [{ accent: M() }],
 			appearance: [{ appearance: ["none", "auto"] }],
-			"caret-color": [{ caret: j() }],
+			"caret-color": [{ caret: M() }],
 			"color-scheme": [{ scheme: [
 				"normal",
 				"dark",
@@ -1454,8 +1454,8 @@ var f = (e, t) => {
 				"nwse-resize",
 				"zoom-in",
 				"zoom-out",
-				K,
-				W
+				G,
+				U
 			] }],
 			"field-sizing": [{ "field-sizing": ["fixed", "content"] }],
 			"pointer-events": [{ "pointer-events": ["auto", "none"] }],
@@ -1466,8 +1466,8 @@ var f = (e, t) => {
 				"x"
 			] }],
 			"scroll-behavior": [{ scroll: ["auto", "smooth"] }],
-			"scrollbar-thumb-color": [{ "scrollbar-thumb": j() }],
-			"scrollbar-track-color": [{ "scrollbar-track": j() }],
+			"scrollbar-thumb-color": [{ "scrollbar-thumb": M() }],
+			"scrollbar-track-color": [{ "scrollbar-track": M() }],
 			"scrollbar-gutter": [{ "scrollbar-gutter": [
 				"auto",
 				"stable",
@@ -1541,17 +1541,17 @@ var f = (e, t) => {
 				"scroll",
 				"contents",
 				"transform",
-				K,
-				W
-			] }],
-			fill: [{ fill: ["none", ...j()] }],
-			"stroke-w": [{ stroke: [
-				V,
-				q,
 				G,
-				Ce
+				U
 			] }],
-			stroke: [{ stroke: ["none", ...j()] }],
+			fill: [{ fill: ["none", ...M()] }],
+			"stroke-w": [{ stroke: [
+				B,
+				K,
+				W,
+				we
+			] }],
+			stroke: [{ stroke: ["none", ...M()] }],
 			"forced-color-adjust": [{ "forced-color-adjust": ["auto", "none"] }]
 		},
 		conflictingClassGroups: {
@@ -1810,8 +1810,105 @@ var f = (e, t) => {
 });
 //#endregion
 //#region src/lib/utils.js
-function X(...e) {
-	return Ue(d(e));
+function Y(...e) {
+	return We(d(e));
+}
+//#endregion
+//#region src/context/AvatarContext.jsx
+var X = [
+	{
+		id: "notionists",
+		name: "Notionists",
+		description: "Minimalist editorial sketches"
+	},
+	{
+		id: "bottts",
+		name: "Bottts",
+		description: "Playful futuristic robots"
+	},
+	{
+		id: "lorelei",
+		name: "Lorelei",
+		description: "Modern clean line portraits"
+	},
+	{
+		id: "critters",
+		name: "Critters",
+		description: "Expressive cute animals"
+	},
+	{
+		id: "moods",
+		name: "Moods",
+		description: "Geometric gradient emotion faces"
+	},
+	{
+		id: "fun-emoji",
+		name: "Fun Emoji",
+		description: "Vibrant pop emoticon faces"
+	},
+	{
+		id: "pixel-art",
+		name: "Pixel Art",
+		description: "Retro 8-bit gaming characters"
+	},
+	{
+		id: "adventurer",
+		name: "Adventurer",
+		description: "Fantasy RPG portraits"
+	}
+], Ge = t({
+	suit: "notionists",
+	setSuit: () => {},
+	currentSuitConfig: X[0],
+	availableSuits: X
+});
+function Ke({ children: e, defaultSuit: t = "notionists", storageKey: n = "jdlc_avatar_suit" }) {
+	let [r, a] = s(() => {
+		try {
+			if (typeof window < "u") {
+				let e = localStorage.getItem(n);
+				return e && X.some((t) => t.id === e) ? e : t;
+			}
+			return t;
+		} catch {
+			return t;
+		}
+	});
+	i(() => {
+		try {
+			typeof window < "u" && localStorage.setItem(n, r);
+		} catch {}
+	}, [r, n]);
+	let o = X.find((e) => e.id === r) || X[0];
+	return /* @__PURE__ */ c(Ge.Provider, {
+		value: {
+			suit: r,
+			setSuit: a,
+			currentSuitConfig: o,
+			availableSuits: X
+		},
+		children: e
+	});
+}
+function qe() {
+	let e = r(Ge);
+	if (!e) {
+		let e = "notionists";
+		try {
+			if (typeof window < "u") {
+				let t = localStorage.getItem("jdlc_avatar_suit");
+				t && X.some((e) => e.id === t) && (e = t);
+			}
+		} catch {}
+		let t = X.find((t) => t.id === e) || X[0];
+		return {
+			suit: e,
+			setSuit: () => {},
+			currentSuitConfig: t,
+			availableSuits: X
+		};
+	}
+	return e;
 }
 //#endregion
 //#region src/context/ThemeContext.jsx
@@ -1866,13 +1963,13 @@ var Z = [
 		accentHex: "#0F766E",
 		isLight: !0
 	}
-], We = t({
+], Je = t({
 	theme: "linear",
 	setTheme: () => {},
 	currentThemeConfig: Z[0],
 	availableThemes: Z
 });
-function Ge({ children: e, defaultTheme: t = "linear", storageKey: n = "jdlc_theme" }) {
+function Ye({ children: e, defaultTheme: t = "linear", storageKey: n = "jdlc_theme" }) {
 	let [r, a] = s(() => {
 		try {
 			return typeof window < "u" && localStorage.getItem(n) || t;
@@ -1886,18 +1983,18 @@ function Ge({ children: e, defaultTheme: t = "linear", storageKey: n = "jdlc_the
 		} catch {}
 	}, [r, n]);
 	let o = Z.find((e) => e.id === r) || Z[0];
-	return /* @__PURE__ */ c(We.Provider, {
+	return /* @__PURE__ */ c(Je.Provider, {
 		value: {
 			theme: r,
 			setTheme: a,
 			currentThemeConfig: o,
 			availableThemes: Z
 		},
-		children: e
+		children: /* @__PURE__ */ c(Ke, { children: e })
 	});
 }
-function Ke() {
-	return r(We) || {
+function Xe() {
+	return r(Je) || {
 		theme: "linear",
 		setTheme: () => {},
 		currentThemeConfig: Z[0],
@@ -1905,13 +2002,201 @@ function Ke() {
 	};
 }
 //#endregion
+//#region src/components/Avatar.jsx
+var Ze = {
+	notionists: "notionists",
+	bottts: "bottts",
+	lorelei: "lorelei",
+	critters: "critters",
+	moods: "moods",
+	"fun-emoji": "fun-emoji",
+	"pixel-art": "pixel-art",
+	adventurer: "adventurer"
+};
+function Qe({ seed: e = "jdlc-user", suit: t = "notionists", size: n = 64, radius: r = 50, backgroundColor: i = null } = {}) {
+	let a = Ze[t] || "notionists", o = new URLSearchParams({
+		seed: encodeURIComponent(e || "jdlc-user"),
+		size: n.toString()
+	});
+	return r != null && o.set("radius", r.toString()), i && o.set("backgroundColor", i.replace("#", "")), `https://api.dicebear.com/10.x/${a}/svg?${o.toString()}`;
+}
+var $e = {
+	xs: {
+		container: "w-5 h-5 text-[9px]",
+		status: "w-1.5 h-1.5 ring-1",
+		px: 20
+	},
+	sm: {
+		container: "w-7 h-7 text-xs",
+		status: "w-2 h-2 ring-1.5",
+		px: 28
+	},
+	md: {
+		container: "w-9 h-9 text-sm",
+		status: "w-2.5 h-2.5 ring-2",
+		px: 36
+	},
+	lg: {
+		container: "w-11 h-11 text-base",
+		status: "w-3 h-3 ring-2",
+		px: 44
+	},
+	xl: {
+		container: "w-14 h-14 text-lg",
+		status: "w-3.5 h-3.5 ring-2",
+		px: 56
+	}
+}, et = {
+	circle: "rounded-full",
+	rounded: "rounded-xl",
+	square: "rounded-none"
+}, tt = {
+	online: "bg-emerald-500",
+	busy: "bg-rose-500",
+	away: "bg-amber-500",
+	offline: "bg-slate-500"
+};
+function nt({ seed: e, name: t, src: n, suit: r = "notionists", size: i = "md", shape: a = "circle", status: o, className: u, alt: d, ...f }) {
+	let [p, m] = s(!1), h = $e[i] || $e.md, g = et[a] || et.circle, _ = (t || e || "U").toString().trim().charAt(0).toUpperCase(), v = n || Qe({
+		seed: e || t || "jdlc-user",
+		suit: r,
+		size: h.px * 2,
+		radius: a === "circle" ? 50 : a === "rounded" ? 20 : 0
+	});
+	return /* @__PURE__ */ l("div", {
+		className: Y("relative inline-flex items-center justify-center shrink-0 select-none bg-[var(--bg-elevated)] border border-[var(--border-subtle)] overflow-hidden shadow-xs", h.container, g, u),
+		...f,
+		children: [p ? /* @__PURE__ */ c("span", {
+			className: "font-bold text-slate-200 uppercase font-[var(--font-heading)] leading-none",
+			children: _
+		}) : /* @__PURE__ */ c("img", {
+			src: v,
+			alt: d || t || e || "User Avatar",
+			onError: () => m(!0),
+			className: "w-full h-full object-cover",
+			loading: "lazy"
+		}), o && tt[o] && /* @__PURE__ */ c("span", {
+			className: Y("absolute bottom-0 right-0 rounded-full ring-[var(--bg-surface)]", h.status, tt[o]),
+			"aria-label": `Status: ${o}`
+		})]
+	});
+}
+function rt({ children: t, max: n = 4, size: r = "sm", className: i }) {
+	let a = e.Children.toArray(t), o = a.slice(0, n), s = a.length - n, u = $e[r] || $e.sm;
+	return /* @__PURE__ */ l("div", {
+		className: Y("flex items-center -space-x-2", i),
+		children: [o.map((t, n) => /* @__PURE__ */ c("div", {
+			className: "relative ring-2 ring-[var(--bg-root)] rounded-full",
+			children: e.isValidElement(t) ? e.cloneElement(t, { size: r }) : t
+		}, n)), s > 0 && /* @__PURE__ */ l("div", {
+			className: Y("relative inline-flex items-center justify-center rounded-full bg-[var(--bg-elevated)] border border-[var(--border-subtle)] ring-2 ring-[var(--bg-root)] font-bold text-slate-300 font-mono text-[10px]", u.container),
+			title: `${s} more`,
+			children: ["+", s]
+		})]
+	});
+}
+//#endregion
+//#region src/components/Dropdown.jsx
+function it({ trigger: e, items: t = [], align: n = "right", className: r }) {
+	let [a, u] = s(!1), d = o(null);
+	return i(() => {
+		function e(e) {
+			d.current && !d.current.contains(e.target) && u(!1);
+		}
+		return a && document.addEventListener("mousedown", e), () => document.removeEventListener("mousedown", e);
+	}, [a]), /* @__PURE__ */ l("div", {
+		className: "relative inline-block text-left",
+		ref: d,
+		onClick: (e) => e.stopPropagation(),
+		children: [/* @__PURE__ */ c("div", {
+			onClick: (e) => {
+				e.preventDefault(), e.stopPropagation(), u((e) => !e);
+			},
+			className: "cursor-pointer inline-flex",
+			children: e
+		}), a && /* @__PURE__ */ c("div", {
+			className: Y("absolute z-50 mt-1.5 w-48 rounded-xl bg-[var(--bg-surface)] border border-[var(--border-medium)] p-1.5 shadow-2xl backdrop-blur-md animate-in fade-in zoom-in-95 duration-150", n === "right" ? "right-0" : "left-0", r),
+			children: t.map((e, t) => {
+				if (e.divider) return /* @__PURE__ */ c("div", { className: "my-1 border-t border-[var(--border-subtle)]" }, t);
+				let n = e.icon;
+				return /* @__PURE__ */ l("button", {
+					type: "button",
+					onClick: (t) => {
+						t.preventDefault(), t.stopPropagation(), u(!1), e.onClick && e.onClick();
+					},
+					className: Y("flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-xs font-medium text-[var(--text-muted)] transition-colors hover:bg-[var(--bg-hover)] hover:text-[var(--text-main)] cursor-pointer", e.danger && "text-rose-400 hover:bg-rose-500/15 hover:text-rose-300", e.active && "bg-[var(--bg-elevated)] text-[var(--color-primary-glow)] font-semibold"),
+					children: [
+						n && /* @__PURE__ */ c(n, { className: "w-3.5 h-3.5 shrink-0" }),
+						/* @__PURE__ */ c("span", {
+							className: "flex-1 text-left",
+							children: e.label
+						}),
+						e.shortcut && /* @__PURE__ */ c("span", {
+							className: "text-[10px] text-slate-500 font-mono",
+							children: e.shortcut
+						})
+					]
+				}, t);
+			})
+		})]
+	});
+}
+//#endregion
+//#region src/components/AvatarSelector.jsx
+function at({ className: e, align: t = "right", seed: n = "jdlc-user" }) {
+	let { suit: r, setSuit: i, availableSuits: a, currentSuitConfig: o } = qe(), s = a.map((e) => ({
+		label: e.name,
+		active: e.id === r,
+		onClick: () => i(e.id),
+		icon: () => /* @__PURE__ */ c(nt, {
+			seed: n,
+			suit: e.id,
+			size: "xs",
+			className: "w-4 h-4 text-[8px] shrink-0"
+		})
+	})), u = /* @__PURE__ */ l("button", {
+		type: "button",
+		className: Y("flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-[var(--bg-subtle)] hover:bg-[var(--bg-hover)] border border-[var(--border-subtle)] text-xs font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors cursor-pointer", e),
+		title: `Active Avatar Set: ${o.name}`,
+		children: [
+			/* @__PURE__ */ c(nt, {
+				seed: n,
+				suit: o.id,
+				size: "xs",
+				className: "w-4 h-4 text-[8px] shrink-0"
+			}),
+			/* @__PURE__ */ c("span", {
+				className: "font-semibold whitespace-nowrap",
+				children: o.name
+			}),
+			/* @__PURE__ */ c("svg", {
+				className: "w-3.5 h-3.5 text-[var(--text-dim)] ml-0.5",
+				fill: "none",
+				viewBox: "0 0 24 24",
+				stroke: "currentColor",
+				children: /* @__PURE__ */ c("path", {
+					strokeLinecap: "round",
+					strokeLinejoin: "round",
+					strokeWidth: 2,
+					d: "M19 9l-7 7-7-7"
+				})
+			})
+		]
+	});
+	return /* @__PURE__ */ c(it, {
+		trigger: u,
+		items: s,
+		align: t
+	});
+}
+//#endregion
 //#region src/components/Button.jsx
-function qe({ children: e, className: t, variant: n = "default", size: r = "md", disabled: i = !1, isLoading: a = !1, onClick: o, type: s = "button", icon: u, ...d }) {
+function ot({ children: e, className: t, variant: n = "default", size: r = "md", disabled: i = !1, isLoading: a = !1, onClick: o, type: s = "button", icon: u, ...d }) {
 	return /* @__PURE__ */ l("button", {
 		type: s,
 		disabled: i || a,
 		onClick: o,
-		className: X("inline-flex items-center justify-center font-medium rounded-lg transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring-focus)] active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none cursor-pointer select-none", {
+		className: Y("inline-flex items-center justify-center font-medium rounded-lg transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring-focus)] active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none cursor-pointer select-none", {
 			default: "bg-[var(--color-primary)] text-[var(--color-primary-content)] hover:bg-[var(--color-primary-hover)] shadow-sm hover:shadow-[0_0_15px_rgba(124,58,237,0.35)]",
 			primary: "bg-[var(--color-primary)] text-[var(--color-primary-content)] hover:bg-[var(--color-primary-hover)] shadow-sm hover:shadow-[0_0_15px_rgba(124,58,237,0.35)]",
 			secondary: "bg-[var(--bg-elevated)] text-[var(--text-main)] hover:bg-[var(--bg-hover)] border border-[var(--border-subtle)] hover:border-[var(--border-medium)]",
@@ -1953,44 +2238,44 @@ function qe({ children: e, className: t, variant: n = "default", size: r = "md",
 }
 //#endregion
 //#region src/components/Card.jsx
-function Je({ children: e, className: t, hover: n = !0, ...r }) {
+function st({ children: e, className: t, hover: n = !0, ...r }) {
 	return /* @__PURE__ */ c("div", {
-		className: X("bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-xl p-4 shadow-sm transition-all duration-200", n && "hover:border-[var(--border-medium)] hover:shadow-md hover:bg-[var(--bg-elevated)]", t),
+		className: Y("bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-xl p-4 shadow-sm transition-all duration-200", n && "hover:border-[var(--border-medium)] hover:shadow-md hover:bg-[var(--bg-elevated)]", t),
 		...r,
 		children: e
 	});
 }
-function Ye({ children: e, className: t, ...n }) {
+function ct({ children: e, className: t, ...n }) {
 	return /* @__PURE__ */ c("div", {
-		className: X("flex items-center justify-between gap-2 mb-3", t),
+		className: Y("flex items-center justify-between gap-2 mb-3", t),
 		...n,
 		children: e
 	});
 }
-function Xe({ children: e, className: t, ...n }) {
+function lt({ children: e, className: t, ...n }) {
 	return /* @__PURE__ */ c("h3", {
-		className: X("font-semibold text-[var(--text-main)] text-sm tracking-tight", t),
+		className: Y("font-semibold text-[var(--text-main)] text-sm tracking-tight", t),
 		...n,
 		children: e
 	});
 }
-function Ze({ children: e, className: t, ...n }) {
+function ut({ children: e, className: t, ...n }) {
 	return /* @__PURE__ */ c("p", {
-		className: X("text-xs text-[var(--text-dim)] mt-0.5", t),
+		className: Y("text-xs text-[var(--text-dim)] mt-0.5", t),
 		...n,
 		children: e
 	});
 }
-function Qe({ children: e, className: t, ...n }) {
+function dt({ children: e, className: t, ...n }) {
 	return /* @__PURE__ */ c("div", {
-		className: X("text-sm text-[var(--text-muted)]", t),
+		className: Y("text-sm text-[var(--text-muted)]", t),
 		...n,
 		children: e
 	});
 }
-function $e({ children: e, className: t, ...n }) {
+function ft({ children: e, className: t, ...n }) {
 	return /* @__PURE__ */ c("div", {
-		className: X("flex items-center justify-end gap-2 mt-4 pt-3 border-t border-[var(--border-subtle)]", t),
+		className: Y("flex items-center justify-end gap-2 mt-4 pt-3 border-t border-[var(--border-subtle)]", t),
 		...n,
 		children: e
 	});
@@ -1999,7 +2284,7 @@ function $e({ children: e, className: t, ...n }) {
 //#region src/components/Badge.jsx
 function Q({ children: e, className: t, variant: n = "default", size: r = "md", dot: i = !1, ...a }) {
 	return /* @__PURE__ */ l("span", {
-		className: X("inline-flex items-center font-medium rounded-md tracking-wide select-none", {
+		className: Y("inline-flex items-center font-medium rounded-md tracking-wide select-none", {
 			default: "bg-[var(--bg-elevated)] text-[var(--text-main)] border border-[var(--border-subtle)]",
 			primary: "bg-[var(--color-primary)]/15 text-[var(--color-primary)] border border-[var(--color-primary)]/30 font-semibold",
 			accent: "bg-[var(--color-accent)]/15 text-[var(--color-accent)] border border-[var(--color-accent)]/30 font-semibold",
@@ -2022,7 +2307,7 @@ function Q({ children: e, className: t, variant: n = "default", size: r = "md", 
 }
 //#endregion
 //#region src/components/Input.jsx
-function et({ className: e, type: t = "text", label: n, id: r, error: i, helperText: a, icon: o, ...s }) {
+function pt({ className: e, type: t = "text", label: n, id: r, error: i, helperText: a, icon: o, ...s }) {
 	let u = r || (n ? `input-${n.toLowerCase().replace(/[^a-z0-9]/g, "-")}` : void 0);
 	return /* @__PURE__ */ l("div", {
 		className: "w-full space-y-1.5",
@@ -2040,7 +2325,7 @@ function et({ className: e, type: t = "text", label: n, id: r, error: i, helperT
 				}), /* @__PURE__ */ c("input", {
 					id: u,
 					type: t,
-					className: X("w-full bg-[var(--bg-subtle)] text-[var(--text-main)] text-sm rounded-lg border border-[var(--border-subtle)] px-3 py-2 transition-all duration-150", "focus:outline-none focus:border-[var(--border-strong)] focus:ring-2 focus:ring-[var(--ring-focus)]", "placeholder:text-[var(--text-dim)] disabled:opacity-50 disabled:cursor-not-allowed", o && "pl-9", i && "border-rose-500 focus:ring-rose-500/30", e),
+					className: Y("w-full bg-[var(--bg-subtle)] text-[var(--text-main)] text-sm rounded-lg border border-[var(--border-subtle)] px-3 py-2 transition-all duration-150", "focus:outline-none focus:border-[var(--border-strong)] focus:ring-2 focus:ring-[var(--ring-focus)]", "placeholder:text-[var(--text-dim)] disabled:opacity-50 disabled:cursor-not-allowed", o && "pl-9", i && "border-rose-500 focus:ring-rose-500/30", e),
 					...s
 				})]
 			}),
@@ -2055,7 +2340,7 @@ function et({ className: e, type: t = "text", label: n, id: r, error: i, helperT
 		]
 	});
 }
-function tt({ className: e, label: t, id: n, error: r, helperText: i, rows: a = 3, ...o }) {
+function mt({ className: e, label: t, id: n, error: r, helperText: i, rows: a = 3, ...o }) {
 	let s = n || (t ? `textarea-${t.toLowerCase().replace(/[^a-z0-9]/g, "-")}` : void 0);
 	return /* @__PURE__ */ l("div", {
 		className: "w-full space-y-1.5",
@@ -2068,7 +2353,7 @@ function tt({ className: e, label: t, id: n, error: r, helperText: i, rows: a = 
 			/* @__PURE__ */ c("textarea", {
 				id: s,
 				rows: a,
-				className: X("w-full bg-[var(--bg-subtle)] text-[var(--text-main)] text-sm rounded-lg border border-[var(--border-subtle)] p-3 transition-all duration-150", "focus:outline-none focus:border-[var(--border-strong)] focus:ring-2 focus:ring-[var(--ring-focus)]", "placeholder:text-[var(--text-dim)] disabled:opacity-50 disabled:cursor-not-allowed resize-none", r && "border-rose-500 focus:ring-rose-500/30", e),
+				className: Y("w-full bg-[var(--bg-subtle)] text-[var(--text-main)] text-sm rounded-lg border border-[var(--border-subtle)] p-3 transition-all duration-150", "focus:outline-none focus:border-[var(--border-strong)] focus:ring-2 focus:ring-[var(--ring-focus)]", "placeholder:text-[var(--text-dim)] disabled:opacity-50 disabled:cursor-not-allowed resize-none", r && "border-rose-500 focus:ring-rose-500/30", e),
 				...o
 			}),
 			r && /* @__PURE__ */ c("p", {
@@ -2082,7 +2367,7 @@ function tt({ className: e, label: t, id: n, error: r, helperText: i, rows: a = 
 		]
 	});
 }
-function nt({ className: e, label: t, id: n, error: r, helperText: i, children: a, icon: o, ...s }) {
+function ht({ className: e, label: t, id: n, error: r, helperText: i, children: a, icon: o, ...s }) {
 	let u = n || (t ? `select-${t.toLowerCase().replace(/[^a-z0-9]/g, "-")}` : void 0);
 	return /* @__PURE__ */ l("div", {
 		className: "w-full space-y-1.5",
@@ -2099,7 +2384,7 @@ function nt({ className: e, label: t, id: n, error: r, helperText: i, children: 
 					children: /* @__PURE__ */ c(o, { className: "w-4 h-4" })
 				}), /* @__PURE__ */ c("select", {
 					id: u,
-					className: X("w-full bg-[var(--bg-subtle)] text-[var(--text-main)] text-sm rounded-lg border border-[var(--border-subtle)] px-3 py-2 transition-all duration-150 cursor-pointer", "focus:outline-none focus:border-[var(--border-strong)] focus:ring-2 focus:ring-[var(--ring-focus)]", o && "pl-9", r && "border-rose-500 focus:ring-rose-500/30", e),
+					className: Y("w-full bg-[var(--bg-subtle)] text-[var(--text-main)] text-sm rounded-lg border border-[var(--border-subtle)] px-3 py-2 transition-all duration-150 cursor-pointer", "focus:outline-none focus:border-[var(--border-strong)] focus:ring-2 focus:ring-[var(--ring-focus)]", o && "pl-9", r && "border-rose-500 focus:ring-rose-500/30", e),
 					...s,
 					children: a
 				})]
@@ -2117,7 +2402,7 @@ function nt({ className: e, label: t, id: n, error: r, helperText: i, children: 
 }
 //#endregion
 //#region src/components/Dialog.jsx
-function rt({ isOpen: e, onClose: t, title: n, description: r, subtitle: a, icon: o, headerAction: s, ariaLabel: u, children: d, maxWidth: f = "max-w-lg", className: p }) {
+function gt({ isOpen: e, onClose: t, title: n, description: r, subtitle: a, icon: o, headerAction: s, ariaLabel: u, children: d, maxWidth: f = "max-w-lg", className: p }) {
 	if (i(() => {
 		let n = (e) => {
 			e.key === "Escape" && t?.();
@@ -2136,7 +2421,7 @@ function rt({ isOpen: e, onClose: t, title: n, description: r, subtitle: a, icon
 			className: "fixed inset-0 bg-black/75 backdrop-blur-md transition-opacity",
 			onClick: t
 		}), /* @__PURE__ */ l("div", {
-			className: X("relative w-full bg-[var(--bg-surface)] border border-[var(--border-medium)] rounded-2xl shadow-2xl z-10 overflow-hidden flex flex-col max-h-[92vh]", f, p),
+			className: Y("relative w-full bg-[var(--bg-surface)] border border-[var(--border-medium)] rounded-2xl shadow-2xl z-10 overflow-hidden flex flex-col max-h-[92vh]", f, p),
 			onClick: (e) => e.stopPropagation(),
 			children: [(n || m || o || s || t) && /* @__PURE__ */ l("div", {
 				className: "flex items-start justify-between p-4 sm:p-5 border-b border-[var(--border-subtle)] bg-[var(--bg-subtle)]/60 shrink-0",
@@ -2181,70 +2466,24 @@ function rt({ isOpen: e, onClose: t, title: n, description: r, subtitle: a, icon
 	});
 }
 //#endregion
-//#region src/components/Dropdown.jsx
-function it({ trigger: e, items: t = [], align: n = "right", className: r }) {
-	let [a, u] = s(!1), d = o(null);
-	return i(() => {
-		function e(e) {
-			d.current && !d.current.contains(e.target) && u(!1);
-		}
-		return a && document.addEventListener("mousedown", e), () => document.removeEventListener("mousedown", e);
-	}, [a]), /* @__PURE__ */ l("div", {
-		className: "relative inline-block text-left",
-		ref: d,
-		onClick: (e) => e.stopPropagation(),
-		children: [/* @__PURE__ */ c("div", {
-			onClick: (e) => {
-				e.preventDefault(), e.stopPropagation(), u((e) => !e);
-			},
-			className: "cursor-pointer inline-flex",
-			children: e
-		}), a && /* @__PURE__ */ c("div", {
-			className: X("absolute z-50 mt-1.5 w-48 rounded-xl bg-[var(--bg-surface)] border border-[var(--border-medium)] p-1.5 shadow-2xl backdrop-blur-md animate-in fade-in zoom-in-95 duration-150", n === "right" ? "right-0" : "left-0", r),
-			children: t.map((e, t) => {
-				if (e.divider) return /* @__PURE__ */ c("div", { className: "my-1 border-t border-[var(--border-subtle)]" }, t);
-				let n = e.icon;
-				return /* @__PURE__ */ l("button", {
-					type: "button",
-					onClick: (t) => {
-						t.preventDefault(), t.stopPropagation(), u(!1), e.onClick && e.onClick();
-					},
-					className: X("flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-xs font-medium text-[var(--text-muted)] transition-colors hover:bg-[var(--bg-hover)] hover:text-[var(--text-main)] cursor-pointer", e.danger && "text-rose-400 hover:bg-rose-500/15 hover:text-rose-300", e.active && "bg-[var(--bg-elevated)] text-[var(--color-primary-glow)] font-semibold"),
-					children: [
-						n && /* @__PURE__ */ c(n, { className: "w-3.5 h-3.5 shrink-0" }),
-						/* @__PURE__ */ c("span", {
-							className: "flex-1 text-left",
-							children: e.label
-						}),
-						e.shortcut && /* @__PURE__ */ c("span", {
-							className: "text-[10px] text-slate-500 font-mono",
-							children: e.shortcut
-						})
-					]
-				}, t);
-			})
-		})]
-	});
-}
-//#endregion
 //#region src/components/Tabs.jsx
-function at({ tabs: e = [], activeTab: t, onChange: n, className: r }) {
+function _t({ tabs: e = [], activeTab: t, onChange: n, className: r }) {
 	return /* @__PURE__ */ c("div", {
-		className: X("inline-flex items-center p-1 bg-[var(--bg-subtle)] border border-[var(--border-subtle)] rounded-lg", r),
+		className: Y("inline-flex items-center p-1 bg-[var(--bg-subtle)] border border-[var(--border-subtle)] rounded-lg", r),
 		children: e.map((e) => {
 			let r = t === e.id, i = e.icon;
 			return /* @__PURE__ */ l("button", {
 				type: "button",
 				onClick: () => n(e.id),
-				className: X("flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 text-xs font-medium rounded-md transition-all duration-150 cursor-pointer select-none", r ? "bg-[var(--bg-elevated)] text-[var(--text-main)] shadow-sm border border-[var(--border-medium)]" : "text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-hover)]/60 font-medium"),
+				className: Y("flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 text-xs font-medium rounded-md transition-all duration-150 cursor-pointer select-none", r ? "bg-[var(--bg-elevated)] text-[var(--text-main)] shadow-sm border border-[var(--border-medium)]" : "text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-hover)]/60 font-medium"),
 				children: [
 					i && /* @__PURE__ */ c(i, { className: "w-3.5 h-3.5 shrink-0" }),
 					/* @__PURE__ */ c("span", {
-						className: X(e.hideLabelOnMobile && "hidden sm:inline"),
+						className: Y(e.hideLabelOnMobile && "hidden sm:inline"),
 						children: e.label
 					}),
 					e.count !== void 0 && /* @__PURE__ */ c("span", {
-						className: X("px-1.5 py-0.5 rounded text-[10px] font-mono", r ? "bg-[var(--color-primary)]/20 text-[var(--color-primary-glow)] font-bold" : "bg-[var(--bg-elevated)] text-[var(--text-dim)] border border-[var(--border-subtle)]"),
+						className: Y("px-1.5 py-0.5 rounded text-[10px] font-mono", r ? "bg-[var(--color-primary)]/20 text-[var(--color-primary-glow)] font-bold" : "bg-[var(--bg-elevated)] text-[var(--text-dim)] border border-[var(--border-subtle)]"),
 						children: e.count
 					})
 				]
@@ -2254,8 +2493,8 @@ function at({ tabs: e = [], activeTab: t, onChange: n, className: r }) {
 }
 //#endregion
 //#region src/components/ThemeSelector.jsx
-function ot({ className: e, align: t = "right" }) {
-	let { theme: n, setTheme: r, availableThemes: i, currentThemeConfig: a } = Ke(), o = i.map((e) => ({
+function vt({ className: e, align: t = "right" }) {
+	let { theme: n, setTheme: r, availableThemes: i, currentThemeConfig: a } = Xe(), o = i.map((e) => ({
 		label: e.name,
 		active: e.id === n,
 		onClick: () => r(e.id),
@@ -2265,7 +2504,7 @@ function ot({ className: e, align: t = "right" }) {
 		})
 	})), s = /* @__PURE__ */ l("button", {
 		type: "button",
-		className: X("flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-[var(--bg-subtle)] hover:bg-[var(--bg-hover)] border border-[var(--border-subtle)] text-xs font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors cursor-pointer", e),
+		className: Y("flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-[var(--bg-subtle)] hover:bg-[var(--bg-hover)] border border-[var(--border-subtle)] text-xs font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors cursor-pointer", e),
 		children: [
 			/* @__PURE__ */ c("span", {
 				className: "w-2.5 h-2.5 rounded-full shadow-sm",
@@ -2297,7 +2536,7 @@ function ot({ className: e, align: t = "right" }) {
 }
 //#endregion
 //#region src/lib/suiteUtils.js
-var st = [
+var yt = [
 	{
 		id: "taskflow",
 		name: "TaskFlow",
@@ -2336,7 +2575,7 @@ function $(e) {
 }
 //#endregion
 //#region src/components/AppSwitcher.jsx
-function ct({ currentApp: e = "taskflow", className: t, align: n = "left" }) {
+function bt({ currentApp: e = "taskflow", className: t, align: n = "left" }) {
 	let [r, a] = s(!1), u = o(null);
 	i(() => {
 		function e(e) {
@@ -2390,7 +2629,7 @@ function ct({ currentApp: e = "taskflow", className: t, align: n = "left" }) {
 		children: [/* @__PURE__ */ c("button", {
 			type: "button",
 			onClick: () => a((e) => !e),
-			className: X("p-2 rounded-xl text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-elevated)] border border-transparent hover:border-[var(--border-subtle)] transition-colors cursor-pointer flex items-center justify-center shrink-0", r && "bg-[var(--bg-elevated)] text-[var(--text-main)] border-[var(--border-subtle)]", t),
+			className: Y("p-2 rounded-xl text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-elevated)] border border-transparent hover:border-[var(--border-subtle)] transition-colors cursor-pointer flex items-center justify-center shrink-0", r && "bg-[var(--bg-elevated)] text-[var(--text-main)] border-[var(--border-subtle)]", t),
 			title: "JDLC Cloud Suite Apps",
 			"aria-label": "JDLC Cloud Suite Apps",
 			"aria-expanded": r,
@@ -2447,7 +2686,7 @@ function ct({ currentApp: e = "taskflow", className: t, align: n = "left" }) {
 				]
 			})
 		}), r && /* @__PURE__ */ l("div", {
-			className: X("absolute z-50 mt-2 w-72 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-medium)] p-2.5 shadow-2xl backdrop-blur-xl animate-in fade-in zoom-in-95 duration-150", n === "right" ? "right-0" : "left-0"),
+			className: Y("absolute z-50 mt-2 w-72 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-medium)] p-2.5 shadow-2xl backdrop-blur-xl animate-in fade-in zoom-in-95 duration-150", n === "right" ? "right-0" : "left-0"),
 			children: [
 				/* @__PURE__ */ l("div", {
 					className: "flex items-center justify-between px-2.5 py-1.5 mb-1.5 border-b border-[var(--border-subtle)]",
@@ -2463,14 +2702,14 @@ function ct({ currentApp: e = "taskflow", className: t, align: n = "left" }) {
 				}),
 				/* @__PURE__ */ c("div", {
 					className: "space-y-1",
-					children: st.map((t) => {
+					children: yt.map((t) => {
 						let n = t.id === e, r = $(t.id);
 						return /* @__PURE__ */ l("a", {
 							href: n ? void 0 : r,
 							onClick: (e) => {
 								n && (e.preventDefault(), a(!1));
 							},
-							className: X("flex items-center gap-3 p-2 rounded-xl transition-all", n ? "bg-[var(--bg-elevated)] border border-[var(--border-medium)] cursor-default" : "hover:bg-[var(--bg-hover)] border border-transparent hover:border-[var(--border-subtle)] cursor-pointer text-[var(--text-muted)] hover:text-[var(--text-main)]"),
+							className: Y("flex items-center gap-3 p-2 rounded-xl transition-all", n ? "bg-[var(--bg-elevated)] border border-[var(--border-medium)] cursor-default" : "hover:bg-[var(--bg-hover)] border border-transparent hover:border-[var(--border-subtle)] cursor-pointer text-[var(--text-muted)] hover:text-[var(--text-main)]"),
 							children: [/* @__PURE__ */ c("div", {
 								className: "w-8 h-8 rounded-lg flex items-center justify-center text-white shrink-0 shadow-sm",
 								style: { backgroundColor: t.color },
@@ -2513,8 +2752,8 @@ function ct({ currentApp: e = "taskflow", className: t, align: n = "left" }) {
 }
 //#endregion
 //#region src/components/Toast.jsx
-var lt = t(null);
-function ut({ children: e, position: t = "bottom-right" }) {
+var xt = t(null);
+function St({ children: e, position: t = "bottom-right" }) {
 	let [r, i] = s([]), o = n((e) => {
 		i((t) => t.filter((t) => t.id !== e));
 	}, []), u = n(({ message: e, title: t, variant: n = "info", duration: r = 3500 }) => {
@@ -2562,19 +2801,19 @@ function ut({ children: e, position: t = "bottom-right" }) {
 		"top-center": "top-4 left-1/2 -translate-x-1/2 items-center",
 		"bottom-center": "bottom-4 left-1/2 -translate-x-1/2 items-center"
 	};
-	return /* @__PURE__ */ l(lt.Provider, {
+	return /* @__PURE__ */ l(xt.Provider, {
 		value: d,
 		children: [e, /* @__PURE__ */ c("div", {
-			className: X("fixed z-50 pointer-events-none flex flex-col gap-2 p-4 max-w-sm w-full", f[t] || f["bottom-right"]),
-			children: r.map((e) => /* @__PURE__ */ c(ft, {
+			className: Y("fixed z-50 pointer-events-none flex flex-col gap-2 p-4 max-w-sm w-full", f[t] || f["bottom-right"]),
+			children: r.map((e) => /* @__PURE__ */ c(wt, {
 				item: e,
 				onDismiss: () => o(e.id)
 			}, e.id))
 		})]
 	});
 }
-function dt() {
-	return r(lt) || {
+function Ct() {
+	return r(xt) || {
 		show: (e) => console.log("[Toast]", e),
 		success: (e) => console.log("[Toast Success]", e),
 		error: (e) => console.error("[Toast Error]", e),
@@ -2583,7 +2822,7 @@ function dt() {
 		dismiss: () => {}
 	};
 }
-function ft({ item: e, onDismiss: t }) {
+function wt({ item: e, onDismiss: t }) {
 	let n = {
 		success: {
 			border: "border-emerald-500/40",
@@ -2644,10 +2883,10 @@ function ft({ item: e, onDismiss: t }) {
 	}, r = n[e.variant] || n.info;
 	return /* @__PURE__ */ l("div", {
 		role: "alert",
-		className: X("pointer-events-auto flex items-start gap-3 p-3.5 rounded-xl bg-[var(--bg-surface)]/95 border backdrop-blur-md shadow-xl text-slate-200 transition-all duration-200 animate-in fade-in slide-in-from-bottom-2", r.border),
+		className: Y("pointer-events-auto flex items-start gap-3 p-3.5 rounded-xl bg-[var(--bg-surface)]/95 border backdrop-blur-md shadow-xl text-slate-200 transition-all duration-200 animate-in fade-in slide-in-from-bottom-2", r.border),
 		children: [
 			/* @__PURE__ */ c("div", {
-				className: X("p-1 rounded-lg border shrink-0 mt-0.5", r.badge),
+				className: Y("p-1 rounded-lg border shrink-0 mt-0.5", r.badge),
 				children: r.icon
 			}),
 			/* @__PURE__ */ l("div", {
@@ -2677,7 +2916,7 @@ function ft({ item: e, onDismiss: t }) {
 }
 //#endregion
 //#region src/components/CommandPalette.jsx
-function pt({ isOpen: e, onClose: t, placeholder: n = "Type a command or search...", sections: r = [], currentApp: u = "taskflow", enableSuiteShortcuts: d = !0 }) {
+function Tt({ isOpen: e, onClose: t, placeholder: n = "Type a command or search...", sections: r = [], currentApp: u = "taskflow", enableSuiteShortcuts: d = !0 }) {
 	let [f, p] = s(""), [m, h] = s(0), g = o(null), _ = o([]);
 	i(() => {
 		e && (p(""), h(0), setTimeout(() => {
@@ -2687,7 +2926,7 @@ function pt({ isOpen: e, onClose: t, placeholder: n = "Type a command or search.
 	let v = a(() => d ? {
 		id: "suite-apps",
 		heading: "JDLC Cloud Suite",
-		items: st.filter((e) => e.id !== u).map((e) => ({
+		items: yt.filter((e) => e.id !== u).map((e) => ({
 			id: `suite-${e.id}`,
 			title: `Switch to ${e.name}`,
 			subtitle: e.description,
@@ -2803,7 +3042,7 @@ function pt({ isOpen: e, onClose: t, placeholder: n = "Type a command or search.
 									typeof e.action == "function" && e.action(), t();
 								},
 								onMouseEnter: () => h(n),
-								className: X("w-full flex items-center justify-between gap-3 px-3 py-2 rounded-xl text-left text-xs transition-colors cursor-pointer", n === m ? "bg-[var(--bg-hover)] text-white border border-[var(--border-subtle)]" : "text-slate-300 hover:text-white border border-transparent"),
+								className: Y("w-full flex items-center justify-between gap-3 px-3 py-2 rounded-xl text-left text-xs transition-colors cursor-pointer", n === m ? "bg-[var(--bg-hover)] text-white border border-[var(--border-subtle)]" : "text-slate-300 hover:text-white border border-transparent"),
 								children: [/* @__PURE__ */ l("div", {
 									className: "flex items-center gap-2.5 min-w-0",
 									children: [e.icon && /* @__PURE__ */ c("div", {
@@ -2856,132 +3095,41 @@ function pt({ isOpen: e, onClose: t, placeholder: n = "Type a command or search.
 	});
 }
 //#endregion
-//#region src/components/Avatar.jsx
-var mt = {
-	notionists: "notionists",
-	moods: "moods",
-	critters: "critters",
-	bottts: "bottts",
-	"fun-emoji": "fun-emoji"
-};
-function ht({ seed: e = "jdlc-user", suit: t = "notionists", size: n = 64, radius: r = 50, backgroundColor: i = null } = {}) {
-	let a = mt[t] || "notionists", o = new URLSearchParams({
-		seed: encodeURIComponent(e || "jdlc-user"),
-		size: n.toString()
-	});
-	return r != null && o.set("radius", r.toString()), i && o.set("backgroundColor", i.replace("#", "")), `https://api.dicebear.com/10.x/${a}/svg?${o.toString()}`;
-}
-var gt = {
-	xs: {
-		container: "w-5 h-5 text-[9px]",
-		status: "w-1.5 h-1.5 ring-1",
-		px: 20
-	},
-	sm: {
-		container: "w-7 h-7 text-xs",
-		status: "w-2 h-2 ring-1.5",
-		px: 28
-	},
-	md: {
-		container: "w-9 h-9 text-sm",
-		status: "w-2.5 h-2.5 ring-2",
-		px: 36
-	},
-	lg: {
-		container: "w-11 h-11 text-base",
-		status: "w-3 h-3 ring-2",
-		px: 44
-	},
-	xl: {
-		container: "w-14 h-14 text-lg",
-		status: "w-3.5 h-3.5 ring-2",
-		px: 56
-	}
-}, _t = {
-	circle: "rounded-full",
-	rounded: "rounded-xl",
-	square: "rounded-none"
-}, vt = {
-	online: "bg-emerald-500",
-	busy: "bg-rose-500",
-	away: "bg-amber-500",
-	offline: "bg-slate-500"
-};
-function yt({ seed: e, name: t, src: n, suit: r = "notionists", size: i = "md", shape: a = "circle", status: o, className: u, alt: d, ...f }) {
-	let [p, m] = s(!1), h = gt[i] || gt.md, g = _t[a] || _t.circle, _ = (t || e || "U").toString().trim().charAt(0).toUpperCase(), v = n || ht({
-		seed: e || t || "jdlc-user",
-		suit: r,
-		size: h.px * 2,
-		radius: a === "circle" ? 50 : a === "rounded" ? 20 : 0
-	});
-	return /* @__PURE__ */ l("div", {
-		className: X("relative inline-flex items-center justify-center shrink-0 select-none bg-[var(--bg-elevated)] border border-[var(--border-subtle)] overflow-hidden shadow-xs", h.container, g, u),
-		...f,
-		children: [p ? /* @__PURE__ */ c("span", {
-			className: "font-bold text-slate-200 uppercase font-[var(--font-heading)] leading-none",
-			children: _
-		}) : /* @__PURE__ */ c("img", {
-			src: v,
-			alt: d || t || e || "User Avatar",
-			onError: () => m(!0),
-			className: "w-full h-full object-cover",
-			loading: "lazy"
-		}), o && vt[o] && /* @__PURE__ */ c("span", {
-			className: X("absolute bottom-0 right-0 rounded-full ring-[var(--bg-surface)]", h.status, vt[o]),
-			"aria-label": `Status: ${o}`
-		})]
-	});
-}
-function bt({ children: t, max: n = 4, size: r = "sm", className: i }) {
-	let a = e.Children.toArray(t), o = a.slice(0, n), s = a.length - n, u = gt[r] || gt.sm;
-	return /* @__PURE__ */ l("div", {
-		className: X("flex items-center -space-x-2", i),
-		children: [o.map((t, n) => /* @__PURE__ */ c("div", {
-			className: "relative ring-2 ring-[var(--bg-root)] rounded-full",
-			children: e.isValidElement(t) ? e.cloneElement(t, { size: r }) : t
-		}, n)), s > 0 && /* @__PURE__ */ l("div", {
-			className: X("relative inline-flex items-center justify-center rounded-full bg-[var(--bg-elevated)] border border-[var(--border-subtle)] ring-2 ring-[var(--bg-root)] font-bold text-slate-300 font-mono text-[10px]", u.container),
-			title: `${s} more`,
-			children: ["+", s]
-		})]
-	});
-}
-//#endregion
 //#region src/components/UserMenu.jsx
-function xt({ user: e, displayName: t, avatarSeed: n, avatarSuit: r = "notionists", status: a = "online", onSignIn: u, onSignOut: d, onOpenProfile: f, onOpenGuide: p, extraMenuItems: m = [], className: h, align: g = "right" }) {
-	let [_, v] = s(!1), y = o(null), { currentThemeConfig: b } = Ke();
+function Et({ user: e, displayName: t, avatarSeed: n, avatarSuit: r = null, status: a = "online", onSignIn: u, onSignOut: d, onOpenProfile: f, onOpenGuide: p, extraMenuItems: m = [], className: h, align: g = "right" }) {
+	let [_, v] = s(!1), y = o(null), { currentThemeConfig: b } = Xe(), { suit: x } = qe(), S = r || x || "notionists";
 	i(() => {
 		function e(e) {
 			y.current && !y.current.contains(e.target) && v(!1);
 		}
 		return _ && document.addEventListener("mousedown", e), () => document.removeEventListener("mousedown", e);
 	}, [_]);
-	let x = t || e?.user_metadata?.displayName || e?.email?.split("@")[0] || "Guest User", S = e?.email || "Local Offline Session", C = n || e?.email || x || "guest", w = !!e;
+	let C = t || e?.user_metadata?.displayName || e?.email?.split("@")[0] || "Guest User", w = e?.email || "Local Offline Session", T = n || e?.email || C || "guest", E = !!e;
 	return /* @__PURE__ */ l("div", {
-		className: X("relative inline-block text-left", h),
+		className: Y("relative inline-block text-left", h),
 		ref: y,
 		children: [/* @__PURE__ */ l("button", {
 			type: "button",
 			onClick: () => v((e) => !e),
-			className: X("flex items-center gap-2 p-1 pl-1.5 pr-2.5 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-subtle)] text-[var(--text-main)] hover:border-[var(--border-medium)] hover:bg-[var(--bg-hover)] transition-all cursor-pointer", _ && "border-[var(--border-medium)] bg-[var(--bg-elevated)]"),
-			title: w ? `Signed in as ${x}` : "Account & Preferences",
+			className: Y("flex items-center gap-2 p-1 pl-1.5 pr-2.5 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-subtle)] text-[var(--text-main)] hover:border-[var(--border-medium)] hover:bg-[var(--bg-hover)] transition-all cursor-pointer", _ && "border-[var(--border-medium)] bg-[var(--bg-elevated)]"),
+			title: E ? `Signed in as ${C}` : "Account & Preferences",
 			"aria-expanded": _,
 			children: [
-				/* @__PURE__ */ c(yt, {
-					seed: C,
-					name: x,
-					suit: r,
+				/* @__PURE__ */ c(nt, {
+					seed: T,
+					name: C,
+					suit: S,
 					size: "xs",
-					status: w ? a : void 0
+					status: E ? a : void 0
 				}),
 				/* @__PURE__ */ c("span", {
 					className: "text-xs font-semibold max-w-[110px] truncate hidden sm:inline-block",
-					children: x
+					children: C
 				}),
 				/* @__PURE__ */ c("svg", {
 					viewBox: "0 0 20 20",
 					fill: "currentColor",
-					className: X("w-3.5 h-3.5 text-slate-400 transition-transform duration-150", _ && "rotate-180"),
+					className: Y("w-3.5 h-3.5 text-slate-400 transition-transform duration-150", _ && "rotate-180"),
 					children: /* @__PURE__ */ c("path", {
 						fillRule: "evenodd",
 						d: "M5.22 8.22a.75.75 0 011.06 0L10 11.94l3.72-3.72a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.22 9.28a.75.75 0 010-1.06z",
@@ -2990,32 +3138,32 @@ function xt({ user: e, displayName: t, avatarSeed: n, avatarSuit: r = "notionist
 				})
 			]
 		}), _ && /* @__PURE__ */ l("div", {
-			className: X("absolute z-50 mt-2 w-72 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-medium)] p-3 shadow-2xl backdrop-blur-xl animate-in fade-in zoom-in-95 duration-150", g === "right" ? "right-0" : "left-0"),
+			className: Y("absolute z-50 mt-2 w-72 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-medium)] p-3 shadow-2xl backdrop-blur-xl animate-in fade-in zoom-in-95 duration-150", g === "right" ? "right-0" : "left-0"),
 			children: [
 				/* @__PURE__ */ l("div", {
 					className: "flex items-center gap-3 p-2 bg-[var(--bg-elevated)]/80 rounded-xl border border-[var(--border-subtle)] mb-2",
-					children: [/* @__PURE__ */ c(yt, {
-						seed: C,
-						name: x,
-						suit: r,
+					children: [/* @__PURE__ */ c(nt, {
+						seed: T,
+						name: C,
+						suit: S,
 						size: "md",
-						status: w ? a : void 0
+						status: E ? a : void 0
 					}), /* @__PURE__ */ l("div", {
 						className: "flex-1 min-w-0",
 						children: [/* @__PURE__ */ l("div", {
 							className: "flex items-center justify-between gap-1",
 							children: [/* @__PURE__ */ c("span", {
 								className: "font-bold text-xs text-[var(--text-main)] truncate font-[var(--font-heading)]",
-								children: x
+								children: C
 							}), /* @__PURE__ */ c(Q, {
-								variant: w ? "success" : "subtle",
+								variant: E ? "success" : "subtle",
 								size: "xs",
 								className: "font-mono text-[9px] py-0 px-1",
-								children: w ? "Connected" : "Guest"
+								children: E ? "Connected" : "Guest"
 							})]
 						}), /* @__PURE__ */ c("p", {
 							className: "text-[11px] text-[var(--text-dim)] truncate mt-0.5",
-							children: S
+							children: w
 						})]
 					})]
 				}),
@@ -3024,7 +3172,17 @@ function xt({ user: e, displayName: t, avatarSeed: n, avatarSuit: r = "notionist
 					children: [/* @__PURE__ */ c("span", {
 						className: "text-[var(--text-muted)] font-medium",
 						children: "Theme"
-					}), /* @__PURE__ */ c(ot, { align: "right" })]
+					}), /* @__PURE__ */ c(vt, { align: "right" })]
+				}),
+				/* @__PURE__ */ l("div", {
+					className: "px-2 py-1.5 flex items-center justify-between text-xs border-b border-[var(--border-subtle)]",
+					children: [/* @__PURE__ */ c("span", {
+						className: "text-[var(--text-muted)] font-medium",
+						children: "Avatar Set"
+					}), /* @__PURE__ */ c(at, {
+						align: "right",
+						seed: T
+					})]
 				}),
 				/* @__PURE__ */ l("div", {
 					className: "py-1 space-y-0.5 border-b border-[var(--border-subtle)]",
@@ -3064,7 +3222,7 @@ function xt({ user: e, displayName: t, avatarSeed: n, avatarSuit: r = "notionist
 							onClick: () => {
 								v(!1), e.onClick?.();
 							},
-							className: X("w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs transition-colors cursor-pointer text-left", e.danger ? "text-rose-400 hover:bg-rose-500/10" : "text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-hover)]"),
+							className: Y("w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs transition-colors cursor-pointer text-left", e.danger ? "text-rose-400 hover:bg-rose-500/10" : "text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-hover)]"),
 							children: [e.icon && /* @__PURE__ */ c("span", {
 								className: "w-4 h-4 text-[var(--text-dim)]",
 								children: e.icon
@@ -3074,7 +3232,7 @@ function xt({ user: e, displayName: t, avatarSeed: n, avatarSuit: r = "notionist
 				}),
 				/* @__PURE__ */ c("div", {
 					className: "pt-1.5",
-					children: w ? /* @__PURE__ */ l("button", {
+					children: E ? /* @__PURE__ */ l("button", {
 						type: "button",
 						onClick: () => {
 							v(!1), d?.();
@@ -3118,15 +3276,15 @@ function xt({ user: e, displayName: t, avatarSeed: n, avatarSuit: r = "notionist
 }
 //#endregion
 //#region src/components/AppHeader.jsx
-function St({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "Flow", subtitle: r, icon: i, badge: a = "JDLC", statusBadge: o, onBrandClick: s, tabs: u, activeTab: d, onTabChange: f, centerContent: p, utilities: m, primaryAction: h, onOpenPalette: g, userMenu: _, showThemeSelector: v = !0, className: y, mobileBottomTabs: b = !1 }) {
+function Dt({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "Flow", subtitle: r, icon: i, badge: a = "JDLC", statusBadge: o, onBrandClick: s, tabs: u, activeTab: d, onTabChange: f, centerContent: p, utilities: m, primaryAction: h, onOpenPalette: g, userMenu: _, showThemeSelector: v = !0, className: y, mobileBottomTabs: b = !1 }) {
 	return /* @__PURE__ */ l("header", {
-		className: X("sticky top-0 z-30 w-full border-b border-[var(--border-subtle)] bg-[var(--bg-root)]/90 backdrop-blur-md transition-colors duration-200", y),
+		className: Y("sticky top-0 z-30 w-full border-b border-[var(--border-subtle)] bg-[var(--bg-root)]/90 backdrop-blur-md transition-colors duration-200", y),
 		children: [/* @__PURE__ */ l("div", {
 			className: "w-full px-4 sm:px-6 h-16 flex items-center justify-between gap-3 sm:gap-4",
 			children: [
 				/* @__PURE__ */ l("div", {
 					className: "flex items-center gap-2 sm:gap-3 shrink-0",
-					children: [/* @__PURE__ */ c(ct, { currentApp: e }), s ? /* @__PURE__ */ l("button", {
+					children: [/* @__PURE__ */ c(bt, { currentApp: e }), s ? /* @__PURE__ */ l("button", {
 						type: "button",
 						onClick: s,
 						className: "flex items-center gap-2.5 sm:gap-3 hover:opacity-85 active:scale-[0.98] transition-all focus:outline-none rounded-xl cursor-pointer text-left",
@@ -3188,8 +3346,8 @@ function St({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "F
 				/* @__PURE__ */ l("div", {
 					className: "flex items-center justify-center flex-1 max-w-xl mx-2",
 					children: [u && u.length > 0 && /* @__PURE__ */ c("div", {
-						className: X(b ? "hidden md:flex items-center" : "flex items-center"),
-						children: /* @__PURE__ */ c(at, {
+						className: Y(b ? "hidden md:flex items-center" : "flex items-center"),
+						children: /* @__PURE__ */ c(_t, {
 							tabs: u,
 							activeTab: d,
 							onChange: f
@@ -3224,7 +3382,7 @@ function St({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "F
 						h,
 						v && /* @__PURE__ */ c("div", {
 							className: "hidden sm:block",
-							children: /* @__PURE__ */ c(ot, { align: "right" })
+							children: /* @__PURE__ */ c(vt, { align: "right" })
 						}),
 						_
 					]
@@ -3232,7 +3390,7 @@ function St({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "F
 			]
 		}), b && u && u.length > 0 && /* @__PURE__ */ c("div", {
 			className: "md:hidden border-t border-[var(--border-subtle)] px-3 py-1.5 bg-[var(--bg-root)]/95 flex justify-center",
-			children: /* @__PURE__ */ c(at, {
+			children: /* @__PURE__ */ c(_t, {
 				tabs: u,
 				activeTab: d,
 				onChange: f,
@@ -3242,4 +3400,4 @@ function St({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "F
 	});
 }
 //#endregion
-export { St as AppHeader, ct as AppSwitcher, yt as Avatar, bt as AvatarGroup, Q as Badge, qe as Button, Je as Card, Qe as CardContent, Ze as CardDescription, $e as CardFooter, Ye as CardHeader, Xe as CardTitle, pt as CommandPalette, mt as DICEBEAR_SUITS, rt as Dialog, it as Dropdown, et as Input, st as SUITE_APPS, nt as Select, Z as THEMES, at as Tabs, tt as Textarea, Ge as ThemeProvider, ot as ThemeSelector, ut as ToastProvider, xt as UserMenu, X as cn, ht as getDiceBearAvatarUrl, $ as getSuiteAppUrl, Ke as useTheme, dt as useToast };
+export { X as AVATAR_SUITS, Dt as AppHeader, bt as AppSwitcher, nt as Avatar, rt as AvatarGroup, Ke as AvatarProvider, at as AvatarSelector, Q as Badge, ot as Button, st as Card, dt as CardContent, ut as CardDescription, ft as CardFooter, ct as CardHeader, lt as CardTitle, Tt as CommandPalette, Ze as DICEBEAR_SUITS, gt as Dialog, it as Dropdown, pt as Input, yt as SUITE_APPS, ht as Select, Z as THEMES, _t as Tabs, mt as Textarea, Ye as ThemeProvider, vt as ThemeSelector, St as ToastProvider, Et as UserMenu, Y as cn, Qe as getDiceBearAvatarUrl, $ as getSuiteAppUrl, qe as useAvatar, Xe as useTheme, Ct as useToast };

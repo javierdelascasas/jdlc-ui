@@ -11,6 +11,14 @@ export {
   THEMES,
 } from './context/ThemeContext.jsx';
 
+// Avatar Context & Provider
+export {
+  AvatarProvider,
+  useAvatar,
+  AVATAR_SUITS,
+} from './context/AvatarContext.jsx';
+export { AvatarSelector } from './components/AvatarSelector.jsx';
+
 // UI Components
 export { Button } from './components/Button.jsx';
 export {
