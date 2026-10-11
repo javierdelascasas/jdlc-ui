@@ -62,7 +62,7 @@ export function AppHeader({
               type="button"
               onClick={onBrandClick}
               className="flex items-center gap-2 sm:gap-2.5 hover:opacity-85 active:scale-[0.98] transition-all focus:outline-none rounded-xl cursor-pointer text-left"
-              title="Application Details"
+              title="Go to start page"
             >
               <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-[var(--color-primary)] to-[var(--color-accent)] flex items-center justify-center text-white shadow-md shadow-[var(--color-primary)]/20 shrink-0">
                 {icon}
@@ -115,8 +115,8 @@ export function AppHeader({
           )}
         </div>
 
-        {/* Zone 2: Navigation & Context (Center - visible inline on Tablet and Desktop >= sm) */}
-        <div className="hidden sm:flex items-center justify-center flex-1 max-w-xl mx-2">
+        {/* Zone 2: Navigation & Context (Center - visible inline on Tablet and Desktop >= md) */}
+        <div className="hidden md:flex items-center justify-center flex-1 min-w-0 max-w-2xl mx-2">
           {tabs && tabs.length > 0 && (
             <Tabs tabs={tabs} activeTab={activeTab} onChange={onTabChange} />
           )}
@@ -126,7 +126,7 @@ export function AppHeader({
         {/* Zone 3: Utilities, Primary Action & Account (Right) */}
         <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
           {/* Secondary Utilities Slot (Tablet and Desktop) */}
-          <div className="hidden sm:flex items-center gap-2">
+          <div className="hidden md:flex items-center gap-2">
             {utilities}
           </div>
 

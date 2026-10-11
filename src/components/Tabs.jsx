@@ -12,6 +12,7 @@ export function Tabs({ tabs = [], activeTab, onChange, className }) {
             key={tab.id}
             type="button"
             onClick={() => onChange(tab.id)}
+            title={tab.label}
             className={cn(
               'flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 text-xs font-medium rounded-md transition-all duration-150 cursor-pointer select-none',
               isActive
@@ -20,7 +21,7 @@ export function Tabs({ tabs = [], activeTab, onChange, className }) {
             )}
           >
             {Icon && <Icon className="w-3.5 h-3.5 shrink-0" />}
-            <span className={cn(tab.hideLabelOnMobile && 'hidden sm:inline')}>{tab.label}</span>
+            <span className={cn(tab.hideLabelOnMobile && 'hidden lg:inline')}>{tab.label}</span>
             {tab.count !== undefined && (
               <span
                 className={cn(
