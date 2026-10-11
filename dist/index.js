@@ -3321,12 +3321,12 @@ function Dt({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "F
 							className: "w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-[var(--color-primary)] to-[var(--color-accent)] flex items-center justify-center text-white shadow-md shadow-[var(--color-primary)]/20 shrink-0",
 							children: a
 						}), /* @__PURE__ */ l("div", {
-							className: "hidden sm:block",
+							className: "block min-w-0",
 							children: [/* @__PURE__ */ l("div", {
 								className: "flex items-center gap-1.5 sm:gap-2",
 								children: [
 									/* @__PURE__ */ l("span", {
-										className: "font-extrabold text-sm sm:text-base md:text-lg tracking-tight font-[var(--font-heading)] text-[var(--text-main)]",
+										className: "font-extrabold text-sm sm:text-base md:text-lg tracking-tight font-[var(--font-heading)] text-[var(--text-main)] truncate",
 										children: [t, /* @__PURE__ */ c("span", {
 											className: "text-[var(--color-primary-glow)]",
 											children: n
@@ -3351,12 +3351,12 @@ function Dt({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "F
 							className: "w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-[var(--color-primary)] to-[var(--color-accent)] flex items-center justify-center text-white shadow-md shadow-[var(--color-primary)]/20 shrink-0",
 							children: a
 						}), /* @__PURE__ */ l("div", {
-							className: "hidden sm:block",
+							className: "block min-w-0",
 							children: [/* @__PURE__ */ l("div", {
 								className: "flex items-center gap-1.5 sm:gap-2",
 								children: [
 									/* @__PURE__ */ l("span", {
-										className: "font-extrabold text-sm sm:text-base md:text-lg tracking-tight font-[var(--font-heading)] text-[var(--text-main)]",
+										className: "font-extrabold text-sm sm:text-base md:text-lg tracking-tight font-[var(--font-heading)] text-[var(--text-main)] truncate",
 										children: [t, /* @__PURE__ */ c("span", {
 											className: "text-[var(--color-primary-glow)]",
 											children: n
@@ -3544,7 +3544,7 @@ function Dt({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "F
 function Ot({ tabs: e = [], activeTab: t, onChange: n, className: r }) {
 	return !e || e.length === 0 ? null : /* @__PURE__ */ c("nav", {
 		"aria-label": "Primary Mobile Navigation",
-		className: X("sm:hidden fixed bottom-0 left-0 right-0 z-40 bg-[var(--bg-root)]/95 backdrop-blur-md border-t border-[var(--border-subtle)] px-2 pt-1 pb-[max(env(safe-area-inset-bottom,0px),0.35rem)] shadow-lg transition-colors", r),
+		className: X("sm:hidden fixed bottom-0 inset-x-0 z-40 bg-[var(--bg-root)]/95 backdrop-blur-md border-t border-[var(--border-subtle)] px-2 pt-1 pb-[max(env(safe-area-inset-bottom,0px),0.35rem)] shadow-lg transition-colors transform-gpu", r),
 		children: /* @__PURE__ */ c("div", {
 			className: "flex items-center justify-around w-full max-w-md mx-auto",
 			children: e.map((e) => {

@@ -67,9 +67,9 @@ export function AppHeader({
               <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-[var(--color-primary)] to-[var(--color-accent)] flex items-center justify-center text-white shadow-md shadow-[var(--color-primary)]/20 shrink-0">
                 {icon}
               </div>
-              <div className="hidden sm:block">
+              <div className="block min-w-0">
                 <div className="flex items-center gap-1.5 sm:gap-2">
-                  <span className="font-extrabold text-sm sm:text-base md:text-lg tracking-tight font-[var(--font-heading)] text-[var(--text-main)]">
+                  <span className="font-extrabold text-sm sm:text-base md:text-lg tracking-tight font-[var(--font-heading)] text-[var(--text-main)] truncate">
                     {appName}
                     <span className="text-[var(--color-primary-glow)]">{appAccent}</span>
                   </span>
@@ -92,9 +92,9 @@ export function AppHeader({
               <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-[var(--color-primary)] to-[var(--color-accent)] flex items-center justify-center text-white shadow-md shadow-[var(--color-primary)]/20 shrink-0">
                 {icon}
               </div>
-              <div className="hidden sm:block">
+              <div className="block min-w-0">
                 <div className="flex items-center gap-1.5 sm:gap-2">
-                  <span className="font-extrabold text-sm sm:text-base md:text-lg tracking-tight font-[var(--font-heading)] text-[var(--text-main)]">
+                  <span className="font-extrabold text-sm sm:text-base md:text-lg tracking-tight font-[var(--font-heading)] text-[var(--text-main)] truncate">
                     {appName}
                     <span className="text-[var(--color-primary-glow)]">{appAccent}</span>
                   </span>
