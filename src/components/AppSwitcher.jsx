@@ -40,6 +40,17 @@ export function AppSwitcher({ currentApp = 'taskflow', className, align = 'left'
           </svg>
         );
       case 'tripplanner':
+        return (
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M9 6.75V15m6-6v8.25m.53 3.72a.75.75 0 01-.82.08L9 18l-5.71 2.855A.75.75 0 012.25 20.19V6.44a.75.75 0 01.42-.67l6-3a.75.75 0 01.66 0l5.71 2.855a.75.75 0 01.42.67v13.75a.75.75 0 01-.93.72z" />
+          </svg>
+        );
+      case 'bandido':
+        return (
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M9 9l10.5-3m0 6.553v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 11-.99-3.467l2.31-.66V6.5m-8.368 4.755v5.06a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 01-.99-3.467l2.31-.66V9.75" />
+          </svg>
+        );
       default:
         return (
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
@@ -48,6 +59,8 @@ export function AppSwitcher({ currentApp = 'taskflow', className, align = 'left'
         );
     }
   };
+
+  const availableApps = SUITE_APPS.filter((app) => app.id !== currentApp);
 
   return (
     <div className="relative inline-block text-left" ref={containerRef}>
@@ -97,26 +110,15 @@ export function AppSwitcher({ currentApp = 'taskflow', className, align = 'left'
 
           {/* App Cards List */}
           <div className="space-y-1">
-            {SUITE_APPS.map((app) => {
-              const isCurrent = app.id === currentApp;
+            {availableApps.map((app) => {
               const targetUrl = getSuiteAppUrl(app.id);
 
               return (
                 <a
                   key={app.id}
-                  href={isCurrent ? undefined : targetUrl}
-                  onClick={(e) => {
-                    if (isCurrent) {
-                      e.preventDefault();
-                      setIsOpen(false);
-                    }
-                  }}
-                  className={cn(
-                    'flex items-center gap-3 p-2 rounded-xl transition-all',
-                    isCurrent
-                      ? 'bg-[var(--bg-elevated)] border border-[var(--border-medium)] cursor-default'
-                      : 'hover:bg-[var(--bg-hover)] border border-transparent hover:border-[var(--border-subtle)] cursor-pointer text-[var(--text-muted)] hover:text-[var(--text-main)]'
-                  )}
+                  href={targetUrl}
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center gap-3 p-2 rounded-xl transition-all hover:bg-[var(--bg-hover)] border border-transparent hover:border-[var(--border-subtle)] cursor-pointer text-[var(--text-muted)] hover:text-[var(--text-main)]"
                 >
                   <div
                     className="w-8 h-8 rounded-lg flex items-center justify-center text-white shrink-0 shadow-sm"
@@ -129,15 +131,9 @@ export function AppSwitcher({ currentApp = 'taskflow', className, align = 'left'
                       <span className="text-xs font-bold tracking-tight text-[var(--text-main)] font-[var(--font-heading)] truncate">
                         {app.name}
                       </span>
-                      {isCurrent ? (
-                        <Badge variant="subtle" size="xs" className="text-[9px] py-0 px-1 font-mono">
-                          Current
-                        </Badge>
-                      ) : (
-                        <span className="text-[10px] text-slate-500 font-mono">
-                          {isLocal ? `:${getSuiteAppUrl(app.id).split(':').pop()}` : 'open ↗'}
-                        </span>
-                      )}
+                      <span className="text-[10px] text-slate-500 font-mono">
+                        {isLocal ? `:${targetUrl.split(':').pop()}` : 'open ↗'}
+                      </span>
                     </div>
                     <p className="text-[10px] text-slate-400 truncate mt-0.5">{app.description}</p>
                   </div>

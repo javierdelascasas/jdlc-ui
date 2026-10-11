@@ -24,13 +24,20 @@ export const SUITE_APPS = [
     badge: 'Travel',
     color: '#10B981',
   },
+  {
+    id: 'bandido',
+    name: 'Bandido',
+    description: 'Band CRM, Setlists & Stage Engine',
+    badge: 'Music',
+    color: '#F59E0B',
+  },
 ];
 
 /**
  * Resolves the destination URL for a given suite application ID,
  * automatically detecting whether running on localhost or online in production.
  *
- * @param {string} appId - 'taskflow' | 'budgetcast' | 'tripplanner' | 'main'
+ * @param {string} appId - 'taskflow' | 'budgetcast' | 'tripplanner' | 'bandido' | 'main'
  * @returns {string} Fully qualified URL for the target app
  */
 export function getSuiteAppUrl(appId) {
@@ -56,7 +63,8 @@ export function getSuiteAppUrl(appId) {
       taskflow: 5173,
       budgetcast: 5174,
       tripplanner: 5175,
-      main: 5176,
+      bandido: 5176,
+      main: 5170,
     };
     return `http://localhost:${localPorts[appId] || 5173}`;
   }

@@ -247,13 +247,13 @@ var f = (e, t) => {
 }, ce = [], I = (e) => {
 	let t = (t) => t[e] || ce;
 	return t.isThemeGetter = !0, t.themeKey = e, t;
-}, L = /^\[(?:(\w[\w-]*):)?(.+)\]$/i, le = /^\((?:(\w[\w-]*):)?(.+)\)$/i, ue = /^\d+(?:\.\d+)?\/\d+(?:\.\d+)?$/, de = /^(\d+(\.\d+)?)?(xs|sm|md|lg|xl)$/, fe = /\d+(%|px|r?em|[sdl]?v([hwib]|min|max)|pt|pc|in|cm|mm|cap|ch|ex|r?lh|cq(w|h|i|b|min|max))|\b(calc|min|max|clamp)\(.+\)|^0$/, R = /^(rgba?|hsla?|hwb|(ok)?(lab|lch)|color-mix|color|light-dark)\(.+\)$/, pe = /^(inset_)?-?((\d+)?\.?(\d+)[a-z]+|0)_-?((\d+)?\.?(\d+)[a-z]+|0)/, me = /^(url|image|image-set|cross-fade|element|(repeating-)?(linear|radial|conic)-gradient)\(.+\)$/, z = (e) => ue.test(e), B = (e) => !!e && !Number.isNaN(Number(e)), V = (e) => !!e && Number.isInteger(Number(e)), he = (e) => e.endsWith("%") && B(e.slice(0, -1)), H = (e) => de.test(e), ge = () => !0, _e = (e) => fe.test(e) && !R.test(e), ve = () => !1, ye = (e) => pe.test(e), be = (e) => me.test(e), xe = (e) => !U(e) && !G(e), Se = (e) => e.startsWith("@container") && (e[10] === "/" && e[11] !== void 0 || e[11] === "s" && e[16] !== void 0 && e.startsWith("-size/", 10) || e[11] === "n" && e[18] !== void 0 && e.startsWith("-normal/", 10)), Ce = (e) => q(e, Re, ve), U = (e) => L.test(e), W = (e) => q(e, ze, _e), we = (e) => q(e, Be, B), Te = (e) => q(e, He, ge), Ee = (e) => q(e, Ve, ve), De = (e) => q(e, Ie, ve), Oe = (e) => q(e, Le, be), ke = (e) => q(e, Ue, ye), G = (e) => le.test(e), K = (e) => J(e, ze), Ae = (e) => J(e, Ve), je = (e) => J(e, Ie), Me = (e) => J(e, Re), Ne = (e) => J(e, Le), Pe = (e) => J(e, Ue, !0), Fe = (e) => J(e, He, !0), q = (e, t, n) => {
+}, L = /^\[(?:(\w[\w-]*):)?(.+)\]$/i, le = /^\((?:(\w[\w-]*):)?(.+)\)$/i, R = /^\d+(?:\.\d+)?\/\d+(?:\.\d+)?$/, ue = /^(\d+(\.\d+)?)?(xs|sm|md|lg|xl)$/, de = /\d+(%|px|r?em|[sdl]?v([hwib]|min|max)|pt|pc|in|cm|mm|cap|ch|ex|r?lh|cq(w|h|i|b|min|max))|\b(calc|min|max|clamp)\(.+\)|^0$/, z = /^(rgba?|hsla?|hwb|(ok)?(lab|lch)|color-mix|color|light-dark)\(.+\)$/, fe = /^(inset_)?-?((\d+)?\.?(\d+)[a-z]+|0)_-?((\d+)?\.?(\d+)[a-z]+|0)/, pe = /^(url|image|image-set|cross-fade|element|(repeating-)?(linear|radial|conic)-gradient)\(.+\)$/, B = (e) => R.test(e), V = (e) => !!e && !Number.isNaN(Number(e)), H = (e) => !!e && Number.isInteger(Number(e)), me = (e) => e.endsWith("%") && V(e.slice(0, -1)), U = (e) => ue.test(e), he = () => !0, ge = (e) => de.test(e) && !z.test(e), _e = () => !1, ve = (e) => fe.test(e), ye = (e) => pe.test(e), be = (e) => !W(e) && !K(e), xe = (e) => e.startsWith("@container") && (e[10] === "/" && e[11] !== void 0 || e[11] === "s" && e[16] !== void 0 && e.startsWith("-size/", 10) || e[11] === "n" && e[18] !== void 0 && e.startsWith("-normal/", 10)), Se = (e) => J(e, Le, _e), W = (e) => L.test(e), G = (e) => J(e, Re, ge), Ce = (e) => J(e, ze, V), we = (e) => J(e, Ve, he), Te = (e) => J(e, Be, _e), Ee = (e) => J(e, Fe, _e), De = (e) => J(e, Ie, ye), Oe = (e) => J(e, He, ve), K = (e) => le.test(e), q = (e) => Y(e, Re), ke = (e) => Y(e, Be), Ae = (e) => Y(e, Fe), je = (e) => Y(e, Le), Me = (e) => Y(e, Ie), Ne = (e) => Y(e, He, !0), Pe = (e) => Y(e, Ve, !0), J = (e, t, n) => {
 	let r = L.exec(e);
 	return r ? r[1] ? t(r[1]) : n(r[2]) : !1;
-}, J = (e, t, n = !1) => {
+}, Y = (e, t, n = !1) => {
 	let r = le.exec(e);
 	return r ? r[1] ? t(r[1]) : n : !1;
-}, Ie = (e) => e === "position" || e === "percentage", Le = (e) => e === "image" || e === "url", Re = (e) => e === "length" || e === "size" || e === "bg-size", ze = (e) => e === "length", Be = (e) => e === "number", Ve = (e) => e === "family-name", He = (e) => e === "number" || e === "weight", Ue = (e) => e === "shadow", We = /*#__PURE__*/ F(() => {
+}, Fe = (e) => e === "position" || e === "percentage", Ie = (e) => e === "image" || e === "url", Le = (e) => e === "length" || e === "size" || e === "bg-size", Re = (e) => e === "length", ze = (e) => e === "number", Be = (e) => e === "family-name", Ve = (e) => e === "number" || e === "weight", He = (e) => e === "shadow", Ue = /*#__PURE__*/ F(() => {
 	let e = I("color"), t = I("font"), n = I("text"), r = I("font-weight"), i = I("tracking"), a = I("leading"), o = I("breakpoint"), s = I("container"), c = I("spacing"), l = I("radius"), u = I("shadow"), d = I("inset-shadow"), f = I("text-shadow"), p = I("drop-shadow"), m = I("blur"), h = I("perspective"), g = I("aspect"), _ = I("ease"), v = I("animate"), y = () => [
 		"auto",
 		"avoid",
@@ -279,8 +279,8 @@ var f = (e, t) => {
 		"left-bottom"
 	], x = () => [
 		...b(),
-		G,
-		U
+		K,
+		W
 	], S = () => [
 		"auto",
 		"hidden",
@@ -292,43 +292,43 @@ var f = (e, t) => {
 		"contain",
 		"none"
 	], w = () => [
-		G,
-		U,
+		K,
+		W,
 		c
 	], T = () => [
-		z,
+		B,
 		"full",
 		"auto",
 		...w()
 	], E = () => [
-		V,
+		H,
 		"none",
 		"subgrid",
-		G,
-		U
+		K,
+		W
 	], ee = () => [
 		"auto",
 		{ span: [
 			"full",
-			V,
-			G,
-			U
+			H,
+			K,
+			W
 		] },
-		V,
-		G,
-		U
+		H,
+		K,
+		W
 	], D = () => [
-		V,
+		H,
 		"auto",
-		G,
-		U
+		K,
+		W
 	], te = () => [
 		"auto",
 		"min",
 		"max",
 		"fr",
-		G,
-		U
+		K,
+		W
 	], ne = () => [
 		"start",
 		"end",
@@ -348,7 +348,7 @@ var f = (e, t) => {
 		"center-safe",
 		"end-safe"
 	], k = () => ["auto", ...w()], A = () => [
-		z,
+		B,
 		"auto",
 		"full",
 		"dvw",
@@ -363,7 +363,7 @@ var f = (e, t) => {
 		...w()
 	], j = () => [
 		s,
-		z,
+		B,
 		"screen",
 		"full",
 		"dvw",
@@ -374,7 +374,7 @@ var f = (e, t) => {
 		"fit",
 		...w()
 	], re = () => [
-		z,
+		B,
 		"screen",
 		"full",
 		"lh",
@@ -387,13 +387,13 @@ var f = (e, t) => {
 		...w()
 	], M = () => [
 		e,
-		G,
-		U
+		K,
+		W
 	], ie = () => [
 		...b(),
-		je,
-		De,
-		{ position: [G, U] }
+		Ae,
+		Ee,
+		{ position: [K, W] }
 	], ae = () => ["no-repeat", { repeat: [
 		"",
 		"x",
@@ -404,25 +404,25 @@ var f = (e, t) => {
 		"auto",
 		"cover",
 		"contain",
-		Me,
-		Ce,
-		{ size: [G, U] }
+		je,
+		Se,
+		{ size: [K, W] }
 	], se = () => [
-		he,
-		K,
-		W
+		me,
+		q,
+		G
 	], N = () => [
 		"",
 		"none",
 		"full",
 		l,
-		G,
-		U
-	], P = () => [
-		"",
-		B,
 		K,
 		W
+	], P = () => [
+		"",
+		V,
+		q,
+		G
 	], F = () => [
 		"solid",
 		"dashed",
@@ -446,32 +446,32 @@ var f = (e, t) => {
 		"color",
 		"luminosity"
 	], L = () => [
-		B,
-		he,
-		je,
-		De
+		V,
+		me,
+		Ae,
+		Ee
 	], le = () => [
 		"",
 		"none",
 		m,
-		G,
-		U
+		K,
+		W
+	], R = () => [
+		"none",
+		V,
+		K,
+		W
 	], ue = () => [
 		"none",
-		B,
-		G,
-		U
+		V,
+		K,
+		W
 	], de = () => [
-		"none",
+		V,
+		K,
+		W
+	], z = () => [
 		B,
-		G,
-		U
-	], fe = () => [
-		B,
-		G,
-		U
-	], R = () => [
-		z,
 		"full",
 		...w()
 	];
@@ -485,17 +485,17 @@ var f = (e, t) => {
 				"bounce"
 			],
 			aspect: ["video"],
-			blur: [H],
-			breakpoint: [H],
-			color: [ge],
-			container: [H],
-			"drop-shadow": [H],
+			blur: [U],
+			breakpoint: [U],
+			color: [he],
+			container: [U],
+			"drop-shadow": [U],
 			ease: [
 				"in",
 				"out",
 				"in-out"
 			],
-			font: [xe],
+			font: [be],
 			"font-weight": [
 				"thin",
 				"extralight",
@@ -507,7 +507,7 @@ var f = (e, t) => {
 				"extrabold",
 				"black"
 			],
-			"inset-shadow": [H],
+			"inset-shadow": [U],
 			leading: [
 				"none",
 				"tight",
@@ -524,11 +524,11 @@ var f = (e, t) => {
 				"distant",
 				"none"
 			],
-			radius: [H],
-			shadow: [H],
-			spacing: ["px", B],
-			text: [H],
-			"text-shadow": [H],
+			radius: [U],
+			shadow: [U],
+			spacing: ["px", V],
+			text: [U],
+			"text-shadow": [U],
 			tracking: [
 				"tighter",
 				"tight",
@@ -542,9 +542,9 @@ var f = (e, t) => {
 			aspect: [{ aspect: [
 				"auto",
 				"square",
-				z,
-				U,
-				G,
+				B,
+				W,
+				K,
 				g
 			] }],
 			container: ["container"],
@@ -552,15 +552,15 @@ var f = (e, t) => {
 				"",
 				"normal",
 				"size",
-				G,
-				U
+				K,
+				W
 			] }],
-			"container-named": [Se],
+			"container-named": [xe],
 			columns: [{ columns: [
-				B,
+				V,
 				"auto",
-				U,
-				G,
+				W,
+				K,
 				s
 			] }],
 			"break-after": [{ "break-after": y() }],
@@ -657,13 +657,13 @@ var f = (e, t) => {
 				"collapse"
 			],
 			z: [{ z: [
-				V,
+				H,
 				"auto",
-				G,
-				U
+				K,
+				W
 			] }],
 			basis: [{ basis: [
-				z,
+				B,
 				"full",
 				"auto",
 				s,
@@ -681,32 +681,32 @@ var f = (e, t) => {
 				"wrap-reverse"
 			] }],
 			flex: [{ flex: [
+				V,
 				B,
-				z,
 				"auto",
 				"initial",
 				"none",
-				U
+				W
 			] }],
 			grow: [{ grow: [
 				"",
-				B,
-				G,
-				U
+				V,
+				K,
+				W
 			] }],
 			shrink: [{ shrink: [
 				"",
-				B,
-				G,
-				U
+				V,
+				K,
+				W
 			] }],
 			order: [{ order: [
-				V,
+				H,
 				"first",
 				"last",
 				"none",
-				G,
-				U
+				K,
+				W
 			] }],
 			"grid-cols": [{ "grid-cols": E() }],
 			"col-start-end": [{ col: ee() }],
@@ -813,15 +813,15 @@ var f = (e, t) => {
 			"font-size": [{ text: [
 				"base",
 				n,
-				K,
-				W
+				q,
+				G
 			] }],
 			"font-smoothing": ["antialiased", "subpixel-antialiased"],
 			"font-style": ["italic", "not-italic"],
 			"font-weight": [{ font: [
 				r,
-				Fe,
-				Te
+				Pe,
+				we
 			] }],
 			"font-stretch": [{ "font-stretch": [
 				"ultra-condensed",
@@ -833,15 +833,15 @@ var f = (e, t) => {
 				"expanded",
 				"extra-expanded",
 				"ultra-expanded",
-				he,
-				U
+				me,
+				W
 			] }],
 			"font-family": [{ font: [
-				Ae,
-				Ee,
+				ke,
+				Te,
 				t
 			] }],
-			"font-features": [{ "font-features": [U] }],
+			"font-features": [{ "font-features": [W] }],
 			"fvn-normal": ["normal-nums"],
 			"fvn-ordinal": ["ordinal"],
 			"fvn-slashed-zero": ["slashed-zero"],
@@ -850,14 +850,14 @@ var f = (e, t) => {
 			"fvn-fraction": ["diagonal-fractions", "stacked-fractions"],
 			tracking: [{ tracking: [
 				i,
-				G,
-				U
+				K,
+				W
 			] }],
 			"line-clamp": [{ "line-clamp": [
-				B,
+				V,
 				"none",
-				G,
-				we
+				K,
+				Ce
 			] }],
 			leading: [{ leading: [
 				"none",
@@ -866,16 +866,16 @@ var f = (e, t) => {
 			] }],
 			"list-image": [{ "list-image": [
 				"none",
-				G,
-				U
+				K,
+				W
 			] }],
 			"list-style-position": [{ list: ["inside", "outside"] }],
 			"list-style-type": [{ list: [
 				"disc",
 				"decimal",
 				"none",
-				G,
-				U
+				K,
+				W
 			] }],
 			"text-alignment": [{ text: [
 				"left",
@@ -895,18 +895,18 @@ var f = (e, t) => {
 			],
 			"text-decoration-style": [{ decoration: [...F(), "wavy"] }],
 			"text-decoration-thickness": [{ decoration: [
-				B,
+				V,
 				"from-font",
 				"auto",
-				G,
-				W
+				K,
+				G
 			] }],
 			"text-decoration-color": [{ decoration: M() }],
 			"underline-offset": [{ "underline-offset": [
-				B,
+				V,
 				"auto",
-				G,
-				U
+				K,
+				W
 			] }],
 			"text-transform": [
 				"uppercase",
@@ -927,9 +927,9 @@ var f = (e, t) => {
 			] }],
 			indent: [{ indent: w() }],
 			"tab-size": [{ tab: [
-				V,
-				G,
-				U
+				H,
+				K,
+				W
 			] }],
 			"vertical-align": [{ align: [
 				"baseline",
@@ -940,8 +940,8 @@ var f = (e, t) => {
 				"text-bottom",
 				"sub",
 				"super",
-				G,
-				U
+				K,
+				W
 			] }],
 			whitespace: [{ whitespace: [
 				"normal",
@@ -969,8 +969,8 @@ var f = (e, t) => {
 			] }],
 			content: [{ content: [
 				"none",
-				G,
-				U
+				K,
+				W
 			] }],
 			"bg-attachment": [{ bg: [
 				"fixed",
@@ -1005,24 +1005,24 @@ var f = (e, t) => {
 							"l",
 							"tl"
 						] },
-						V,
-						G,
-						U
+						H,
+						K,
+						W
 					],
 					radial: [
 						"",
-						G,
-						U
+						K,
+						W
 					],
 					conic: [
 						"",
-						V,
-						G,
-						U
+						H,
+						K,
+						W
 					]
 				},
-				Ne,
-				Oe
+				Me,
+				De
 			] }],
 			"bg-color": [{ bg: M() }],
 			"gradient-from-pos": [{ from: se() }],
@@ -1089,15 +1089,15 @@ var f = (e, t) => {
 				"hidden"
 			] }],
 			"outline-offset": [{ "outline-offset": [
-				B,
-				G,
-				U
+				V,
+				K,
+				W
 			] }],
 			"outline-w": [{ outline: [
 				"",
-				B,
-				K,
-				W
+				V,
+				q,
+				G
 			] }],
 			"outline-color": [{ outline: M() }],
 			shadow: [{ shadow: [
@@ -1105,35 +1105,35 @@ var f = (e, t) => {
 				"inner",
 				"none",
 				u,
-				Pe,
-				ke
+				Ne,
+				Oe
 			] }],
 			"shadow-color": [{ shadow: M() }],
 			"inset-shadow": [{ "inset-shadow": [
 				"none",
 				d,
-				Pe,
-				ke
+				Ne,
+				Oe
 			] }],
 			"inset-shadow-color": [{ "inset-shadow": M() }],
 			"ring-w": [{ ring: P() }],
 			"ring-w-inset": ["ring-inset"],
 			"ring-color": [{ ring: M() }],
-			"ring-offset-w": [{ "ring-offset": [B, W] }],
+			"ring-offset-w": [{ "ring-offset": [V, G] }],
 			"ring-offset-color": [{ "ring-offset": M() }],
 			"inset-ring-w": [{ "inset-ring": P() }],
 			"inset-ring-color": [{ "inset-ring": M() }],
 			"text-shadow": [{ "text-shadow": [
 				"none",
 				f,
-				Pe,
-				ke
+				Ne,
+				Oe
 			] }],
 			"text-shadow-color": [{ "text-shadow": M() }],
 			opacity: [{ opacity: [
-				B,
-				G,
-				U
+				V,
+				K,
+				W
 			] }],
 			"mix-blend": [{ "mix-blend": [
 				...ce(),
@@ -1155,7 +1155,7 @@ var f = (e, t) => {
 				"intersect",
 				"exclude"
 			] }],
-			"mask-image-linear-pos": [{ "mask-linear": [B] }],
+			"mask-image-linear-pos": [{ "mask-linear": [V] }],
 			"mask-image-linear-from-pos": [{ "mask-linear-from": L() }],
 			"mask-image-linear-to-pos": [{ "mask-linear-to": L() }],
 			"mask-image-linear-from-color": [{ "mask-linear-from": M() }],
@@ -1184,7 +1184,7 @@ var f = (e, t) => {
 			"mask-image-y-to-pos": [{ "mask-y-to": L() }],
 			"mask-image-y-from-color": [{ "mask-y-from": M() }],
 			"mask-image-y-to-color": [{ "mask-y-to": M() }],
-			"mask-image-radial": [{ "mask-radial": [G, U] }],
+			"mask-image-radial": [{ "mask-radial": [K, W] }],
 			"mask-image-radial-from-pos": [{ "mask-radial-from": L() }],
 			"mask-image-radial-to-pos": [{ "mask-radial-to": L() }],
 			"mask-image-radial-from-color": [{ "mask-radial-from": M() }],
@@ -1195,7 +1195,7 @@ var f = (e, t) => {
 				farthest: ["side", "corner"]
 			}] }],
 			"mask-image-radial-pos": [{ "mask-radial-at": b() }],
-			"mask-image-conic-pos": [{ "mask-conic": [B] }],
+			"mask-image-conic-pos": [{ "mask-conic": [V] }],
 			"mask-image-conic-from-pos": [{ "mask-conic-from": L() }],
 			"mask-image-conic-to-pos": [{ "mask-conic-to": L() }],
 			"mask-image-conic-from-color": [{ "mask-conic-from": M() }],
@@ -1219,111 +1219,111 @@ var f = (e, t) => {
 			"mask-type": [{ "mask-type": ["alpha", "luminance"] }],
 			"mask-image": [{ mask: [
 				"none",
-				G,
-				U
+				K,
+				W
 			] }],
 			filter: [{ filter: [
 				"",
 				"none",
-				G,
-				U
+				K,
+				W
 			] }],
 			blur: [{ blur: le() }],
 			brightness: [{ brightness: [
-				B,
-				G,
-				U
+				V,
+				K,
+				W
 			] }],
 			contrast: [{ contrast: [
-				B,
-				G,
-				U
+				V,
+				K,
+				W
 			] }],
 			"drop-shadow": [{ "drop-shadow": [
 				"",
 				"none",
 				p,
-				Pe,
-				ke
+				Ne,
+				Oe
 			] }],
 			"drop-shadow-color": [{ "drop-shadow": M() }],
 			grayscale: [{ grayscale: [
 				"",
-				B,
-				G,
-				U
+				V,
+				K,
+				W
 			] }],
 			"hue-rotate": [{ "hue-rotate": [
-				B,
-				G,
-				U
+				V,
+				K,
+				W
 			] }],
 			invert: [{ invert: [
 				"",
-				B,
-				G,
-				U
+				V,
+				K,
+				W
 			] }],
 			saturate: [{ saturate: [
-				B,
-				G,
-				U
+				V,
+				K,
+				W
 			] }],
 			sepia: [{ sepia: [
 				"",
-				B,
-				G,
-				U
+				V,
+				K,
+				W
 			] }],
 			"backdrop-filter": [{ "backdrop-filter": [
 				"",
 				"none",
-				G,
-				U
+				K,
+				W
 			] }],
 			"backdrop-blur": [{ "backdrop-blur": le() }],
 			"backdrop-brightness": [{ "backdrop-brightness": [
-				B,
-				G,
-				U
+				V,
+				K,
+				W
 			] }],
 			"backdrop-contrast": [{ "backdrop-contrast": [
-				B,
-				G,
-				U
+				V,
+				K,
+				W
 			] }],
 			"backdrop-grayscale": [{ "backdrop-grayscale": [
 				"",
-				B,
-				G,
-				U
+				V,
+				K,
+				W
 			] }],
 			"backdrop-hue-rotate": [{ "backdrop-hue-rotate": [
-				B,
-				G,
-				U
+				V,
+				K,
+				W
 			] }],
 			"backdrop-invert": [{ "backdrop-invert": [
 				"",
-				B,
-				G,
-				U
+				V,
+				K,
+				W
 			] }],
 			"backdrop-opacity": [{ "backdrop-opacity": [
-				B,
-				G,
-				U
+				V,
+				K,
+				W
 			] }],
 			"backdrop-saturate": [{ "backdrop-saturate": [
-				B,
-				G,
-				U
+				V,
+				K,
+				W
 			] }],
 			"backdrop-sepia": [{ "backdrop-sepia": [
 				"",
-				B,
-				G,
-				U
+				V,
+				K,
+				W
 			] }],
 			"border-collapse": [{ border: ["collapse", "separate"] }],
 			"border-spacing": [{ "border-spacing": w() }],
@@ -1339,56 +1339,56 @@ var f = (e, t) => {
 				"shadow",
 				"transform",
 				"none",
-				G,
-				U
+				K,
+				W
 			] }],
 			"transition-behavior": [{ transition: ["normal", "discrete"] }],
 			duration: [{ duration: [
-				B,
+				V,
 				"initial",
-				G,
-				U
+				K,
+				W
 			] }],
 			ease: [{ ease: [
 				"linear",
 				"initial",
 				_,
-				G,
-				U
+				K,
+				W
 			] }],
 			delay: [{ delay: [
-				B,
-				G,
-				U
+				V,
+				K,
+				W
 			] }],
 			animate: [{ animate: [
 				"none",
 				v,
-				G,
-				U
+				K,
+				W
 			] }],
 			backface: [{ backface: ["hidden", "visible"] }],
 			perspective: [{ perspective: [
 				h,
-				G,
-				U
+				K,
+				W
 			] }],
 			"perspective-origin": [{ "perspective-origin": x() }],
-			rotate: [{ rotate: ue() }],
-			"rotate-x": [{ "rotate-x": ue() }],
-			"rotate-y": [{ "rotate-y": ue() }],
-			"rotate-z": [{ "rotate-z": ue() }],
-			scale: [{ scale: de() }],
-			"scale-x": [{ "scale-x": de() }],
-			"scale-y": [{ "scale-y": de() }],
-			"scale-z": [{ "scale-z": de() }],
+			rotate: [{ rotate: R() }],
+			"rotate-x": [{ "rotate-x": R() }],
+			"rotate-y": [{ "rotate-y": R() }],
+			"rotate-z": [{ "rotate-z": R() }],
+			scale: [{ scale: ue() }],
+			"scale-x": [{ "scale-x": ue() }],
+			"scale-y": [{ "scale-y": ue() }],
+			"scale-z": [{ "scale-z": ue() }],
 			"scale-3d": ["scale-3d"],
-			skew: [{ skew: fe() }],
-			"skew-x": [{ "skew-x": fe() }],
-			"skew-y": [{ "skew-y": fe() }],
+			skew: [{ skew: de() }],
+			"skew-x": [{ "skew-x": de() }],
+			"skew-y": [{ "skew-y": de() }],
 			transform: [{ transform: [
-				G,
-				U,
+				K,
+				W,
 				"",
 				"none",
 				"gpu",
@@ -1396,15 +1396,15 @@ var f = (e, t) => {
 			] }],
 			"transform-origin": [{ origin: x() }],
 			"transform-style": [{ transform: ["3d", "flat"] }],
-			translate: [{ translate: R() }],
-			"translate-x": [{ "translate-x": R() }],
-			"translate-y": [{ "translate-y": R() }],
-			"translate-z": [{ "translate-z": R() }],
+			translate: [{ translate: z() }],
+			"translate-x": [{ "translate-x": z() }],
+			"translate-y": [{ "translate-y": z() }],
+			"translate-z": [{ "translate-z": z() }],
 			"translate-none": ["translate-none"],
 			zoom: [{ zoom: [
-				V,
-				G,
-				U
+				H,
+				K,
+				W
 			] }],
 			accent: [{ accent: M() }],
 			appearance: [{ appearance: ["none", "auto"] }],
@@ -1454,8 +1454,8 @@ var f = (e, t) => {
 				"nwse-resize",
 				"zoom-in",
 				"zoom-out",
-				G,
-				U
+				K,
+				W
 			] }],
 			"field-sizing": [{ "field-sizing": ["fixed", "content"] }],
 			"pointer-events": [{ "pointer-events": ["auto", "none"] }],
@@ -1541,15 +1541,15 @@ var f = (e, t) => {
 				"scroll",
 				"contents",
 				"transform",
-				G,
-				U
+				K,
+				W
 			] }],
 			fill: [{ fill: ["none", ...M()] }],
 			"stroke-w": [{ stroke: [
-				B,
-				K,
-				W,
-				we
+				V,
+				q,
+				G,
+				Ce
 			] }],
 			stroke: [{ stroke: ["none", ...M()] }],
 			"forced-color-adjust": [{ "forced-color-adjust": ["auto", "none"] }]
@@ -1810,12 +1810,12 @@ var f = (e, t) => {
 });
 //#endregion
 //#region src/lib/utils.js
-function Y(...e) {
-	return We(d(e));
+function X(...e) {
+	return Ue(d(e));
 }
 //#endregion
 //#region src/context/AvatarContext.jsx
-var X = [
+var Z = [
 	{
 		id: "notionists",
 		name: "Notionists",
@@ -1856,18 +1856,18 @@ var X = [
 		name: "Adventurer",
 		description: "Fantasy RPG portraits"
 	}
-], Ge = t({
+], We = t({
 	suit: "notionists",
 	setSuit: () => {},
-	currentSuitConfig: X[0],
-	availableSuits: X
+	currentSuitConfig: Z[0],
+	availableSuits: Z
 });
-function Ke({ children: e, defaultSuit: t = "notionists", storageKey: n = "jdlc_avatar_suit" }) {
+function Ge({ children: e, defaultSuit: t = "notionists", storageKey: n = "jdlc_avatar_suit" }) {
 	let [r, a] = s(() => {
 		try {
 			if (typeof window < "u") {
 				let e = localStorage.getItem(n);
-				return e && X.some((t) => t.id === e) ? e : t;
+				return e && Z.some((t) => t.id === e) ? e : t;
 			}
 			return t;
 		} catch {
@@ -1879,40 +1879,40 @@ function Ke({ children: e, defaultSuit: t = "notionists", storageKey: n = "jdlc_
 			typeof window < "u" && localStorage.setItem(n, r);
 		} catch {}
 	}, [r, n]);
-	let o = X.find((e) => e.id === r) || X[0];
-	return /* @__PURE__ */ c(Ge.Provider, {
+	let o = Z.find((e) => e.id === r) || Z[0];
+	return /* @__PURE__ */ c(We.Provider, {
 		value: {
 			suit: r,
 			setSuit: a,
 			currentSuitConfig: o,
-			availableSuits: X
+			availableSuits: Z
 		},
 		children: e
 	});
 }
-function qe() {
-	let e = r(Ge);
+function Ke() {
+	let e = r(We);
 	if (!e) {
 		let e = "notionists";
 		try {
 			if (typeof window < "u") {
 				let t = localStorage.getItem("jdlc_avatar_suit");
-				t && X.some((e) => e.id === t) && (e = t);
+				t && Z.some((e) => e.id === t) && (e = t);
 			}
 		} catch {}
-		let t = X.find((t) => t.id === e) || X[0];
+		let t = Z.find((t) => t.id === e) || Z[0];
 		return {
 			suit: e,
 			setSuit: () => {},
 			currentSuitConfig: t,
-			availableSuits: X
+			availableSuits: Z
 		};
 	}
 	return e;
 }
 //#endregion
 //#region src/context/ThemeContext.jsx
-var Z = [
+var Q = [
 	{
 		id: "linear",
 		name: "Linear Kinetic",
@@ -1963,13 +1963,13 @@ var Z = [
 		accentHex: "#0F766E",
 		isLight: !0
 	}
-], Je = t({
+], qe = t({
 	theme: "linear",
 	setTheme: () => {},
-	currentThemeConfig: Z[0],
-	availableThemes: Z
+	currentThemeConfig: Q[0],
+	availableThemes: Q
 });
-function Ye({ children: e, defaultTheme: t = "linear", storageKey: n = "jdlc_theme" }) {
+function Je({ children: e, defaultTheme: t = "linear", storageKey: n = "jdlc_theme" }) {
 	let [r, a] = s(() => {
 		try {
 			return typeof window < "u" && localStorage.getItem(n) || t;
@@ -1982,28 +1982,28 @@ function Ye({ children: e, defaultTheme: t = "linear", storageKey: n = "jdlc_the
 			typeof document < "u" && (document.documentElement.setAttribute("data-theme", r), localStorage.setItem(n, r));
 		} catch {}
 	}, [r, n]);
-	let o = Z.find((e) => e.id === r) || Z[0];
-	return /* @__PURE__ */ c(Je.Provider, {
+	let o = Q.find((e) => e.id === r) || Q[0];
+	return /* @__PURE__ */ c(qe.Provider, {
 		value: {
 			theme: r,
 			setTheme: a,
 			currentThemeConfig: o,
-			availableThemes: Z
+			availableThemes: Q
 		},
-		children: /* @__PURE__ */ c(Ke, { children: e })
+		children: /* @__PURE__ */ c(Ge, { children: e })
 	});
 }
-function Xe() {
-	return r(Je) || {
+function Ye() {
+	return r(qe) || {
 		theme: "linear",
 		setTheme: () => {},
-		currentThemeConfig: Z[0],
-		availableThemes: Z
+		currentThemeConfig: Q[0],
+		availableThemes: Q
 	};
 }
 //#endregion
 //#region src/components/Avatar.jsx
-var Ze = {
+var Xe = {
 	notionists: "notionists",
 	bottts: "bottts",
 	lorelei: "lorelei",
@@ -2013,14 +2013,14 @@ var Ze = {
 	"pixel-art": "pixel-art",
 	adventurer: "adventurer"
 };
-function Qe({ seed: e = "jdlc-user", suit: t = "notionists", size: n = 64, radius: r = 50, backgroundColor: i = null } = {}) {
-	let a = Ze[t] || "notionists", o = new URLSearchParams({
+function Ze({ seed: e = "jdlc-user", suit: t = "notionists", size: n = 64, radius: r = 50, backgroundColor: i = null } = {}) {
+	let a = Xe[t] || "notionists", o = new URLSearchParams({
 		seed: encodeURIComponent(e || "jdlc-user"),
 		size: n.toString()
 	});
 	return r != null && o.set("radius", r.toString()), i && o.set("backgroundColor", i.replace("#", "")), `https://api.dicebear.com/10.x/${a}/svg?${o.toString()}`;
 }
-var $e = {
+var Qe = {
 	xs: {
 		container: "w-5 h-5 text-[9px]",
 		status: "w-1.5 h-1.5 ring-1",
@@ -2046,25 +2046,25 @@ var $e = {
 		status: "w-3.5 h-3.5 ring-2",
 		px: 56
 	}
-}, et = {
+}, $e = {
 	circle: "rounded-full",
 	rounded: "rounded-xl",
 	square: "rounded-none"
-}, tt = {
+}, et = {
 	online: "bg-emerald-500",
 	busy: "bg-rose-500",
 	away: "bg-amber-500",
 	offline: "bg-slate-500"
 };
-function nt({ seed: e, name: t, src: n, suit: r = "notionists", size: i = "md", shape: a = "circle", status: o, className: u, alt: d, ...f }) {
-	let [p, m] = s(!1), h = $e[i] || $e.md, g = et[a] || et.circle, _ = (t || e || "U").toString().trim().charAt(0).toUpperCase(), v = n || Qe({
+function tt({ seed: e, name: t, src: n, suit: r = "notionists", size: i = "md", shape: a = "circle", status: o, className: u, alt: d, ...f }) {
+	let [p, m] = s(!1), h = Qe[i] || Qe.md, g = $e[a] || $e.circle, _ = (t || e || "U").toString().trim().charAt(0).toUpperCase(), v = n || Ze({
 		seed: e || t || "jdlc-user",
 		suit: r,
 		size: h.px * 2,
 		radius: a === "circle" ? 50 : a === "rounded" ? 20 : 0
 	});
 	return /* @__PURE__ */ l("div", {
-		className: Y("relative inline-flex items-center justify-center shrink-0 select-none bg-[var(--bg-elevated)] border border-[var(--border-subtle)] overflow-hidden shadow-xs", h.container, g, u),
+		className: X("relative inline-flex items-center justify-center shrink-0 select-none bg-[var(--bg-elevated)] border border-[var(--border-subtle)] overflow-hidden shadow-xs", h.container, g, u),
 		...f,
 		children: [p ? /* @__PURE__ */ c("span", {
 			className: "font-bold text-slate-200 uppercase font-[var(--font-heading)] leading-none",
@@ -2075,21 +2075,21 @@ function nt({ seed: e, name: t, src: n, suit: r = "notionists", size: i = "md", 
 			onError: () => m(!0),
 			className: "w-full h-full object-cover",
 			loading: "lazy"
-		}), o && tt[o] && /* @__PURE__ */ c("span", {
-			className: Y("absolute bottom-0 right-0 rounded-full ring-[var(--bg-surface)]", h.status, tt[o]),
+		}), o && et[o] && /* @__PURE__ */ c("span", {
+			className: X("absolute bottom-0 right-0 rounded-full ring-[var(--bg-surface)]", h.status, et[o]),
 			"aria-label": `Status: ${o}`
 		})]
 	});
 }
-function rt({ children: t, max: n = 4, size: r = "sm", className: i }) {
-	let a = e.Children.toArray(t), o = a.slice(0, n), s = a.length - n, u = $e[r] || $e.sm;
+function nt({ children: t, max: n = 4, size: r = "sm", className: i }) {
+	let a = e.Children.toArray(t), o = a.slice(0, n), s = a.length - n, u = Qe[r] || Qe.sm;
 	return /* @__PURE__ */ l("div", {
-		className: Y("flex items-center -space-x-2", i),
+		className: X("flex items-center -space-x-2", i),
 		children: [o.map((t, n) => /* @__PURE__ */ c("div", {
 			className: "relative ring-2 ring-[var(--bg-root)] rounded-full",
 			children: e.isValidElement(t) ? e.cloneElement(t, { size: r }) : t
 		}, n)), s > 0 && /* @__PURE__ */ l("div", {
-			className: Y("relative inline-flex items-center justify-center rounded-full bg-[var(--bg-elevated)] border border-[var(--border-subtle)] ring-2 ring-[var(--bg-root)] font-bold text-slate-300 font-mono text-[10px]", u.container),
+			className: X("relative inline-flex items-center justify-center rounded-full bg-[var(--bg-elevated)] border border-[var(--border-subtle)] ring-2 ring-[var(--bg-root)] font-bold text-slate-300 font-mono text-[10px]", u.container),
 			title: `${s} more`,
 			children: ["+", s]
 		})]
@@ -2097,7 +2097,7 @@ function rt({ children: t, max: n = 4, size: r = "sm", className: i }) {
 }
 //#endregion
 //#region src/components/Dropdown.jsx
-function it({ trigger: e, items: t = [], align: n = "right", className: r }) {
+function rt({ trigger: e, items: t = [], align: n = "right", className: r }) {
 	let [a, u] = s(!1), d = o(null);
 	return i(() => {
 		function e(e) {
@@ -2115,7 +2115,7 @@ function it({ trigger: e, items: t = [], align: n = "right", className: r }) {
 			className: "cursor-pointer inline-flex",
 			children: e
 		}), a && /* @__PURE__ */ c("div", {
-			className: Y("absolute z-50 mt-1.5 w-48 rounded-xl bg-[var(--bg-surface)] border border-[var(--border-medium)] p-1.5 shadow-2xl backdrop-blur-md animate-in fade-in zoom-in-95 duration-150", n === "right" ? "right-0" : "left-0", r),
+			className: X("absolute z-50 mt-1.5 w-48 rounded-xl bg-[var(--bg-surface)] border border-[var(--border-medium)] p-1.5 shadow-2xl backdrop-blur-md animate-in fade-in zoom-in-95 duration-150", n === "right" ? "right-0" : "left-0", r),
 			children: t.map((e, t) => {
 				if (e.divider) return /* @__PURE__ */ c("div", { className: "my-1 border-t border-[var(--border-subtle)]" }, t);
 				let n = e.icon;
@@ -2124,7 +2124,7 @@ function it({ trigger: e, items: t = [], align: n = "right", className: r }) {
 					onClick: (t) => {
 						t.preventDefault(), t.stopPropagation(), u(!1), e.onClick && e.onClick();
 					},
-					className: Y("flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-xs font-medium text-[var(--text-muted)] transition-colors hover:bg-[var(--bg-hover)] hover:text-[var(--text-main)] cursor-pointer", e.danger && "text-rose-400 hover:bg-rose-500/15 hover:text-rose-300", e.active && "bg-[var(--bg-elevated)] text-[var(--color-primary-glow)] font-semibold"),
+					className: X("flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-xs font-medium text-[var(--text-muted)] transition-colors hover:bg-[var(--bg-hover)] hover:text-[var(--text-main)] cursor-pointer", e.danger && "text-rose-400 hover:bg-rose-500/15 hover:text-rose-300", e.active && "bg-[var(--bg-elevated)] text-[var(--color-primary-glow)] font-semibold"),
 					children: [
 						n && /* @__PURE__ */ c(n, { className: "w-3.5 h-3.5 shrink-0" }),
 						/* @__PURE__ */ c("span", {
@@ -2143,12 +2143,12 @@ function it({ trigger: e, items: t = [], align: n = "right", className: r }) {
 }
 //#endregion
 //#region src/components/AvatarSelector.jsx
-function at({ className: e, align: t = "right", seed: n = "jdlc-user" }) {
-	let { suit: r, setSuit: i, availableSuits: a, currentSuitConfig: o } = qe(), s = a.map((e) => ({
+function it({ className: e, align: t = "right", seed: n = "jdlc-user" }) {
+	let { suit: r, setSuit: i, availableSuits: a, currentSuitConfig: o } = Ke(), s = a.map((e) => ({
 		label: e.name,
 		active: e.id === r,
 		onClick: () => i(e.id),
-		icon: () => /* @__PURE__ */ c(nt, {
+		icon: () => /* @__PURE__ */ c(tt, {
 			seed: n,
 			suit: e.id,
 			size: "xs",
@@ -2156,10 +2156,10 @@ function at({ className: e, align: t = "right", seed: n = "jdlc-user" }) {
 		})
 	})), u = /* @__PURE__ */ l("button", {
 		type: "button",
-		className: Y("flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-[var(--bg-subtle)] hover:bg-[var(--bg-hover)] border border-[var(--border-subtle)] text-xs font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors cursor-pointer", e),
+		className: X("flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-[var(--bg-subtle)] hover:bg-[var(--bg-hover)] border border-[var(--border-subtle)] text-xs font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors cursor-pointer", e),
 		title: `Active Avatar Set: ${o.name}`,
 		children: [
-			/* @__PURE__ */ c(nt, {
+			/* @__PURE__ */ c(tt, {
 				seed: n,
 				suit: o.id,
 				size: "xs",
@@ -2183,7 +2183,7 @@ function at({ className: e, align: t = "right", seed: n = "jdlc-user" }) {
 			})
 		]
 	});
-	return /* @__PURE__ */ c(it, {
+	return /* @__PURE__ */ c(rt, {
 		trigger: u,
 		items: s,
 		align: t
@@ -2191,12 +2191,12 @@ function at({ className: e, align: t = "right", seed: n = "jdlc-user" }) {
 }
 //#endregion
 //#region src/components/Button.jsx
-function ot({ children: e, className: t, variant: n = "default", size: r = "md", disabled: i = !1, isLoading: a = !1, onClick: o, type: s = "button", icon: u, ...d }) {
+function at({ children: e, className: t, variant: n = "default", size: r = "md", disabled: i = !1, isLoading: a = !1, onClick: o, type: s = "button", icon: u, ...d }) {
 	return /* @__PURE__ */ l("button", {
 		type: s,
 		disabled: i || a,
 		onClick: o,
-		className: Y("inline-flex items-center justify-center font-medium rounded-lg transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring-focus)] active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none cursor-pointer select-none", {
+		className: X("inline-flex items-center justify-center font-medium rounded-lg transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring-focus)] active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none cursor-pointer select-none", {
 			default: "bg-[var(--color-primary)] text-[var(--color-primary-content)] hover:bg-[var(--color-primary-hover)] shadow-sm hover:shadow-[0_0_15px_rgba(124,58,237,0.35)]",
 			primary: "bg-[var(--color-primary)] text-[var(--color-primary-content)] hover:bg-[var(--color-primary-hover)] shadow-sm hover:shadow-[0_0_15px_rgba(124,58,237,0.35)]",
 			secondary: "bg-[var(--bg-elevated)] text-[var(--text-main)] hover:bg-[var(--bg-hover)] border border-[var(--border-subtle)] hover:border-[var(--border-medium)]",
@@ -2238,53 +2238,53 @@ function ot({ children: e, className: t, variant: n = "default", size: r = "md",
 }
 //#endregion
 //#region src/components/Card.jsx
-function st({ children: e, className: t, hover: n = !0, ...r }) {
+function ot({ children: e, className: t, hover: n = !0, ...r }) {
 	return /* @__PURE__ */ c("div", {
-		className: Y("bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-xl p-4 shadow-sm transition-all duration-200", n && "hover:border-[var(--border-medium)] hover:shadow-md hover:bg-[var(--bg-elevated)]", t),
+		className: X("bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-xl p-4 shadow-sm transition-all duration-200", n && "hover:border-[var(--border-medium)] hover:shadow-md hover:bg-[var(--bg-elevated)]", t),
 		...r,
 		children: e
 	});
 }
-function ct({ children: e, className: t, ...n }) {
+function st({ children: e, className: t, ...n }) {
 	return /* @__PURE__ */ c("div", {
-		className: Y("flex items-center justify-between gap-2 mb-3", t),
+		className: X("flex items-center justify-between gap-2 mb-3", t),
+		...n,
+		children: e
+	});
+}
+function ct({ children: e, className: t, ...n }) {
+	return /* @__PURE__ */ c("h3", {
+		className: X("font-semibold text-[var(--text-main)] text-sm tracking-tight", t),
 		...n,
 		children: e
 	});
 }
 function lt({ children: e, className: t, ...n }) {
-	return /* @__PURE__ */ c("h3", {
-		className: Y("font-semibold text-[var(--text-main)] text-sm tracking-tight", t),
+	return /* @__PURE__ */ c("p", {
+		className: X("text-xs text-[var(--text-dim)] mt-0.5", t),
 		...n,
 		children: e
 	});
 }
 function ut({ children: e, className: t, ...n }) {
-	return /* @__PURE__ */ c("p", {
-		className: Y("text-xs text-[var(--text-dim)] mt-0.5", t),
+	return /* @__PURE__ */ c("div", {
+		className: X("text-sm text-[var(--text-muted)]", t),
 		...n,
 		children: e
 	});
 }
 function dt({ children: e, className: t, ...n }) {
 	return /* @__PURE__ */ c("div", {
-		className: Y("text-sm text-[var(--text-muted)]", t),
-		...n,
-		children: e
-	});
-}
-function ft({ children: e, className: t, ...n }) {
-	return /* @__PURE__ */ c("div", {
-		className: Y("flex items-center justify-end gap-2 mt-4 pt-3 border-t border-[var(--border-subtle)]", t),
+		className: X("flex items-center justify-end gap-2 mt-4 pt-3 border-t border-[var(--border-subtle)]", t),
 		...n,
 		children: e
 	});
 }
 //#endregion
 //#region src/components/Badge.jsx
-function Q({ children: e, className: t, variant: n = "default", size: r = "md", dot: i = !1, ...a }) {
+function $({ children: e, className: t, variant: n = "default", size: r = "md", dot: i = !1, ...a }) {
 	return /* @__PURE__ */ l("span", {
-		className: Y("inline-flex items-center font-medium rounded-md tracking-wide select-none", {
+		className: X("inline-flex items-center font-medium rounded-md tracking-wide select-none", {
 			default: "bg-[var(--bg-elevated)] text-[var(--text-main)] border border-[var(--border-subtle)]",
 			primary: "bg-[var(--color-primary)]/15 text-[var(--color-primary)] border border-[var(--color-primary)]/30 font-semibold",
 			accent: "bg-[var(--color-accent)]/15 text-[var(--color-accent)] border border-[var(--color-accent)]/30 font-semibold",
@@ -2307,7 +2307,7 @@ function Q({ children: e, className: t, variant: n = "default", size: r = "md", 
 }
 //#endregion
 //#region src/components/Input.jsx
-function pt({ className: e, type: t = "text", label: n, id: r, error: i, helperText: a, icon: o, ...s }) {
+function ft({ className: e, type: t = "text", label: n, id: r, error: i, helperText: a, icon: o, ...s }) {
 	let u = r || (n ? `input-${n.toLowerCase().replace(/[^a-z0-9]/g, "-")}` : void 0);
 	return /* @__PURE__ */ l("div", {
 		className: "w-full space-y-1.5",
@@ -2325,7 +2325,7 @@ function pt({ className: e, type: t = "text", label: n, id: r, error: i, helperT
 				}), /* @__PURE__ */ c("input", {
 					id: u,
 					type: t,
-					className: Y("w-full bg-[var(--bg-subtle)] text-[var(--text-main)] text-sm rounded-lg border border-[var(--border-subtle)] px-3 py-2 transition-all duration-150", "focus:outline-none focus:border-[var(--border-strong)] focus:ring-2 focus:ring-[var(--ring-focus)]", "placeholder:text-[var(--text-dim)] disabled:opacity-50 disabled:cursor-not-allowed", o && "pl-9", i && "border-rose-500 focus:ring-rose-500/30", e),
+					className: X("w-full bg-[var(--bg-subtle)] text-[var(--text-main)] text-sm rounded-lg border border-[var(--border-subtle)] px-3 py-2 transition-all duration-150", "focus:outline-none focus:border-[var(--border-strong)] focus:ring-2 focus:ring-[var(--ring-focus)]", "placeholder:text-[var(--text-dim)] disabled:opacity-50 disabled:cursor-not-allowed", o && "pl-9", i && "border-rose-500 focus:ring-rose-500/30", e),
 					...s
 				})]
 			}),
@@ -2340,7 +2340,7 @@ function pt({ className: e, type: t = "text", label: n, id: r, error: i, helperT
 		]
 	});
 }
-function mt({ className: e, label: t, id: n, error: r, helperText: i, rows: a = 3, ...o }) {
+function pt({ className: e, label: t, id: n, error: r, helperText: i, rows: a = 3, ...o }) {
 	let s = n || (t ? `textarea-${t.toLowerCase().replace(/[^a-z0-9]/g, "-")}` : void 0);
 	return /* @__PURE__ */ l("div", {
 		className: "w-full space-y-1.5",
@@ -2353,7 +2353,7 @@ function mt({ className: e, label: t, id: n, error: r, helperText: i, rows: a = 
 			/* @__PURE__ */ c("textarea", {
 				id: s,
 				rows: a,
-				className: Y("w-full bg-[var(--bg-subtle)] text-[var(--text-main)] text-sm rounded-lg border border-[var(--border-subtle)] p-3 transition-all duration-150", "focus:outline-none focus:border-[var(--border-strong)] focus:ring-2 focus:ring-[var(--ring-focus)]", "placeholder:text-[var(--text-dim)] disabled:opacity-50 disabled:cursor-not-allowed resize-none", r && "border-rose-500 focus:ring-rose-500/30", e),
+				className: X("w-full bg-[var(--bg-subtle)] text-[var(--text-main)] text-sm rounded-lg border border-[var(--border-subtle)] p-3 transition-all duration-150", "focus:outline-none focus:border-[var(--border-strong)] focus:ring-2 focus:ring-[var(--ring-focus)]", "placeholder:text-[var(--text-dim)] disabled:opacity-50 disabled:cursor-not-allowed resize-none", r && "border-rose-500 focus:ring-rose-500/30", e),
 				...o
 			}),
 			r && /* @__PURE__ */ c("p", {
@@ -2367,7 +2367,7 @@ function mt({ className: e, label: t, id: n, error: r, helperText: i, rows: a = 
 		]
 	});
 }
-function ht({ className: e, label: t, id: n, error: r, helperText: i, children: a, icon: o, ...s }) {
+function mt({ className: e, label: t, id: n, error: r, helperText: i, children: a, icon: o, ...s }) {
 	let u = n || (t ? `select-${t.toLowerCase().replace(/[^a-z0-9]/g, "-")}` : void 0);
 	return /* @__PURE__ */ l("div", {
 		className: "w-full space-y-1.5",
@@ -2384,7 +2384,7 @@ function ht({ className: e, label: t, id: n, error: r, helperText: i, children: 
 					children: /* @__PURE__ */ c(o, { className: "w-4 h-4" })
 				}), /* @__PURE__ */ c("select", {
 					id: u,
-					className: Y("w-full bg-[var(--bg-subtle)] text-[var(--text-main)] text-sm rounded-lg border border-[var(--border-subtle)] px-3 py-2 transition-all duration-150 cursor-pointer", "focus:outline-none focus:border-[var(--border-strong)] focus:ring-2 focus:ring-[var(--ring-focus)]", o && "pl-9", r && "border-rose-500 focus:ring-rose-500/30", e),
+					className: X("w-full bg-[var(--bg-subtle)] text-[var(--text-main)] text-sm rounded-lg border border-[var(--border-subtle)] px-3 py-2 transition-all duration-150 cursor-pointer", "focus:outline-none focus:border-[var(--border-strong)] focus:ring-2 focus:ring-[var(--ring-focus)]", o && "pl-9", r && "border-rose-500 focus:ring-rose-500/30", e),
 					...s,
 					children: a
 				})]
@@ -2402,7 +2402,7 @@ function ht({ className: e, label: t, id: n, error: r, helperText: i, children: 
 }
 //#endregion
 //#region src/components/Dialog.jsx
-function gt({ isOpen: e, onClose: t, title: n, description: r, subtitle: a, icon: o, headerAction: s, ariaLabel: u, children: d, maxWidth: f = "max-w-lg", className: p }) {
+function ht({ isOpen: e, onClose: t, title: n, description: r, subtitle: a, icon: o, headerAction: s, ariaLabel: u, children: d, maxWidth: f = "max-w-lg", className: p }) {
 	if (i(() => {
 		let n = (e) => {
 			e.key === "Escape" && t?.();
@@ -2421,7 +2421,7 @@ function gt({ isOpen: e, onClose: t, title: n, description: r, subtitle: a, icon
 			className: "fixed inset-0 bg-black/75 backdrop-blur-md transition-opacity",
 			onClick: t
 		}), /* @__PURE__ */ l("div", {
-			className: Y("relative w-full bg-[var(--bg-surface)] border border-[var(--border-medium)] rounded-2xl shadow-2xl z-10 overflow-hidden flex flex-col max-h-[92vh]", f, p),
+			className: X("relative w-full bg-[var(--bg-surface)] border border-[var(--border-medium)] rounded-2xl shadow-2xl z-10 overflow-hidden flex flex-col max-h-[92vh]", f, p),
 			onClick: (e) => e.stopPropagation(),
 			children: [(n || m || o || s || t) && /* @__PURE__ */ l("div", {
 				className: "flex items-start justify-between p-4 sm:p-5 border-b border-[var(--border-subtle)] bg-[var(--bg-subtle)]/60 shrink-0",
@@ -2467,23 +2467,23 @@ function gt({ isOpen: e, onClose: t, title: n, description: r, subtitle: a, icon
 }
 //#endregion
 //#region src/components/Tabs.jsx
-function _t({ tabs: e = [], activeTab: t, onChange: n, className: r }) {
+function gt({ tabs: e = [], activeTab: t, onChange: n, className: r }) {
 	return /* @__PURE__ */ c("div", {
-		className: Y("inline-flex items-center p-1 bg-[var(--bg-subtle)] border border-[var(--border-subtle)] rounded-lg", r),
+		className: X("inline-flex items-center p-1 bg-[var(--bg-subtle)] border border-[var(--border-subtle)] rounded-lg", r),
 		children: e.map((e) => {
 			let r = t === e.id, i = e.icon;
 			return /* @__PURE__ */ l("button", {
 				type: "button",
 				onClick: () => n(e.id),
-				className: Y("flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 text-xs font-medium rounded-md transition-all duration-150 cursor-pointer select-none", r ? "bg-[var(--bg-elevated)] text-[var(--text-main)] shadow-sm border border-[var(--border-medium)]" : "text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-hover)]/60 font-medium"),
+				className: X("flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 text-xs font-medium rounded-md transition-all duration-150 cursor-pointer select-none", r ? "bg-[var(--bg-elevated)] text-[var(--text-main)] shadow-sm border border-[var(--border-medium)]" : "text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-hover)]/60 font-medium"),
 				children: [
 					i && /* @__PURE__ */ c(i, { className: "w-3.5 h-3.5 shrink-0" }),
 					/* @__PURE__ */ c("span", {
-						className: Y(e.hideLabelOnMobile && "hidden sm:inline"),
+						className: X(e.hideLabelOnMobile && "hidden sm:inline"),
 						children: e.label
 					}),
 					e.count !== void 0 && /* @__PURE__ */ c("span", {
-						className: Y("px-1.5 py-0.5 rounded text-[10px] font-mono", r ? "bg-[var(--color-primary)]/20 text-[var(--color-primary-glow)] font-bold" : "bg-[var(--bg-elevated)] text-[var(--text-dim)] border border-[var(--border-subtle)]"),
+						className: X("px-1.5 py-0.5 rounded text-[10px] font-mono", r ? "bg-[var(--color-primary)]/20 text-[var(--color-primary-glow)] font-bold" : "bg-[var(--bg-elevated)] text-[var(--text-dim)] border border-[var(--border-subtle)]"),
 						children: e.count
 					})
 				]
@@ -2493,8 +2493,8 @@ function _t({ tabs: e = [], activeTab: t, onChange: n, className: r }) {
 }
 //#endregion
 //#region src/components/ThemeSelector.jsx
-function vt({ className: e, align: t = "right" }) {
-	let { theme: n, setTheme: r, availableThemes: i, currentThemeConfig: a } = Xe(), o = i.map((e) => ({
+function _t({ className: e, align: t = "right" }) {
+	let { theme: n, setTheme: r, availableThemes: i, currentThemeConfig: a } = Ye(), o = i.map((e) => ({
 		label: e.name,
 		active: e.id === n,
 		onClick: () => r(e.id),
@@ -2504,7 +2504,7 @@ function vt({ className: e, align: t = "right" }) {
 		})
 	})), s = /* @__PURE__ */ l("button", {
 		type: "button",
-		className: Y("flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-[var(--bg-subtle)] hover:bg-[var(--bg-hover)] border border-[var(--border-subtle)] text-xs font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors cursor-pointer", e),
+		className: X("flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-[var(--bg-subtle)] hover:bg-[var(--bg-hover)] border border-[var(--border-subtle)] text-xs font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors cursor-pointer", e),
 		children: [
 			/* @__PURE__ */ c("span", {
 				className: "w-2.5 h-2.5 rounded-full shadow-sm",
@@ -2528,7 +2528,7 @@ function vt({ className: e, align: t = "right" }) {
 			})
 		]
 	});
-	return /* @__PURE__ */ c(it, {
+	return /* @__PURE__ */ c(rt, {
 		trigger: s,
 		items: o,
 		align: t
@@ -2536,7 +2536,7 @@ function vt({ className: e, align: t = "right" }) {
 }
 //#endregion
 //#region src/lib/suiteUtils.js
-var yt = [
+var vt = [
 	{
 		id: "taskflow",
 		name: "TaskFlow",
@@ -2557,9 +2557,16 @@ var yt = [
 		description: "Roadtrip & Travel Itineraries",
 		badge: "Travel",
 		color: "#10B981"
+	},
+	{
+		id: "bandido",
+		name: "Bandido",
+		description: "Band CRM, Setlists & Stage Engine",
+		badge: "Music",
+		color: "#F59E0B"
 	}
 ];
-function $(e) {
+function yt(e) {
 	if (typeof window > "u") return "#";
 	try {
 		let t = `VITE_${e.toUpperCase()}_URL`;
@@ -2570,7 +2577,8 @@ function $(e) {
 		taskflow: 5173,
 		budgetcast: 5174,
 		tripplanner: 5175,
-		main: 5176
+		bandido: 5176,
+		main: 5170
 	}[e] || 5173}` : t.includes("jdlc.se") ? e === "main" ? "https://jdlc.se" : `https://${e}.jdlc.se` : `https://${e}.${t}`;
 }
 //#endregion
@@ -2609,6 +2617,30 @@ function bt({ currentApp: e = "taskflow", className: t, align: n = "left" }) {
 					d: "M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"
 				})
 			});
+			case "tripplanner": return /* @__PURE__ */ c("svg", {
+				viewBox: "0 0 24 24",
+				fill: "none",
+				stroke: "currentColor",
+				strokeWidth: "2",
+				className: "w-4 h-4",
+				children: /* @__PURE__ */ c("path", {
+					strokeLinecap: "round",
+					strokeLinejoin: "round",
+					d: "M9 6.75V15m6-6v8.25m.53 3.72a.75.75 0 01-.82.08L9 18l-5.71 2.855A.75.75 0 012.25 20.19V6.44a.75.75 0 01.42-.67l6-3a.75.75 0 01.66 0l5.71 2.855a.75.75 0 01.42.67v13.75a.75.75 0 01-.93.72z"
+				})
+			});
+			case "bandido": return /* @__PURE__ */ c("svg", {
+				viewBox: "0 0 24 24",
+				fill: "none",
+				stroke: "currentColor",
+				strokeWidth: "2",
+				className: "w-4 h-4",
+				children: /* @__PURE__ */ c("path", {
+					strokeLinecap: "round",
+					strokeLinejoin: "round",
+					d: "M9 9l10.5-3m0 6.553v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 11-.99-3.467l2.31-.66V6.5m-8.368 4.755v5.06a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 01-.99-3.467l2.31-.66V9.75"
+				})
+			});
 			default: return /* @__PURE__ */ c("svg", {
 				viewBox: "0 0 24 24",
 				fill: "none",
@@ -2622,14 +2654,14 @@ function bt({ currentApp: e = "taskflow", className: t, align: n = "left" }) {
 				})
 			});
 		}
-	};
+	}, p = vt.filter((t) => t.id !== e);
 	return /* @__PURE__ */ l("div", {
 		className: "relative inline-block text-left",
 		ref: u,
 		children: [/* @__PURE__ */ c("button", {
 			type: "button",
 			onClick: () => a((e) => !e),
-			className: Y("p-2 rounded-xl text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-elevated)] border border-transparent hover:border-[var(--border-subtle)] transition-colors cursor-pointer flex items-center justify-center shrink-0", r && "bg-[var(--bg-elevated)] text-[var(--text-main)] border-[var(--border-subtle)]", t),
+			className: X("p-2 rounded-xl text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-elevated)] border border-transparent hover:border-[var(--border-subtle)] transition-colors cursor-pointer flex items-center justify-center shrink-0", r && "bg-[var(--bg-elevated)] text-[var(--text-main)] border-[var(--border-subtle)]", t),
 			title: "JDLC Cloud Suite Apps",
 			"aria-label": "JDLC Cloud Suite Apps",
 			"aria-expanded": r,
@@ -2686,14 +2718,14 @@ function bt({ currentApp: e = "taskflow", className: t, align: n = "left" }) {
 				]
 			})
 		}), r && /* @__PURE__ */ l("div", {
-			className: Y("absolute z-50 mt-2 w-72 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-medium)] p-2.5 shadow-2xl backdrop-blur-xl animate-in fade-in zoom-in-95 duration-150", n === "right" ? "right-0" : "left-0"),
+			className: X("absolute z-50 mt-2 w-72 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-medium)] p-2.5 shadow-2xl backdrop-blur-xl animate-in fade-in zoom-in-95 duration-150", n === "right" ? "right-0" : "left-0"),
 			children: [
 				/* @__PURE__ */ l("div", {
 					className: "flex items-center justify-between px-2.5 py-1.5 mb-1.5 border-b border-[var(--border-subtle)]",
 					children: [/* @__PURE__ */ c("span", {
 						className: "text-xs font-bold tracking-tight text-[var(--text-main)] font-[var(--font-heading)]",
 						children: "JDLC Suite"
-					}), /* @__PURE__ */ c(Q, {
+					}), /* @__PURE__ */ c($, {
 						variant: d ? "subtle" : "primary",
 						size: "xs",
 						className: "font-mono text-[9px]",
@@ -2702,46 +2734,39 @@ function bt({ currentApp: e = "taskflow", className: t, align: n = "left" }) {
 				}),
 				/* @__PURE__ */ c("div", {
 					className: "space-y-1",
-					children: yt.map((t) => {
-						let n = t.id === e, r = $(t.id);
+					children: p.map((e) => {
+						let t = yt(e.id);
 						return /* @__PURE__ */ l("a", {
-							href: n ? void 0 : r,
-							onClick: (e) => {
-								n && (e.preventDefault(), a(!1));
-							},
-							className: Y("flex items-center gap-3 p-2 rounded-xl transition-all", n ? "bg-[var(--bg-elevated)] border border-[var(--border-medium)] cursor-default" : "hover:bg-[var(--bg-hover)] border border-transparent hover:border-[var(--border-subtle)] cursor-pointer text-[var(--text-muted)] hover:text-[var(--text-main)]"),
+							href: t,
+							onClick: () => a(!1),
+							className: "flex items-center gap-3 p-2 rounded-xl transition-all hover:bg-[var(--bg-hover)] border border-transparent hover:border-[var(--border-subtle)] cursor-pointer text-[var(--text-muted)] hover:text-[var(--text-main)]",
 							children: [/* @__PURE__ */ c("div", {
 								className: "w-8 h-8 rounded-lg flex items-center justify-center text-white shrink-0 shadow-sm",
-								style: { backgroundColor: t.color },
-								children: f(t.id)
+								style: { backgroundColor: e.color },
+								children: f(e.id)
 							}), /* @__PURE__ */ l("div", {
 								className: "flex-1 min-w-0",
 								children: [/* @__PURE__ */ l("div", {
 									className: "flex items-center justify-between gap-1.5",
 									children: [/* @__PURE__ */ c("span", {
 										className: "text-xs font-bold tracking-tight text-[var(--text-main)] font-[var(--font-heading)] truncate",
-										children: t.name
-									}), n ? /* @__PURE__ */ c(Q, {
-										variant: "subtle",
-										size: "xs",
-										className: "text-[9px] py-0 px-1 font-mono",
-										children: "Current"
-									}) : /* @__PURE__ */ c("span", {
+										children: e.name
+									}), /* @__PURE__ */ c("span", {
 										className: "text-[10px] text-slate-500 font-mono",
-										children: d ? `:${$(t.id).split(":").pop()}` : "open ↗"
+										children: d ? `:${t.split(":").pop()}` : "open ↗"
 									})]
 								}), /* @__PURE__ */ c("p", {
 									className: "text-[10px] text-slate-400 truncate mt-0.5",
-									children: t.description
+									children: e.description
 								})]
 							})]
-						}, t.id);
+						}, e.id);
 					})
 				}),
 				/* @__PURE__ */ l("div", {
 					className: "mt-2 pt-1.5 border-t border-[var(--border-subtle)] px-2.5 flex items-center justify-between text-[10px] text-slate-400",
 					children: [/* @__PURE__ */ c("span", { children: "JDLC Ecosystem" }), /* @__PURE__ */ c("a", {
-						href: $("main"),
+						href: yt("main"),
 						className: "text-[var(--color-primary-glow)] hover:underline flex items-center gap-0.5",
 						children: "Portal Home ↗"
 					})]
@@ -2804,7 +2829,7 @@ function St({ children: e, position: t = "bottom-right" }) {
 	return /* @__PURE__ */ l(xt.Provider, {
 		value: d,
 		children: [e, /* @__PURE__ */ c("div", {
-			className: Y("fixed z-50 pointer-events-none flex flex-col gap-2 p-4 max-w-sm w-full", f[t] || f["bottom-right"]),
+			className: X("fixed z-50 pointer-events-none flex flex-col gap-2 p-4 max-w-sm w-full", f[t] || f["bottom-right"]),
 			children: r.map((e) => /* @__PURE__ */ c(wt, {
 				item: e,
 				onDismiss: () => o(e.id)
@@ -2883,10 +2908,10 @@ function wt({ item: e, onDismiss: t }) {
 	}, r = n[e.variant] || n.info;
 	return /* @__PURE__ */ l("div", {
 		role: "alert",
-		className: Y("pointer-events-auto flex items-start gap-3 p-3.5 rounded-xl bg-[var(--bg-surface)]/95 border backdrop-blur-md shadow-xl text-slate-200 transition-all duration-200 animate-in fade-in slide-in-from-bottom-2", r.border),
+		className: X("pointer-events-auto flex items-start gap-3 p-3.5 rounded-xl bg-[var(--bg-surface)]/95 border backdrop-blur-md shadow-xl text-slate-200 transition-all duration-200 animate-in fade-in slide-in-from-bottom-2", r.border),
 		children: [
 			/* @__PURE__ */ c("div", {
-				className: Y("p-1 rounded-lg border shrink-0 mt-0.5", r.badge),
+				className: X("p-1 rounded-lg border shrink-0 mt-0.5", r.badge),
 				children: r.icon
 			}),
 			/* @__PURE__ */ l("div", {
@@ -2926,7 +2951,7 @@ function Tt({ isOpen: e, onClose: t, placeholder: n = "Type a command or search.
 	let v = a(() => d ? {
 		id: "suite-apps",
 		heading: "JDLC Cloud Suite",
-		items: yt.filter((e) => e.id !== u).map((e) => ({
+		items: vt.filter((e) => e.id !== u).map((e) => ({
 			id: `suite-${e.id}`,
 			title: `Switch to ${e.name}`,
 			subtitle: e.description,
@@ -2937,7 +2962,7 @@ function Tt({ isOpen: e, onClose: t, placeholder: n = "Type a command or search.
 				children: e.name[0]
 			}),
 			action: () => {
-				let t = $(e.id);
+				let t = yt(e.id);
 				window.location.href = t;
 			}
 		}))
@@ -3042,7 +3067,7 @@ function Tt({ isOpen: e, onClose: t, placeholder: n = "Type a command or search.
 									typeof e.action == "function" && e.action(), t();
 								},
 								onMouseEnter: () => h(n),
-								className: Y("w-full flex items-center justify-between gap-3 px-3 py-2 rounded-xl text-left text-xs transition-colors cursor-pointer", n === m ? "bg-[var(--bg-hover)] text-white border border-[var(--border-subtle)]" : "text-slate-300 hover:text-white border border-transparent"),
+								className: X("w-full flex items-center justify-between gap-3 px-3 py-2 rounded-xl text-left text-xs transition-colors cursor-pointer", n === m ? "bg-[var(--bg-hover)] text-white border border-[var(--border-subtle)]" : "text-slate-300 hover:text-white border border-transparent"),
 								children: [/* @__PURE__ */ l("div", {
 									className: "flex items-center gap-2.5 min-w-0",
 									children: [e.icon && /* @__PURE__ */ c("div", {
@@ -3060,7 +3085,7 @@ function Tt({ isOpen: e, onClose: t, placeholder: n = "Type a command or search.
 									})]
 								}), /* @__PURE__ */ l("div", {
 									className: "flex items-center gap-1.5 shrink-0",
-									children: [e.badge && /* @__PURE__ */ c(Q, {
+									children: [e.badge && /* @__PURE__ */ c($, {
 										variant: "subtle",
 										size: "xs",
 										className: "text-[9px] py-0 px-1 font-mono",
@@ -3097,7 +3122,7 @@ function Tt({ isOpen: e, onClose: t, placeholder: n = "Type a command or search.
 //#endregion
 //#region src/components/UserMenu.jsx
 function Et({ user: e, displayName: t, avatarSeed: n, avatarSuit: r = null, status: a = "online", onSignIn: u, onSignOut: d, onOpenProfile: f, onOpenGuide: p, extraMenuItems: m = [], className: h, align: g = "right" }) {
-	let [_, v] = s(!1), y = o(null), { currentThemeConfig: b } = Xe(), { suit: x } = qe(), S = r || x || "notionists";
+	let [_, v] = s(!1), y = o(null), { currentThemeConfig: b } = Ye(), { suit: x } = Ke(), S = r || x || "notionists";
 	i(() => {
 		function e(e) {
 			y.current && !y.current.contains(e.target) && v(!1);
@@ -3106,16 +3131,16 @@ function Et({ user: e, displayName: t, avatarSeed: n, avatarSuit: r = null, stat
 	}, [_]);
 	let C = t || e?.user_metadata?.displayName || e?.email?.split("@")[0] || "Guest User", w = e?.email || "Local Offline Session", T = n || e?.email || C || "guest", E = !!e;
 	return /* @__PURE__ */ l("div", {
-		className: Y("relative inline-block text-left", h),
+		className: X("relative inline-block text-left", h),
 		ref: y,
 		children: [/* @__PURE__ */ l("button", {
 			type: "button",
 			onClick: () => v((e) => !e),
-			className: Y("flex items-center gap-2 p-1 pl-1.5 pr-2.5 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-subtle)] text-[var(--text-main)] hover:border-[var(--border-medium)] hover:bg-[var(--bg-hover)] transition-all cursor-pointer", _ && "border-[var(--border-medium)] bg-[var(--bg-elevated)]"),
+			className: X("flex items-center gap-2 p-1 pl-1.5 pr-2.5 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-subtle)] text-[var(--text-main)] hover:border-[var(--border-medium)] hover:bg-[var(--bg-hover)] transition-all cursor-pointer", _ && "border-[var(--border-medium)] bg-[var(--bg-elevated)]"),
 			title: E ? `Signed in as ${C}` : "Account & Preferences",
 			"aria-expanded": _,
 			children: [
-				/* @__PURE__ */ c(nt, {
+				/* @__PURE__ */ c(tt, {
 					seed: T,
 					name: C,
 					suit: S,
@@ -3129,7 +3154,7 @@ function Et({ user: e, displayName: t, avatarSeed: n, avatarSuit: r = null, stat
 				/* @__PURE__ */ c("svg", {
 					viewBox: "0 0 20 20",
 					fill: "currentColor",
-					className: Y("w-3.5 h-3.5 text-slate-400 transition-transform duration-150", _ && "rotate-180"),
+					className: X("w-3.5 h-3.5 text-slate-400 transition-transform duration-150", _ && "rotate-180"),
 					children: /* @__PURE__ */ c("path", {
 						fillRule: "evenodd",
 						d: "M5.22 8.22a.75.75 0 011.06 0L10 11.94l3.72-3.72a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.22 9.28a.75.75 0 010-1.06z",
@@ -3138,11 +3163,11 @@ function Et({ user: e, displayName: t, avatarSeed: n, avatarSuit: r = null, stat
 				})
 			]
 		}), _ && /* @__PURE__ */ l("div", {
-			className: Y("absolute z-50 mt-2 w-72 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-medium)] p-3 shadow-2xl backdrop-blur-xl animate-in fade-in zoom-in-95 duration-150", g === "right" ? "right-0" : "left-0"),
+			className: X("absolute z-50 mt-2 w-72 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-medium)] p-3 shadow-2xl backdrop-blur-xl animate-in fade-in zoom-in-95 duration-150", g === "right" ? "right-0" : "left-0"),
 			children: [
 				/* @__PURE__ */ l("div", {
 					className: "flex items-center gap-3 p-2 bg-[var(--bg-elevated)]/80 rounded-xl border border-[var(--border-subtle)] mb-2",
-					children: [/* @__PURE__ */ c(nt, {
+					children: [/* @__PURE__ */ c(tt, {
 						seed: T,
 						name: C,
 						suit: S,
@@ -3155,7 +3180,7 @@ function Et({ user: e, displayName: t, avatarSeed: n, avatarSuit: r = null, stat
 							children: [/* @__PURE__ */ c("span", {
 								className: "font-bold text-xs text-[var(--text-main)] truncate font-[var(--font-heading)]",
 								children: C
-							}), /* @__PURE__ */ c(Q, {
+							}), /* @__PURE__ */ c($, {
 								variant: E ? "success" : "subtle",
 								size: "xs",
 								className: "font-mono text-[9px] py-0 px-1",
@@ -3172,14 +3197,14 @@ function Et({ user: e, displayName: t, avatarSeed: n, avatarSuit: r = null, stat
 					children: [/* @__PURE__ */ c("span", {
 						className: "text-[var(--text-muted)] font-medium",
 						children: "Theme"
-					}), /* @__PURE__ */ c(vt, { align: "right" })]
+					}), /* @__PURE__ */ c(_t, { align: "right" })]
 				}),
 				/* @__PURE__ */ l("div", {
 					className: "px-2 py-1.5 flex items-center justify-between text-xs border-b border-[var(--border-subtle)]",
 					children: [/* @__PURE__ */ c("span", {
 						className: "text-[var(--text-muted)] font-medium",
 						children: "Avatar Set"
-					}), /* @__PURE__ */ c(at, {
+					}), /* @__PURE__ */ c(it, {
 						align: "right",
 						seed: T
 					})]
@@ -3222,7 +3247,7 @@ function Et({ user: e, displayName: t, avatarSeed: n, avatarSuit: r = null, stat
 							onClick: () => {
 								v(!1), e.onClick?.();
 							},
-							className: Y("w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs transition-colors cursor-pointer text-left", e.danger ? "text-rose-400 hover:bg-rose-500/10" : "text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-hover)]"),
+							className: X("w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs transition-colors cursor-pointer text-left", e.danger ? "text-rose-400 hover:bg-rose-500/10" : "text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-hover)]"),
 							children: [e.icon && /* @__PURE__ */ c("span", {
 								className: "w-4 h-4 text-[var(--text-dim)]",
 								children: e.icon
@@ -3278,7 +3303,7 @@ function Et({ user: e, displayName: t, avatarSeed: n, avatarSuit: r = null, stat
 //#region src/components/AppHeader.jsx
 function Dt({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "Flow", subtitle: r, icon: i, badge: a = "JDLC", statusBadge: o, onBrandClick: s, tabs: u, activeTab: d, onTabChange: f, centerContent: p, utilities: m, primaryAction: h, onOpenPalette: g, userMenu: _, showThemeSelector: v = !0, className: y, mobileBottomTabs: b = !1 }) {
 	return /* @__PURE__ */ l("header", {
-		className: Y("sticky top-0 z-30 w-full border-b border-[var(--border-subtle)] bg-[var(--bg-root)]/90 backdrop-blur-md transition-colors duration-200", y),
+		className: X("sticky top-0 z-30 w-full border-b border-[var(--border-subtle)] bg-[var(--bg-root)]/90 backdrop-blur-md transition-colors duration-200", y),
 		children: [/* @__PURE__ */ l("div", {
 			className: "w-full px-4 sm:px-6 h-16 flex items-center justify-between gap-3 sm:gap-4",
 			children: [
@@ -3302,7 +3327,7 @@ function Dt({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "F
 										children: n
 									})]
 								}),
-								a && /* @__PURE__ */ c(Q, {
+								a && /* @__PURE__ */ c($, {
 									variant: "subtle",
 									size: "xs",
 									className: "font-mono uppercase font-bold text-[9px] tracking-wider",
@@ -3329,7 +3354,7 @@ function Dt({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "F
 										children: n
 									})]
 								}),
-								a && /* @__PURE__ */ c(Q, {
+								a && /* @__PURE__ */ c($, {
 									variant: "subtle",
 									size: "xs",
 									className: "font-mono uppercase font-bold text-[9px] tracking-wider",
@@ -3346,8 +3371,8 @@ function Dt({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "F
 				/* @__PURE__ */ l("div", {
 					className: "flex items-center justify-center flex-1 max-w-xl mx-2",
 					children: [u && u.length > 0 && /* @__PURE__ */ c("div", {
-						className: Y(b ? "hidden md:flex items-center" : "flex items-center"),
-						children: /* @__PURE__ */ c(_t, {
+						className: X(b ? "hidden md:flex items-center" : "flex items-center"),
+						children: /* @__PURE__ */ c(gt, {
 							tabs: u,
 							activeTab: d,
 							onChange: f
@@ -3382,7 +3407,7 @@ function Dt({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "F
 						h,
 						v && /* @__PURE__ */ c("div", {
 							className: "hidden sm:block",
-							children: /* @__PURE__ */ c(vt, { align: "right" })
+							children: /* @__PURE__ */ c(_t, { align: "right" })
 						}),
 						_
 					]
@@ -3390,7 +3415,7 @@ function Dt({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "F
 			]
 		}), b && u && u.length > 0 && /* @__PURE__ */ c("div", {
 			className: "md:hidden border-t border-[var(--border-subtle)] px-3 py-1.5 bg-[var(--bg-root)]/95 flex justify-center",
-			children: /* @__PURE__ */ c(_t, {
+			children: /* @__PURE__ */ c(gt, {
 				tabs: u,
 				activeTab: d,
 				onChange: f,
@@ -3400,4 +3425,4 @@ function Dt({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "F
 	});
 }
 //#endregion
-export { X as AVATAR_SUITS, Dt as AppHeader, bt as AppSwitcher, nt as Avatar, rt as AvatarGroup, Ke as AvatarProvider, at as AvatarSelector, Q as Badge, ot as Button, st as Card, dt as CardContent, ut as CardDescription, ft as CardFooter, ct as CardHeader, lt as CardTitle, Tt as CommandPalette, Ze as DICEBEAR_SUITS, gt as Dialog, it as Dropdown, pt as Input, yt as SUITE_APPS, ht as Select, Z as THEMES, _t as Tabs, mt as Textarea, Ye as ThemeProvider, vt as ThemeSelector, St as ToastProvider, Et as UserMenu, Y as cn, Qe as getDiceBearAvatarUrl, $ as getSuiteAppUrl, qe as useAvatar, Xe as useTheme, Ct as useToast };
+export { Z as AVATAR_SUITS, Dt as AppHeader, bt as AppSwitcher, tt as Avatar, nt as AvatarGroup, Ge as AvatarProvider, it as AvatarSelector, $ as Badge, at as Button, ot as Card, ut as CardContent, lt as CardDescription, dt as CardFooter, st as CardHeader, ct as CardTitle, Tt as CommandPalette, Xe as DICEBEAR_SUITS, ht as Dialog, rt as Dropdown, ft as Input, vt as SUITE_APPS, mt as Select, Q as THEMES, gt as Tabs, pt as Textarea, Je as ThemeProvider, _t as ThemeSelector, St as ToastProvider, Et as UserMenu, X as cn, Ze as getDiceBearAvatarUrl, yt as getSuiteAppUrl, Ke as useAvatar, Ye as useTheme, Ct as useToast };
