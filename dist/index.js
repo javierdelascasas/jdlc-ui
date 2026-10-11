@@ -3302,7 +3302,7 @@ function Et({ user: e, displayName: t, avatarSeed: n, avatarSuit: r = null, stat
 }
 //#endregion
 //#region src/components/AppHeader.jsx
-function Dt({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "Flow", subtitle: r, icon: a, badge: o = "JDLC", statusBadge: u, onBrandClick: d, tabs: f, activeTab: p, onTabChange: m, centerContent: h, utilities: g, primaryAction: _, onOpenPalette: v, userMenu: y, showThemeSelector: b = !0, className: x, mobileBottomTabs: S = !1, showMobileDrawer: C = !1 }) {
+function Dt({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "Flow", subtitle: r, icon: a, badge: o = "JDLC", statusBadge: u, onBrandClick: d, tabs: f, activeTab: p, onTabChange: m, centerContent: h, utilities: g, primaryAction: _, onOpenPalette: v, userMenu: y, showThemeSelector: b = !1, className: x, mobileBottomTabs: S = !1, showMobileDrawer: C = !1 }) {
 	let [w, T] = s(!1);
 	return i(() => (w ? document.body.style.overflow = "hidden" : document.body.style.overflow = "unset", () => {
 		document.body.style.overflow = "unset";

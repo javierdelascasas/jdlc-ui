@@ -26,7 +26,7 @@ export function AppHeader({
   primaryAction,
   onOpenPalette,
   userMenu,
-  showThemeSelector = true,
+  showThemeSelector = false,
   className,
   mobileBottomTabs = false,
   showMobileDrawer = false,
