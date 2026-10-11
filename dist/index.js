@@ -3301,22 +3301,25 @@ function Et({ user: e, displayName: t, avatarSeed: n, avatarSuit: r = null, stat
 }
 //#endregion
 //#region src/components/AppHeader.jsx
-function Dt({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "Flow", subtitle: r, icon: i, badge: a = "JDLC", statusBadge: o, onBrandClick: s, tabs: u, activeTab: d, onTabChange: f, centerContent: p, utilities: m, primaryAction: h, onOpenPalette: g, userMenu: _, showThemeSelector: v = !0, className: y, mobileBottomTabs: b = !1 }) {
-	return /* @__PURE__ */ l("header", {
-		className: X("sticky top-0 z-30 w-full border-b border-[var(--border-subtle)] bg-[var(--bg-root)]/90 backdrop-blur-md transition-colors duration-200", y),
+function Dt({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "Flow", subtitle: r, icon: a, badge: o = "JDLC", statusBadge: u, onBrandClick: d, tabs: f, activeTab: p, onTabChange: m, centerContent: h, utilities: g, primaryAction: _, onOpenPalette: v, userMenu: y, showThemeSelector: b = !0, className: x, mobileBottomTabs: S = !1 }) {
+	let [C, w] = s(!1);
+	return i(() => (C ? document.body.style.overflow = "hidden" : document.body.style.overflow = "unset", () => {
+		document.body.style.overflow = "unset";
+	}), [C]), /* @__PURE__ */ l("header", {
+		className: X("sticky top-0 z-30 w-full border-b border-[var(--border-subtle)] bg-[var(--bg-root)]/90 backdrop-blur-md transition-colors duration-200", x),
 		children: [/* @__PURE__ */ l("div", {
-			className: "w-full px-2.5 sm:px-4 md:px-6 h-14 sm:h-16 flex items-center justify-between gap-1.5 sm:gap-3",
+			className: "w-full px-3 sm:px-4 md:px-6 h-14 sm:h-16 flex items-center justify-between gap-2 sm:gap-3",
 			children: [
 				/* @__PURE__ */ l("div", {
-					className: "flex items-center gap-1.5 sm:gap-2.5 shrink-0",
-					children: [/* @__PURE__ */ c(bt, { currentApp: e }), s ? /* @__PURE__ */ l("button", {
+					className: "flex items-center gap-2 sm:gap-2.5 shrink-0",
+					children: [/* @__PURE__ */ c(bt, { currentApp: e }), d ? /* @__PURE__ */ l("button", {
 						type: "button",
-						onClick: s,
+						onClick: d,
 						className: "flex items-center gap-2 sm:gap-2.5 hover:opacity-85 active:scale-[0.98] transition-all focus:outline-none rounded-xl cursor-pointer text-left",
 						title: "Application Details",
 						children: [/* @__PURE__ */ c("div", {
 							className: "w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-[var(--color-primary)] to-[var(--color-accent)] flex items-center justify-center text-white shadow-md shadow-[var(--color-primary)]/20 shrink-0",
-							children: i
+							children: a
 						}), /* @__PURE__ */ l("div", {
 							className: "hidden sm:block",
 							children: [/* @__PURE__ */ l("div", {
@@ -3329,13 +3332,13 @@ function Dt({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "F
 											children: n
 										})]
 									}),
-									a && /* @__PURE__ */ c($, {
+									o && /* @__PURE__ */ c($, {
 										variant: "subtle",
 										size: "xs",
 										className: "hidden sm:inline-flex font-mono uppercase font-bold text-[9px] tracking-wider",
-										children: a
+										children: o
 									}),
-									o
+									u
 								]
 							}), r && /* @__PURE__ */ c("p", {
 								className: "text-[11px] text-[var(--text-muted)] hidden lg:block leading-tight mt-0.5",
@@ -3346,7 +3349,7 @@ function Dt({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "F
 						className: "flex items-center gap-2 sm:gap-2.5",
 						children: [/* @__PURE__ */ c("div", {
 							className: "w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-[var(--color-primary)] to-[var(--color-accent)] flex items-center justify-center text-white shadow-md shadow-[var(--color-primary)]/20 shrink-0",
-							children: i
+							children: a
 						}), /* @__PURE__ */ l("div", {
 							className: "hidden sm:block",
 							children: [/* @__PURE__ */ l("div", {
@@ -3359,13 +3362,13 @@ function Dt({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "F
 											children: n
 										})]
 									}),
-									a && /* @__PURE__ */ c($, {
+									o && /* @__PURE__ */ c($, {
 										variant: "subtle",
 										size: "xs",
 										className: "hidden sm:inline-flex font-mono uppercase font-bold text-[9px] tracking-wider",
-										children: a
+										children: o
 									}),
-									o
+									u
 								]
 							}), r && /* @__PURE__ */ c("p", {
 								className: "text-[11px] text-[var(--text-muted)] hidden lg:block leading-tight mt-0.5",
@@ -3375,23 +3378,23 @@ function Dt({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "F
 					})]
 				}),
 				/* @__PURE__ */ l("div", {
-					className: "flex items-center justify-center flex-1 max-w-xl mx-1 sm:mx-2",
-					children: [u && u.length > 0 && /* @__PURE__ */ c("div", {
-						className: X(b ? "hidden md:flex items-center" : "flex items-center"),
-						children: /* @__PURE__ */ c(gt, {
-							tabs: u,
-							activeTab: d,
-							onChange: f
-						})
-					}), p]
+					className: "hidden md:flex items-center justify-center flex-1 max-w-xl mx-2",
+					children: [f && f.length > 0 && /* @__PURE__ */ c(gt, {
+						tabs: f,
+						activeTab: p,
+						onChange: m
+					}), h]
 				}),
 				/* @__PURE__ */ l("div", {
-					className: "flex items-center gap-2 sm:gap-2.5 shrink-0",
+					className: "flex items-center gap-1.5 sm:gap-2.5 shrink-0",
 					children: [
-						m,
-						g && /* @__PURE__ */ l("button", {
+						/* @__PURE__ */ c("div", {
+							className: "hidden md:flex items-center gap-2",
+							children: g
+						}),
+						v && /* @__PURE__ */ l("button", {
 							type: "button",
-							onClick: g,
+							onClick: v,
 							className: "hidden md:flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] bg-[var(--bg-elevated)] border border-[var(--border-subtle)] hover:border-[var(--border-medium)] transition-colors cursor-pointer",
 							title: "Open Command Palette (⌘K)",
 							children: [/* @__PURE__ */ c("svg", {
@@ -3410,23 +3413,151 @@ function Dt({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "F
 								children: "⌘K"
 							})]
 						}),
-						h,
-						v && /* @__PURE__ */ c("div", {
-							className: "hidden sm:block",
+						_,
+						b && /* @__PURE__ */ c("div", {
+							className: "hidden md:block",
 							children: /* @__PURE__ */ c(_t, { align: "right" })
 						}),
-						_
+						/* @__PURE__ */ c("div", {
+							className: "hidden md:block",
+							children: y
+						}),
+						/* @__PURE__ */ c("button", {
+							type: "button",
+							onClick: () => w(!0),
+							className: "md:hidden p-2 rounded-xl text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-elevated)] border border-[var(--border-subtle)] active:scale-95 transition-all cursor-pointer flex items-center justify-center shrink-0",
+							"aria-label": "Open Navigation Menu",
+							title: "Open Navigation Menu",
+							children: /* @__PURE__ */ c("svg", {
+								viewBox: "0 0 24 24",
+								fill: "none",
+								stroke: "currentColor",
+								strokeWidth: "2",
+								className: "w-5 h-5",
+								children: /* @__PURE__ */ c("path", {
+									strokeLinecap: "round",
+									strokeLinejoin: "round",
+									d: "M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+								})
+							})
+						})
 					]
 				})
 			]
-		}), b && u && u.length > 0 && /* @__PURE__ */ c("div", {
-			className: "md:hidden border-t border-[var(--border-subtle)] px-3 py-1.5 bg-[var(--bg-root)]/95 flex justify-center [@media(min-width:768px)]:!hidden",
-			children: /* @__PURE__ */ c(gt, {
-				tabs: u,
-				activeTab: d,
-				onChange: f,
-				className: "w-full justify-center"
-			})
+		}), C && /* @__PURE__ */ l("div", {
+			className: "md:hidden fixed inset-0 z-50 flex justify-end",
+			children: [/* @__PURE__ */ c("div", {
+				className: "fixed inset-0 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200",
+				onClick: () => w(!1)
+			}), /* @__PURE__ */ l("div", {
+				className: "relative w-4/5 max-w-sm h-full bg-[var(--bg-surface)] border-l border-[var(--border-medium)] shadow-2xl flex flex-col z-10 animate-in slide-in-from-right duration-250",
+				children: [
+					/* @__PURE__ */ l("div", {
+						className: "flex items-center justify-between p-4 border-b border-[var(--border-subtle)] bg-[var(--bg-subtle)]/70",
+						children: [/* @__PURE__ */ l("div", {
+							className: "flex items-center gap-2.5",
+							children: [/* @__PURE__ */ c("div", {
+								className: "w-8 h-8 rounded-xl bg-gradient-to-tr from-[var(--color-primary)] to-[var(--color-accent)] flex items-center justify-center text-white shadow-md shadow-[var(--color-primary)]/20",
+								children: a
+							}), /* @__PURE__ */ l("span", {
+								className: "font-extrabold text-base font-[var(--font-heading)] text-[var(--text-main)]",
+								children: [t, /* @__PURE__ */ c("span", {
+									className: "text-[var(--color-primary-glow)]",
+									children: n
+								})]
+							})]
+						}), /* @__PURE__ */ c("button", {
+							type: "button",
+							onClick: () => w(!1),
+							className: "p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-[var(--bg-hover)] transition-colors cursor-pointer",
+							"aria-label": "Close menu",
+							children: /* @__PURE__ */ c("svg", {
+								viewBox: "0 0 24 24",
+								fill: "none",
+								stroke: "currentColor",
+								strokeWidth: "2",
+								className: "w-5 h-5",
+								children: /* @__PURE__ */ c("path", {
+									strokeLinecap: "round",
+									strokeLinejoin: "round",
+									d: "M6 18L18 6M6 6l12 12"
+								})
+							})
+						})]
+					}),
+					/* @__PURE__ */ l("div", {
+						className: "flex-1 overflow-y-auto p-4 space-y-5",
+						children: [
+							f && f.length > 0 && /* @__PURE__ */ l("div", { children: [/* @__PURE__ */ c("span", {
+								className: "text-[10px] font-mono uppercase tracking-wider text-[var(--text-dim)] font-semibold block mb-2 px-1",
+								children: "Navigation"
+							}), /* @__PURE__ */ c("div", {
+								className: "space-y-1",
+								children: f.map((e) => {
+									let t = p === e.id, n = e.icon;
+									return /* @__PURE__ */ l("button", {
+										type: "button",
+										onClick: () => {
+											m?.(e.id), w(!1);
+										},
+										className: X("w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-medium transition-colors cursor-pointer text-left", t ? "bg-[var(--color-primary)]/15 text-[var(--color-primary-glow)] font-semibold border border-[var(--color-primary)]/30" : "text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-elevated)]"),
+										children: [/* @__PURE__ */ l("div", {
+											className: "flex items-center gap-3",
+											children: [n && /* @__PURE__ */ c(n, { className: "w-4 h-4 shrink-0" }), /* @__PURE__ */ c("span", { children: e.label })]
+										}), e.count !== void 0 && /* @__PURE__ */ c("span", {
+											className: "px-1.5 py-0.5 rounded text-[10px] font-mono bg-[var(--bg-elevated)] text-[var(--text-dim)] border border-[var(--border-subtle)]",
+											children: e.count
+										})]
+									}, e.id);
+								})
+							})] }),
+							g && /* @__PURE__ */ l("div", { children: [/* @__PURE__ */ c("span", {
+								className: "text-[10px] font-mono uppercase tracking-wider text-[var(--text-dim)] font-semibold block mb-2 px-1",
+								children: "Controls & Tools"
+							}), /* @__PURE__ */ c("div", {
+								className: "p-2.5 rounded-xl bg-[var(--bg-subtle)] border border-[var(--border-subtle)]",
+								children: g
+							})] }),
+							v && /* @__PURE__ */ l("button", {
+								type: "button",
+								onClick: () => {
+									w(!1), v();
+								},
+								className: "w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-medium bg-[var(--bg-elevated)] border border-[var(--border-subtle)] text-[var(--text-main)] hover:border-[var(--border-medium)] transition-colors cursor-pointer",
+								children: [/* @__PURE__ */ l("div", {
+									className: "flex items-center gap-2.5",
+									children: [/* @__PURE__ */ c("svg", {
+										viewBox: "0 0 20 20",
+										fill: "none",
+										stroke: "currentColor",
+										strokeWidth: "2",
+										className: "w-4 h-4 text-slate-400",
+										children: /* @__PURE__ */ c("path", {
+											strokeLinecap: "round",
+											strokeLinejoin: "round",
+											d: "M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM19 19l-4.35-4.35"
+										})
+									}), /* @__PURE__ */ c("span", { children: "Command Palette" })]
+								}), /* @__PURE__ */ c("kbd", {
+									className: "text-[10px] font-mono opacity-70",
+									children: "⌘K"
+								})]
+							}),
+							b && /* @__PURE__ */ l("div", {
+								className: "flex items-center justify-between p-3 rounded-xl bg-[var(--bg-subtle)] border border-[var(--border-subtle)]",
+								children: [/* @__PURE__ */ c("span", {
+									className: "text-xs font-medium text-[var(--text-muted)]",
+									children: "Theme"
+								}), /* @__PURE__ */ c(_t, { align: "right" })]
+							})
+						]
+					}),
+					y && /* @__PURE__ */ c("div", {
+						className: "p-3 border-t border-[var(--border-subtle)] bg-[var(--bg-subtle)]/50",
+						children: y
+					})
+				]
+			})]
 		})]
 	});
 }
