@@ -37,29 +37,29 @@ export function AppHeader({
         className
       )}
     >
-      <div className="w-full px-4 sm:px-6 h-16 flex items-center justify-between gap-3 sm:gap-4">
+      <div className="w-full px-2.5 sm:px-4 md:px-6 h-14 sm:h-16 flex items-center justify-between gap-1.5 sm:gap-3">
         {/* Zone 1: Suite & Brand (Left) */}
-        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+        <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
           <AppSwitcher currentApp={currentApp} />
 
           {onBrandClick ? (
             <button
               type="button"
               onClick={onBrandClick}
-              className="flex items-center gap-2.5 sm:gap-3 hover:opacity-85 active:scale-[0.98] transition-all focus:outline-none rounded-xl cursor-pointer text-left"
+              className="flex items-center gap-2 sm:gap-2.5 hover:opacity-85 active:scale-[0.98] transition-all focus:outline-none rounded-xl cursor-pointer text-left"
               title="Application Details"
             >
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[var(--color-primary)] to-[var(--color-accent)] flex items-center justify-center text-white shadow-md shadow-[var(--color-primary)]/20 shrink-0">
+              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-[var(--color-primary)] to-[var(--color-accent)] flex items-center justify-center text-white shadow-md shadow-[var(--color-primary)]/20 shrink-0">
                 {icon}
               </div>
               <div>
-                <div className="flex items-center gap-2">
-                  <span className="font-extrabold text-base sm:text-lg tracking-tight font-[var(--font-heading)] text-[var(--text-main)]">
+                <div className="flex items-center gap-1.5 sm:gap-2">
+                  <span className="font-extrabold text-sm sm:text-base md:text-lg tracking-tight font-[var(--font-heading)] text-[var(--text-main)]">
                     {appName}
                     <span className="text-[var(--color-primary-glow)]">{appAccent}</span>
                   </span>
                   {badge && (
-                    <Badge variant="subtle" size="xs" className="font-mono uppercase font-bold text-[9px] tracking-wider">
+                    <Badge variant="subtle" size="xs" className="hidden sm:inline-flex font-mono uppercase font-bold text-[9px] tracking-wider">
                       {badge}
                     </Badge>
                   )}
@@ -73,18 +73,18 @@ export function AppHeader({
               </div>
             </button>
           ) : (
-            <div className="flex items-center gap-2.5 sm:gap-3">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[var(--color-primary)] to-[var(--color-accent)] flex items-center justify-center text-white shadow-md shadow-[var(--color-primary)]/20 shrink-0">
+            <div className="flex items-center gap-2 sm:gap-2.5">
+              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-[var(--color-primary)] to-[var(--color-accent)] flex items-center justify-center text-white shadow-md shadow-[var(--color-primary)]/20 shrink-0">
                 {icon}
               </div>
               <div>
-                <div className="flex items-center gap-2">
-                  <span className="font-extrabold text-base sm:text-lg tracking-tight font-[var(--font-heading)] text-[var(--text-main)]">
+                <div className="flex items-center gap-1.5 sm:gap-2">
+                  <span className="font-extrabold text-sm sm:text-base md:text-lg tracking-tight font-[var(--font-heading)] text-[var(--text-main)]">
                     {appName}
                     <span className="text-[var(--color-primary-glow)]">{appAccent}</span>
                   </span>
                   {badge && (
-                    <Badge variant="subtle" size="xs" className="font-mono uppercase font-bold text-[9px] tracking-wider">
+                    <Badge variant="subtle" size="xs" className="hidden sm:inline-flex font-mono uppercase font-bold text-[9px] tracking-wider">
                       {badge}
                     </Badge>
                   )}
@@ -101,7 +101,7 @@ export function AppHeader({
         </div>
 
         {/* Zone 2: Navigation & Context (Center) */}
-        <div className="flex items-center justify-center flex-1 max-w-xl mx-2">
+        <div className="flex items-center justify-center flex-1 max-w-xl mx-1 sm:mx-2">
           {tabs && tabs.length > 0 && (
             <div className={cn(mobileBottomTabs ? 'hidden md:flex items-center' : 'flex items-center')}>
               <Tabs tabs={tabs} activeTab={activeTab} onChange={onTabChange} />

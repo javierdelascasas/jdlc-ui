@@ -3305,23 +3305,23 @@ function Dt({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "F
 	return /* @__PURE__ */ l("header", {
 		className: X("sticky top-0 z-30 w-full border-b border-[var(--border-subtle)] bg-[var(--bg-root)]/90 backdrop-blur-md transition-colors duration-200", y),
 		children: [/* @__PURE__ */ l("div", {
-			className: "w-full px-4 sm:px-6 h-16 flex items-center justify-between gap-3 sm:gap-4",
+			className: "w-full px-2.5 sm:px-4 md:px-6 h-14 sm:h-16 flex items-center justify-between gap-1.5 sm:gap-3",
 			children: [
 				/* @__PURE__ */ l("div", {
-					className: "flex items-center gap-2 sm:gap-3 shrink-0",
+					className: "flex items-center gap-1.5 sm:gap-2.5 shrink-0",
 					children: [/* @__PURE__ */ c(bt, { currentApp: e }), s ? /* @__PURE__ */ l("button", {
 						type: "button",
 						onClick: s,
-						className: "flex items-center gap-2.5 sm:gap-3 hover:opacity-85 active:scale-[0.98] transition-all focus:outline-none rounded-xl cursor-pointer text-left",
+						className: "flex items-center gap-2 sm:gap-2.5 hover:opacity-85 active:scale-[0.98] transition-all focus:outline-none rounded-xl cursor-pointer text-left",
 						title: "Application Details",
 						children: [/* @__PURE__ */ c("div", {
-							className: "w-9 h-9 rounded-xl bg-gradient-to-tr from-[var(--color-primary)] to-[var(--color-accent)] flex items-center justify-center text-white shadow-md shadow-[var(--color-primary)]/20 shrink-0",
+							className: "w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-[var(--color-primary)] to-[var(--color-accent)] flex items-center justify-center text-white shadow-md shadow-[var(--color-primary)]/20 shrink-0",
 							children: i
 						}), /* @__PURE__ */ l("div", { children: [/* @__PURE__ */ l("div", {
-							className: "flex items-center gap-2",
+							className: "flex items-center gap-1.5 sm:gap-2",
 							children: [
 								/* @__PURE__ */ l("span", {
-									className: "font-extrabold text-base sm:text-lg tracking-tight font-[var(--font-heading)] text-[var(--text-main)]",
+									className: "font-extrabold text-sm sm:text-base md:text-lg tracking-tight font-[var(--font-heading)] text-[var(--text-main)]",
 									children: [t, /* @__PURE__ */ c("span", {
 										className: "text-[var(--color-primary-glow)]",
 										children: n
@@ -3330,7 +3330,7 @@ function Dt({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "F
 								a && /* @__PURE__ */ c($, {
 									variant: "subtle",
 									size: "xs",
-									className: "font-mono uppercase font-bold text-[9px] tracking-wider",
+									className: "hidden sm:inline-flex font-mono uppercase font-bold text-[9px] tracking-wider",
 									children: a
 								}),
 								o
@@ -3340,15 +3340,15 @@ function Dt({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "F
 							children: r
 						})] })]
 					}) : /* @__PURE__ */ l("div", {
-						className: "flex items-center gap-2.5 sm:gap-3",
+						className: "flex items-center gap-2 sm:gap-2.5",
 						children: [/* @__PURE__ */ c("div", {
-							className: "w-9 h-9 rounded-xl bg-gradient-to-tr from-[var(--color-primary)] to-[var(--color-accent)] flex items-center justify-center text-white shadow-md shadow-[var(--color-primary)]/20 shrink-0",
+							className: "w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-[var(--color-primary)] to-[var(--color-accent)] flex items-center justify-center text-white shadow-md shadow-[var(--color-primary)]/20 shrink-0",
 							children: i
 						}), /* @__PURE__ */ l("div", { children: [/* @__PURE__ */ l("div", {
-							className: "flex items-center gap-2",
+							className: "flex items-center gap-1.5 sm:gap-2",
 							children: [
 								/* @__PURE__ */ l("span", {
-									className: "font-extrabold text-base sm:text-lg tracking-tight font-[var(--font-heading)] text-[var(--text-main)]",
+									className: "font-extrabold text-sm sm:text-base md:text-lg tracking-tight font-[var(--font-heading)] text-[var(--text-main)]",
 									children: [t, /* @__PURE__ */ c("span", {
 										className: "text-[var(--color-primary-glow)]",
 										children: n
@@ -3357,7 +3357,7 @@ function Dt({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "F
 								a && /* @__PURE__ */ c($, {
 									variant: "subtle",
 									size: "xs",
-									className: "font-mono uppercase font-bold text-[9px] tracking-wider",
+									className: "hidden sm:inline-flex font-mono uppercase font-bold text-[9px] tracking-wider",
 									children: a
 								}),
 								o
@@ -3369,7 +3369,7 @@ function Dt({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "F
 					})]
 				}),
 				/* @__PURE__ */ l("div", {
-					className: "flex items-center justify-center flex-1 max-w-xl mx-2",
+					className: "flex items-center justify-center flex-1 max-w-xl mx-1 sm:mx-2",
 					children: [u && u.length > 0 && /* @__PURE__ */ c("div", {
 						className: X(b ? "hidden md:flex items-center" : "flex items-center"),
 						children: /* @__PURE__ */ c(gt, {
