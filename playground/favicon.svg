@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <defs>
+    <linearGradient id="jdlc-ui-grad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C3AED" />
+      <stop offset="100%" stop-color="#06B6D4" />
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="8" fill="url(#jdlc-ui-grad)" />
+  <g transform="translate(6, 6) scale(0.2)">
+    <path d="M50 5L95 27.5L50 50L5 27.5L50 5Z" fill="#FFFFFF" />
+    <path d="M5 45L50 67.5L95 45V67.5L50 90L5 67.5V45Z" fill="#FFFFFF" opacity="0.8" />
+  </g>
+</svg>
