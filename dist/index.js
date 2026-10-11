@@ -3301,11 +3301,11 @@ function Et({ user: e, displayName: t, avatarSeed: n, avatarSuit: r = null, stat
 }
 //#endregion
 //#region src/components/AppHeader.jsx
-function Dt({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "Flow", subtitle: r, icon: a, badge: o = "JDLC", statusBadge: u, onBrandClick: d, tabs: f, activeTab: p, onTabChange: m, centerContent: h, utilities: g, primaryAction: _, onOpenPalette: v, userMenu: y, showThemeSelector: b = !0, className: x, mobileBottomTabs: S = !1 }) {
-	let [C, w] = s(!1);
-	return i(() => (C ? document.body.style.overflow = "hidden" : document.body.style.overflow = "unset", () => {
+function Dt({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "Flow", subtitle: r, icon: a, badge: o = "JDLC", statusBadge: u, onBrandClick: d, tabs: f, activeTab: p, onTabChange: m, centerContent: h, utilities: g, primaryAction: _, onOpenPalette: v, userMenu: y, showThemeSelector: b = !0, className: x, mobileBottomTabs: S = !1, showMobileDrawer: C = !1 }) {
+	let [w, T] = s(!1);
+	return i(() => (w ? document.body.style.overflow = "hidden" : document.body.style.overflow = "unset", () => {
 		document.body.style.overflow = "unset";
-	}), [C]), /* @__PURE__ */ l("header", {
+	}), [w]), /* @__PURE__ */ l("header", {
 		className: X("sticky top-0 z-30 w-full border-b border-[var(--border-subtle)] bg-[var(--bg-root)]/90 backdrop-blur-md transition-colors duration-200", x),
 		children: [/* @__PURE__ */ l("div", {
 			className: "w-full px-3 sm:px-4 md:px-6 h-14 sm:h-16 flex items-center justify-between gap-2 sm:gap-3",
@@ -3378,7 +3378,7 @@ function Dt({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "F
 					})]
 				}),
 				/* @__PURE__ */ l("div", {
-					className: "hidden md:flex items-center justify-center flex-1 max-w-xl mx-2",
+					className: "hidden sm:flex items-center justify-center flex-1 max-w-xl mx-2",
 					children: [f && f.length > 0 && /* @__PURE__ */ c(gt, {
 						tabs: f,
 						activeTab: p,
@@ -3389,13 +3389,13 @@ function Dt({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "F
 					className: "flex items-center gap-1.5 sm:gap-2.5 shrink-0",
 					children: [
 						/* @__PURE__ */ c("div", {
-							className: "hidden md:flex items-center gap-2",
+							className: "hidden sm:flex items-center gap-2",
 							children: g
 						}),
 						v && /* @__PURE__ */ l("button", {
 							type: "button",
 							onClick: v,
-							className: "hidden md:flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] bg-[var(--bg-elevated)] border border-[var(--border-subtle)] hover:border-[var(--border-medium)] transition-colors cursor-pointer",
+							className: "hidden lg:flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] bg-[var(--bg-elevated)] border border-[var(--border-subtle)] hover:border-[var(--border-medium)] transition-colors cursor-pointer",
 							title: "Open Command Palette (⌘K)",
 							children: [/* @__PURE__ */ c("svg", {
 								viewBox: "0 0 20 20",
@@ -3418,37 +3418,15 @@ function Dt({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "F
 							className: "hidden md:block",
 							children: /* @__PURE__ */ c(_t, { align: "right" })
 						}),
-						/* @__PURE__ */ c("div", {
-							className: "hidden md:block",
-							children: y
-						}),
-						/* @__PURE__ */ c("button", {
-							type: "button",
-							onClick: () => w(!0),
-							className: "md:hidden p-2 rounded-xl text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-elevated)] border border-[var(--border-subtle)] active:scale-95 transition-all cursor-pointer flex items-center justify-center shrink-0",
-							"aria-label": "Open Navigation Menu",
-							title: "Open Navigation Menu",
-							children: /* @__PURE__ */ c("svg", {
-								viewBox: "0 0 24 24",
-								fill: "none",
-								stroke: "currentColor",
-								strokeWidth: "2",
-								className: "w-5 h-5",
-								children: /* @__PURE__ */ c("path", {
-									strokeLinecap: "round",
-									strokeLinejoin: "round",
-									d: "M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-								})
-							})
-						})
+						/* @__PURE__ */ c("div", { children: y })
 					]
 				})
 			]
-		}), C && /* @__PURE__ */ l("div", {
+		}), C && w && /* @__PURE__ */ l("div", {
 			className: "md:hidden fixed inset-0 z-50 flex justify-end",
 			children: [/* @__PURE__ */ c("div", {
 				className: "fixed inset-0 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200",
-				onClick: () => w(!1)
+				onClick: () => T(!1)
 			}), /* @__PURE__ */ l("div", {
 				className: "relative w-4/5 max-w-sm h-full bg-[var(--bg-surface)] border-l border-[var(--border-medium)] shadow-2xl flex flex-col z-10 animate-in slide-in-from-right duration-250",
 				children: [
@@ -3468,7 +3446,7 @@ function Dt({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "F
 							})]
 						}), /* @__PURE__ */ c("button", {
 							type: "button",
-							onClick: () => w(!1),
+							onClick: () => T(!1),
 							className: "p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-[var(--bg-hover)] transition-colors cursor-pointer",
 							"aria-label": "Close menu",
 							children: /* @__PURE__ */ c("svg", {
@@ -3498,7 +3476,7 @@ function Dt({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "F
 									return /* @__PURE__ */ l("button", {
 										type: "button",
 										onClick: () => {
-											m?.(e.id), w(!1);
+											m?.(e.id), T(!1);
 										},
 										className: X("w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-medium transition-colors cursor-pointer text-left", t ? "bg-[var(--color-primary)]/15 text-[var(--color-primary-glow)] font-semibold border border-[var(--color-primary)]/30" : "text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-elevated)]"),
 										children: [/* @__PURE__ */ l("div", {
@@ -3521,7 +3499,7 @@ function Dt({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "F
 							v && /* @__PURE__ */ l("button", {
 								type: "button",
 								onClick: () => {
-									w(!1), v();
+									T(!1), v();
 								},
 								className: "w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-medium bg-[var(--bg-elevated)] border border-[var(--border-subtle)] text-[var(--text-main)] hover:border-[var(--border-medium)] transition-colors cursor-pointer",
 								children: [/* @__PURE__ */ l("div", {
@@ -3562,4 +3540,38 @@ function Dt({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "F
 	});
 }
 //#endregion
-export { Z as AVATAR_SUITS, Dt as AppHeader, bt as AppSwitcher, tt as Avatar, nt as AvatarGroup, Ge as AvatarProvider, it as AvatarSelector, $ as Badge, at as Button, ot as Card, ut as CardContent, lt as CardDescription, dt as CardFooter, st as CardHeader, ct as CardTitle, Tt as CommandPalette, Xe as DICEBEAR_SUITS, ht as Dialog, rt as Dropdown, ft as Input, vt as SUITE_APPS, mt as Select, Q as THEMES, gt as Tabs, pt as Textarea, Je as ThemeProvider, _t as ThemeSelector, St as ToastProvider, Et as UserMenu, X as cn, Ze as getDiceBearAvatarUrl, yt as getSuiteAppUrl, Ke as useAvatar, Ye as useTheme, Ct as useToast };
+//#region src/components/MobileTabBar.jsx
+function Ot({ tabs: e = [], activeTab: t, onChange: n, className: r }) {
+	return !e || e.length === 0 ? null : /* @__PURE__ */ c("nav", {
+		"aria-label": "Primary Mobile Navigation",
+		className: X("sm:hidden fixed bottom-0 left-0 right-0 z-40 bg-[var(--bg-root)]/95 backdrop-blur-md border-t border-[var(--border-subtle)] px-2 pt-1 pb-[max(env(safe-area-inset-bottom,0px),0.35rem)] shadow-lg transition-colors", r),
+		children: /* @__PURE__ */ c("div", {
+			className: "flex items-center justify-around w-full max-w-md mx-auto",
+			children: e.map((e) => {
+				let r = t === e.id, i = e.icon;
+				return /* @__PURE__ */ l("button", {
+					type: "button",
+					onClick: () => n?.(e.id),
+					"aria-current": r ? "page" : void 0,
+					className: X("flex flex-col items-center justify-center flex-1 py-1 px-1 rounded-xl transition-all cursor-pointer select-none text-center min-w-0 relative", r ? "text-[var(--color-primary-glow)] font-semibold" : "text-[var(--text-muted)] hover:text-[var(--text-main)] active:scale-95"),
+					children: [
+						r && /* @__PURE__ */ c("span", { className: "absolute inset-x-2 inset-y-0.5 rounded-lg bg-[var(--color-primary)]/15 -z-10 animate-in fade-in duration-150" }),
+						/* @__PURE__ */ l("div", {
+							className: "relative",
+							children: [i && /* @__PURE__ */ c(i, { className: "w-5 h-5 shrink-0" }), e.count !== void 0 && /* @__PURE__ */ c("span", {
+								className: "absolute -top-1 -right-2 px-1 py-0.2 bg-[var(--color-primary)] text-white text-[9px] font-mono rounded-full font-bold shadow-sm",
+								children: e.count
+							})]
+						}),
+						/* @__PURE__ */ c("span", {
+							className: "text-[10px] tracking-tight mt-0.5 truncate max-w-full",
+							children: e.shortLabel || e.label
+						})
+					]
+				}, e.id);
+			})
+		})
+	});
+}
+//#endregion
+export { Z as AVATAR_SUITS, Dt as AppHeader, bt as AppSwitcher, tt as Avatar, nt as AvatarGroup, Ge as AvatarProvider, it as AvatarSelector, $ as Badge, at as Button, ot as Card, ut as CardContent, lt as CardDescription, dt as CardFooter, st as CardHeader, ct as CardTitle, Tt as CommandPalette, Xe as DICEBEAR_SUITS, ht as Dialog, rt as Dropdown, ft as Input, Ot as MobileTabBar, vt as SUITE_APPS, mt as Select, Q as THEMES, gt as Tabs, pt as Textarea, Je as ThemeProvider, _t as ThemeSelector, St as ToastProvider, Et as UserMenu, X as cn, Ze as getDiceBearAvatarUrl, yt as getSuiteAppUrl, Ke as useAvatar, Ye as useTheme, Ct as useToast };

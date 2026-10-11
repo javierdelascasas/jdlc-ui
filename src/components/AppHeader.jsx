@@ -29,6 +29,7 @@ export function AppHeader({
   showThemeSelector = true,
   className,
   mobileBottomTabs = false,
+  showMobileDrawer = false,
 }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -114,8 +115,8 @@ export function AppHeader({
           )}
         </div>
 
-        {/* Zone 2: Navigation & Context (Center - hidden on mobile screens < md) */}
-        <div className="hidden md:flex items-center justify-center flex-1 max-w-xl mx-2">
+        {/* Zone 2: Navigation & Context (Center - visible inline on Tablet and Desktop >= sm) */}
+        <div className="hidden sm:flex items-center justify-center flex-1 max-w-xl mx-2">
           {tabs && tabs.length > 0 && (
             <Tabs tabs={tabs} activeTab={activeTab} onChange={onTabChange} />
           )}
@@ -124,8 +125,8 @@ export function AppHeader({
 
         {/* Zone 3: Utilities, Primary Action & Account (Right) */}
         <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
-          {/* Secondary Utilities Slot (desktop/tablet only) */}
-          <div className="hidden md:flex items-center gap-2">
+          {/* Secondary Utilities Slot (Tablet and Desktop) */}
+          <div className="hidden sm:flex items-center gap-2">
             {utilities}
           </div>
 
@@ -134,7 +135,7 @@ export function AppHeader({
             <button
               type="button"
               onClick={onOpenPalette}
-              className="hidden md:flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] bg-[var(--bg-elevated)] border border-[var(--border-subtle)] hover:border-[var(--border-medium)] transition-colors cursor-pointer"
+              className="hidden lg:flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] bg-[var(--bg-elevated)] border border-[var(--border-subtle)] hover:border-[var(--border-medium)] transition-colors cursor-pointer"
               title="Open Command Palette (⌘K)"
             >
               <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2" className="w-3.5 h-3.5">
@@ -147,35 +148,22 @@ export function AppHeader({
           {/* Primary Action Button CTA (always visible) */}
           {primaryAction}
 
-          {/* Theme Selector (desktop/tablet only) */}
+          {/* Theme Selector (Desktop) */}
           {showThemeSelector && (
             <div className="hidden md:block">
               <ThemeSelector align="right" />
             </div>
           )}
 
-          {/* Standardized User Menu (desktop/tablet only) */}
-          <div className="hidden md:block">
+          {/* Standardized User Menu */}
+          <div>
             {userMenu}
           </div>
-
-          {/* Mobile Native Hamburger Drawer Trigger (md:hidden) */}
-          <button
-            type="button"
-            onClick={() => setIsMobileMenuOpen(true)}
-            className="md:hidden p-2 rounded-xl text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-elevated)] border border-[var(--border-subtle)] active:scale-95 transition-all cursor-pointer flex items-center justify-center shrink-0"
-            aria-label="Open Navigation Menu"
-            title="Open Navigation Menu"
-          >
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-            </svg>
-          </button>
         </div>
       </div>
 
-      {/* Native Mobile Slide-Over Drawer */}
-      {isMobileMenuOpen && (
+      {/* Optional Mobile Slide-Over Drawer (if explicitly requested) */}
+      {showMobileDrawer && isMobileMenuOpen && (
         <div className="md:hidden fixed inset-0 z-50 flex justify-end">
           {/* Backdrop */}
           <div
