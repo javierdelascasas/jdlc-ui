@@ -10,7 +10,7 @@ export default defineConfig(({ command }) => ({
   root: command === 'serve' ? resolve(__dirname, 'playground') : undefined,
   plugins: [react(), tailwindcss()],
   server: {
-    port: 5176,
+    port: 5180,
     open: false,
   },
   build: {
