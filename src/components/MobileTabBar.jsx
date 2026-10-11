@@ -3,7 +3,7 @@ import { cn } from '../lib/utils.js';
 
 /**
  * MobileTabBar: Ergonomic native-like bottom navigation bar for mobile viewports.
- * Placed in the mobile thumb zone (fixed bottom-0), automatically hidden on tablet/desktop (md:hidden).
+ * Placed in the mobile thumb zone (fixed bottom-0), automatically hidden on tablet/desktop (sm:hidden).
  */
 export function MobileTabBar({
   tabs = [],
@@ -17,7 +17,7 @@ export function MobileTabBar({
     <nav
       aria-label="Primary Mobile Navigation"
       className={cn(
-        'md:hidden fixed bottom-0 inset-x-0 z-40 bg-[var(--bg-root)]/95 backdrop-blur-md border-t border-[var(--border-subtle)] px-2 pt-1 pb-[max(env(safe-area-inset-bottom,0px),0.35rem)] shadow-lg transition-colors',
+        'sm:hidden fixed bottom-0 inset-x-0 z-40 bg-[var(--bg-root)]/95 backdrop-blur-md border-t border-[var(--border-subtle)] px-2 pt-1 pb-[max(env(safe-area-inset-bottom,0px),0.35rem)] shadow-lg transition-colors',
         className
       )}
     >

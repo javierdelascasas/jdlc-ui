@@ -3379,7 +3379,7 @@ function Dt({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "F
 					})]
 				}),
 				/* @__PURE__ */ l("div", {
-					className: "hidden md:flex items-center justify-center flex-1 min-w-0 max-w-2xl mx-2",
+					className: "hidden sm:flex items-center justify-center flex-1 min-w-0 max-w-2xl mx-2",
 					children: [f && f.length > 0 && /* @__PURE__ */ c(gt, {
 						tabs: f,
 						activeTab: p,
@@ -3390,7 +3390,7 @@ function Dt({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "F
 					className: "flex items-center gap-1.5 sm:gap-2.5 shrink-0",
 					children: [
 						/* @__PURE__ */ c("div", {
-							className: "hidden md:flex items-center gap-2",
+							className: "hidden sm:flex items-center gap-2",
 							children: g
 						}),
 						v && /* @__PURE__ */ l("button", {
@@ -3545,7 +3545,7 @@ function Dt({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "F
 function Ot({ tabs: e = [], activeTab: t, onChange: n, className: r }) {
 	return !e || e.length === 0 ? null : /* @__PURE__ */ c("nav", {
 		"aria-label": "Primary Mobile Navigation",
-		className: X("md:hidden fixed bottom-0 inset-x-0 z-40 bg-[var(--bg-root)]/95 backdrop-blur-md border-t border-[var(--border-subtle)] px-2 pt-1 pb-[max(env(safe-area-inset-bottom,0px),0.35rem)] shadow-lg transition-colors", r),
+		className: X("sm:hidden fixed bottom-0 inset-x-0 z-40 bg-[var(--bg-root)]/95 backdrop-blur-md border-t border-[var(--border-subtle)] px-2 pt-1 pb-[max(env(safe-area-inset-bottom,0px),0.35rem)] shadow-lg transition-colors", r),
 		children: /* @__PURE__ */ c("div", {
 			className: "flex items-center justify-around w-full max-w-md mx-auto",
 			children: e.map((e) => {
