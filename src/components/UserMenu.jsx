@@ -55,7 +55,7 @@ export function UserMenu({
         type="button"
         onClick={() => setIsOpen((prev) => !prev)}
         className={cn(
-          'flex items-center gap-2 p-1 pl-1.5 pr-2.5 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-subtle)] text-[var(--text-main)] hover:border-[var(--border-medium)] hover:bg-[var(--bg-hover)] transition-all cursor-pointer',
+          'flex items-center gap-1.5 sm:gap-2 p-1 sm:pl-1.5 sm:pr-2.5 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-subtle)] text-[var(--text-main)] hover:border-[var(--border-medium)] hover:bg-[var(--bg-hover)] transition-all cursor-pointer',
           isOpen && 'border-[var(--border-medium)] bg-[var(--bg-elevated)]'
         )}
         title={isAuthenticated ? `Signed in as ${name}` : 'Account & Preferences'}
@@ -74,7 +74,7 @@ export function UserMenu({
         <svg
           viewBox="0 0 20 20"
           fill="currentColor"
-          className={cn('w-3.5 h-3.5 text-slate-400 transition-transform duration-150', isOpen && 'rotate-180')}
+          className={cn('w-3.5 h-3.5 text-slate-400 transition-transform duration-150 hidden sm:block', isOpen && 'rotate-180')}
         >
           <path
             fillRule="evenodd"

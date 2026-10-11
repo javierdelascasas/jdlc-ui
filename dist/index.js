@@ -3136,7 +3136,7 @@ function Et({ user: e, displayName: t, avatarSeed: n, avatarSuit: r = null, stat
 		children: [/* @__PURE__ */ l("button", {
 			type: "button",
 			onClick: () => v((e) => !e),
-			className: X("flex items-center gap-2 p-1 pl-1.5 pr-2.5 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-subtle)] text-[var(--text-main)] hover:border-[var(--border-medium)] hover:bg-[var(--bg-hover)] transition-all cursor-pointer", _ && "border-[var(--border-medium)] bg-[var(--bg-elevated)]"),
+			className: X("flex items-center gap-1.5 sm:gap-2 p-1 sm:pl-1.5 sm:pr-2.5 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-subtle)] text-[var(--text-main)] hover:border-[var(--border-medium)] hover:bg-[var(--bg-hover)] transition-all cursor-pointer", _ && "border-[var(--border-medium)] bg-[var(--bg-elevated)]"),
 			title: E ? `Signed in as ${C}` : "Account & Preferences",
 			"aria-expanded": _,
 			children: [
@@ -3154,7 +3154,7 @@ function Et({ user: e, displayName: t, avatarSeed: n, avatarSuit: r = null, stat
 				/* @__PURE__ */ c("svg", {
 					viewBox: "0 0 20 20",
 					fill: "currentColor",
-					className: X("w-3.5 h-3.5 text-slate-400 transition-transform duration-150", _ && "rotate-180"),
+					className: X("w-3.5 h-3.5 text-slate-400 transition-transform duration-150 hidden sm:block", _ && "rotate-180"),
 					children: /* @__PURE__ */ c("path", {
 						fillRule: "evenodd",
 						d: "M5.22 8.22a.75.75 0 011.06 0L10 11.94l3.72-3.72a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.22 9.28a.75.75 0 010-1.06z",
@@ -3317,55 +3317,61 @@ function Dt({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "F
 						children: [/* @__PURE__ */ c("div", {
 							className: "w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-[var(--color-primary)] to-[var(--color-accent)] flex items-center justify-center text-white shadow-md shadow-[var(--color-primary)]/20 shrink-0",
 							children: i
-						}), /* @__PURE__ */ l("div", { children: [/* @__PURE__ */ l("div", {
-							className: "flex items-center gap-1.5 sm:gap-2",
-							children: [
-								/* @__PURE__ */ l("span", {
-									className: "font-extrabold text-sm sm:text-base md:text-lg tracking-tight font-[var(--font-heading)] text-[var(--text-main)]",
-									children: [t, /* @__PURE__ */ c("span", {
-										className: "text-[var(--color-primary-glow)]",
-										children: n
-									})]
-								}),
-								a && /* @__PURE__ */ c($, {
-									variant: "subtle",
-									size: "xs",
-									className: "hidden sm:inline-flex font-mono uppercase font-bold text-[9px] tracking-wider",
-									children: a
-								}),
-								o
-							]
-						}), r && /* @__PURE__ */ c("p", {
-							className: "text-[11px] text-[var(--text-muted)] hidden lg:block leading-tight mt-0.5",
-							children: r
-						})] })]
+						}), /* @__PURE__ */ l("div", {
+							className: "hidden sm:block",
+							children: [/* @__PURE__ */ l("div", {
+								className: "flex items-center gap-1.5 sm:gap-2",
+								children: [
+									/* @__PURE__ */ l("span", {
+										className: "font-extrabold text-sm sm:text-base md:text-lg tracking-tight font-[var(--font-heading)] text-[var(--text-main)]",
+										children: [t, /* @__PURE__ */ c("span", {
+											className: "text-[var(--color-primary-glow)]",
+											children: n
+										})]
+									}),
+									a && /* @__PURE__ */ c($, {
+										variant: "subtle",
+										size: "xs",
+										className: "hidden sm:inline-flex font-mono uppercase font-bold text-[9px] tracking-wider",
+										children: a
+									}),
+									o
+								]
+							}), r && /* @__PURE__ */ c("p", {
+								className: "text-[11px] text-[var(--text-muted)] hidden lg:block leading-tight mt-0.5",
+								children: r
+							})]
+						})]
 					}) : /* @__PURE__ */ l("div", {
 						className: "flex items-center gap-2 sm:gap-2.5",
 						children: [/* @__PURE__ */ c("div", {
 							className: "w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-[var(--color-primary)] to-[var(--color-accent)] flex items-center justify-center text-white shadow-md shadow-[var(--color-primary)]/20 shrink-0",
 							children: i
-						}), /* @__PURE__ */ l("div", { children: [/* @__PURE__ */ l("div", {
-							className: "flex items-center gap-1.5 sm:gap-2",
-							children: [
-								/* @__PURE__ */ l("span", {
-									className: "font-extrabold text-sm sm:text-base md:text-lg tracking-tight font-[var(--font-heading)] text-[var(--text-main)]",
-									children: [t, /* @__PURE__ */ c("span", {
-										className: "text-[var(--color-primary-glow)]",
-										children: n
-									})]
-								}),
-								a && /* @__PURE__ */ c($, {
-									variant: "subtle",
-									size: "xs",
-									className: "hidden sm:inline-flex font-mono uppercase font-bold text-[9px] tracking-wider",
-									children: a
-								}),
-								o
-							]
-						}), r && /* @__PURE__ */ c("p", {
-							className: "text-[11px] text-[var(--text-muted)] hidden lg:block leading-tight mt-0.5",
-							children: r
-						})] })]
+						}), /* @__PURE__ */ l("div", {
+							className: "hidden sm:block",
+							children: [/* @__PURE__ */ l("div", {
+								className: "flex items-center gap-1.5 sm:gap-2",
+								children: [
+									/* @__PURE__ */ l("span", {
+										className: "font-extrabold text-sm sm:text-base md:text-lg tracking-tight font-[var(--font-heading)] text-[var(--text-main)]",
+										children: [t, /* @__PURE__ */ c("span", {
+											className: "text-[var(--color-primary-glow)]",
+											children: n
+										})]
+									}),
+									a && /* @__PURE__ */ c($, {
+										variant: "subtle",
+										size: "xs",
+										className: "hidden sm:inline-flex font-mono uppercase font-bold text-[9px] tracking-wider",
+										children: a
+									}),
+									o
+								]
+							}), r && /* @__PURE__ */ c("p", {
+								className: "text-[11px] text-[var(--text-muted)] hidden lg:block leading-tight mt-0.5",
+								children: r
+							})]
+						})]
 					})]
 				}),
 				/* @__PURE__ */ l("div", {
