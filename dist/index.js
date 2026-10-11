@@ -3414,7 +3414,7 @@ function Dt({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "F
 				})
 			]
 		}), b && u && u.length > 0 && /* @__PURE__ */ c("div", {
-			className: "md:hidden border-t border-[var(--border-subtle)] px-3 py-1.5 bg-[var(--bg-root)]/95 flex justify-center",
+			className: "md:hidden border-t border-[var(--border-subtle)] px-3 py-1.5 bg-[var(--bg-root)]/95 flex justify-center [@media(min-width:768px)]:!hidden",
 			children: /* @__PURE__ */ c(gt, {
 				tabs: u,
 				activeTab: d,

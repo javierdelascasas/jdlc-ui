@@ -147,7 +147,7 @@ export function AppHeader({
 
       {/* Optional Mobile Sub-Bar for Tabs (md:hidden) */}
       {mobileBottomTabs && tabs && tabs.length > 0 && (
-        <div className="md:hidden border-t border-[var(--border-subtle)] px-3 py-1.5 bg-[var(--bg-root)]/95 flex justify-center">
+        <div className="md:hidden border-t border-[var(--border-subtle)] px-3 py-1.5 bg-[var(--bg-root)]/95 flex justify-center [@media(min-width:768px)]:!hidden">
           <Tabs tabs={tabs} activeTab={activeTab} onChange={onTabChange} className="w-full justify-center" />
         </div>
       )}
