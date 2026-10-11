@@ -3544,7 +3544,7 @@ function Dt({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "F
 function Ot({ tabs: e = [], activeTab: t, onChange: n, className: r }) {
 	return !e || e.length === 0 ? null : /* @__PURE__ */ c("nav", {
 		"aria-label": "Primary Mobile Navigation",
-		className: X("sm:hidden fixed bottom-0 inset-x-0 z-40 bg-[var(--bg-root)]/95 backdrop-blur-md border-t border-[var(--border-subtle)] px-2 pt-1 pb-[max(env(safe-area-inset-bottom,0px),0.35rem)] shadow-lg transition-colors transform-gpu", r),
+		className: X("sm:hidden fixed bottom-0 inset-x-0 z-40 bg-[var(--bg-root)]/95 backdrop-blur-md border-t border-[var(--border-subtle)] px-2 pt-1 pb-[max(env(safe-area-inset-bottom,0px),0.35rem)] shadow-lg transition-colors", r),
 		children: /* @__PURE__ */ c("div", {
 			className: "flex items-center justify-around w-full max-w-md mx-auto",
 			children: e.map((e) => {
