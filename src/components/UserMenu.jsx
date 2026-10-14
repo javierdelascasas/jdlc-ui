@@ -9,7 +9,12 @@ import { useAvatar } from '../context/AvatarContext.jsx';
 
 /**
  * Standardized JDLC Suite User Profile & Account Menu.
- * Adheres to the JDLC Design Manifesto Section 3.
+ * Organizes menu items into:
+ *  1. Account & Status Card + Appearance (Theme & Avatar)
+ *  2. Common Tools (Profile & Settings, Handbook & Guide, Interactive Tour, API Keys)
+ *  3. App-Specific Tools (Provided via `appItems` or `extraMenuItems`)
+ *  4. About App & Terms (Triggered via `onOpenAbout`)
+ *  5. Authentication (Sign Out / Invitation-Only Sign In)
  */
 export function UserMenu({
   user,
@@ -21,6 +26,11 @@ export function UserMenu({
   onSignOut,
   onOpenProfile,
   onOpenGuide,
+  onStartTour,
+  onOpenApiKey,
+  onOpenAbout,
+  aboutLabel = 'About App',
+  appItems = [],
   extraMenuItems = [],
   className,
   align = 'right',
@@ -47,6 +57,9 @@ export function UserMenu({
   const email = user?.email || 'Local Offline Session';
   const seed = avatarSeed || user?.email || name || 'guest';
   const isAuthenticated = Boolean(user);
+
+  // Combine app-specific items from both appItems (new) and extraMenuItems (legacy)
+  const combinedAppItems = [...appItems, ...extraMenuItems];
 
   return (
     <div className={cn('relative inline-block text-left', className)} ref={containerRef}>
@@ -88,11 +101,11 @@ export function UserMenu({
       {isOpen && (
         <div
           className={cn(
-            'absolute z-50 mt-2 w-72 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-medium)] p-3 shadow-2xl backdrop-blur-xl animate-in fade-in zoom-in-95 duration-150',
+            'absolute z-50 mt-2 w-76 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-medium)] p-3 shadow-2xl backdrop-blur-xl animate-in fade-in zoom-in-95 duration-150',
             align === 'right' ? 'right-0' : 'left-0'
           )}
         >
-          {/* Header Identity Card */}
+          {/* SECTION 1: Header Identity Card */}
           <div className="flex items-center gap-3 p-2 bg-[var(--bg-elevated)]/80 rounded-xl border border-[var(--border-subtle)] mb-2">
             <Avatar
               seed={seed}
@@ -126,7 +139,7 @@ export function UserMenu({
             <AvatarSelector align="right" seed={seed} />
           </div>
 
-          {/* Application Navigation / Custom Actions */}
+          {/* SECTION 2: Common Platform Tools */}
           <div className="py-1 space-y-0.5 border-b border-[var(--border-subtle)]">
             {onOpenProfile && (
               <button
@@ -137,7 +150,7 @@ export function UserMenu({
                 }}
                 className="w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-hover)] transition-colors cursor-pointer text-left"
               >
-                <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-[var(--text-dim)]">
+                <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-[var(--text-dim)] shrink-0">
                   <path d="M10 8a3 3 0 100-6 3 3 0 000 6zM3.465 14.493a1.23 1.23 0 00.41 1.412A9.957 9.957 0 0010 18c2.31 0 4.438-.784 6.131-2.1.43-.333.604-.903.408-1.41a7.002 7.002 0 00-13.074.003z" />
                 </svg>
                 <span>Profile &amp; Settings</span>
@@ -153,35 +166,91 @@ export function UserMenu({
                 }}
                 className="w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-hover)] transition-colors cursor-pointer text-left"
               >
-                <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-[var(--text-dim)]">
+                <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-[var(--text-dim)] shrink-0">
                   <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a.75.75 0 000 1.5h.253a.25.25 0 01.244.304l-.459 2.066A1.75 1.75 0 0010.747 15H11a.75.75 0 000-1.5h-.253a.25.25 0 01-.244-.304l.459-2.066A1.75 1.75 0 009.253 9H9z" clipRule="evenodd" />
                 </svg>
                 <span>Handbook &amp; Guide</span>
               </button>
             )}
 
-            {extraMenuItems.map((item, index) => (
+            {onStartTour && (
               <button
-                key={index}
                 type="button"
                 onClick={() => {
                   setIsOpen(false);
-                  item.onClick?.();
+                  onStartTour();
                 }}
-                className={cn(
-                  'w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs transition-colors cursor-pointer text-left',
-                  item.danger
-                    ? 'text-rose-400 hover:bg-rose-500/10'
-                    : 'text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-hover)]'
-                )}
+                className="w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-hover)] transition-colors cursor-pointer text-left"
               >
-                {item.icon && <span className="w-4 h-4 text-[var(--text-dim)]">{item.icon}</span>}
-                <span>{item.label}</span>
+                <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-emerald-400 shrink-0">
+                  <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
+                </svg>
+                <span>Interactive Tour</span>
               </button>
-            ))}
+            )}
+
+            {onOpenApiKey && (
+              <button
+                type="button"
+                onClick={() => {
+                  setIsOpen(false);
+                  onOpenApiKey();
+                }}
+                className="w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-hover)] transition-colors cursor-pointer text-left"
+              >
+                <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-amber-400 shrink-0">
+                  <path fillRule="evenodd" d="M8 7a5 5 0 113.61 4.804l-1.903 1.903A1 1 0 019 14H8v1a1 1 0 01-1 1H6v1a1 1 0 01-1 1H3a1 1 0 01-1-1v-2a1 1 0 01.293-.707l5.903-5.903A5 5 0 018 7zm2-3a3 3 0 100 6 3 3 0 000-6z" clipRule="evenodd" />
+                </svg>
+                <span>API Key Generator</span>
+              </button>
+            )}
           </div>
 
-          {/* Auth Action: Sign In vs Sign Out */}
+          {/* SECTION 3: App-Specific Operations (if provided) */}
+          {combinedAppItems.length > 0 && (
+            <div className="py-1 space-y-0.5 border-b border-[var(--border-subtle)]">
+              {combinedAppItems.map((item, index) => (
+                <button
+                  key={index}
+                  type="button"
+                  onClick={() => {
+                    setIsOpen(false);
+                    item.onClick?.();
+                  }}
+                  className={cn(
+                    'w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs transition-colors cursor-pointer text-left',
+                    item.danger
+                      ? 'text-rose-400 hover:bg-rose-500/10'
+                      : 'text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-hover)]'
+                  )}
+                >
+                  {item.icon && <span className="w-4 h-4 shrink-0 text-[var(--text-dim)]">{item.icon}</span>}
+                  <span className="truncate">{item.label}</span>
+                </button>
+              ))}
+            </div>
+          )}
+
+          {/* SECTION 4: About App Dialog Link */}
+          {onOpenAbout && (
+            <div className="py-1 border-b border-[var(--border-subtle)]">
+              <button
+                type="button"
+                onClick={() => {
+                  setIsOpen(false);
+                  onOpenAbout();
+                }}
+                className="w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-hover)] transition-colors cursor-pointer text-left"
+              >
+                <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-sky-400 shrink-0">
+                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a.75.75 0 000 1.5h.253a.25.25 0 01.244.304l-.459 2.066A1.75 1.75 0 0010.747 15H11a.75.75 0 000-1.5h-.253a.25.25 0 01-.244-.304l.459-2.066A1.75 1.75 0 009.253 9H9z" clipRule="evenodd" />
+                </svg>
+                <span>{aboutLabel}</span>
+              </button>
+            </div>
+          )}
+
+          {/* SECTION 5: Auth Action (Sign Out vs Invitation-Only Sign In) */}
           <div className="pt-1.5">
             {isAuthenticated ? (
               <button
@@ -207,7 +276,7 @@ export function UserMenu({
                 }}
                 className="w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-semibold text-[var(--color-primary-glow)] hover:bg-[var(--color-primary)]/10 transition-colors cursor-pointer"
               >
-                <span>Sign In / Connect Cloud</span>
+                <span>Sign In (Invite Only)</span>
                 <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
                   <path fillRule="evenodd" d="M3 10a.75.75 0 01.75-.75h9.544l-2.523-2.523a.75.75 0 111.06-1.06l3.81 3.81a.75.75 0 010 1.06l-3.81 3.81a.75.75 0 11-1.06-1.06l2.523-2.523H3.75A.75.75 0 013 10z" clipRule="evenodd" />
                 </svg>
