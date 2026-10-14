@@ -1,5 +1,6 @@
 import React from 'react';
-import { Dialog, Button } from './Dialog.jsx';
+import { Dialog } from './Dialog.jsx';
+import { Button } from './Button.jsx';
 import { Badge } from './Badge.jsx';
 
 /**

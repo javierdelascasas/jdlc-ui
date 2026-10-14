@@ -85,20 +85,20 @@ var f = (e, t) => {
 		return;
 	}
 	if (typeof e == "function") {
-		E(e, t, n, r);
+		ee(e, t, n, r);
 		return;
 	}
-	ee(e, t, n, r);
+	E(e, t, n, r);
 }, T = (e, t, n) => {
 	let r = e === "" ? t : D(t, e);
 	r.classGroupId = n;
-}, E = (e, t, n, r) => {
+}, ee = (e, t, n, r) => {
 	if (te(e)) {
 		C(e(r), t, n, r);
 		return;
 	}
 	t.validators === null && (t.validators = []), t.validators.push(p(n, e));
-}, ee = (e, t, n, r) => {
+}, E = (e, t, n, r) => {
 	let i = Object.entries(e), a = i.length;
 	for (let e = 0; e < a; e++) {
 		let [a, o] = i[e];
@@ -111,7 +111,7 @@ var f = (e, t) => {
 		i || (i = m(), n.nextPart.set(t, i)), n = i;
 	}
 	return n;
-}, te = (e) => "isThemeGetter" in e && e.isThemeGetter === !0, ne = (e) => {
+}, te = (e) => "isThemeGetter" in e && e.isThemeGetter === !0, O = (e) => {
 	if (e < 1) return {
 		get: () => void 0,
 		set: () => {}
@@ -129,19 +129,19 @@ var f = (e, t) => {
 			e in n ? n[e] = t : i(e, t);
 		}
 	};
-}, O = "!", k = ":", A = [], j = (e, t, n, r, i) => ({
+}, k = "!", A = ":", j = [], M = (e, t, n, r, i) => ({
 	modifiers: e,
 	hasImportantModifier: t,
 	baseClassName: n,
 	maybePostfixModifierPosition: r,
 	isExternal: i
-}), re = (e) => {
+}), ne = (e) => {
 	let { prefix: t, experimentalParseClassName: n } = e, r = (e) => {
 		let t = [], n = 0, r = 0, i = 0, a, o = e.length;
 		for (let s = 0; s < o; s++) {
 			let o = e[s];
 			if (n === 0 && r === 0) {
-				if (o === k) {
+				if (o === A) {
 					t.push(e.slice(i, s)), i = s + 1;
 					continue;
 				}
@@ -153,13 +153,13 @@ var f = (e, t) => {
 			o === "[" ? n++ : o === "]" ? n-- : o === "(" ? r++ : o === ")" && r--;
 		}
 		let s = t.length === 0 ? e : e.slice(i), c = s, l = !1;
-		s.endsWith(O) ? (c = s.slice(0, -1), l = !0) : s.startsWith(O) && (c = s.slice(1), l = !0);
+		s.endsWith(k) ? (c = s.slice(0, -1), l = !0) : s.startsWith(k) && (c = s.slice(1), l = !0);
 		let u = a && a > i ? a - i : void 0;
-		return j(t, l, c, u);
+		return M(t, l, c, u);
 	};
 	if (t) {
-		let e = t + k, n = r;
-		r = (t) => t.startsWith(e) ? n(t.slice(e.length)) : j(A, !1, t, void 0, !0);
+		let e = t + A, n = r;
+		r = (t) => t.startsWith(e) ? n(t.slice(e.length)) : M(j, !1, t, void 0, !0);
 	}
 	if (n) {
 		let e = r;
@@ -169,7 +169,7 @@ var f = (e, t) => {
 		});
 	}
 	return r;
-}, M = (e) => {
+}, N = (e) => {
 	let t = /* @__PURE__ */ new Map();
 	return e.orderSensitiveModifiers.forEach((e, n) => {
 		t.set(e, 1e6 + n);
@@ -181,18 +181,18 @@ var f = (e, t) => {
 		}
 		return r.length > 0 && (r.sort(), n.push(...r)), n;
 	};
-}, ie = (e) => ({
-	cache: ne(e.cacheSize),
-	parseClassName: re(e),
-	sortModifiers: M(e),
-	postfixLookupClassGroupIds: ae(e),
+}, re = (e) => ({
+	cache: O(e.cacheSize),
+	parseClassName: ne(e),
+	sortModifiers: N(e),
+	postfixLookupClassGroupIds: ie(e),
 	...v(e)
-}), ae = (e) => {
+}), ie = (e) => {
 	let t = Object.create(null), n = e.postfixLookupClassGroups;
 	if (n) for (let e = 0; e < n.length; e++) t[n[e]] = !0;
 	return t;
-}, oe = /\s+/, se = (e, t) => {
-	let { parseClassName: n, getClassGroupId: r, getConflictingClassGroupIds: i, sortModifiers: a, postfixLookupClassGroupIds: o } = t, s = [], c = e.trim().split(oe), l = "";
+}, ae = /\s+/, oe = (e, t) => {
+	let { parseClassName: n, getClassGroupId: r, getConflictingClassGroupIds: i, sortModifiers: a, postfixLookupClassGroupIds: o } = t, s = [], c = e.trim().split(ae), l = "";
 	for (let e = c.length - 1; e >= 0; --e) {
 		let t = c[e], { isExternal: u, modifiers: d, hasImportantModifier: f, baseClassName: p, maybePostfixModifierPosition: m } = n(t);
 		if (u) {
@@ -216,7 +216,7 @@ var f = (e, t) => {
 			}
 			h = !1;
 		}
-		let _ = d.length === 0 ? "" : d.length === 1 ? d[0] : a(d).join(":"), v = f ? _ + O : _, y = v + g;
+		let _ = d.length === 0 ? "" : d.length === 1 ? d[0] : a(d).join(":"), v = f ? _ + k : _, y = v + g;
 		if (s.indexOf(y) > -1) continue;
 		s.push(y);
 		let b = i(g, h);
@@ -227,34 +227,34 @@ var f = (e, t) => {
 		l = t + (l.length > 0 ? " " + l : l);
 	}
 	return l;
-}, N = (...e) => {
+}, P = (...e) => {
 	let t = 0, n, r, i = "";
-	for (; t < e.length;) (n = e[t++]) && (r = P(n)) && (i && (i += " "), i += r);
+	for (; t < e.length;) (n = e[t++]) && (r = F(n)) && (i && (i += " "), i += r);
 	return i;
-}, P = (e) => {
+}, F = (e) => {
 	if (typeof e == "string") return e;
 	let t, n = "";
-	for (let r = 0; r < e.length; r++) e[r] && (t = P(e[r])) && (n && (n += " "), n += t);
+	for (let r = 0; r < e.length; r++) e[r] && (t = F(e[r])) && (n && (n += " "), n += t);
 	return n;
-}, F = (e, ...t) => {
-	let n, r, i, a, o = (o) => (n = ie(t.reduce((e, t) => t(e), e())), r = n.cache.get, i = n.cache.set, a = s, s(o)), s = (e) => {
+}, I = (e, ...t) => {
+	let n, r, i, a, o = (o) => (n = re(t.reduce((e, t) => t(e), e())), r = n.cache.get, i = n.cache.set, a = s, s(o)), s = (e) => {
 		let t = r(e);
 		if (t) return t;
-		let a = se(e, n);
+		let a = oe(e, n);
 		return i(e, a), a;
 	};
-	return a = o, (...e) => a(N(...e));
-}, ce = [], I = (e) => {
-	let t = (t) => t[e] || ce;
+	return a = o, (...e) => a(P(...e));
+}, se = [], L = (e) => {
+	let t = (t) => t[e] || se;
 	return t.isThemeGetter = !0, t.themeKey = e, t;
-}, L = /^\[(?:(\w[\w-]*):)?(.+)\]$/i, le = /^\((?:(\w[\w-]*):)?(.+)\)$/i, R = /^\d+(?:\.\d+)?\/\d+(?:\.\d+)?$/, ue = /^(\d+(\.\d+)?)?(xs|sm|md|lg|xl)$/, de = /\d+(%|px|r?em|[sdl]?v([hwib]|min|max)|pt|pc|in|cm|mm|cap|ch|ex|r?lh|cq(w|h|i|b|min|max))|\b(calc|min|max|clamp)\(.+\)|^0$/, z = /^(rgba?|hsla?|hwb|(ok)?(lab|lch)|color-mix|color|light-dark)\(.+\)$/, fe = /^(inset_)?-?((\d+)?\.?(\d+)[a-z]+|0)_-?((\d+)?\.?(\d+)[a-z]+|0)/, pe = /^(url|image|image-set|cross-fade|element|(repeating-)?(linear|radial|conic)-gradient)\(.+\)$/, B = (e) => R.test(e), V = (e) => !!e && !Number.isNaN(Number(e)), H = (e) => !!e && Number.isInteger(Number(e)), me = (e) => e.endsWith("%") && V(e.slice(0, -1)), U = (e) => ue.test(e), he = () => !0, ge = (e) => de.test(e) && !z.test(e), _e = () => !1, ve = (e) => fe.test(e), ye = (e) => pe.test(e), be = (e) => !W(e) && !K(e), xe = (e) => e.startsWith("@container") && (e[10] === "/" && e[11] !== void 0 || e[11] === "s" && e[16] !== void 0 && e.startsWith("-size/", 10) || e[11] === "n" && e[18] !== void 0 && e.startsWith("-normal/", 10)), Se = (e) => J(e, Le, _e), W = (e) => L.test(e), G = (e) => J(e, Re, ge), Ce = (e) => J(e, ze, V), we = (e) => J(e, Ve, he), Te = (e) => J(e, Be, _e), Ee = (e) => J(e, Fe, _e), De = (e) => J(e, Ie, ye), Oe = (e) => J(e, He, ve), K = (e) => le.test(e), q = (e) => Y(e, Re), ke = (e) => Y(e, Be), Ae = (e) => Y(e, Fe), je = (e) => Y(e, Le), Me = (e) => Y(e, Ie), Ne = (e) => Y(e, He, !0), Pe = (e) => Y(e, Ve, !0), J = (e, t, n) => {
-	let r = L.exec(e);
+}, R = /^\[(?:(\w[\w-]*):)?(.+)\]$/i, ce = /^\((?:(\w[\w-]*):)?(.+)\)$/i, le = /^\d+(?:\.\d+)?\/\d+(?:\.\d+)?$/, ue = /^(\d+(\.\d+)?)?(xs|sm|md|lg|xl)$/, de = /\d+(%|px|r?em|[sdl]?v([hwib]|min|max)|pt|pc|in|cm|mm|cap|ch|ex|r?lh|cq(w|h|i|b|min|max))|\b(calc|min|max|clamp)\(.+\)|^0$/, z = /^(rgba?|hsla?|hwb|(ok)?(lab|lch)|color-mix|color|light-dark)\(.+\)$/, fe = /^(inset_)?-?((\d+)?\.?(\d+)[a-z]+|0)_-?((\d+)?\.?(\d+)[a-z]+|0)/, pe = /^(url|image|image-set|cross-fade|element|(repeating-)?(linear|radial|conic)-gradient)\(.+\)$/, B = (e) => le.test(e), V = (e) => !!e && !Number.isNaN(Number(e)), H = (e) => !!e && Number.isInteger(Number(e)), me = (e) => e.endsWith("%") && V(e.slice(0, -1)), U = (e) => ue.test(e), he = () => !0, ge = (e) => de.test(e) && !z.test(e), _e = () => !1, ve = (e) => fe.test(e), ye = (e) => pe.test(e), be = (e) => !W(e) && !K(e), xe = (e) => e.startsWith("@container") && (e[10] === "/" && e[11] !== void 0 || e[11] === "s" && e[16] !== void 0 && e.startsWith("-size/", 10) || e[11] === "n" && e[18] !== void 0 && e.startsWith("-normal/", 10)), Se = (e) => J(e, Le, _e), W = (e) => R.test(e), G = (e) => J(e, Re, ge), Ce = (e) => J(e, ze, V), we = (e) => J(e, Ve, he), Te = (e) => J(e, Be, _e), Ee = (e) => J(e, Fe, _e), De = (e) => J(e, Ie, ye), Oe = (e) => J(e, He, ve), K = (e) => ce.test(e), q = (e) => Y(e, Re), ke = (e) => Y(e, Be), Ae = (e) => Y(e, Fe), je = (e) => Y(e, Le), Me = (e) => Y(e, Ie), Ne = (e) => Y(e, He, !0), Pe = (e) => Y(e, Ve, !0), J = (e, t, n) => {
+	let r = R.exec(e);
 	return r ? r[1] ? t(r[1]) : n(r[2]) : !1;
 }, Y = (e, t, n = !1) => {
-	let r = le.exec(e);
+	let r = ce.exec(e);
 	return r ? r[1] ? t(r[1]) : n : !1;
-}, Fe = (e) => e === "position" || e === "percentage", Ie = (e) => e === "image" || e === "url", Le = (e) => e === "length" || e === "size" || e === "bg-size", Re = (e) => e === "length", ze = (e) => e === "number", Be = (e) => e === "family-name", Ve = (e) => e === "number" || e === "weight", He = (e) => e === "shadow", Ue = /*#__PURE__*/ F(() => {
-	let e = I("color"), t = I("font"), n = I("text"), r = I("font-weight"), i = I("tracking"), a = I("leading"), o = I("breakpoint"), s = I("container"), c = I("spacing"), l = I("radius"), u = I("shadow"), d = I("inset-shadow"), f = I("text-shadow"), p = I("drop-shadow"), m = I("blur"), h = I("perspective"), g = I("aspect"), _ = I("ease"), v = I("animate"), y = () => [
+}, Fe = (e) => e === "position" || e === "percentage", Ie = (e) => e === "image" || e === "url", Le = (e) => e === "length" || e === "size" || e === "bg-size", Re = (e) => e === "length", ze = (e) => e === "number", Be = (e) => e === "family-name", Ve = (e) => e === "number" || e === "weight", He = (e) => e === "shadow", Ue = /*#__PURE__*/ I(() => {
+	let e = L("color"), t = L("font"), n = L("text"), r = L("font-weight"), i = L("tracking"), a = L("leading"), o = L("breakpoint"), s = L("container"), c = L("spacing"), l = L("radius"), u = L("shadow"), d = L("inset-shadow"), f = L("text-shadow"), p = L("drop-shadow"), m = L("blur"), h = L("perspective"), g = L("aspect"), _ = L("ease"), v = L("animate"), y = () => [
 		"auto",
 		"avoid",
 		"all",
@@ -300,13 +300,13 @@ var f = (e, t) => {
 		"full",
 		"auto",
 		...w()
-	], E = () => [
+	], ee = () => [
 		H,
 		"none",
 		"subgrid",
 		K,
 		W
-	], ee = () => [
+	], E = () => [
 		"auto",
 		{ span: [
 			"full",
@@ -329,7 +329,7 @@ var f = (e, t) => {
 		"fr",
 		K,
 		W
-	], ne = () => [
+	], O = () => [
 		"start",
 		"end",
 		"center",
@@ -340,14 +340,14 @@ var f = (e, t) => {
 		"baseline",
 		"center-safe",
 		"end-safe"
-	], O = () => [
+	], k = () => [
 		"start",
 		"end",
 		"center",
 		"stretch",
 		"center-safe",
 		"end-safe"
-	], k = () => ["auto", ...w()], A = () => [
+	], A = () => ["auto", ...w()], j = () => [
 		B,
 		"auto",
 		"full",
@@ -361,7 +361,7 @@ var f = (e, t) => {
 		"max",
 		"fit",
 		...w()
-	], j = () => [
+	], M = () => [
 		s,
 		B,
 		"screen",
@@ -373,7 +373,7 @@ var f = (e, t) => {
 		"max",
 		"fit",
 		...w()
-	], re = () => [
+	], ne = () => [
 		B,
 		"screen",
 		"full",
@@ -385,50 +385,50 @@ var f = (e, t) => {
 		"max",
 		"fit",
 		...w()
-	], M = () => [
+	], N = () => [
 		e,
 		K,
 		W
-	], ie = () => [
+	], re = () => [
 		...b(),
 		Ae,
 		Ee,
 		{ position: [K, W] }
-	], ae = () => ["no-repeat", { repeat: [
+	], ie = () => ["no-repeat", { repeat: [
 		"",
 		"x",
 		"y",
 		"space",
 		"round"
-	] }], oe = () => [
+	] }], ae = () => [
 		"auto",
 		"cover",
 		"contain",
 		je,
 		Se,
 		{ size: [K, W] }
-	], se = () => [
+	], oe = () => [
 		me,
 		q,
 		G
-	], N = () => [
+	], P = () => [
 		"",
 		"none",
 		"full",
 		l,
 		K,
 		W
-	], P = () => [
+	], F = () => [
 		"",
 		V,
 		q,
 		G
-	], F = () => [
+	], I = () => [
 		"solid",
 		"dashed",
 		"dotted",
 		"double"
-	], ce = () => [
+	], se = () => [
 		"normal",
 		"multiply",
 		"screen",
@@ -445,18 +445,18 @@ var f = (e, t) => {
 		"saturation",
 		"color",
 		"luminosity"
-	], L = () => [
+	], R = () => [
 		V,
 		me,
 		Ae,
 		Ee
-	], le = () => [
+	], ce = () => [
 		"",
 		"none",
 		m,
 		K,
 		W
-	], R = () => [
+	], le = () => [
 		"none",
 		V,
 		K,
@@ -708,12 +708,12 @@ var f = (e, t) => {
 				K,
 				W
 			] }],
-			"grid-cols": [{ "grid-cols": E() }],
-			"col-start-end": [{ col: ee() }],
+			"grid-cols": [{ "grid-cols": ee() }],
+			"col-start-end": [{ col: E() }],
 			"col-start": [{ "col-start": D() }],
 			"col-end": [{ "col-end": D() }],
-			"grid-rows": [{ "grid-rows": E() }],
-			"row-start-end": [{ row: ee() }],
+			"grid-rows": [{ "grid-rows": ee() }],
+			"row-start-end": [{ row: E() }],
 			"row-start": [{ "row-start": D() }],
 			"row-end": [{ "row-end": D() }],
 			"grid-flow": [{ "grid-flow": [
@@ -728,19 +728,19 @@ var f = (e, t) => {
 			gap: [{ gap: w() }],
 			"gap-x": [{ "gap-x": w() }],
 			"gap-y": [{ "gap-y": w() }],
-			"justify-content": [{ justify: [...ne(), "normal"] }],
-			"justify-items": [{ "justify-items": [...O(), "normal"] }],
-			"justify-self": [{ "justify-self": ["auto", ...O()] }],
-			"align-content": [{ content: ["normal", ...ne()] }],
-			"align-items": [{ items: [...O(), { baseline: ["", "last"] }] }],
+			"justify-content": [{ justify: [...O(), "normal"] }],
+			"justify-items": [{ "justify-items": [...k(), "normal"] }],
+			"justify-self": [{ "justify-self": ["auto", ...k()] }],
+			"align-content": [{ content: ["normal", ...O()] }],
+			"align-items": [{ items: [...k(), { baseline: ["", "last"] }] }],
 			"align-self": [{ self: [
 				"auto",
-				...O(),
+				...k(),
 				{ baseline: ["", "last"] }
 			] }],
-			"place-content": [{ "place-content": ne() }],
-			"place-items": [{ "place-items": [...O(), "baseline"] }],
-			"place-self": [{ "place-self": ["auto", ...O()] }],
+			"place-content": [{ "place-content": O() }],
+			"place-items": [{ "place-items": [...k(), "baseline"] }],
+			"place-self": [{ "place-self": ["auto", ...k()] }],
 			p: [{ p: w() }],
 			px: [{ px: w() }],
 			py: [{ py: w() }],
@@ -752,38 +752,38 @@ var f = (e, t) => {
 			pr: [{ pr: w() }],
 			pb: [{ pb: w() }],
 			pl: [{ pl: w() }],
-			m: [{ m: k() }],
-			mx: [{ mx: k() }],
-			my: [{ my: k() }],
-			ms: [{ ms: k() }],
-			me: [{ me: k() }],
-			mbs: [{ mbs: k() }],
-			mbe: [{ mbe: k() }],
-			mt: [{ mt: k() }],
-			mr: [{ mr: k() }],
-			mb: [{ mb: k() }],
-			ml: [{ ml: k() }],
+			m: [{ m: A() }],
+			mx: [{ mx: A() }],
+			my: [{ my: A() }],
+			ms: [{ ms: A() }],
+			me: [{ me: A() }],
+			mbs: [{ mbs: A() }],
+			mbe: [{ mbe: A() }],
+			mt: [{ mt: A() }],
+			mr: [{ mr: A() }],
+			mb: [{ mb: A() }],
+			ml: [{ ml: A() }],
 			"space-x": [{ "space-x": w() }],
 			"space-x-reverse": ["space-x-reverse"],
 			"space-y": [{ "space-y": w() }],
 			"space-y-reverse": ["space-y-reverse"],
-			size: [{ size: A() }],
-			"inline-size": [{ inline: ["auto", ...j()] }],
-			"min-inline-size": [{ "min-inline": ["auto", ...j()] }],
-			"max-inline-size": [{ "max-inline": ["none", ...j()] }],
-			"block-size": [{ block: ["auto", ...re()] }],
-			"min-block-size": [{ "min-block": ["auto", ...re()] }],
-			"max-block-size": [{ "max-block": ["none", ...re()] }],
+			size: [{ size: j() }],
+			"inline-size": [{ inline: ["auto", ...M()] }],
+			"min-inline-size": [{ "min-inline": ["auto", ...M()] }],
+			"max-inline-size": [{ "max-inline": ["none", ...M()] }],
+			"block-size": [{ block: ["auto", ...ne()] }],
+			"min-block-size": [{ "min-block": ["auto", ...ne()] }],
+			"max-block-size": [{ "max-block": ["none", ...ne()] }],
 			w: [{ w: [
 				s,
 				"screen",
-				...A()
+				...j()
 			] }],
 			"min-w": [{ "min-w": [
 				s,
 				"screen",
 				"none",
-				...A()
+				...j()
 			] }],
 			"max-w": [{ "max-w": [
 				s,
@@ -791,24 +791,24 @@ var f = (e, t) => {
 				"none",
 				"prose",
 				{ screen: [o] },
-				...A()
+				...j()
 			] }],
 			h: [{ h: [
 				"screen",
 				"lh",
-				...A()
+				...j()
 			] }],
 			"min-h": [{ "min-h": [
 				"screen",
 				"lh",
 				"none",
-				...A()
+				...j()
 			] }],
 			"max-h": [{ "max-h": [
 				"screen",
 				"lh",
 				"none",
-				...A()
+				...j()
 			] }],
 			"font-size": [{ text: [
 				"base",
@@ -885,15 +885,15 @@ var f = (e, t) => {
 				"start",
 				"end"
 			] }],
-			"placeholder-color": [{ placeholder: M() }],
-			"text-color": [{ text: M() }],
+			"placeholder-color": [{ placeholder: N() }],
+			"text-color": [{ text: N() }],
 			"text-decoration": [
 				"underline",
 				"overline",
 				"line-through",
 				"no-underline"
 			],
-			"text-decoration-style": [{ decoration: [...F(), "wavy"] }],
+			"text-decoration-style": [{ decoration: [...I(), "wavy"] }],
 			"text-decoration-thickness": [{ decoration: [
 				V,
 				"from-font",
@@ -901,7 +901,7 @@ var f = (e, t) => {
 				K,
 				G
 			] }],
-			"text-decoration-color": [{ decoration: M() }],
+			"text-decoration-color": [{ decoration: N() }],
 			"underline-offset": [{ "underline-offset": [
 				V,
 				"auto",
@@ -988,9 +988,9 @@ var f = (e, t) => {
 				"padding",
 				"content"
 			] }],
-			"bg-position": [{ bg: ie() }],
-			"bg-repeat": [{ bg: ae() }],
-			"bg-size": [{ bg: oe() }],
+			"bg-position": [{ bg: re() }],
+			"bg-repeat": [{ bg: ie() }],
+			"bg-size": [{ bg: ae() }],
 			"bg-image": [{ bg: [
 				"none",
 				{
@@ -1024,67 +1024,67 @@ var f = (e, t) => {
 				Me,
 				De
 			] }],
-			"bg-color": [{ bg: M() }],
-			"gradient-from-pos": [{ from: se() }],
-			"gradient-via-pos": [{ via: se() }],
-			"gradient-to-pos": [{ to: se() }],
-			"gradient-from": [{ from: M() }],
-			"gradient-via": [{ via: M() }],
-			"gradient-to": [{ to: M() }],
-			rounded: [{ rounded: N() }],
-			"rounded-s": [{ "rounded-s": N() }],
-			"rounded-e": [{ "rounded-e": N() }],
-			"rounded-t": [{ "rounded-t": N() }],
-			"rounded-r": [{ "rounded-r": N() }],
-			"rounded-b": [{ "rounded-b": N() }],
-			"rounded-l": [{ "rounded-l": N() }],
-			"rounded-ss": [{ "rounded-ss": N() }],
-			"rounded-se": [{ "rounded-se": N() }],
-			"rounded-ee": [{ "rounded-ee": N() }],
-			"rounded-es": [{ "rounded-es": N() }],
-			"rounded-tl": [{ "rounded-tl": N() }],
-			"rounded-tr": [{ "rounded-tr": N() }],
-			"rounded-br": [{ "rounded-br": N() }],
-			"rounded-bl": [{ "rounded-bl": N() }],
-			"border-w": [{ border: P() }],
-			"border-w-x": [{ "border-x": P() }],
-			"border-w-y": [{ "border-y": P() }],
-			"border-w-s": [{ "border-s": P() }],
-			"border-w-e": [{ "border-e": P() }],
-			"border-w-bs": [{ "border-bs": P() }],
-			"border-w-be": [{ "border-be": P() }],
-			"border-w-t": [{ "border-t": P() }],
-			"border-w-r": [{ "border-r": P() }],
-			"border-w-b": [{ "border-b": P() }],
-			"border-w-l": [{ "border-l": P() }],
-			"divide-x": [{ "divide-x": P() }],
+			"bg-color": [{ bg: N() }],
+			"gradient-from-pos": [{ from: oe() }],
+			"gradient-via-pos": [{ via: oe() }],
+			"gradient-to-pos": [{ to: oe() }],
+			"gradient-from": [{ from: N() }],
+			"gradient-via": [{ via: N() }],
+			"gradient-to": [{ to: N() }],
+			rounded: [{ rounded: P() }],
+			"rounded-s": [{ "rounded-s": P() }],
+			"rounded-e": [{ "rounded-e": P() }],
+			"rounded-t": [{ "rounded-t": P() }],
+			"rounded-r": [{ "rounded-r": P() }],
+			"rounded-b": [{ "rounded-b": P() }],
+			"rounded-l": [{ "rounded-l": P() }],
+			"rounded-ss": [{ "rounded-ss": P() }],
+			"rounded-se": [{ "rounded-se": P() }],
+			"rounded-ee": [{ "rounded-ee": P() }],
+			"rounded-es": [{ "rounded-es": P() }],
+			"rounded-tl": [{ "rounded-tl": P() }],
+			"rounded-tr": [{ "rounded-tr": P() }],
+			"rounded-br": [{ "rounded-br": P() }],
+			"rounded-bl": [{ "rounded-bl": P() }],
+			"border-w": [{ border: F() }],
+			"border-w-x": [{ "border-x": F() }],
+			"border-w-y": [{ "border-y": F() }],
+			"border-w-s": [{ "border-s": F() }],
+			"border-w-e": [{ "border-e": F() }],
+			"border-w-bs": [{ "border-bs": F() }],
+			"border-w-be": [{ "border-be": F() }],
+			"border-w-t": [{ "border-t": F() }],
+			"border-w-r": [{ "border-r": F() }],
+			"border-w-b": [{ "border-b": F() }],
+			"border-w-l": [{ "border-l": F() }],
+			"divide-x": [{ "divide-x": F() }],
 			"divide-x-reverse": ["divide-x-reverse"],
-			"divide-y": [{ "divide-y": P() }],
+			"divide-y": [{ "divide-y": F() }],
 			"divide-y-reverse": ["divide-y-reverse"],
 			"border-style": [{ border: [
-				...F(),
+				...I(),
 				"hidden",
 				"none"
 			] }],
 			"divide-style": [{ divide: [
-				...F(),
+				...I(),
 				"hidden",
 				"none"
 			] }],
-			"border-color": [{ border: M() }],
-			"border-color-x": [{ "border-x": M() }],
-			"border-color-y": [{ "border-y": M() }],
-			"border-color-s": [{ "border-s": M() }],
-			"border-color-e": [{ "border-e": M() }],
-			"border-color-bs": [{ "border-bs": M() }],
-			"border-color-be": [{ "border-be": M() }],
-			"border-color-t": [{ "border-t": M() }],
-			"border-color-r": [{ "border-r": M() }],
-			"border-color-b": [{ "border-b": M() }],
-			"border-color-l": [{ "border-l": M() }],
-			"divide-color": [{ divide: M() }],
+			"border-color": [{ border: N() }],
+			"border-color-x": [{ "border-x": N() }],
+			"border-color-y": [{ "border-y": N() }],
+			"border-color-s": [{ "border-s": N() }],
+			"border-color-e": [{ "border-e": N() }],
+			"border-color-bs": [{ "border-bs": N() }],
+			"border-color-be": [{ "border-be": N() }],
+			"border-color-t": [{ "border-t": N() }],
+			"border-color-r": [{ "border-r": N() }],
+			"border-color-b": [{ "border-b": N() }],
+			"border-color-l": [{ "border-l": N() }],
+			"divide-color": [{ divide: N() }],
 			"outline-style": [{ outline: [
-				...F(),
+				...I(),
 				"none",
 				"hidden"
 			] }],
@@ -1099,7 +1099,7 @@ var f = (e, t) => {
 				q,
 				G
 			] }],
-			"outline-color": [{ outline: M() }],
+			"outline-color": [{ outline: N() }],
 			shadow: [{ shadow: [
 				"",
 				"inner",
@@ -1108,39 +1108,39 @@ var f = (e, t) => {
 				Ne,
 				Oe
 			] }],
-			"shadow-color": [{ shadow: M() }],
+			"shadow-color": [{ shadow: N() }],
 			"inset-shadow": [{ "inset-shadow": [
 				"none",
 				d,
 				Ne,
 				Oe
 			] }],
-			"inset-shadow-color": [{ "inset-shadow": M() }],
-			"ring-w": [{ ring: P() }],
+			"inset-shadow-color": [{ "inset-shadow": N() }],
+			"ring-w": [{ ring: F() }],
 			"ring-w-inset": ["ring-inset"],
-			"ring-color": [{ ring: M() }],
+			"ring-color": [{ ring: N() }],
 			"ring-offset-w": [{ "ring-offset": [V, G] }],
-			"ring-offset-color": [{ "ring-offset": M() }],
-			"inset-ring-w": [{ "inset-ring": P() }],
-			"inset-ring-color": [{ "inset-ring": M() }],
+			"ring-offset-color": [{ "ring-offset": N() }],
+			"inset-ring-w": [{ "inset-ring": F() }],
+			"inset-ring-color": [{ "inset-ring": N() }],
 			"text-shadow": [{ "text-shadow": [
 				"none",
 				f,
 				Ne,
 				Oe
 			] }],
-			"text-shadow-color": [{ "text-shadow": M() }],
+			"text-shadow-color": [{ "text-shadow": N() }],
 			opacity: [{ opacity: [
 				V,
 				K,
 				W
 			] }],
 			"mix-blend": [{ "mix-blend": [
-				...ce(),
+				...se(),
 				"plus-darker",
 				"plus-lighter"
 			] }],
-			"bg-blend": [{ "bg-blend": ce() }],
+			"bg-blend": [{ "bg-blend": se() }],
 			"mask-clip": [{ "mask-clip": [
 				"border",
 				"padding",
@@ -1156,39 +1156,39 @@ var f = (e, t) => {
 				"exclude"
 			] }],
 			"mask-image-linear-pos": [{ "mask-linear": [V] }],
-			"mask-image-linear-from-pos": [{ "mask-linear-from": L() }],
-			"mask-image-linear-to-pos": [{ "mask-linear-to": L() }],
-			"mask-image-linear-from-color": [{ "mask-linear-from": M() }],
-			"mask-image-linear-to-color": [{ "mask-linear-to": M() }],
-			"mask-image-t-from-pos": [{ "mask-t-from": L() }],
-			"mask-image-t-to-pos": [{ "mask-t-to": L() }],
-			"mask-image-t-from-color": [{ "mask-t-from": M() }],
-			"mask-image-t-to-color": [{ "mask-t-to": M() }],
-			"mask-image-r-from-pos": [{ "mask-r-from": L() }],
-			"mask-image-r-to-pos": [{ "mask-r-to": L() }],
-			"mask-image-r-from-color": [{ "mask-r-from": M() }],
-			"mask-image-r-to-color": [{ "mask-r-to": M() }],
-			"mask-image-b-from-pos": [{ "mask-b-from": L() }],
-			"mask-image-b-to-pos": [{ "mask-b-to": L() }],
-			"mask-image-b-from-color": [{ "mask-b-from": M() }],
-			"mask-image-b-to-color": [{ "mask-b-to": M() }],
-			"mask-image-l-from-pos": [{ "mask-l-from": L() }],
-			"mask-image-l-to-pos": [{ "mask-l-to": L() }],
-			"mask-image-l-from-color": [{ "mask-l-from": M() }],
-			"mask-image-l-to-color": [{ "mask-l-to": M() }],
-			"mask-image-x-from-pos": [{ "mask-x-from": L() }],
-			"mask-image-x-to-pos": [{ "mask-x-to": L() }],
-			"mask-image-x-from-color": [{ "mask-x-from": M() }],
-			"mask-image-x-to-color": [{ "mask-x-to": M() }],
-			"mask-image-y-from-pos": [{ "mask-y-from": L() }],
-			"mask-image-y-to-pos": [{ "mask-y-to": L() }],
-			"mask-image-y-from-color": [{ "mask-y-from": M() }],
-			"mask-image-y-to-color": [{ "mask-y-to": M() }],
+			"mask-image-linear-from-pos": [{ "mask-linear-from": R() }],
+			"mask-image-linear-to-pos": [{ "mask-linear-to": R() }],
+			"mask-image-linear-from-color": [{ "mask-linear-from": N() }],
+			"mask-image-linear-to-color": [{ "mask-linear-to": N() }],
+			"mask-image-t-from-pos": [{ "mask-t-from": R() }],
+			"mask-image-t-to-pos": [{ "mask-t-to": R() }],
+			"mask-image-t-from-color": [{ "mask-t-from": N() }],
+			"mask-image-t-to-color": [{ "mask-t-to": N() }],
+			"mask-image-r-from-pos": [{ "mask-r-from": R() }],
+			"mask-image-r-to-pos": [{ "mask-r-to": R() }],
+			"mask-image-r-from-color": [{ "mask-r-from": N() }],
+			"mask-image-r-to-color": [{ "mask-r-to": N() }],
+			"mask-image-b-from-pos": [{ "mask-b-from": R() }],
+			"mask-image-b-to-pos": [{ "mask-b-to": R() }],
+			"mask-image-b-from-color": [{ "mask-b-from": N() }],
+			"mask-image-b-to-color": [{ "mask-b-to": N() }],
+			"mask-image-l-from-pos": [{ "mask-l-from": R() }],
+			"mask-image-l-to-pos": [{ "mask-l-to": R() }],
+			"mask-image-l-from-color": [{ "mask-l-from": N() }],
+			"mask-image-l-to-color": [{ "mask-l-to": N() }],
+			"mask-image-x-from-pos": [{ "mask-x-from": R() }],
+			"mask-image-x-to-pos": [{ "mask-x-to": R() }],
+			"mask-image-x-from-color": [{ "mask-x-from": N() }],
+			"mask-image-x-to-color": [{ "mask-x-to": N() }],
+			"mask-image-y-from-pos": [{ "mask-y-from": R() }],
+			"mask-image-y-to-pos": [{ "mask-y-to": R() }],
+			"mask-image-y-from-color": [{ "mask-y-from": N() }],
+			"mask-image-y-to-color": [{ "mask-y-to": N() }],
 			"mask-image-radial": [{ "mask-radial": [K, W] }],
-			"mask-image-radial-from-pos": [{ "mask-radial-from": L() }],
-			"mask-image-radial-to-pos": [{ "mask-radial-to": L() }],
-			"mask-image-radial-from-color": [{ "mask-radial-from": M() }],
-			"mask-image-radial-to-color": [{ "mask-radial-to": M() }],
+			"mask-image-radial-from-pos": [{ "mask-radial-from": R() }],
+			"mask-image-radial-to-pos": [{ "mask-radial-to": R() }],
+			"mask-image-radial-from-color": [{ "mask-radial-from": N() }],
+			"mask-image-radial-to-color": [{ "mask-radial-to": N() }],
 			"mask-image-radial-shape": [{ "mask-radial": ["circle", "ellipse"] }],
 			"mask-image-radial-size": [{ "mask-radial": [{
 				closest: ["side", "corner"],
@@ -1196,10 +1196,10 @@ var f = (e, t) => {
 			}] }],
 			"mask-image-radial-pos": [{ "mask-radial-at": b() }],
 			"mask-image-conic-pos": [{ "mask-conic": [V] }],
-			"mask-image-conic-from-pos": [{ "mask-conic-from": L() }],
-			"mask-image-conic-to-pos": [{ "mask-conic-to": L() }],
-			"mask-image-conic-from-color": [{ "mask-conic-from": M() }],
-			"mask-image-conic-to-color": [{ "mask-conic-to": M() }],
+			"mask-image-conic-from-pos": [{ "mask-conic-from": R() }],
+			"mask-image-conic-to-pos": [{ "mask-conic-to": R() }],
+			"mask-image-conic-from-color": [{ "mask-conic-from": N() }],
+			"mask-image-conic-to-color": [{ "mask-conic-to": N() }],
 			"mask-mode": [{ mask: [
 				"alpha",
 				"luminance",
@@ -1213,9 +1213,9 @@ var f = (e, t) => {
 				"stroke",
 				"view"
 			] }],
-			"mask-position": [{ mask: ie() }],
-			"mask-repeat": [{ mask: ae() }],
-			"mask-size": [{ mask: oe() }],
+			"mask-position": [{ mask: re() }],
+			"mask-repeat": [{ mask: ie() }],
+			"mask-size": [{ mask: ae() }],
 			"mask-type": [{ "mask-type": ["alpha", "luminance"] }],
 			"mask-image": [{ mask: [
 				"none",
@@ -1228,7 +1228,7 @@ var f = (e, t) => {
 				K,
 				W
 			] }],
-			blur: [{ blur: le() }],
+			blur: [{ blur: ce() }],
 			brightness: [{ brightness: [
 				V,
 				K,
@@ -1246,7 +1246,7 @@ var f = (e, t) => {
 				Ne,
 				Oe
 			] }],
-			"drop-shadow-color": [{ "drop-shadow": M() }],
+			"drop-shadow-color": [{ "drop-shadow": N() }],
 			grayscale: [{ grayscale: [
 				"",
 				V,
@@ -1281,7 +1281,7 @@ var f = (e, t) => {
 				K,
 				W
 			] }],
-			"backdrop-blur": [{ "backdrop-blur": le() }],
+			"backdrop-blur": [{ "backdrop-blur": ce() }],
 			"backdrop-brightness": [{ "backdrop-brightness": [
 				V,
 				K,
@@ -1374,10 +1374,10 @@ var f = (e, t) => {
 				W
 			] }],
 			"perspective-origin": [{ "perspective-origin": x() }],
-			rotate: [{ rotate: R() }],
-			"rotate-x": [{ "rotate-x": R() }],
-			"rotate-y": [{ "rotate-y": R() }],
-			"rotate-z": [{ "rotate-z": R() }],
+			rotate: [{ rotate: le() }],
+			"rotate-x": [{ "rotate-x": le() }],
+			"rotate-y": [{ "rotate-y": le() }],
+			"rotate-z": [{ "rotate-z": le() }],
 			scale: [{ scale: ue() }],
 			"scale-x": [{ "scale-x": ue() }],
 			"scale-y": [{ "scale-y": ue() }],
@@ -1406,9 +1406,9 @@ var f = (e, t) => {
 				K,
 				W
 			] }],
-			accent: [{ accent: M() }],
+			accent: [{ accent: N() }],
 			appearance: [{ appearance: ["none", "auto"] }],
-			"caret-color": [{ caret: M() }],
+			"caret-color": [{ caret: N() }],
 			"color-scheme": [{ scheme: [
 				"normal",
 				"dark",
@@ -1466,8 +1466,8 @@ var f = (e, t) => {
 				"x"
 			] }],
 			"scroll-behavior": [{ scroll: ["auto", "smooth"] }],
-			"scrollbar-thumb-color": [{ "scrollbar-thumb": M() }],
-			"scrollbar-track-color": [{ "scrollbar-track": M() }],
+			"scrollbar-thumb-color": [{ "scrollbar-thumb": N() }],
+			"scrollbar-track-color": [{ "scrollbar-track": N() }],
 			"scrollbar-gutter": [{ "scrollbar-gutter": [
 				"auto",
 				"stable",
@@ -1544,14 +1544,14 @@ var f = (e, t) => {
 				K,
 				W
 			] }],
-			fill: [{ fill: ["none", ...M()] }],
+			fill: [{ fill: ["none", ...N()] }],
 			"stroke-w": [{ stroke: [
 				V,
 				q,
 				G,
 				Ce
 			] }],
-			stroke: [{ stroke: ["none", ...M()] }],
+			stroke: [{ stroke: ["none", ...N()] }],
 			"forced-color-adjust": [{ "forced-color-adjust": ["auto", "none"] }]
 		},
 		conflictingClassGroups: {
@@ -3122,40 +3122,40 @@ function Tt({ isOpen: e, onClose: t, placeholder: n = "Type a command or search.
 }
 //#endregion
 //#region src/components/UserMenu.jsx
-function Et({ user: e, displayName: t, avatarSeed: n, avatarSuit: r = null, status: a = "online", onSignIn: u, onSignOut: d, onOpenProfile: f, onOpenGuide: p, extraMenuItems: m = [], className: h, align: g = "right" }) {
-	let [_, v] = s(!1), y = o(null), { currentThemeConfig: b } = Ye(), { suit: x } = Ke(), S = r || x || "notionists";
+function Et({ user: e, displayName: t, avatarSeed: n, avatarSuit: r = null, status: a = "online", onSignIn: u, onSignOut: d, onOpenProfile: f, onOpenGuide: p, onStartTour: m, onOpenApiKey: h, onOpenAbout: g, aboutLabel: _ = "About App", appItems: v = [], extraMenuItems: y = [], className: b, align: x = "right" }) {
+	let [S, C] = s(!1), w = o(null), { currentThemeConfig: T } = Ye(), { suit: ee } = Ke(), E = r || ee || "notionists";
 	i(() => {
 		function e(e) {
-			y.current && !y.current.contains(e.target) && v(!1);
+			w.current && !w.current.contains(e.target) && C(!1);
 		}
-		return _ && document.addEventListener("mousedown", e), () => document.removeEventListener("mousedown", e);
-	}, [_]);
-	let C = t || e?.user_metadata?.displayName || e?.email?.split("@")[0] || "Guest User", w = e?.email || "Local Offline Session", T = n || e?.email || C || "guest", E = !!e;
+		return S && document.addEventListener("mousedown", e), () => document.removeEventListener("mousedown", e);
+	}, [S]);
+	let D = t || e?.user_metadata?.displayName || e?.email?.split("@")[0] || "Guest User", te = e?.email || "Local Offline Session", O = n || e?.email || D || "guest", k = !!e, A = [...v, ...y];
 	return /* @__PURE__ */ l("div", {
-		className: X("relative inline-block text-left", h),
-		ref: y,
+		className: X("relative inline-block text-left", b),
+		ref: w,
 		children: [/* @__PURE__ */ l("button", {
 			type: "button",
-			onClick: () => v((e) => !e),
-			className: X("flex items-center gap-1.5 sm:gap-2 p-1 sm:pl-1.5 sm:pr-2.5 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-subtle)] text-[var(--text-main)] hover:border-[var(--border-medium)] hover:bg-[var(--bg-hover)] transition-all cursor-pointer", _ && "border-[var(--border-medium)] bg-[var(--bg-elevated)]"),
-			title: E ? `Signed in as ${C}` : "Account & Preferences",
-			"aria-expanded": _,
+			onClick: () => C((e) => !e),
+			className: X("flex items-center gap-1.5 sm:gap-2 p-1 sm:pl-1.5 sm:pr-2.5 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-subtle)] text-[var(--text-main)] hover:border-[var(--border-medium)] hover:bg-[var(--bg-hover)] transition-all cursor-pointer", S && "border-[var(--border-medium)] bg-[var(--bg-elevated)]"),
+			title: k ? `Signed in as ${D}` : "Account & Preferences",
+			"aria-expanded": S,
 			children: [
 				/* @__PURE__ */ c(tt, {
-					seed: T,
-					name: C,
-					suit: S,
+					seed: O,
+					name: D,
+					suit: E,
 					size: "xs",
-					status: E ? a : void 0
+					status: k ? a : void 0
 				}),
 				/* @__PURE__ */ c("span", {
 					className: "text-xs font-semibold max-w-[110px] truncate hidden sm:inline-block",
-					children: C
+					children: D
 				}),
 				/* @__PURE__ */ c("svg", {
 					viewBox: "0 0 20 20",
 					fill: "currentColor",
-					className: X("w-3.5 h-3.5 text-slate-400 transition-transform duration-150 hidden sm:block", _ && "rotate-180"),
+					className: X("w-3.5 h-3.5 text-slate-400 transition-transform duration-150 hidden sm:block", S && "rotate-180"),
 					children: /* @__PURE__ */ c("path", {
 						fillRule: "evenodd",
 						d: "M5.22 8.22a.75.75 0 011.06 0L10 11.94l3.72-3.72a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.22 9.28a.75.75 0 010-1.06z",
@@ -3163,33 +3163,33 @@ function Et({ user: e, displayName: t, avatarSeed: n, avatarSuit: r = null, stat
 					})
 				})
 			]
-		}), _ && /* @__PURE__ */ l("div", {
-			className: X("absolute z-50 mt-2 w-72 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-medium)] p-3 shadow-2xl backdrop-blur-xl animate-in fade-in zoom-in-95 duration-150", g === "right" ? "right-0" : "left-0"),
+		}), S && /* @__PURE__ */ l("div", {
+			className: X("absolute z-50 mt-2 w-76 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-medium)] p-3 shadow-2xl backdrop-blur-xl animate-in fade-in zoom-in-95 duration-150", x === "right" ? "right-0" : "left-0"),
 			children: [
 				/* @__PURE__ */ l("div", {
 					className: "flex items-center gap-3 p-2 bg-[var(--bg-elevated)]/80 rounded-xl border border-[var(--border-subtle)] mb-2",
 					children: [/* @__PURE__ */ c(tt, {
-						seed: T,
-						name: C,
-						suit: S,
+						seed: O,
+						name: D,
+						suit: E,
 						size: "md",
-						status: E ? a : void 0
+						status: k ? a : void 0
 					}), /* @__PURE__ */ l("div", {
 						className: "flex-1 min-w-0",
 						children: [/* @__PURE__ */ l("div", {
 							className: "flex items-center justify-between gap-1",
 							children: [/* @__PURE__ */ c("span", {
 								className: "font-bold text-xs text-[var(--text-main)] truncate font-[var(--font-heading)]",
-								children: C
+								children: D
 							}), /* @__PURE__ */ c($, {
-								variant: E ? "success" : "subtle",
+								variant: k ? "success" : "subtle",
 								size: "xs",
 								className: "font-mono text-[9px] py-0 px-1",
-								children: E ? "Connected" : "Guest"
+								children: k ? "Connected" : "Guest"
 							})]
 						}), /* @__PURE__ */ c("p", {
 							className: "text-[11px] text-[var(--text-dim)] truncate mt-0.5",
-							children: w
+							children: te
 						})]
 					})]
 				}),
@@ -3207,7 +3207,7 @@ function Et({ user: e, displayName: t, avatarSeed: n, avatarSuit: r = null, stat
 						children: "Avatar Set"
 					}), /* @__PURE__ */ c(it, {
 						align: "right",
-						seed: T
+						seed: O
 					})]
 				}),
 				/* @__PURE__ */ l("div", {
@@ -3216,26 +3216,26 @@ function Et({ user: e, displayName: t, avatarSeed: n, avatarSuit: r = null, stat
 						f && /* @__PURE__ */ l("button", {
 							type: "button",
 							onClick: () => {
-								v(!1), f();
+								C(!1), f();
 							},
 							className: "w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-hover)] transition-colors cursor-pointer text-left",
 							children: [/* @__PURE__ */ c("svg", {
 								viewBox: "0 0 20 20",
 								fill: "currentColor",
-								className: "w-4 h-4 text-[var(--text-dim)]",
+								className: "w-4 h-4 text-[var(--text-dim)] shrink-0",
 								children: /* @__PURE__ */ c("path", { d: "M10 8a3 3 0 100-6 3 3 0 000 6zM3.465 14.493a1.23 1.23 0 00.41 1.412A9.957 9.957 0 0010 18c2.31 0 4.438-.784 6.131-2.1.43-.333.604-.903.408-1.41a7.002 7.002 0 00-13.074.003z" })
 							}), /* @__PURE__ */ c("span", { children: "Profile & Settings" })]
 						}),
 						p && /* @__PURE__ */ l("button", {
 							type: "button",
 							onClick: () => {
-								v(!1), p();
+								C(!1), p();
 							},
 							className: "w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-hover)] transition-colors cursor-pointer text-left",
 							children: [/* @__PURE__ */ c("svg", {
 								viewBox: "0 0 20 20",
 								fill: "currentColor",
-								className: "w-4 h-4 text-[var(--text-dim)]",
+								className: "w-4 h-4 text-[var(--text-dim)] shrink-0",
 								children: /* @__PURE__ */ c("path", {
 									fillRule: "evenodd",
 									d: "M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a.75.75 0 000 1.5h.253a.25.25 0 01.244.304l-.459 2.066A1.75 1.75 0 0010.747 15H11a.75.75 0 000-1.5h-.253a.25.25 0 01-.244-.304l.459-2.066A1.75 1.75 0 009.253 9H9z",
@@ -3243,25 +3243,81 @@ function Et({ user: e, displayName: t, avatarSeed: n, avatarSuit: r = null, stat
 								})
 							}), /* @__PURE__ */ c("span", { children: "Handbook & Guide" })]
 						}),
-						m.map((e, t) => /* @__PURE__ */ l("button", {
+						m && /* @__PURE__ */ l("button", {
 							type: "button",
 							onClick: () => {
-								v(!1), e.onClick?.();
+								C(!1), m();
 							},
-							className: X("w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs transition-colors cursor-pointer text-left", e.danger ? "text-rose-400 hover:bg-rose-500/10" : "text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-hover)]"),
-							children: [e.icon && /* @__PURE__ */ c("span", {
-								className: "w-4 h-4 text-[var(--text-dim)]",
-								children: e.icon
-							}), /* @__PURE__ */ c("span", { children: e.label })]
-						}, t))
+							className: "w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-hover)] transition-colors cursor-pointer text-left",
+							children: [/* @__PURE__ */ c("svg", {
+								viewBox: "0 0 20 20",
+								fill: "currentColor",
+								className: "w-4 h-4 text-emerald-400 shrink-0",
+								children: /* @__PURE__ */ c("path", { d: "M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" })
+							}), /* @__PURE__ */ c("span", { children: "Interactive Tour" })]
+						}),
+						h && /* @__PURE__ */ l("button", {
+							type: "button",
+							onClick: () => {
+								C(!1), h();
+							},
+							className: "w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-hover)] transition-colors cursor-pointer text-left",
+							children: [/* @__PURE__ */ c("svg", {
+								viewBox: "0 0 20 20",
+								fill: "currentColor",
+								className: "w-4 h-4 text-amber-400 shrink-0",
+								children: /* @__PURE__ */ c("path", {
+									fillRule: "evenodd",
+									d: "M8 7a5 5 0 113.61 4.804l-1.903 1.903A1 1 0 019 14H8v1a1 1 0 01-1 1H6v1a1 1 0 01-1 1H3a1 1 0 01-1-1v-2a1 1 0 01.293-.707l5.903-5.903A5 5 0 018 7zm2-3a3 3 0 100 6 3 3 0 000-6z",
+									clipRule: "evenodd"
+								})
+							}), /* @__PURE__ */ c("span", { children: "API Key Generator" })]
+						})
 					]
+				}),
+				A.length > 0 && /* @__PURE__ */ c("div", {
+					className: "py-1 space-y-0.5 border-b border-[var(--border-subtle)]",
+					children: A.map((e, t) => /* @__PURE__ */ l("button", {
+						type: "button",
+						onClick: () => {
+							C(!1), e.onClick?.();
+						},
+						className: X("w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs transition-colors cursor-pointer text-left", e.danger ? "text-rose-400 hover:bg-rose-500/10" : "text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-hover)]"),
+						children: [e.icon && /* @__PURE__ */ c("span", {
+							className: "w-4 h-4 shrink-0 text-[var(--text-dim)]",
+							children: e.icon
+						}), /* @__PURE__ */ c("span", {
+							className: "truncate",
+							children: e.label
+						})]
+					}, t))
+				}),
+				g && /* @__PURE__ */ c("div", {
+					className: "py-1 border-b border-[var(--border-subtle)]",
+					children: /* @__PURE__ */ l("button", {
+						type: "button",
+						onClick: () => {
+							C(!1), g();
+						},
+						className: "w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-hover)] transition-colors cursor-pointer text-left",
+						children: [/* @__PURE__ */ c("svg", {
+							viewBox: "0 0 20 20",
+							fill: "currentColor",
+							className: "w-4 h-4 text-sky-400 shrink-0",
+							children: /* @__PURE__ */ c("path", {
+								fillRule: "evenodd",
+								d: "M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a.75.75 0 000 1.5h.253a.25.25 0 01.244.304l-.459 2.066A1.75 1.75 0 0010.747 15H11a.75.75 0 000-1.5h-.253a.25.25 0 01-.244-.304l.459-2.066A1.75 1.75 0 009.253 9H9z",
+								clipRule: "evenodd"
+							})
+						}), /* @__PURE__ */ c("span", { children: _ })]
+					})
 				}),
 				/* @__PURE__ */ c("div", {
 					className: "pt-1.5",
-					children: E ? /* @__PURE__ */ l("button", {
+					children: k ? /* @__PURE__ */ l("button", {
 						type: "button",
 						onClick: () => {
-							v(!1), d?.();
+							C(!1), d?.();
 						},
 						className: "w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-semibold text-rose-400 hover:bg-rose-500/10 hover:text-rose-300 transition-colors cursor-pointer",
 						children: [/* @__PURE__ */ c("span", { children: "Sign Out" }), /* @__PURE__ */ l("svg", {
@@ -3281,10 +3337,10 @@ function Et({ user: e, displayName: t, avatarSeed: n, avatarSuit: r = null, stat
 					}) : /* @__PURE__ */ l("button", {
 						type: "button",
 						onClick: () => {
-							v(!1), u?.();
+							C(!1), u?.();
 						},
 						className: "w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-semibold text-[var(--color-primary-glow)] hover:bg-[var(--color-primary)]/10 transition-colors cursor-pointer",
-						children: [/* @__PURE__ */ c("span", { children: "Sign In / Connect Cloud" }), /* @__PURE__ */ c("svg", {
+						children: [/* @__PURE__ */ c("span", { children: "Sign In (Invite Only)" }), /* @__PURE__ */ c("svg", {
 							viewBox: "0 0 20 20",
 							fill: "currentColor",
 							className: "w-4 h-4",
@@ -3301,8 +3357,125 @@ function Et({ user: e, displayName: t, avatarSeed: n, avatarSuit: r = null, stat
 	});
 }
 //#endregion
+//#region src/components/AboutAppModal.jsx
+function Dt({ isOpen: e, onClose: t, appName: n, appVersion: r = "1.0.0", appSubtitle: i, icon: a, accentColor: o = "text-[var(--color-primary-glow)]" }) {
+	return /* @__PURE__ */ c(ht, {
+		isOpen: e,
+		onClose: t,
+		maxWidth: "max-w-lg",
+		children: /* @__PURE__ */ l("div", {
+			className: "space-y-5",
+			children: [
+				/* @__PURE__ */ l("div", {
+					className: "flex items-start gap-3.5 pb-4 border-b border-[var(--border-subtle)]",
+					children: [a ? /* @__PURE__ */ c("div", {
+						className: `p-2.5 rounded-2xl bg-[var(--bg-elevated)] border border-[var(--border-medium)] ${o} shrink-0`,
+						children: /* @__PURE__ */ c(a, { className: "w-7 h-7" })
+					}) : /* @__PURE__ */ c("div", {
+						className: "p-2.5 rounded-2xl bg-[var(--bg-elevated)] border border-[var(--border-medium)] text-[var(--color-primary-glow)] shrink-0",
+						children: /* @__PURE__ */ c("span", {
+							className: "text-xl",
+							children: "✨"
+						})
+					}), /* @__PURE__ */ l("div", {
+						className: "flex-1 min-w-0",
+						children: [
+							/* @__PURE__ */ l("div", {
+								className: "flex items-center gap-2",
+								children: [/* @__PURE__ */ c("h3", {
+									className: "font-bold text-lg text-[var(--text-main)] font-[var(--font-heading)]",
+									children: n
+								}), /* @__PURE__ */ l($, {
+									variant: "subtle",
+									size: "xs",
+									className: "font-mono",
+									children: ["v", r]
+								})]
+							}),
+							i && /* @__PURE__ */ c("p", {
+								className: "text-xs text-[var(--text-muted)] mt-0.5",
+								children: i
+							}),
+							/* @__PURE__ */ c("p", {
+								className: "text-[11px] text-[var(--text-dim)] mt-1 font-mono",
+								children: "Built on React 19 • @jdlc/ui Design System"
+							})
+						]
+					})]
+				}),
+				/* @__PURE__ */ l("div", {
+					className: "rounded-xl border border-amber-500/30 bg-amber-500/10 p-3.5 space-y-1",
+					children: [/* @__PURE__ */ l("div", {
+						className: "flex items-center gap-1.5 text-xs font-bold text-amber-300",
+						children: [/* @__PURE__ */ c("span", { children: "🔐" }), /* @__PURE__ */ c("span", { children: "Invitation-Only Ecosystem" })]
+					}), /* @__PURE__ */ c("p", {
+						className: "text-[11px] text-amber-200/90 leading-relaxed",
+						children: "JDLC applications are private and strictly invitation-only. Public registrations are permanently disabled. If you need account credentials or additional service permissions, please contact your network administrator."
+					})]
+				}),
+				/* @__PURE__ */ l("div", {
+					className: "space-y-2 text-xs text-[var(--text-muted)] leading-relaxed",
+					children: [/* @__PURE__ */ l("h4", {
+						className: "font-semibold text-[var(--text-main)] flex items-center gap-1.5",
+						children: [/* @__PURE__ */ c("span", { children: "🛡️" }), /* @__PURE__ */ c("span", { children: "Zero Tracking & Sovereign Data" })]
+					}), /* @__PURE__ */ c("p", { children: "Your activity is never tracked, monetized, or shared with third parties. All network traffic is isolated within private infrastructure or encrypted in-browser before syncing." })]
+				}),
+				/* @__PURE__ */ l("div", {
+					className: "rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-subtle)] p-3 space-y-1 text-xs",
+					children: [
+						/* @__PURE__ */ c("div", {
+							className: "font-semibold text-[var(--text-main)]",
+							children: "JDLC Philosophy"
+						}),
+						/* @__PURE__ */ c("p", {
+							className: "text-[11px] text-[var(--text-dim)] italic",
+							children: "“Stop paying without owning.” Self-hosted digital sovereignty and tools designed for high-performance productivity and privacy."
+						}),
+						/* @__PURE__ */ l("div", {
+							className: "pt-2 flex items-center gap-3 text-[11px]",
+							children: [
+								/* @__PURE__ */ l("a", {
+									href: "https://jdlc.se/how-tos",
+									target: "_blank",
+									rel: "noreferrer",
+									className: "text-[var(--color-primary-glow)] hover:underline font-medium inline-flex items-center gap-1",
+									children: [/* @__PURE__ */ c("span", { children: "Knowledge Hub & FAQs" }), /* @__PURE__ */ c("span", { children: "↗" })]
+								}),
+								/* @__PURE__ */ c("span", {
+									className: "text-[var(--text-dim)]",
+									children: "•"
+								}),
+								/* @__PURE__ */ l("a", {
+									href: "https://jdlc.se/about",
+									target: "_blank",
+									rel: "noreferrer",
+									className: "text-[var(--color-primary-glow)] hover:underline font-medium inline-flex items-center gap-1",
+									children: [/* @__PURE__ */ c("span", { children: "About JDLC" }), /* @__PURE__ */ c("span", { children: "↗" })]
+								})
+							]
+						})
+					]
+				}),
+				/* @__PURE__ */ l("div", {
+					className: "flex items-center justify-between pt-2 border-t border-[var(--border-subtle)]",
+					children: [/* @__PURE__ */ c("span", {
+						className: "text-[10px] text-[var(--text-dim)]",
+						children: "© 2026 JDLC Suite"
+					}), /* @__PURE__ */ c(at, {
+						type: "button",
+						variant: "ghost",
+						size: "sm",
+						onClick: t,
+						children: "Done"
+					})]
+				})
+			]
+		})
+	});
+}
+//#endregion
 //#region src/components/AppHeader.jsx
-function Dt({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "Flow", subtitle: r, icon: a, badge: o = "JDLC", statusBadge: u, onBrandClick: d, tabs: f, activeTab: p, onTabChange: m, centerContent: h, utilities: g, primaryAction: _, onOpenPalette: v, userMenu: y, showThemeSelector: b = !1, className: x, mobileBottomTabs: S = !1, showMobileDrawer: C = !1 }) {
+function Ot({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "Flow", subtitle: r, icon: a, badge: o = "JDLC", statusBadge: u, onBrandClick: d, tabs: f, activeTab: p, onTabChange: m, centerContent: h, utilities: g, primaryAction: _, onOpenPalette: v, userMenu: y, showThemeSelector: b = !1, className: x, mobileBottomTabs: S = !1, showMobileDrawer: C = !1 }) {
 	let [w, T] = s(!1);
 	return i(() => (w ? document.body.style.overflow = "hidden" : document.body.style.overflow = "unset", () => {
 		document.body.style.overflow = "unset";
@@ -3542,7 +3715,7 @@ function Dt({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "F
 }
 //#endregion
 //#region src/components/MobileTabBar.jsx
-function Ot({ tabs: e = [], activeTab: t, onChange: n, className: r }) {
+function kt({ tabs: e = [], activeTab: t, onChange: n, className: r }) {
 	return !e || e.length === 0 ? null : /* @__PURE__ */ c("nav", {
 		"aria-label": "Primary Mobile Navigation",
 		className: X("sm:hidden fixed bottom-0 inset-x-0 z-40 bg-[var(--bg-root)]/95 backdrop-blur-md border-t border-[var(--border-subtle)] px-2 pt-1 pb-[max(env(safe-area-inset-bottom,0px),0.35rem)] shadow-lg transition-colors", r),
@@ -3575,4 +3748,4 @@ function Ot({ tabs: e = [], activeTab: t, onChange: n, className: r }) {
 	});
 }
 //#endregion
-export { Z as AVATAR_SUITS, Dt as AppHeader, bt as AppSwitcher, tt as Avatar, nt as AvatarGroup, Ge as AvatarProvider, it as AvatarSelector, $ as Badge, at as Button, ot as Card, ut as CardContent, lt as CardDescription, dt as CardFooter, st as CardHeader, ct as CardTitle, Tt as CommandPalette, Xe as DICEBEAR_SUITS, ht as Dialog, rt as Dropdown, ft as Input, Ot as MobileTabBar, vt as SUITE_APPS, mt as Select, Q as THEMES, gt as Tabs, pt as Textarea, Je as ThemeProvider, _t as ThemeSelector, St as ToastProvider, Et as UserMenu, X as cn, Ze as getDiceBearAvatarUrl, yt as getSuiteAppUrl, Ke as useAvatar, Ye as useTheme, Ct as useToast };
+export { Z as AVATAR_SUITS, Dt as AboutAppModal, Ot as AppHeader, bt as AppSwitcher, tt as Avatar, nt as AvatarGroup, Ge as AvatarProvider, it as AvatarSelector, $ as Badge, at as Button, ot as Card, ut as CardContent, lt as CardDescription, dt as CardFooter, st as CardHeader, ct as CardTitle, Tt as CommandPalette, Xe as DICEBEAR_SUITS, ht as Dialog, rt as Dropdown, ft as Input, kt as MobileTabBar, vt as SUITE_APPS, mt as Select, Q as THEMES, gt as Tabs, pt as Textarea, Je as ThemeProvider, _t as ThemeSelector, St as ToastProvider, Et as UserMenu, X as cn, Ze as getDiceBearAvatarUrl, yt as getSuiteAppUrl, Ke as useAvatar, Ye as useTheme, Ct as useToast };
