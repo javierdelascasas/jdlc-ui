@@ -36,6 +36,7 @@ export { Checkbox } from './components/Checkbox.jsx';
 export { Accordion, AccordionItem } from './components/Accordion.jsx';
 export { Alert } from './components/Alert.jsx';
 export { Spinner } from './components/Spinner.jsx';
+export { Tooltip } from './components/Tooltip.jsx';
 export { Dialog } from './components/Dialog.jsx';
 export { Dropdown } from './components/Dropdown.jsx';
 export { Tabs } from './components/Tabs.jsx';

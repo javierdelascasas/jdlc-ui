@@ -1,117 +1,117 @@
-import e, { createContext as t, useCallback as n, useContext as r, useEffect as i, useMemo as a, useRef as o, useState as s } from "react";
-import { jsx as c, jsxs as l } from "react/jsx-runtime";
+import e, { createContext as t, useCallback as n, useContext as r, useEffect as i, useId as a, useMemo as o, useRef as s, useState as c } from "react";
+import { jsx as l, jsxs as u } from "react/jsx-runtime";
 //#region node_modules/clsx/dist/clsx.mjs
-function u(e) {
+function d(e) {
 	var t, n, r = "";
 	if (typeof e == "string" || typeof e == "number") r += e;
 	else if (typeof e == "object") {
 		if (Array.isArray(e)) {
 			var i = e.length;
-			for (t = 0; t < i; t++) e[t] && (n = u(e[t])) && (r && (r += " "), r += n);
+			for (t = 0; t < i; t++) e[t] && (n = d(e[t])) && (r && (r += " "), r += n);
 		} else for (n in e) e[n] && (r && (r += " "), r += n);
 	}
 	return r;
 }
-function d() {
-	for (var e, t, n = 0, r = "", i = arguments.length; n < i; n++) (e = arguments[n]) && (t = u(e)) && (r && (r += " "), r += t);
+function f() {
+	for (var e, t, n = 0, r = "", i = arguments.length; n < i; n++) (e = arguments[n]) && (t = d(e)) && (r && (r += " "), r += t);
 	return r;
 }
 //#endregion
 //#region node_modules/tailwind-merge/dist/bundle-mjs.mjs
-var f = (e, t) => {
+var p = (e, t) => {
 	let n = Array(e.length + t.length);
 	for (let t = 0; t < e.length; t++) n[t] = e[t];
 	for (let r = 0; r < t.length; r++) n[e.length + r] = t[r];
 	return n;
-}, p = (e, t) => ({
+}, m = (e, t) => ({
 	classGroupId: e,
 	validator: t
-}), m = (e = /* @__PURE__ */ new Map(), t = null, n) => ({
+}), h = (e = /* @__PURE__ */ new Map(), t = null, n) => ({
 	nextPart: e,
 	validators: t,
 	classGroupId: n
-}), h = "-", g = [], _ = "arbitrary..", v = (e) => {
-	let t = x(e), { conflictingClassGroups: n, conflictingClassGroupModifiers: r } = e;
+}), g = "-", _ = [], v = "arbitrary..", y = (e) => {
+	let t = S(e), { conflictingClassGroups: n, conflictingClassGroupModifiers: r } = e;
 	return {
 		getClassGroupId: (e) => {
-			if (e.startsWith("[") && e.endsWith("]")) return b(e);
-			let n = e.split(h);
-			return y(n, +(n[0] === "" && n.length > 1), t);
+			if (e.startsWith("[") && e.endsWith("]")) return x(e);
+			let n = e.split(g);
+			return b(n, +(n[0] === "" && n.length > 1), t);
 		},
 		getConflictingClassGroupIds: (e, t) => {
 			if (t) {
 				let t = r[e], i = n[e];
-				return t ? i ? f(i, t) : t : i || g;
+				return t ? i ? p(i, t) : t : i || _;
 			}
-			return n[e] || g;
+			return n[e] || _;
 		}
 	};
-}, y = (e, t, n) => {
+}, b = (e, t, n) => {
 	if (e.length - t === 0) return n.classGroupId;
 	let r = e[t], i = n.nextPart.get(r);
 	if (i) {
-		let n = y(e, t + 1, i);
+		let n = b(e, t + 1, i);
 		if (n) return n;
 	}
 	let a = n.validators;
 	if (a === null) return;
-	let o = t === 0 ? e.join(h) : e.slice(t).join(h), s = a.length;
+	let o = t === 0 ? e.join(g) : e.slice(t).join(g), s = a.length;
 	for (let e = 0; e < s; e++) {
 		let t = a[e];
 		if (t.validator(o)) return t.classGroupId;
 	}
-}, b = (e) => e.slice(1, -1).indexOf(":") === -1 ? void 0 : (() => {
+}, x = (e) => e.slice(1, -1).indexOf(":") === -1 ? void 0 : (() => {
 	let t = e.slice(1, -1), n = t.indexOf(":"), r = t.slice(0, n);
-	return r ? _ + r : void 0;
-})(), x = (e) => {
+	return r ? v + r : void 0;
+})(), S = (e) => {
 	let { theme: t, classGroups: n } = e;
-	return S(n, t);
-}, S = (e, t) => {
-	let n = m();
+	return C(n, t);
+}, C = (e, t) => {
+	let n = h();
 	for (let r in e) {
 		let i = e[r];
-		C(i, n, r, t);
+		w(i, n, r, t);
 	}
 	return n;
-}, C = (e, t, n, r) => {
+}, w = (e, t, n, r) => {
 	let i = e.length;
 	for (let a = 0; a < i; a++) {
 		let i = e[a];
-		w(i, t, n, r);
+		T(i, t, n, r);
 	}
-}, w = (e, t, n, r) => {
+}, T = (e, t, n, r) => {
 	if (typeof e == "string") {
-		T(e, t, n);
+		ee(e, t, n);
 		return;
 	}
 	if (typeof e == "function") {
-		ee(e, t, n, r);
+		te(e, t, n, r);
 		return;
 	}
-	te(e, t, n, r);
-}, T = (e, t, n) => {
-	let r = e === "" ? t : E(t, e);
+	E(e, t, n, r);
+}, ee = (e, t, n) => {
+	let r = e === "" ? t : ne(t, e);
 	r.classGroupId = n;
-}, ee = (e, t, n, r) => {
-	if (ne(e)) {
-		C(e(r), t, n, r);
+}, te = (e, t, n, r) => {
+	if (D(e)) {
+		w(e(r), t, n, r);
 		return;
 	}
-	t.validators === null && (t.validators = []), t.validators.push(p(n, e));
-}, te = (e, t, n, r) => {
+	t.validators === null && (t.validators = []), t.validators.push(m(n, e));
+}, E = (e, t, n, r) => {
 	let i = Object.entries(e), a = i.length;
 	for (let e = 0; e < a; e++) {
 		let [a, o] = i[e];
-		C(o, E(t, a), n, r);
+		w(o, ne(t, a), n, r);
 	}
-}, E = (e, t) => {
-	let n = e, r = t.split(h), i = r.length;
+}, ne = (e, t) => {
+	let n = e, r = t.split(g), i = r.length;
 	for (let e = 0; e < i; e++) {
 		let t = r[e], i = n.nextPart.get(t);
-		i || (i = m(), n.nextPart.set(t, i)), n = i;
+		i || (i = h(), n.nextPart.set(t, i)), n = i;
 	}
 	return n;
-}, ne = (e) => "isThemeGetter" in e && e.isThemeGetter === !0, D = (e) => {
+}, D = (e) => "isThemeGetter" in e && e.isThemeGetter === !0, O = (e) => {
 	if (e < 1) return {
 		get: () => void 0,
 		set: () => {}
@@ -129,19 +129,19 @@ var f = (e, t) => {
 			e in n ? n[e] = t : i(e, t);
 		}
 	};
-}, O = "!", k = ":", A = [], j = (e, t, n, r, i) => ({
+}, k = "!", A = ":", re = [], j = (e, t, n, r, i) => ({
 	modifiers: e,
 	hasImportantModifier: t,
 	baseClassName: n,
 	maybePostfixModifierPosition: r,
 	isExternal: i
-}), re = (e) => {
+}), M = (e) => {
 	let { prefix: t, experimentalParseClassName: n } = e, r = (e) => {
 		let t = [], n = 0, r = 0, i = 0, a, o = e.length;
 		for (let s = 0; s < o; s++) {
 			let o = e[s];
 			if (n === 0 && r === 0) {
-				if (o === k) {
+				if (o === A) {
 					t.push(e.slice(i, s)), i = s + 1;
 					continue;
 				}
@@ -153,13 +153,13 @@ var f = (e, t) => {
 			o === "[" ? n++ : o === "]" ? n-- : o === "(" ? r++ : o === ")" && r--;
 		}
 		let s = t.length === 0 ? e : e.slice(i), c = s, l = !1;
-		s.endsWith(O) ? (c = s.slice(0, -1), l = !0) : s.startsWith(O) && (c = s.slice(1), l = !0);
+		s.endsWith(k) ? (c = s.slice(0, -1), l = !0) : s.startsWith(k) && (c = s.slice(1), l = !0);
 		let u = a && a > i ? a - i : void 0;
 		return j(t, l, c, u);
 	};
 	if (t) {
-		let e = t + k, n = r;
-		r = (t) => t.startsWith(e) ? n(t.slice(e.length)) : j(A, !1, t, void 0, !0);
+		let e = t + A, n = r;
+		r = (t) => t.startsWith(e) ? n(t.slice(e.length)) : j(re, !1, t, void 0, !0);
 	}
 	if (n) {
 		let e = r;
@@ -169,7 +169,7 @@ var f = (e, t) => {
 		});
 	}
 	return r;
-}, M = (e) => {
+}, ie = (e) => {
 	let t = /* @__PURE__ */ new Map();
 	return e.orderSensitiveModifiers.forEach((e, n) => {
 		t.set(e, 1e6 + n);
@@ -181,18 +181,18 @@ var f = (e, t) => {
 		}
 		return r.length > 0 && (r.sort(), n.push(...r)), n;
 	};
-}, ie = (e) => ({
-	cache: D(e.cacheSize),
-	parseClassName: re(e),
-	sortModifiers: M(e),
-	postfixLookupClassGroupIds: ae(e),
-	...v(e)
-}), ae = (e) => {
+}, ae = (e) => ({
+	cache: O(e.cacheSize),
+	parseClassName: M(e),
+	sortModifiers: ie(e),
+	postfixLookupClassGroupIds: oe(e),
+	...y(e)
+}), oe = (e) => {
 	let t = Object.create(null), n = e.postfixLookupClassGroups;
 	if (n) for (let e = 0; e < n.length; e++) t[n[e]] = !0;
 	return t;
-}, oe = /\s+/, se = (e, t) => {
-	let { parseClassName: n, getClassGroupId: r, getConflictingClassGroupIds: i, sortModifiers: a, postfixLookupClassGroupIds: o } = t, s = [], c = e.trim().split(oe), l = "";
+}, se = /\s+/, N = (e, t) => {
+	let { parseClassName: n, getClassGroupId: r, getConflictingClassGroupIds: i, sortModifiers: a, postfixLookupClassGroupIds: o } = t, s = [], c = e.trim().split(se), l = "";
 	for (let e = c.length - 1; e >= 0; --e) {
 		let t = c[e], { isExternal: u, modifiers: d, hasImportantModifier: f, baseClassName: p, maybePostfixModifierPosition: m } = n(t);
 		if (u) {
@@ -216,7 +216,7 @@ var f = (e, t) => {
 			}
 			h = !1;
 		}
-		let _ = d.length === 0 ? "" : d.length === 1 ? d[0] : a(d).join(":"), v = f ? _ + O : _, y = v + g;
+		let _ = d.length === 0 ? "" : d.length === 1 ? d[0] : a(d).join(":"), v = f ? _ + k : _, y = v + g;
 		if (s.indexOf(y) > -1) continue;
 		s.push(y);
 		let b = i(g, h);
@@ -227,34 +227,34 @@ var f = (e, t) => {
 		l = t + (l.length > 0 ? " " + l : l);
 	}
 	return l;
-}, N = (...e) => {
+}, P = (...e) => {
 	let t = 0, n, r, i = "";
-	for (; t < e.length;) (n = e[t++]) && (r = P(n)) && (i && (i += " "), i += r);
+	for (; t < e.length;) (n = e[t++]) && (r = F(n)) && (i && (i += " "), i += r);
 	return i;
-}, P = (e) => {
+}, F = (e) => {
 	if (typeof e == "string") return e;
 	let t, n = "";
-	for (let r = 0; r < e.length; r++) e[r] && (t = P(e[r])) && (n && (n += " "), n += t);
+	for (let r = 0; r < e.length; r++) e[r] && (t = F(e[r])) && (n && (n += " "), n += t);
 	return n;
-}, F = (e, ...t) => {
-	let n, r, i, a, o = (o) => (n = ie(t.reduce((e, t) => t(e), e())), r = n.cache.get, i = n.cache.set, a = s, s(o)), s = (e) => {
+}, ce = (e, ...t) => {
+	let n, r, i, a, o = (o) => (n = ae(t.reduce((e, t) => t(e), e())), r = n.cache.get, i = n.cache.set, a = s, s(o)), s = (e) => {
 		let t = r(e);
 		if (t) return t;
-		let a = se(e, n);
+		let a = N(e, n);
 		return i(e, a), a;
 	};
-	return a = o, (...e) => a(N(...e));
-}, ce = [], I = (e) => {
-	let t = (t) => t[e] || ce;
+	return a = o, (...e) => a(P(...e));
+}, I = [], L = (e) => {
+	let t = (t) => t[e] || I;
 	return t.isThemeGetter = !0, t.themeKey = e, t;
-}, L = /^\[(?:(\w[\w-]*):)?(.+)\]$/i, le = /^\((?:(\w[\w-]*):)?(.+)\)$/i, R = /^\d+(?:\.\d+)?\/\d+(?:\.\d+)?$/, z = /^(\d+(\.\d+)?)?(xs|sm|md|lg|xl)$/, ue = /\d+(%|px|r?em|[sdl]?v([hwib]|min|max)|pt|pc|in|cm|mm|cap|ch|ex|r?lh|cq(w|h|i|b|min|max))|\b(calc|min|max|clamp)\(.+\)|^0$/, B = /^(rgba?|hsla?|hwb|(ok)?(lab|lch)|color-mix|color|light-dark)\(.+\)$/, de = /^(inset_)?-?((\d+)?\.?(\d+)[a-z]+|0)_-?((\d+)?\.?(\d+)[a-z]+|0)/, fe = /^(url|image|image-set|cross-fade|element|(repeating-)?(linear|radial|conic)-gradient)\(.+\)$/, V = (e) => R.test(e), H = (e) => !!e && !Number.isNaN(Number(e)), U = (e) => !!e && Number.isInteger(Number(e)), pe = (e) => e.endsWith("%") && H(e.slice(0, -1)), W = (e) => z.test(e), me = () => !0, he = (e) => ue.test(e) && !B.test(e), ge = () => !1, _e = (e) => de.test(e), ve = (e) => fe.test(e), ye = (e) => !G(e) && !q(e), be = (e) => e.startsWith("@container") && (e[10] === "/" && e[11] !== void 0 || e[11] === "s" && e[16] !== void 0 && e.startsWith("-size/", 10) || e[11] === "n" && e[18] !== void 0 && e.startsWith("-normal/", 10)), xe = (e) => J(e, Le, ge), G = (e) => L.test(e), K = (e) => J(e, Re, he), Se = (e) => J(e, ze, H), Ce = (e) => J(e, Ve, me), we = (e) => J(e, Be, ge), Te = (e) => J(e, Fe, ge), Ee = (e) => J(e, Ie, ve), De = (e) => J(e, He, _e), q = (e) => le.test(e), Oe = (e) => Y(e, Re), ke = (e) => Y(e, Be), Ae = (e) => Y(e, Fe), je = (e) => Y(e, Le), Me = (e) => Y(e, Ie), Ne = (e) => Y(e, He, !0), Pe = (e) => Y(e, Ve, !0), J = (e, t, n) => {
-	let r = L.exec(e);
-	return r ? r[1] ? t(r[1]) : n(r[2]) : !1;
-}, Y = (e, t, n = !1) => {
+}, le = /^\[(?:(\w[\w-]*):)?(.+)\]$/i, R = /^\((?:(\w[\w-]*):)?(.+)\)$/i, ue = /^\d+(?:\.\d+)?\/\d+(?:\.\d+)?$/, de = /^(\d+(\.\d+)?)?(xs|sm|md|lg|xl)$/, fe = /\d+(%|px|r?em|[sdl]?v([hwib]|min|max)|pt|pc|in|cm|mm|cap|ch|ex|r?lh|cq(w|h|i|b|min|max))|\b(calc|min|max|clamp)\(.+\)|^0$/, pe = /^(rgba?|hsla?|hwb|(ok)?(lab|lch)|color-mix|color|light-dark)\(.+\)$/, me = /^(inset_)?-?((\d+)?\.?(\d+)[a-z]+|0)_-?((\d+)?\.?(\d+)[a-z]+|0)/, he = /^(url|image|image-set|cross-fade|element|(repeating-)?(linear|radial|conic)-gradient)\(.+\)$/, z = (e) => ue.test(e), B = (e) => !!e && !Number.isNaN(Number(e)), V = (e) => !!e && Number.isInteger(Number(e)), ge = (e) => e.endsWith("%") && B(e.slice(0, -1)), H = (e) => de.test(e), _e = () => !0, ve = (e) => fe.test(e) && !pe.test(e), ye = () => !1, be = (e) => me.test(e), xe = (e) => he.test(e), Se = (e) => !U(e) && !G(e), Ce = (e) => e.startsWith("@container") && (e[10] === "/" && e[11] !== void 0 || e[11] === "s" && e[16] !== void 0 && e.startsWith("-size/", 10) || e[11] === "n" && e[18] !== void 0 && e.startsWith("-normal/", 10)), we = (e) => q(e, ze, ye), U = (e) => le.test(e), W = (e) => q(e, Be, ve), Te = (e) => q(e, Ve, B), Ee = (e) => q(e, Ue, _e), De = (e) => q(e, He, ye), Oe = (e) => q(e, Le, ye), ke = (e) => q(e, Re, xe), Ae = (e) => q(e, We, be), G = (e) => R.test(e), K = (e) => J(e, Be), je = (e) => J(e, He), Me = (e) => J(e, Le), Ne = (e) => J(e, ze), Pe = (e) => J(e, Re), Fe = (e) => J(e, We, !0), Ie = (e) => J(e, Ue, !0), q = (e, t, n) => {
 	let r = le.exec(e);
+	return r ? r[1] ? t(r[1]) : n(r[2]) : !1;
+}, J = (e, t, n = !1) => {
+	let r = R.exec(e);
 	return r ? r[1] ? t(r[1]) : n : !1;
-}, Fe = (e) => e === "position" || e === "percentage", Ie = (e) => e === "image" || e === "url", Le = (e) => e === "length" || e === "size" || e === "bg-size", Re = (e) => e === "length", ze = (e) => e === "number", Be = (e) => e === "family-name", Ve = (e) => e === "number" || e === "weight", He = (e) => e === "shadow", Ue = /*#__PURE__*/ F(() => {
-	let e = I("color"), t = I("font"), n = I("text"), r = I("font-weight"), i = I("tracking"), a = I("leading"), o = I("breakpoint"), s = I("container"), c = I("spacing"), l = I("radius"), u = I("shadow"), d = I("inset-shadow"), f = I("text-shadow"), p = I("drop-shadow"), m = I("blur"), h = I("perspective"), g = I("aspect"), _ = I("ease"), v = I("animate"), y = () => [
+}, Le = (e) => e === "position" || e === "percentage", Re = (e) => e === "image" || e === "url", ze = (e) => e === "length" || e === "size" || e === "bg-size", Be = (e) => e === "length", Ve = (e) => e === "number", He = (e) => e === "family-name", Ue = (e) => e === "number" || e === "weight", We = (e) => e === "shadow", Ge = /*#__PURE__*/ ce(() => {
+	let e = L("color"), t = L("font"), n = L("text"), r = L("font-weight"), i = L("tracking"), a = L("leading"), o = L("breakpoint"), s = L("container"), c = L("spacing"), l = L("radius"), u = L("shadow"), d = L("inset-shadow"), f = L("text-shadow"), p = L("drop-shadow"), m = L("blur"), h = L("perspective"), g = L("aspect"), _ = L("ease"), v = L("animate"), y = () => [
 		"auto",
 		"avoid",
 		"all",
@@ -279,8 +279,8 @@ var f = (e, t) => {
 		"left-bottom"
 	], x = () => [
 		...b(),
-		q,
-		G
+		G,
+		U
 	], S = () => [
 		"auto",
 		"hidden",
@@ -292,43 +292,43 @@ var f = (e, t) => {
 		"contain",
 		"none"
 	], w = () => [
-		q,
 		G,
+		U,
 		c
 	], T = () => [
-		V,
+		z,
 		"full",
 		"auto",
 		...w()
 	], ee = () => [
-		U,
+		V,
 		"none",
 		"subgrid",
-		q,
-		G
+		G,
+		U
 	], te = () => [
 		"auto",
 		{ span: [
 			"full",
-			U,
-			q,
-			G
+			V,
+			G,
+			U
 		] },
-		U,
-		q,
-		G
+		V,
+		G,
+		U
 	], E = () => [
-		U,
+		V,
 		"auto",
-		q,
-		G
+		G,
+		U
 	], ne = () => [
 		"auto",
 		"min",
 		"max",
 		"fr",
-		q,
-		G
+		G,
+		U
 	], D = () => [
 		"start",
 		"end",
@@ -348,7 +348,7 @@ var f = (e, t) => {
 		"center-safe",
 		"end-safe"
 	], k = () => ["auto", ...w()], A = () => [
-		V,
+		z,
 		"auto",
 		"full",
 		"dvw",
@@ -361,9 +361,9 @@ var f = (e, t) => {
 		"max",
 		"fit",
 		...w()
-	], j = () => [
+	], re = () => [
 		s,
-		V,
+		z,
 		"screen",
 		"full",
 		"dvw",
@@ -373,8 +373,8 @@ var f = (e, t) => {
 		"max",
 		"fit",
 		...w()
-	], re = () => [
-		V,
+	], j = () => [
+		z,
 		"screen",
 		"full",
 		"lh",
@@ -387,13 +387,13 @@ var f = (e, t) => {
 		...w()
 	], M = () => [
 		e,
-		q,
-		G
+		G,
+		U
 	], ie = () => [
 		...b(),
-		Ae,
-		Te,
-		{ position: [q, G] }
+		Me,
+		Oe,
+		{ position: [G, U] }
 	], ae = () => ["no-repeat", { repeat: [
 		"",
 		"x",
@@ -404,25 +404,25 @@ var f = (e, t) => {
 		"auto",
 		"cover",
 		"contain",
-		je,
-		xe,
-		{ size: [q, G] }
+		Ne,
+		we,
+		{ size: [G, U] }
 	], se = () => [
-		pe,
-		Oe,
-		K
+		ge,
+		K,
+		W
 	], N = () => [
 		"",
 		"none",
 		"full",
 		l,
-		q,
-		G
+		G,
+		U
 	], P = () => [
 		"",
-		H,
-		Oe,
-		K
+		B,
+		K,
+		W
 	], F = () => [
 		"solid",
 		"dashed",
@@ -445,33 +445,33 @@ var f = (e, t) => {
 		"saturation",
 		"color",
 		"luminosity"
-	], L = () => [
-		H,
-		pe,
-		Ae,
-		Te
+	], I = () => [
+		B,
+		ge,
+		Me,
+		Oe
 	], le = () => [
 		"",
 		"none",
 		m,
-		q,
-		G
+		G,
+		U
 	], R = () => [
 		"none",
-		H,
-		q,
-		G
-	], z = () => [
-		"none",
-		H,
-		q,
-		G
+		B,
+		G,
+		U
 	], ue = () => [
-		H,
-		q,
-		G
-	], B = () => [
-		V,
+		"none",
+		B,
+		G,
+		U
+	], de = () => [
+		B,
+		G,
+		U
+	], fe = () => [
+		z,
 		"full",
 		...w()
 	];
@@ -485,17 +485,17 @@ var f = (e, t) => {
 				"bounce"
 			],
 			aspect: ["video"],
-			blur: [W],
-			breakpoint: [W],
-			color: [me],
-			container: [W],
-			"drop-shadow": [W],
+			blur: [H],
+			breakpoint: [H],
+			color: [_e],
+			container: [H],
+			"drop-shadow": [H],
 			ease: [
 				"in",
 				"out",
 				"in-out"
 			],
-			font: [ye],
+			font: [Se],
 			"font-weight": [
 				"thin",
 				"extralight",
@@ -507,7 +507,7 @@ var f = (e, t) => {
 				"extrabold",
 				"black"
 			],
-			"inset-shadow": [W],
+			"inset-shadow": [H],
 			leading: [
 				"none",
 				"tight",
@@ -524,11 +524,11 @@ var f = (e, t) => {
 				"distant",
 				"none"
 			],
-			radius: [W],
-			shadow: [W],
-			spacing: ["px", H],
-			text: [W],
-			"text-shadow": [W],
+			radius: [H],
+			shadow: [H],
+			spacing: ["px", B],
+			text: [H],
+			"text-shadow": [H],
 			tracking: [
 				"tighter",
 				"tight",
@@ -542,9 +542,9 @@ var f = (e, t) => {
 			aspect: [{ aspect: [
 				"auto",
 				"square",
-				V,
+				z,
+				U,
 				G,
-				q,
 				g
 			] }],
 			container: ["container"],
@@ -552,15 +552,15 @@ var f = (e, t) => {
 				"",
 				"normal",
 				"size",
-				q,
-				G
-			] }],
-			"container-named": [be],
-			columns: [{ columns: [
-				H,
-				"auto",
 				G,
-				q,
+				U
+			] }],
+			"container-named": [Ce],
+			columns: [{ columns: [
+				B,
+				"auto",
+				U,
+				G,
 				s
 			] }],
 			"break-after": [{ "break-after": y() }],
@@ -657,13 +657,13 @@ var f = (e, t) => {
 				"collapse"
 			],
 			z: [{ z: [
-				U,
+				V,
 				"auto",
-				q,
-				G
+				G,
+				U
 			] }],
 			basis: [{ basis: [
-				V,
+				z,
 				"full",
 				"auto",
 				s,
@@ -681,32 +681,32 @@ var f = (e, t) => {
 				"wrap-reverse"
 			] }],
 			flex: [{ flex: [
-				H,
-				V,
+				B,
+				z,
 				"auto",
 				"initial",
 				"none",
-				G
+				U
 			] }],
 			grow: [{ grow: [
 				"",
-				H,
-				q,
-				G
+				B,
+				G,
+				U
 			] }],
 			shrink: [{ shrink: [
 				"",
-				H,
-				q,
-				G
+				B,
+				G,
+				U
 			] }],
 			order: [{ order: [
-				U,
+				V,
 				"first",
 				"last",
 				"none",
-				q,
-				G
+				G,
+				U
 			] }],
 			"grid-cols": [{ "grid-cols": ee() }],
 			"col-start-end": [{ col: te() }],
@@ -768,12 +768,12 @@ var f = (e, t) => {
 			"space-y": [{ "space-y": w() }],
 			"space-y-reverse": ["space-y-reverse"],
 			size: [{ size: A() }],
-			"inline-size": [{ inline: ["auto", ...j()] }],
-			"min-inline-size": [{ "min-inline": ["auto", ...j()] }],
-			"max-inline-size": [{ "max-inline": ["none", ...j()] }],
-			"block-size": [{ block: ["auto", ...re()] }],
-			"min-block-size": [{ "min-block": ["auto", ...re()] }],
-			"max-block-size": [{ "max-block": ["none", ...re()] }],
+			"inline-size": [{ inline: ["auto", ...re()] }],
+			"min-inline-size": [{ "min-inline": ["auto", ...re()] }],
+			"max-inline-size": [{ "max-inline": ["none", ...re()] }],
+			"block-size": [{ block: ["auto", ...j()] }],
+			"min-block-size": [{ "min-block": ["auto", ...j()] }],
+			"max-block-size": [{ "max-block": ["none", ...j()] }],
 			w: [{ w: [
 				s,
 				"screen",
@@ -813,15 +813,15 @@ var f = (e, t) => {
 			"font-size": [{ text: [
 				"base",
 				n,
-				Oe,
-				K
+				K,
+				W
 			] }],
 			"font-smoothing": ["antialiased", "subpixel-antialiased"],
 			"font-style": ["italic", "not-italic"],
 			"font-weight": [{ font: [
 				r,
-				Pe,
-				Ce
+				Ie,
+				Ee
 			] }],
 			"font-stretch": [{ "font-stretch": [
 				"ultra-condensed",
@@ -833,15 +833,15 @@ var f = (e, t) => {
 				"expanded",
 				"extra-expanded",
 				"ultra-expanded",
-				pe,
-				G
+				ge,
+				U
 			] }],
 			"font-family": [{ font: [
-				ke,
-				we,
+				je,
+				De,
 				t
 			] }],
-			"font-features": [{ "font-features": [G] }],
+			"font-features": [{ "font-features": [U] }],
 			"fvn-normal": ["normal-nums"],
 			"fvn-ordinal": ["ordinal"],
 			"fvn-slashed-zero": ["slashed-zero"],
@@ -850,14 +850,14 @@ var f = (e, t) => {
 			"fvn-fraction": ["diagonal-fractions", "stacked-fractions"],
 			tracking: [{ tracking: [
 				i,
-				q,
-				G
+				G,
+				U
 			] }],
 			"line-clamp": [{ "line-clamp": [
-				H,
+				B,
 				"none",
-				q,
-				Se
+				G,
+				Te
 			] }],
 			leading: [{ leading: [
 				"none",
@@ -866,16 +866,16 @@ var f = (e, t) => {
 			] }],
 			"list-image": [{ "list-image": [
 				"none",
-				q,
-				G
+				G,
+				U
 			] }],
 			"list-style-position": [{ list: ["inside", "outside"] }],
 			"list-style-type": [{ list: [
 				"disc",
 				"decimal",
 				"none",
-				q,
-				G
+				G,
+				U
 			] }],
 			"text-alignment": [{ text: [
 				"left",
@@ -895,18 +895,18 @@ var f = (e, t) => {
 			],
 			"text-decoration-style": [{ decoration: [...F(), "wavy"] }],
 			"text-decoration-thickness": [{ decoration: [
-				H,
+				B,
 				"from-font",
 				"auto",
-				q,
-				K
+				G,
+				W
 			] }],
 			"text-decoration-color": [{ decoration: M() }],
 			"underline-offset": [{ "underline-offset": [
-				H,
+				B,
 				"auto",
-				q,
-				G
+				G,
+				U
 			] }],
 			"text-transform": [
 				"uppercase",
@@ -927,9 +927,9 @@ var f = (e, t) => {
 			] }],
 			indent: [{ indent: w() }],
 			"tab-size": [{ tab: [
-				U,
-				q,
-				G
+				V,
+				G,
+				U
 			] }],
 			"vertical-align": [{ align: [
 				"baseline",
@@ -940,8 +940,8 @@ var f = (e, t) => {
 				"text-bottom",
 				"sub",
 				"super",
-				q,
-				G
+				G,
+				U
 			] }],
 			whitespace: [{ whitespace: [
 				"normal",
@@ -969,8 +969,8 @@ var f = (e, t) => {
 			] }],
 			content: [{ content: [
 				"none",
-				q,
-				G
+				G,
+				U
 			] }],
 			"bg-attachment": [{ bg: [
 				"fixed",
@@ -1005,24 +1005,24 @@ var f = (e, t) => {
 							"l",
 							"tl"
 						] },
-						U,
-						q,
-						G
+						V,
+						G,
+						U
 					],
 					radial: [
 						"",
-						q,
-						G
+						G,
+						U
 					],
 					conic: [
 						"",
-						U,
-						q,
-						G
+						V,
+						G,
+						U
 					]
 				},
-				Me,
-				Ee
+				Pe,
+				ke
 			] }],
 			"bg-color": [{ bg: M() }],
 			"gradient-from-pos": [{ from: se() }],
@@ -1089,15 +1089,15 @@ var f = (e, t) => {
 				"hidden"
 			] }],
 			"outline-offset": [{ "outline-offset": [
-				H,
-				q,
-				G
+				B,
+				G,
+				U
 			] }],
 			"outline-w": [{ outline: [
 				"",
-				H,
-				Oe,
-				K
+				B,
+				K,
+				W
 			] }],
 			"outline-color": [{ outline: M() }],
 			shadow: [{ shadow: [
@@ -1105,35 +1105,35 @@ var f = (e, t) => {
 				"inner",
 				"none",
 				u,
-				Ne,
-				De
+				Fe,
+				Ae
 			] }],
 			"shadow-color": [{ shadow: M() }],
 			"inset-shadow": [{ "inset-shadow": [
 				"none",
 				d,
-				Ne,
-				De
+				Fe,
+				Ae
 			] }],
 			"inset-shadow-color": [{ "inset-shadow": M() }],
 			"ring-w": [{ ring: P() }],
 			"ring-w-inset": ["ring-inset"],
 			"ring-color": [{ ring: M() }],
-			"ring-offset-w": [{ "ring-offset": [H, K] }],
+			"ring-offset-w": [{ "ring-offset": [B, W] }],
 			"ring-offset-color": [{ "ring-offset": M() }],
 			"inset-ring-w": [{ "inset-ring": P() }],
 			"inset-ring-color": [{ "inset-ring": M() }],
 			"text-shadow": [{ "text-shadow": [
 				"none",
 				f,
-				Ne,
-				De
+				Fe,
+				Ae
 			] }],
 			"text-shadow-color": [{ "text-shadow": M() }],
 			opacity: [{ opacity: [
-				H,
-				q,
-				G
+				B,
+				G,
+				U
 			] }],
 			"mix-blend": [{ "mix-blend": [
 				...ce(),
@@ -1155,38 +1155,38 @@ var f = (e, t) => {
 				"intersect",
 				"exclude"
 			] }],
-			"mask-image-linear-pos": [{ "mask-linear": [H] }],
-			"mask-image-linear-from-pos": [{ "mask-linear-from": L() }],
-			"mask-image-linear-to-pos": [{ "mask-linear-to": L() }],
+			"mask-image-linear-pos": [{ "mask-linear": [B] }],
+			"mask-image-linear-from-pos": [{ "mask-linear-from": I() }],
+			"mask-image-linear-to-pos": [{ "mask-linear-to": I() }],
 			"mask-image-linear-from-color": [{ "mask-linear-from": M() }],
 			"mask-image-linear-to-color": [{ "mask-linear-to": M() }],
-			"mask-image-t-from-pos": [{ "mask-t-from": L() }],
-			"mask-image-t-to-pos": [{ "mask-t-to": L() }],
+			"mask-image-t-from-pos": [{ "mask-t-from": I() }],
+			"mask-image-t-to-pos": [{ "mask-t-to": I() }],
 			"mask-image-t-from-color": [{ "mask-t-from": M() }],
 			"mask-image-t-to-color": [{ "mask-t-to": M() }],
-			"mask-image-r-from-pos": [{ "mask-r-from": L() }],
-			"mask-image-r-to-pos": [{ "mask-r-to": L() }],
+			"mask-image-r-from-pos": [{ "mask-r-from": I() }],
+			"mask-image-r-to-pos": [{ "mask-r-to": I() }],
 			"mask-image-r-from-color": [{ "mask-r-from": M() }],
 			"mask-image-r-to-color": [{ "mask-r-to": M() }],
-			"mask-image-b-from-pos": [{ "mask-b-from": L() }],
-			"mask-image-b-to-pos": [{ "mask-b-to": L() }],
+			"mask-image-b-from-pos": [{ "mask-b-from": I() }],
+			"mask-image-b-to-pos": [{ "mask-b-to": I() }],
 			"mask-image-b-from-color": [{ "mask-b-from": M() }],
 			"mask-image-b-to-color": [{ "mask-b-to": M() }],
-			"mask-image-l-from-pos": [{ "mask-l-from": L() }],
-			"mask-image-l-to-pos": [{ "mask-l-to": L() }],
+			"mask-image-l-from-pos": [{ "mask-l-from": I() }],
+			"mask-image-l-to-pos": [{ "mask-l-to": I() }],
 			"mask-image-l-from-color": [{ "mask-l-from": M() }],
 			"mask-image-l-to-color": [{ "mask-l-to": M() }],
-			"mask-image-x-from-pos": [{ "mask-x-from": L() }],
-			"mask-image-x-to-pos": [{ "mask-x-to": L() }],
+			"mask-image-x-from-pos": [{ "mask-x-from": I() }],
+			"mask-image-x-to-pos": [{ "mask-x-to": I() }],
 			"mask-image-x-from-color": [{ "mask-x-from": M() }],
 			"mask-image-x-to-color": [{ "mask-x-to": M() }],
-			"mask-image-y-from-pos": [{ "mask-y-from": L() }],
-			"mask-image-y-to-pos": [{ "mask-y-to": L() }],
+			"mask-image-y-from-pos": [{ "mask-y-from": I() }],
+			"mask-image-y-to-pos": [{ "mask-y-to": I() }],
 			"mask-image-y-from-color": [{ "mask-y-from": M() }],
 			"mask-image-y-to-color": [{ "mask-y-to": M() }],
-			"mask-image-radial": [{ "mask-radial": [q, G] }],
-			"mask-image-radial-from-pos": [{ "mask-radial-from": L() }],
-			"mask-image-radial-to-pos": [{ "mask-radial-to": L() }],
+			"mask-image-radial": [{ "mask-radial": [G, U] }],
+			"mask-image-radial-from-pos": [{ "mask-radial-from": I() }],
+			"mask-image-radial-to-pos": [{ "mask-radial-to": I() }],
 			"mask-image-radial-from-color": [{ "mask-radial-from": M() }],
 			"mask-image-radial-to-color": [{ "mask-radial-to": M() }],
 			"mask-image-radial-shape": [{ "mask-radial": ["circle", "ellipse"] }],
@@ -1195,9 +1195,9 @@ var f = (e, t) => {
 				farthest: ["side", "corner"]
 			}] }],
 			"mask-image-radial-pos": [{ "mask-radial-at": b() }],
-			"mask-image-conic-pos": [{ "mask-conic": [H] }],
-			"mask-image-conic-from-pos": [{ "mask-conic-from": L() }],
-			"mask-image-conic-to-pos": [{ "mask-conic-to": L() }],
+			"mask-image-conic-pos": [{ "mask-conic": [B] }],
+			"mask-image-conic-from-pos": [{ "mask-conic-from": I() }],
+			"mask-image-conic-to-pos": [{ "mask-conic-to": I() }],
 			"mask-image-conic-from-color": [{ "mask-conic-from": M() }],
 			"mask-image-conic-to-color": [{ "mask-conic-to": M() }],
 			"mask-mode": [{ mask: [
@@ -1219,111 +1219,111 @@ var f = (e, t) => {
 			"mask-type": [{ "mask-type": ["alpha", "luminance"] }],
 			"mask-image": [{ mask: [
 				"none",
-				q,
-				G
+				G,
+				U
 			] }],
 			filter: [{ filter: [
 				"",
 				"none",
-				q,
-				G
+				G,
+				U
 			] }],
 			blur: [{ blur: le() }],
 			brightness: [{ brightness: [
-				H,
-				q,
-				G
+				B,
+				G,
+				U
 			] }],
 			contrast: [{ contrast: [
-				H,
-				q,
-				G
+				B,
+				G,
+				U
 			] }],
 			"drop-shadow": [{ "drop-shadow": [
 				"",
 				"none",
 				p,
-				Ne,
-				De
+				Fe,
+				Ae
 			] }],
 			"drop-shadow-color": [{ "drop-shadow": M() }],
 			grayscale: [{ grayscale: [
 				"",
-				H,
-				q,
-				G
+				B,
+				G,
+				U
 			] }],
 			"hue-rotate": [{ "hue-rotate": [
-				H,
-				q,
-				G
+				B,
+				G,
+				U
 			] }],
 			invert: [{ invert: [
 				"",
-				H,
-				q,
-				G
+				B,
+				G,
+				U
 			] }],
 			saturate: [{ saturate: [
-				H,
-				q,
-				G
+				B,
+				G,
+				U
 			] }],
 			sepia: [{ sepia: [
 				"",
-				H,
-				q,
-				G
+				B,
+				G,
+				U
 			] }],
 			"backdrop-filter": [{ "backdrop-filter": [
 				"",
 				"none",
-				q,
-				G
+				G,
+				U
 			] }],
 			"backdrop-blur": [{ "backdrop-blur": le() }],
 			"backdrop-brightness": [{ "backdrop-brightness": [
-				H,
-				q,
-				G
+				B,
+				G,
+				U
 			] }],
 			"backdrop-contrast": [{ "backdrop-contrast": [
-				H,
-				q,
-				G
+				B,
+				G,
+				U
 			] }],
 			"backdrop-grayscale": [{ "backdrop-grayscale": [
 				"",
-				H,
-				q,
-				G
+				B,
+				G,
+				U
 			] }],
 			"backdrop-hue-rotate": [{ "backdrop-hue-rotate": [
-				H,
-				q,
-				G
+				B,
+				G,
+				U
 			] }],
 			"backdrop-invert": [{ "backdrop-invert": [
 				"",
-				H,
-				q,
-				G
+				B,
+				G,
+				U
 			] }],
 			"backdrop-opacity": [{ "backdrop-opacity": [
-				H,
-				q,
-				G
+				B,
+				G,
+				U
 			] }],
 			"backdrop-saturate": [{ "backdrop-saturate": [
-				H,
-				q,
-				G
+				B,
+				G,
+				U
 			] }],
 			"backdrop-sepia": [{ "backdrop-sepia": [
 				"",
-				H,
-				q,
-				G
+				B,
+				G,
+				U
 			] }],
 			"border-collapse": [{ border: ["collapse", "separate"] }],
 			"border-spacing": [{ "border-spacing": w() }],
@@ -1339,56 +1339,56 @@ var f = (e, t) => {
 				"shadow",
 				"transform",
 				"none",
-				q,
-				G
+				G,
+				U
 			] }],
 			"transition-behavior": [{ transition: ["normal", "discrete"] }],
 			duration: [{ duration: [
-				H,
+				B,
 				"initial",
-				q,
-				G
+				G,
+				U
 			] }],
 			ease: [{ ease: [
 				"linear",
 				"initial",
 				_,
-				q,
-				G
+				G,
+				U
 			] }],
 			delay: [{ delay: [
-				H,
-				q,
-				G
+				B,
+				G,
+				U
 			] }],
 			animate: [{ animate: [
 				"none",
 				v,
-				q,
-				G
+				G,
+				U
 			] }],
 			backface: [{ backface: ["hidden", "visible"] }],
 			perspective: [{ perspective: [
 				h,
-				q,
-				G
+				G,
+				U
 			] }],
 			"perspective-origin": [{ "perspective-origin": x() }],
 			rotate: [{ rotate: R() }],
 			"rotate-x": [{ "rotate-x": R() }],
 			"rotate-y": [{ "rotate-y": R() }],
 			"rotate-z": [{ "rotate-z": R() }],
-			scale: [{ scale: z() }],
-			"scale-x": [{ "scale-x": z() }],
-			"scale-y": [{ "scale-y": z() }],
-			"scale-z": [{ "scale-z": z() }],
+			scale: [{ scale: ue() }],
+			"scale-x": [{ "scale-x": ue() }],
+			"scale-y": [{ "scale-y": ue() }],
+			"scale-z": [{ "scale-z": ue() }],
 			"scale-3d": ["scale-3d"],
-			skew: [{ skew: ue() }],
-			"skew-x": [{ "skew-x": ue() }],
-			"skew-y": [{ "skew-y": ue() }],
+			skew: [{ skew: de() }],
+			"skew-x": [{ "skew-x": de() }],
+			"skew-y": [{ "skew-y": de() }],
 			transform: [{ transform: [
-				q,
 				G,
+				U,
 				"",
 				"none",
 				"gpu",
@@ -1396,15 +1396,15 @@ var f = (e, t) => {
 			] }],
 			"transform-origin": [{ origin: x() }],
 			"transform-style": [{ transform: ["3d", "flat"] }],
-			translate: [{ translate: B() }],
-			"translate-x": [{ "translate-x": B() }],
-			"translate-y": [{ "translate-y": B() }],
-			"translate-z": [{ "translate-z": B() }],
+			translate: [{ translate: fe() }],
+			"translate-x": [{ "translate-x": fe() }],
+			"translate-y": [{ "translate-y": fe() }],
+			"translate-z": [{ "translate-z": fe() }],
 			"translate-none": ["translate-none"],
 			zoom: [{ zoom: [
-				U,
-				q,
-				G
+				V,
+				G,
+				U
 			] }],
 			accent: [{ accent: M() }],
 			appearance: [{ appearance: ["none", "auto"] }],
@@ -1454,8 +1454,8 @@ var f = (e, t) => {
 				"nwse-resize",
 				"zoom-in",
 				"zoom-out",
-				q,
-				G
+				G,
+				U
 			] }],
 			"field-sizing": [{ "field-sizing": ["fixed", "content"] }],
 			"pointer-events": [{ "pointer-events": ["auto", "none"] }],
@@ -1541,15 +1541,15 @@ var f = (e, t) => {
 				"scroll",
 				"contents",
 				"transform",
-				q,
-				G
+				G,
+				U
 			] }],
 			fill: [{ fill: ["none", ...M()] }],
 			"stroke-w": [{ stroke: [
-				H,
-				Oe,
+				B,
 				K,
-				Se
+				W,
+				Te
 			] }],
 			stroke: [{ stroke: ["none", ...M()] }],
 			"forced-color-adjust": [{ "forced-color-adjust": ["auto", "none"] }]
@@ -1810,12 +1810,12 @@ var f = (e, t) => {
 });
 //#endregion
 //#region src/lib/utils.js
-function X(...e) {
-	return Ue(d(e));
+function Y(...e) {
+	return Ge(f(e));
 }
 //#endregion
 //#region src/context/AvatarContext.jsx
-var Z = [
+var X = [
 	{
 		id: "notionists",
 		name: "Notionists",
@@ -1856,18 +1856,18 @@ var Z = [
 		name: "Adventurer",
 		description: "Fantasy RPG portraits"
 	}
-], We = t({
+], Ke = t({
 	suit: "notionists",
 	setSuit: () => {},
-	currentSuitConfig: Z[0],
-	availableSuits: Z
+	currentSuitConfig: X[0],
+	availableSuits: X
 });
-function Ge({ children: e, defaultSuit: t = "notionists", storageKey: n = "jdlc_avatar_suit" }) {
-	let [r, a] = s(() => {
+function qe({ children: e, defaultSuit: t = "notionists", storageKey: n = "jdlc_avatar_suit" }) {
+	let [r, a] = c(() => {
 		try {
 			if (typeof window < "u") {
 				let e = localStorage.getItem(n);
-				return e && Z.some((t) => t.id === e) ? e : t;
+				return e && X.some((t) => t.id === e) ? e : t;
 			}
 			return t;
 		} catch {
@@ -1879,40 +1879,40 @@ function Ge({ children: e, defaultSuit: t = "notionists", storageKey: n = "jdlc_
 			typeof window < "u" && localStorage.setItem(n, r);
 		} catch {}
 	}, [r, n]);
-	let o = Z.find((e) => e.id === r) || Z[0];
-	return /* @__PURE__ */ c(We.Provider, {
+	let o = X.find((e) => e.id === r) || X[0];
+	return /* @__PURE__ */ l(Ke.Provider, {
 		value: {
 			suit: r,
 			setSuit: a,
 			currentSuitConfig: o,
-			availableSuits: Z
+			availableSuits: X
 		},
 		children: e
 	});
 }
-function Ke() {
-	let e = r(We);
+function Je() {
+	let e = r(Ke);
 	if (!e) {
 		let e = "notionists";
 		try {
 			if (typeof window < "u") {
 				let t = localStorage.getItem("jdlc_avatar_suit");
-				t && Z.some((e) => e.id === t) && (e = t);
+				t && X.some((e) => e.id === t) && (e = t);
 			}
 		} catch {}
-		let t = Z.find((t) => t.id === e) || Z[0];
+		let t = X.find((t) => t.id === e) || X[0];
 		return {
 			suit: e,
 			setSuit: () => {},
 			currentSuitConfig: t,
-			availableSuits: Z
+			availableSuits: X
 		};
 	}
 	return e;
 }
 //#endregion
 //#region src/context/ThemeContext.jsx
-var Q = [
+var Z = [
 	{
 		id: "linear",
 		name: "Linear Kinetic",
@@ -1963,14 +1963,14 @@ var Q = [
 		accentHex: "#0F766E",
 		isLight: !0
 	}
-], qe = t({
+], Ye = t({
 	theme: "linear",
 	setTheme: () => {},
-	currentThemeConfig: Q[0],
-	availableThemes: Q
+	currentThemeConfig: Z[0],
+	availableThemes: Z
 });
-function Je({ children: e, defaultTheme: t = "linear", storageKey: n = "jdlc_theme" }) {
-	let [r, a] = s(() => {
+function Xe({ children: e, defaultTheme: t = "linear", storageKey: n = "jdlc_theme" }) {
+	let [r, a] = c(() => {
 		try {
 			return typeof window < "u" && localStorage.getItem(n) || t;
 		} catch {
@@ -1982,28 +1982,28 @@ function Je({ children: e, defaultTheme: t = "linear", storageKey: n = "jdlc_the
 			typeof document < "u" && (document.documentElement.setAttribute("data-theme", r), localStorage.setItem(n, r));
 		} catch {}
 	}, [r, n]);
-	let o = Q.find((e) => e.id === r) || Q[0];
-	return /* @__PURE__ */ c(qe.Provider, {
+	let o = Z.find((e) => e.id === r) || Z[0];
+	return /* @__PURE__ */ l(Ye.Provider, {
 		value: {
 			theme: r,
 			setTheme: a,
 			currentThemeConfig: o,
-			availableThemes: Q
+			availableThemes: Z
 		},
-		children: /* @__PURE__ */ c(Ge, { children: e })
+		children: /* @__PURE__ */ l(qe, { children: e })
 	});
 }
-function Ye() {
-	return r(qe) || {
+function Ze() {
+	return r(Ye) || {
 		theme: "linear",
 		setTheme: () => {},
-		currentThemeConfig: Q[0],
-		availableThemes: Q
+		currentThemeConfig: Z[0],
+		availableThemes: Z
 	};
 }
 //#endregion
 //#region src/components/Avatar.jsx
-var Xe = {
+var Qe = {
 	notionists: "notionists",
 	bottts: "bottts",
 	lorelei: "lorelei",
@@ -2013,14 +2013,14 @@ var Xe = {
 	"pixel-art": "pixel-art",
 	adventurer: "adventurer"
 };
-function Ze({ seed: e = "jdlc-user", suit: t = "notionists", size: n = 64, radius: r = 50, backgroundColor: i = null } = {}) {
-	let a = Xe[t] || "notionists", o = new URLSearchParams({
+function $e({ seed: e = "jdlc-user", suit: t = "notionists", size: n = 64, radius: r = 50, backgroundColor: i = null } = {}) {
+	let a = Qe[t] || "notionists", o = new URLSearchParams({
 		seed: encodeURIComponent(e || "jdlc-user"),
 		size: n.toString()
 	});
 	return r != null && o.set("radius", r.toString()), i && o.set("backgroundColor", i.replace("#", "")), `https://api.dicebear.com/10.x/${a}/svg?${o.toString()}`;
 }
-var Qe = {
+var et = {
 	xs: {
 		container: "w-5 h-5 text-[9px]",
 		status: "w-1.5 h-1.5 ring-1",
@@ -2046,50 +2046,50 @@ var Qe = {
 		status: "w-3.5 h-3.5 ring-2",
 		px: 56
 	}
-}, $e = {
+}, tt = {
 	circle: "rounded-full",
 	rounded: "rounded-xl",
 	square: "rounded-none"
-}, et = {
+}, nt = {
 	online: "bg-emerald-500",
 	busy: "bg-rose-500",
 	away: "bg-amber-500",
 	offline: "bg-slate-500"
 };
-function tt({ seed: e, name: t, src: n, suit: r = "notionists", size: i = "md", shape: a = "circle", status: o, className: u, alt: d, ...f }) {
-	let [p, m] = s(!1), h = Qe[i] || Qe.md, g = $e[a] || $e.circle, _ = (t || e || "U").toString().trim().charAt(0).toUpperCase(), v = n || Ze({
+function Q({ seed: e, name: t, src: n, suit: r = "notionists", size: i = "md", shape: a = "circle", status: o, className: s, alt: d, ...f }) {
+	let [p, m] = c(!1), h = et[i] || et.md, g = tt[a] || tt.circle, _ = (t || e || "U").toString().trim().charAt(0).toUpperCase(), v = n || $e({
 		seed: e || t || "jdlc-user",
 		suit: r,
 		size: h.px * 2,
 		radius: a === "circle" ? 50 : a === "rounded" ? 20 : 0
 	});
-	return /* @__PURE__ */ l("div", {
-		className: X("relative inline-flex items-center justify-center shrink-0 select-none bg-[var(--bg-elevated)] border border-[var(--border-subtle)] overflow-hidden shadow-xs", h.container, g, u),
+	return /* @__PURE__ */ u("div", {
+		className: Y("relative inline-flex items-center justify-center shrink-0 select-none bg-[var(--bg-elevated)] border border-[var(--border-subtle)] overflow-hidden shadow-xs", h.container, g, s),
 		...f,
-		children: [p ? /* @__PURE__ */ c("span", {
+		children: [p ? /* @__PURE__ */ l("span", {
 			className: "font-bold text-slate-200 uppercase font-[var(--font-heading)] leading-none",
 			children: _
-		}) : /* @__PURE__ */ c("img", {
+		}) : /* @__PURE__ */ l("img", {
 			src: v,
 			alt: d || t || e || "User Avatar",
 			onError: () => m(!0),
 			className: "w-full h-full object-cover",
 			loading: "lazy"
-		}), o && et[o] && /* @__PURE__ */ c("span", {
-			className: X("absolute bottom-0 right-0 rounded-full ring-[var(--bg-surface)]", h.status, et[o]),
+		}), o && nt[o] && /* @__PURE__ */ l("span", {
+			className: Y("absolute bottom-0 right-0 rounded-full ring-[var(--bg-surface)]", h.status, nt[o]),
 			"aria-label": `Status: ${o}`
 		})]
 	});
 }
-function nt({ children: t, max: n = 4, size: r = "sm", className: i }) {
-	let a = e.Children.toArray(t), o = a.slice(0, n), s = a.length - n, u = Qe[r] || Qe.sm;
-	return /* @__PURE__ */ l("div", {
-		className: X("flex items-center -space-x-2", i),
-		children: [o.map((t, n) => /* @__PURE__ */ c("div", {
+function rt({ children: t, max: n = 4, size: r = "sm", className: i }) {
+	let a = e.Children.toArray(t), o = a.slice(0, n), s = a.length - n, c = et[r] || et.sm;
+	return /* @__PURE__ */ u("div", {
+		className: Y("flex items-center -space-x-2", i),
+		children: [o.map((t, n) => /* @__PURE__ */ l("div", {
 			className: "relative ring-2 ring-[var(--bg-root)] rounded-full",
 			children: e.isValidElement(t) ? e.cloneElement(t, { size: r }) : t
-		}, n)), s > 0 && /* @__PURE__ */ l("div", {
-			className: X("relative inline-flex items-center justify-center rounded-full bg-[var(--bg-elevated)] border border-[var(--border-subtle)] ring-2 ring-[var(--bg-root)] font-bold text-slate-300 font-mono text-[10px]", u.container),
+		}, n)), s > 0 && /* @__PURE__ */ u("div", {
+			className: Y("relative inline-flex items-center justify-center rounded-full bg-[var(--bg-elevated)] border border-[var(--border-subtle)] ring-2 ring-[var(--bg-root)] font-bold text-slate-300 font-mono text-[10px]", c.container),
 			title: `${s} more`,
 			children: ["+", s]
 		})]
@@ -2097,41 +2097,41 @@ function nt({ children: t, max: n = 4, size: r = "sm", className: i }) {
 }
 //#endregion
 //#region src/components/Dropdown.jsx
-function rt({ trigger: e, items: t = [], align: n = "right", className: r }) {
-	let [a, u] = s(!1), d = o(null);
+function it({ trigger: e, items: t = [], align: n = "right", className: r }) {
+	let [a, o] = c(!1), d = s(null);
 	return i(() => {
 		function e(e) {
-			d.current && !d.current.contains(e.target) && u(!1);
+			d.current && !d.current.contains(e.target) && o(!1);
 		}
 		return a && document.addEventListener("mousedown", e), () => document.removeEventListener("mousedown", e);
-	}, [a]), /* @__PURE__ */ l("div", {
+	}, [a]), /* @__PURE__ */ u("div", {
 		className: "relative inline-block text-left",
 		ref: d,
 		onClick: (e) => e.stopPropagation(),
-		children: [/* @__PURE__ */ c("div", {
+		children: [/* @__PURE__ */ l("div", {
 			onClick: (e) => {
-				e.preventDefault(), e.stopPropagation(), u((e) => !e);
+				e.preventDefault(), e.stopPropagation(), o((e) => !e);
 			},
 			className: "cursor-pointer inline-flex",
 			children: e
-		}), a && /* @__PURE__ */ c("div", {
-			className: X("absolute z-50 mt-1.5 w-48 rounded-xl bg-[var(--bg-surface)] border border-[var(--border-medium)] p-1.5 shadow-2xl backdrop-blur-md animate-in fade-in zoom-in-95 duration-150", n === "right" ? "right-0" : "left-0", r),
+		}), a && /* @__PURE__ */ l("div", {
+			className: Y("absolute z-50 mt-1.5 w-48 rounded-xl bg-[var(--bg-surface)] border border-[var(--border-medium)] p-1.5 shadow-2xl backdrop-blur-md animate-in fade-in zoom-in-95 duration-150", n === "right" ? "right-0" : "left-0", r),
 			children: t.map((e, t) => {
-				if (e.divider) return /* @__PURE__ */ c("div", { className: "my-1 border-t border-[var(--border-subtle)]" }, t);
+				if (e.divider) return /* @__PURE__ */ l("div", { className: "my-1 border-t border-[var(--border-subtle)]" }, t);
 				let n = e.icon;
-				return /* @__PURE__ */ l("button", {
+				return /* @__PURE__ */ u("button", {
 					type: "button",
 					onClick: (t) => {
-						t.preventDefault(), t.stopPropagation(), u(!1), e.onClick && e.onClick();
+						t.preventDefault(), t.stopPropagation(), o(!1), e.onClick && e.onClick();
 					},
-					className: X("flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-xs font-medium text-[var(--text-muted)] transition-colors hover:bg-[var(--bg-hover)] hover:text-[var(--text-main)] cursor-pointer", e.danger && "text-rose-400 hover:bg-rose-500/15 hover:text-rose-300", e.active && "bg-[var(--bg-elevated)] text-[var(--color-primary-glow)] font-semibold"),
+					className: Y("flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-xs font-medium text-[var(--text-muted)] transition-colors hover:bg-[var(--bg-hover)] hover:text-[var(--text-main)] cursor-pointer", e.danger && "text-rose-400 hover:bg-rose-500/15 hover:text-rose-300", e.active && "bg-[var(--bg-elevated)] text-[var(--color-primary-glow)] font-semibold"),
 					children: [
-						n && /* @__PURE__ */ c(n, { className: "w-3.5 h-3.5 shrink-0" }),
-						/* @__PURE__ */ c("span", {
+						n && /* @__PURE__ */ l(n, { className: "w-3.5 h-3.5 shrink-0" }),
+						/* @__PURE__ */ l("span", {
 							className: "flex-1 text-left",
 							children: e.label
 						}),
-						e.shortcut && /* @__PURE__ */ c("span", {
+						e.shortcut && /* @__PURE__ */ l("span", {
 							className: "text-[10px] text-slate-500 font-mono",
 							children: e.shortcut
 						})
@@ -2143,38 +2143,38 @@ function rt({ trigger: e, items: t = [], align: n = "right", className: r }) {
 }
 //#endregion
 //#region src/components/AvatarSelector.jsx
-function it({ className: e, align: t = "right", seed: n = "jdlc-user" }) {
-	let { suit: r, setSuit: i, availableSuits: a, currentSuitConfig: o } = Ke(), s = a.map((e) => ({
+function at({ className: e, align: t = "right", seed: n = "jdlc-user" }) {
+	let { suit: r, setSuit: i, availableSuits: a, currentSuitConfig: o } = Je(), s = a.map((e) => ({
 		label: e.name,
 		active: e.id === r,
 		onClick: () => i(e.id),
-		icon: () => /* @__PURE__ */ c(tt, {
+		icon: () => /* @__PURE__ */ l(Q, {
 			seed: n,
 			suit: e.id,
 			size: "xs",
 			className: "w-4 h-4 text-[8px] shrink-0"
 		})
-	})), u = /* @__PURE__ */ l("button", {
+	})), c = /* @__PURE__ */ u("button", {
 		type: "button",
-		className: X("flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-[var(--bg-subtle)] hover:bg-[var(--bg-hover)] border border-[var(--border-subtle)] text-xs font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors cursor-pointer", e),
+		className: Y("flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-[var(--bg-subtle)] hover:bg-[var(--bg-hover)] border border-[var(--border-subtle)] text-xs font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors cursor-pointer", e),
 		title: `Active Avatar Set: ${o.name}`,
 		children: [
-			/* @__PURE__ */ c(tt, {
+			/* @__PURE__ */ l(Q, {
 				seed: n,
 				suit: o.id,
 				size: "xs",
 				className: "w-4 h-4 text-[8px] shrink-0"
 			}),
-			/* @__PURE__ */ c("span", {
+			/* @__PURE__ */ l("span", {
 				className: "font-semibold whitespace-nowrap",
 				children: o.name
 			}),
-			/* @__PURE__ */ c("svg", {
+			/* @__PURE__ */ l("svg", {
 				className: "w-3.5 h-3.5 text-[var(--text-dim)] ml-0.5",
 				fill: "none",
 				viewBox: "0 0 24 24",
 				stroke: "currentColor",
-				children: /* @__PURE__ */ c("path", {
+				children: /* @__PURE__ */ l("path", {
 					strokeLinecap: "round",
 					strokeLinejoin: "round",
 					strokeWidth: 2,
@@ -2183,20 +2183,20 @@ function it({ className: e, align: t = "right", seed: n = "jdlc-user" }) {
 			})
 		]
 	});
-	return /* @__PURE__ */ c(rt, {
-		trigger: u,
+	return /* @__PURE__ */ l(it, {
+		trigger: c,
 		items: s,
 		align: t
 	});
 }
 //#endregion
 //#region src/components/Button.jsx
-function at({ children: e, className: t, variant: n = "default", size: r = "md", disabled: i = !1, isLoading: a = !1, onClick: o, type: s = "button", icon: u, ...d }) {
-	return /* @__PURE__ */ l("button", {
+function ot({ children: e, className: t, variant: n = "default", size: r = "md", disabled: i = !1, isLoading: a = !1, onClick: o, type: s = "button", icon: c, ...d }) {
+	return /* @__PURE__ */ u("button", {
 		type: s,
 		disabled: i || a,
 		onClick: o,
-		className: X("inline-flex items-center justify-center font-medium rounded-lg transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring-focus)] active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none cursor-pointer select-none", {
+		className: Y("inline-flex items-center justify-center font-medium rounded-lg transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring-focus)] active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none cursor-pointer select-none", {
 			default: "bg-[var(--color-primary)] text-[var(--color-primary-content)] hover:bg-[var(--color-primary-hover)] shadow-sm hover:shadow-[0_0_15px_rgba(124,58,237,0.35)]",
 			primary: "bg-[var(--color-primary)] text-[var(--color-primary-content)] hover:bg-[var(--color-primary-hover)] shadow-sm hover:shadow-[0_0_15px_rgba(124,58,237,0.35)]",
 			secondary: "bg-[var(--bg-elevated)] text-[var(--text-main)] hover:bg-[var(--bg-hover)] border border-[var(--border-subtle)] hover:border-[var(--border-medium)]",
@@ -2216,66 +2216,66 @@ function at({ children: e, className: t, variant: n = "default", size: r = "md",
 			icon: "p-2 aspect-square"
 		}[r], t),
 		...d,
-		children: [a ? /* @__PURE__ */ l("svg", {
+		children: [a ? /* @__PURE__ */ u("svg", {
 			className: "animate-spin -ml-0.5 mr-1.5 h-4 w-4 text-current",
 			xmlns: "http://www.w3.org/2000/svg",
 			fill: "none",
 			viewBox: "0 0 24 24",
-			children: [/* @__PURE__ */ c("circle", {
+			children: [/* @__PURE__ */ l("circle", {
 				className: "opacity-25",
 				cx: "12",
 				cy: "12",
 				r: "10",
 				stroke: "currentColor",
 				strokeWidth: "4"
-			}), /* @__PURE__ */ c("path", {
+			}), /* @__PURE__ */ l("path", {
 				className: "opacity-75",
 				fill: "currentColor",
 				d: "M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
 			})]
-		}) : u && /* @__PURE__ */ c(u, { className: "w-4 h-4 shrink-0" }), e]
+		}) : c && /* @__PURE__ */ l(c, { className: "w-4 h-4 shrink-0" }), e]
 	});
 }
 //#endregion
 //#region src/components/Card.jsx
-function ot({ children: e, className: t, hover: n = !0, ...r }) {
-	return /* @__PURE__ */ c("div", {
-		className: X("bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-xl p-4 shadow-sm transition-all duration-200", n && "hover:border-[var(--border-medium)] hover:shadow-md hover:bg-[var(--bg-elevated)]", t),
+function st({ children: e, className: t, hover: n = !0, ...r }) {
+	return /* @__PURE__ */ l("div", {
+		className: Y("bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-xl p-4 shadow-sm transition-all duration-200", n && "hover:border-[var(--border-medium)] hover:shadow-md hover:bg-[var(--bg-elevated)]", t),
 		...r,
 		children: e
 	});
 }
-function st({ children: e, className: t, ...n }) {
-	return /* @__PURE__ */ c("div", {
-		className: X("flex items-center justify-between gap-2 mb-3", t),
-		...n,
-		children: e
-	});
-}
 function ct({ children: e, className: t, ...n }) {
-	return /* @__PURE__ */ c("h3", {
-		className: X("font-semibold text-[var(--text-main)] text-sm tracking-tight", t),
+	return /* @__PURE__ */ l("div", {
+		className: Y("flex items-center justify-between gap-2 mb-3", t),
 		...n,
 		children: e
 	});
 }
 function lt({ children: e, className: t, ...n }) {
-	return /* @__PURE__ */ c("p", {
-		className: X("text-xs text-[var(--text-dim)] mt-0.5", t),
+	return /* @__PURE__ */ l("h3", {
+		className: Y("font-semibold text-[var(--text-main)] text-sm tracking-tight", t),
 		...n,
 		children: e
 	});
 }
 function ut({ children: e, className: t, ...n }) {
-	return /* @__PURE__ */ c("div", {
-		className: X("text-sm text-[var(--text-muted)]", t),
+	return /* @__PURE__ */ l("p", {
+		className: Y("text-xs text-[var(--text-dim)] mt-0.5", t),
 		...n,
 		children: e
 	});
 }
 function dt({ children: e, className: t, ...n }) {
-	return /* @__PURE__ */ c("div", {
-		className: X("flex items-center justify-end gap-2 mt-4 pt-3 border-t border-[var(--border-subtle)]", t),
+	return /* @__PURE__ */ l("div", {
+		className: Y("text-sm text-[var(--text-muted)]", t),
+		...n,
+		children: e
+	});
+}
+function ft({ children: e, className: t, ...n }) {
+	return /* @__PURE__ */ l("div", {
+		className: Y("flex items-center justify-end gap-2 mt-4 pt-3 border-t border-[var(--border-subtle)]", t),
 		...n,
 		children: e
 	});
@@ -2283,8 +2283,8 @@ function dt({ children: e, className: t, ...n }) {
 //#endregion
 //#region src/components/Badge.jsx
 function $({ children: e, className: t, variant: n = "default", size: r = "md", dot: i = !1, ...a }) {
-	return /* @__PURE__ */ l("span", {
-		className: X("inline-flex items-center font-medium rounded-md tracking-wide select-none", {
+	return /* @__PURE__ */ u("span", {
+		className: Y("inline-flex items-center font-medium rounded-md tracking-wide select-none", {
 			default: "bg-[var(--bg-elevated)] text-[var(--text-main)] border border-[var(--border-subtle)]",
 			primary: "bg-[var(--color-primary)]/15 text-[var(--color-primary)] border border-[var(--color-primary)]/30 font-semibold",
 			accent: "bg-[var(--color-accent)]/15 text-[var(--color-accent)] border border-[var(--color-accent)]/30 font-semibold",
@@ -2302,98 +2302,98 @@ function $({ children: e, className: t, variant: n = "default", size: r = "md", 
 			lg: "text-sm px-2.5 py-1 gap-2"
 		}[r], t),
 		...a,
-		children: [i && /* @__PURE__ */ c("span", { className: "w-1.5 h-1.5 rounded-full bg-current shrink-0 animate-pulse" }), e]
+		children: [i && /* @__PURE__ */ l("span", { className: "w-1.5 h-1.5 rounded-full bg-current shrink-0 animate-pulse" }), e]
 	});
 }
 //#endregion
 //#region src/components/Input.jsx
-function ft({ className: e, type: t = "text", label: n, id: r, error: i, helperText: a, icon: o, ...s }) {
-	let u = r || (n ? `input-${n.toLowerCase().replace(/[^a-z0-9]/g, "-")}` : void 0);
-	return /* @__PURE__ */ l("div", {
+function pt({ className: e, type: t = "text", label: n, id: r, error: i, helperText: a, icon: o, ...s }) {
+	let c = r || (n ? `input-${n.toLowerCase().replace(/[^a-z0-9]/g, "-")}` : void 0);
+	return /* @__PURE__ */ u("div", {
 		className: "w-full space-y-1.5",
 		children: [
-			n && /* @__PURE__ */ c("label", {
-				htmlFor: u,
+			n && /* @__PURE__ */ l("label", {
+				htmlFor: c,
 				className: "block text-xs font-semibold text-[var(--text-muted)] uppercase tracking-wider",
 				children: n
 			}),
-			/* @__PURE__ */ l("div", {
+			/* @__PURE__ */ u("div", {
 				className: "relative flex items-center",
-				children: [o && /* @__PURE__ */ c("div", {
+				children: [o && /* @__PURE__ */ l("div", {
 					className: "absolute left-3 pointer-events-none text-[var(--text-dim)]",
-					children: /* @__PURE__ */ c(o, { className: "w-4 h-4" })
-				}), /* @__PURE__ */ c("input", {
-					id: u,
+					children: /* @__PURE__ */ l(o, { className: "w-4 h-4" })
+				}), /* @__PURE__ */ l("input", {
+					id: c,
 					type: t,
-					className: X("w-full bg-[var(--bg-subtle)] text-[var(--text-main)] text-sm rounded-lg border border-[var(--border-subtle)] px-3 py-2 transition-all duration-150", "focus:outline-none focus:border-[var(--border-strong)] focus:ring-2 focus:ring-[var(--ring-focus)]", "placeholder:text-[var(--text-dim)] disabled:opacity-50 disabled:cursor-not-allowed", o && "pl-9", i && "border-rose-500 focus:ring-rose-500/30", e),
+					className: Y("w-full bg-[var(--bg-subtle)] text-[var(--text-main)] text-sm rounded-lg border border-[var(--border-subtle)] px-3 py-2 transition-all duration-150", "focus:outline-none focus:border-[var(--border-strong)] focus:ring-2 focus:ring-[var(--ring-focus)]", "placeholder:text-[var(--text-dim)] disabled:opacity-50 disabled:cursor-not-allowed", o && "pl-9", i && "border-rose-500 focus:ring-rose-500/30", e),
 					...s
 				})]
 			}),
-			i && /* @__PURE__ */ c("p", {
+			i && /* @__PURE__ */ l("p", {
 				className: "text-xs text-rose-400 mt-1",
 				children: i
 			}),
-			a && !i && /* @__PURE__ */ c("p", {
+			a && !i && /* @__PURE__ */ l("p", {
 				className: "text-xs text-[var(--text-dim)] mt-1",
 				children: a
 			})
 		]
 	});
 }
-function pt({ className: e, label: t, id: n, error: r, helperText: i, rows: a = 3, ...o }) {
+function mt({ className: e, label: t, id: n, error: r, helperText: i, rows: a = 3, ...o }) {
 	let s = n || (t ? `textarea-${t.toLowerCase().replace(/[^a-z0-9]/g, "-")}` : void 0);
-	return /* @__PURE__ */ l("div", {
+	return /* @__PURE__ */ u("div", {
 		className: "w-full space-y-1.5",
 		children: [
-			t && /* @__PURE__ */ c("label", {
+			t && /* @__PURE__ */ l("label", {
 				htmlFor: s,
 				className: "block text-xs font-semibold text-[var(--text-muted)] uppercase tracking-wider",
 				children: t
 			}),
-			/* @__PURE__ */ c("textarea", {
+			/* @__PURE__ */ l("textarea", {
 				id: s,
 				rows: a,
-				className: X("w-full bg-[var(--bg-subtle)] text-[var(--text-main)] text-sm rounded-lg border border-[var(--border-subtle)] p-3 transition-all duration-150", "focus:outline-none focus:border-[var(--border-strong)] focus:ring-2 focus:ring-[var(--ring-focus)]", "placeholder:text-[var(--text-dim)] disabled:opacity-50 disabled:cursor-not-allowed resize-none", r && "border-rose-500 focus:ring-rose-500/30", e),
+				className: Y("w-full bg-[var(--bg-subtle)] text-[var(--text-main)] text-sm rounded-lg border border-[var(--border-subtle)] p-3 transition-all duration-150", "focus:outline-none focus:border-[var(--border-strong)] focus:ring-2 focus:ring-[var(--ring-focus)]", "placeholder:text-[var(--text-dim)] disabled:opacity-50 disabled:cursor-not-allowed resize-none", r && "border-rose-500 focus:ring-rose-500/30", e),
 				...o
 			}),
-			r && /* @__PURE__ */ c("p", {
+			r && /* @__PURE__ */ l("p", {
 				className: "text-xs text-rose-400 mt-1",
 				children: r
 			}),
-			i && !r && /* @__PURE__ */ c("p", {
+			i && !r && /* @__PURE__ */ l("p", {
 				className: "text-xs text-[var(--text-dim)] mt-1",
 				children: i
 			})
 		]
 	});
 }
-function mt({ className: e, label: t, id: n, error: r, helperText: i, children: a, icon: o, ...s }) {
-	let u = n || (t ? `select-${t.toLowerCase().replace(/[^a-z0-9]/g, "-")}` : void 0);
-	return /* @__PURE__ */ l("div", {
+function ht({ className: e, label: t, id: n, error: r, helperText: i, children: a, icon: o, ...s }) {
+	let c = n || (t ? `select-${t.toLowerCase().replace(/[^a-z0-9]/g, "-")}` : void 0);
+	return /* @__PURE__ */ u("div", {
 		className: "w-full space-y-1.5",
 		children: [
-			t && /* @__PURE__ */ c("label", {
-				htmlFor: u,
+			t && /* @__PURE__ */ l("label", {
+				htmlFor: c,
 				className: "block text-xs font-semibold text-[var(--text-muted)] uppercase tracking-wider",
 				children: t
 			}),
-			/* @__PURE__ */ l("div", {
+			/* @__PURE__ */ u("div", {
 				className: "relative flex items-center",
-				children: [o && /* @__PURE__ */ c("div", {
+				children: [o && /* @__PURE__ */ l("div", {
 					className: "absolute left-3 pointer-events-none text-[var(--text-dim)]",
-					children: /* @__PURE__ */ c(o, { className: "w-4 h-4" })
-				}), /* @__PURE__ */ c("select", {
-					id: u,
-					className: X("w-full bg-[var(--bg-subtle)] text-[var(--text-main)] text-sm rounded-lg border border-[var(--border-subtle)] px-3 py-2 transition-all duration-150 cursor-pointer", "focus:outline-none focus:border-[var(--border-strong)] focus:ring-2 focus:ring-[var(--ring-focus)]", o && "pl-9", r && "border-rose-500 focus:ring-rose-500/30", e),
+					children: /* @__PURE__ */ l(o, { className: "w-4 h-4" })
+				}), /* @__PURE__ */ l("select", {
+					id: c,
+					className: Y("w-full bg-[var(--bg-subtle)] text-[var(--text-main)] text-sm rounded-lg border border-[var(--border-subtle)] px-3 py-2 transition-all duration-150 cursor-pointer", "focus:outline-none focus:border-[var(--border-strong)] focus:ring-2 focus:ring-[var(--ring-focus)]", o && "pl-9", r && "border-rose-500 focus:ring-rose-500/30", e),
 					...s,
 					children: a
 				})]
 			}),
-			r && /* @__PURE__ */ c("p", {
+			r && /* @__PURE__ */ l("p", {
 				className: "text-xs text-rose-400 mt-1",
 				children: r
 			}),
-			i && !r && /* @__PURE__ */ c("p", {
+			i && !r && /* @__PURE__ */ l("p", {
 				className: "text-xs text-[var(--text-dim)] mt-1",
 				children: i
 			})
@@ -2402,7 +2402,7 @@ function mt({ className: e, label: t, id: n, error: r, helperText: i, children: 
 }
 //#endregion
 //#region src/components/Switch.jsx
-function ht({ checked: e = !1, onChange: t, disabled: n = !1, size: r = "md", label: i, id: a, name: o, className: s, ...u }) {
+function gt({ checked: e = !1, onChange: t, disabled: n = !1, size: r = "md", label: i, id: a, name: o, className: s, ...c }) {
 	let d = a || (o ? `switch-${o}` : i ? `switch-${i.toLowerCase().replace(/[^a-z0-9]/g, "-")}` : void 0), f = {
 		sm: "w-8 h-4.5",
 		md: "w-10 h-5.5",
@@ -2412,13 +2412,13 @@ function ht({ checked: e = !1, onChange: t, disabled: n = !1, size: r = "md", la
 		md: "w-4 h-4 peer-checked:translate-x-4.5",
 		lg: "w-5 h-5 peer-checked:translate-x-5.5"
 	};
-	return /* @__PURE__ */ l("label", {
+	return /* @__PURE__ */ u("label", {
 		htmlFor: d,
-		className: X("inline-flex items-center gap-2.5 select-none", n ? "opacity-50 cursor-not-allowed" : "cursor-pointer", s),
-		children: [/* @__PURE__ */ l("span", {
+		className: Y("inline-flex items-center gap-2.5 select-none", n ? "opacity-50 cursor-not-allowed" : "cursor-pointer", s),
+		children: [/* @__PURE__ */ u("span", {
 			className: "relative inline-flex items-center shrink-0",
 			children: [
-				/* @__PURE__ */ c("input", {
+				/* @__PURE__ */ l("input", {
 					id: d,
 					name: o,
 					type: "checkbox",
@@ -2428,12 +2428,12 @@ function ht({ checked: e = !1, onChange: t, disabled: n = !1, size: r = "md", la
 					onChange: t,
 					disabled: n,
 					className: "sr-only peer",
-					...u
+					...c
 				}),
-				/* @__PURE__ */ c("span", { className: X("rounded-full border transition-colors duration-150", "bg-[var(--bg-subtle)] border-[var(--border-medium)]", "peer-checked:bg-[var(--color-primary)] peer-checked:border-[var(--color-primary)]", "peer-focus-visible:ring-2 peer-focus-visible:ring-[var(--ring-focus)]", f[r] || f.md) }),
-				/* @__PURE__ */ c("span", { className: X("pointer-events-none absolute left-0.5 top-1/2 -translate-y-1/2 rounded-full bg-white shadow-xs transition-transform duration-150", p[r] || p.md) })
+				/* @__PURE__ */ l("span", { className: Y("rounded-full border transition-colors duration-150", "bg-[var(--bg-subtle)] border-[var(--border-medium)]", "peer-checked:bg-[var(--color-primary)] peer-checked:border-[var(--color-primary)]", "peer-focus-visible:ring-2 peer-focus-visible:ring-[var(--ring-focus)]", f[r] || f.md) }),
+				/* @__PURE__ */ l("span", { className: Y("pointer-events-none absolute left-0.5 top-1/2 -translate-y-1/2 rounded-full bg-white shadow-xs transition-transform duration-150", p[r] || p.md) })
 			]
-		}), i && /* @__PURE__ */ c("span", {
+		}), i && /* @__PURE__ */ l("span", {
 			className: "text-sm font-medium text-[var(--text-main)]",
 			children: i
 		})]
@@ -2441,7 +2441,7 @@ function ht({ checked: e = !1, onChange: t, disabled: n = !1, size: r = "md", la
 }
 //#endregion
 //#region src/components/Checkbox.jsx
-function gt({ checked: e, onChange: t, disabled: n = !1, size: r = "md", variant: i = "primary", label: a, id: o, name: s, className: u, ...d }) {
+function _t({ checked: e, onChange: t, disabled: n = !1, size: r = "md", variant: i = "primary", label: a, id: o, name: s, className: c, ...d }) {
 	let f = o || (s ? `checkbox-${s}` : a ? `checkbox-${a.toLowerCase().replace(/[^a-z0-9]/g, "-")}` : void 0), p = {
 		xs: "w-3.5 h-3.5 rounded",
 		sm: "w-4 h-4 rounded",
@@ -2453,20 +2453,20 @@ function gt({ checked: e, onChange: t, disabled: n = !1, size: r = "md", variant
 		warning: "accent-amber-500",
 		success: "accent-emerald-500",
 		danger: "accent-rose-500"
-	}, h = /* @__PURE__ */ c("input", {
+	}, h = /* @__PURE__ */ l("input", {
 		id: f,
 		name: s,
 		type: "checkbox",
 		checked: e,
 		onChange: t,
 		disabled: n,
-		className: X("border border-[var(--border-medium)] bg-[var(--bg-subtle)] transition-all cursor-pointer shrink-0", "focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring-focus)]", "disabled:opacity-50 disabled:cursor-not-allowed", p[r] || p.md, m[i] || m.primary, !a && u),
+		className: Y("border border-[var(--border-medium)] bg-[var(--bg-subtle)] transition-all cursor-pointer shrink-0", "focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring-focus)]", "disabled:opacity-50 disabled:cursor-not-allowed", p[r] || p.md, m[i] || m.primary, !a && c),
 		...d
 	});
-	return a ? /* @__PURE__ */ l("label", {
+	return a ? /* @__PURE__ */ u("label", {
 		htmlFor: f,
-		className: X("inline-flex items-center gap-2 select-none", n ? "opacity-50 cursor-not-allowed" : "cursor-pointer", u),
-		children: [h, /* @__PURE__ */ c("span", {
+		className: Y("inline-flex items-center gap-2 select-none", n ? "opacity-50 cursor-not-allowed" : "cursor-pointer", c),
+		children: [h, /* @__PURE__ */ l("span", {
 			className: "text-sm text-[var(--text-main)]",
 			children: a
 		})]
@@ -2474,34 +2474,34 @@ function gt({ checked: e, onChange: t, disabled: n = !1, size: r = "md", variant
 }
 //#endregion
 //#region src/components/Accordion.jsx
-function _t({ children: e, className: t, ...n }) {
-	return /* @__PURE__ */ c("div", {
-		className: X("space-y-3", t),
+function vt({ children: e, className: t, ...n }) {
+	return /* @__PURE__ */ l("div", {
+		className: Y("space-y-3", t),
 		...n,
 		children: e
 	});
 }
-function vt({ title: e, badge: t, defaultOpen: n = !1, children: r, footer: i, className: a, ...o }) {
-	return /* @__PURE__ */ l("details", {
+function yt({ title: e, badge: t, defaultOpen: n = !1, children: r, footer: i, className: a, ...o }) {
+	return /* @__PURE__ */ u("details", {
 		open: n || void 0,
-		className: X("group bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-xl overflow-hidden shadow-xs hover:border-[var(--color-primary)]/40 transition-colors", a),
+		className: Y("group bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-xl overflow-hidden shadow-xs hover:border-[var(--color-primary)]/40 transition-colors", a),
 		...o,
-		children: [/* @__PURE__ */ l("summary", {
+		children: [/* @__PURE__ */ u("summary", {
 			className: "flex items-center justify-between gap-3 p-4 cursor-pointer font-medium text-[var(--text-main)] select-none list-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring-focus)]",
-			children: [/* @__PURE__ */ l("div", {
+			children: [/* @__PURE__ */ u("div", {
 				className: "flex items-center gap-2.5 min-w-0",
-				children: [t, /* @__PURE__ */ c("span", {
+				children: [t, /* @__PURE__ */ l("span", {
 					className: "font-semibold text-sm sm:text-base",
 					children: e
 				})]
-			}), /* @__PURE__ */ c("span", {
+			}), /* @__PURE__ */ l("span", {
 				"aria-hidden": "true",
 				className: "text-[var(--text-muted)] group-open:rotate-180 transition-transform duration-200 shrink-0",
 				children: "▾"
 			})]
-		}), /* @__PURE__ */ l("div", {
+		}), /* @__PURE__ */ u("div", {
 			className: "px-4 pb-4 pt-2 text-sm text-[var(--text-muted)] border-t border-[var(--border-subtle)] leading-relaxed bg-[var(--bg-elevated)]/30",
-			children: [r, i && /* @__PURE__ */ c("div", {
+			children: [r, i && /* @__PURE__ */ l("div", {
 				className: "mt-3 pt-2 border-t border-[var(--border-subtle)] text-xs flex items-center justify-between",
 				children: i
 			})]
@@ -2510,7 +2510,7 @@ function vt({ title: e, badge: t, defaultOpen: n = !1, children: r, footer: i, c
 }
 //#endregion
 //#region src/components/Alert.jsx
-function yt({ variant: e = "info", title: t, icon: n, children: r, className: i, role: a = "alert", ...o }) {
+function bt({ variant: e = "info", title: t, icon: n, children: r, className: i, role: a = "alert", ...o }) {
 	let s = {
 		info: "bg-sky-500/15 border-sky-500/30 text-sky-800 dark:text-sky-200",
 		success: "bg-emerald-500/15 border-emerald-500/30 text-emerald-800 dark:text-emerald-200",
@@ -2518,38 +2518,72 @@ function yt({ variant: e = "info", title: t, icon: n, children: r, className: i,
 		danger: "bg-rose-500/15 border-rose-500/30 text-rose-800 dark:text-rose-200",
 		error: "bg-rose-500/15 border-rose-500/30 text-rose-800 dark:text-rose-200"
 	};
-	return /* @__PURE__ */ l("div", {
+	return /* @__PURE__ */ u("div", {
 		role: a,
-		className: X("flex items-start gap-3 rounded-xl border p-3.5 text-xs sm:text-sm leading-relaxed", s[e] || s.info, i),
+		className: Y("flex items-start gap-3 rounded-xl border p-3.5 text-xs sm:text-sm leading-relaxed", s[e] || s.info, i),
 		...o,
-		children: [n && /* @__PURE__ */ c(n, { className: "w-5 h-5 shrink-0 mt-0.5" }), /* @__PURE__ */ l("div", {
+		children: [n && /* @__PURE__ */ l(n, { className: "w-5 h-5 shrink-0 mt-0.5" }), /* @__PURE__ */ u("div", {
 			className: "flex-1 min-w-0",
-			children: [t && /* @__PURE__ */ c("div", {
+			children: [t && /* @__PURE__ */ l("div", {
 				className: "font-semibold mb-0.5",
 				children: t
-			}), /* @__PURE__ */ c("div", { children: r })]
+			}), /* @__PURE__ */ l("div", { children: r })]
 		})]
 	});
 }
 //#endregion
 //#region src/components/Spinner.jsx
-function bt({ size: e = "md", className: t, label: n = "Loading...", ...r }) {
+function xt({ size: e = "md", className: t, label: n = "Loading...", ...r }) {
 	let i = {
 		xs: "w-3.5 h-3.5 border-2",
 		sm: "w-4 h-4 border-2",
 		md: "w-6 h-6 border-2",
 		lg: "w-8 h-8 border-[3px]"
 	};
-	return /* @__PURE__ */ c("span", {
+	return /* @__PURE__ */ l("span", {
 		role: "status",
 		"aria-label": n,
-		className: X("inline-block rounded-full border-current border-r-transparent animate-spin text-[var(--color-primary)] shrink-0", i[e] || i.md, t),
+		className: Y("inline-block rounded-full border-current border-r-transparent animate-spin text-[var(--color-primary)] shrink-0", i[e] || i.md, t),
 		...r
 	});
 }
 //#endregion
+//#region src/components/Tooltip.jsx
+function St({ content: e, position: t = "top", children: n, className: r, ...i }) {
+	let [o, s] = c(!1), d = a();
+	if (!e) return n;
+	let f = {
+		top: "bottom-full left-1/2 -translate-x-1/2 mb-2",
+		bottom: "top-full left-1/2 -translate-x-1/2 mt-2",
+		left: "right-full top-1/2 -translate-y-1/2 mr-2",
+		right: "left-full top-1/2 -translate-y-1/2 ml-2"
+	};
+	return /* @__PURE__ */ u("span", {
+		className: Y("relative inline-flex items-center align-middle", r),
+		onMouseEnter: () => s(!0),
+		onMouseLeave: () => s(!1),
+		onFocus: () => s(!0),
+		onBlur: () => s(!1),
+		onKeyDown: (e) => {
+			e.key === "Escape" && s(!1);
+		},
+		onClick: (e) => {
+			e.stopPropagation(), s((e) => !e);
+		},
+		tabIndex: 0,
+		"aria-describedby": o ? d : void 0,
+		...i,
+		children: [n, o && /* @__PURE__ */ l("span", {
+			id: d,
+			role: "tooltip",
+			className: Y("pointer-events-none absolute z-50 w-max max-w-xs rounded-lg border border-[var(--border-medium)] bg-[var(--bg-elevated)] px-2.5 py-1.5 text-xs font-medium text-[var(--text-main)] shadow-lg leading-snug whitespace-normal text-center", f[t] || f.top),
+			children: e
+		})]
+	});
+}
+//#endregion
 //#region src/components/Dialog.jsx
-function xt({ isOpen: e, onClose: t, title: n, description: r, subtitle: a, icon: o, headerAction: s, ariaLabel: u, children: d, maxWidth: f = "max-w-lg", className: p }) {
+function Ct({ isOpen: e, onClose: t, title: n, description: r, subtitle: a, icon: o, headerAction: s, ariaLabel: c, children: d, maxWidth: f = "max-w-lg", className: p }) {
 	if (i(() => {
 		let n = (e) => {
 			e.key === "Escape" && t?.();
@@ -2559,44 +2593,44 @@ function xt({ isOpen: e, onClose: t, title: n, description: r, subtitle: a, icon
 		};
 	}, [e, t]), !e) return null;
 	let m = r || a;
-	return /* @__PURE__ */ l("div", {
+	return /* @__PURE__ */ u("div", {
 		className: "fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 animate-in fade-in duration-200",
 		role: "dialog",
 		"aria-modal": "true",
-		"aria-label": u || n,
-		children: [/* @__PURE__ */ c("div", {
+		"aria-label": c || n,
+		children: [/* @__PURE__ */ l("div", {
 			className: "fixed inset-0 bg-black/75 backdrop-blur-md transition-opacity",
 			onClick: t
-		}), /* @__PURE__ */ l("div", {
-			className: X("relative w-full bg-[var(--bg-surface)] border border-[var(--border-medium)] rounded-2xl shadow-2xl z-10 overflow-hidden flex flex-col max-h-[92vh]", f, p),
+		}), /* @__PURE__ */ u("div", {
+			className: Y("relative w-full bg-[var(--bg-surface)] border border-[var(--border-medium)] rounded-2xl shadow-2xl z-10 overflow-hidden flex flex-col max-h-[92vh]", f, p),
 			onClick: (e) => e.stopPropagation(),
-			children: [(n || m || o || s || t) && /* @__PURE__ */ l("div", {
+			children: [(n || m || o || s || t) && /* @__PURE__ */ u("div", {
 				className: "flex items-start justify-between p-4 sm:p-5 border-b border-[var(--border-subtle)] bg-[var(--bg-subtle)]/60 shrink-0",
-				children: [/* @__PURE__ */ l("div", {
+				children: [/* @__PURE__ */ u("div", {
 					className: "flex items-center gap-3 pr-4",
-					children: [o && /* @__PURE__ */ c("div", {
+					children: [o && /* @__PURE__ */ l("div", {
 						className: "p-2 rounded-xl bg-[var(--bg-elevated)] border border-[var(--border-subtle)] text-[var(--color-primary-glow)] shrink-0",
 						children: o
-					}), /* @__PURE__ */ l("div", { children: [n && /* @__PURE__ */ c("h2", {
+					}), /* @__PURE__ */ u("div", { children: [n && /* @__PURE__ */ l("h2", {
 						className: "text-base sm:text-lg font-bold text-slate-100 tracking-tight font-[var(--font-heading)] leading-tight",
 						children: n
-					}), m && /* @__PURE__ */ c("p", {
+					}), m && /* @__PURE__ */ l("p", {
 						className: "text-xs text-slate-400 mt-0.5",
 						children: m
 					})] })]
-				}), /* @__PURE__ */ l("div", {
+				}), /* @__PURE__ */ u("div", {
 					className: "flex items-center gap-2 shrink-0",
-					children: [s, t && /* @__PURE__ */ c("button", {
+					children: [s, t && /* @__PURE__ */ l("button", {
 						type: "button",
 						onClick: t,
 						className: "p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-[var(--bg-hover)] transition-colors cursor-pointer",
 						"aria-label": "Close dialog",
-						children: /* @__PURE__ */ c("svg", {
+						children: /* @__PURE__ */ l("svg", {
 							className: "w-5 h-5",
 							fill: "none",
 							viewBox: "0 0 24 24",
 							stroke: "currentColor",
-							children: /* @__PURE__ */ c("path", {
+							children: /* @__PURE__ */ l("path", {
 								strokeLinecap: "round",
 								strokeLinejoin: "round",
 								strokeWidth: 2,
@@ -2605,7 +2639,7 @@ function xt({ isOpen: e, onClose: t, title: n, description: r, subtitle: a, icon
 						})
 					})]
 				})]
-			}), /* @__PURE__ */ c("div", {
+			}), /* @__PURE__ */ l("div", {
 				className: "p-4 sm:p-6 overflow-y-auto space-y-4",
 				children: d
 			})]
@@ -2614,24 +2648,24 @@ function xt({ isOpen: e, onClose: t, title: n, description: r, subtitle: a, icon
 }
 //#endregion
 //#region src/components/Tabs.jsx
-function St({ tabs: e = [], activeTab: t, onChange: n, className: r }) {
-	return /* @__PURE__ */ c("div", {
-		className: X("inline-flex items-center p-1 bg-[var(--bg-subtle)] border border-[var(--border-subtle)] rounded-lg", r),
+function wt({ tabs: e = [], activeTab: t, onChange: n, className: r }) {
+	return /* @__PURE__ */ l("div", {
+		className: Y("inline-flex items-center p-1 bg-[var(--bg-subtle)] border border-[var(--border-subtle)] rounded-lg", r),
 		children: e.map((e) => {
 			let r = t === e.id, i = e.icon;
-			return /* @__PURE__ */ l("button", {
+			return /* @__PURE__ */ u("button", {
 				type: "button",
 				onClick: () => n(e.id),
 				title: e.label,
-				className: X("flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 text-xs font-medium rounded-md transition-all duration-150 cursor-pointer select-none", r ? "bg-[var(--bg-elevated)] text-[var(--text-main)] shadow-sm border border-[var(--border-medium)]" : "text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-hover)]/60 font-medium"),
+				className: Y("flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 text-xs font-medium rounded-md transition-all duration-150 cursor-pointer select-none", r ? "bg-[var(--bg-elevated)] text-[var(--text-main)] shadow-sm border border-[var(--border-medium)]" : "text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-hover)]/60 font-medium"),
 				children: [
-					i && /* @__PURE__ */ c(i, { className: "w-3.5 h-3.5 shrink-0" }),
-					/* @__PURE__ */ c("span", {
-						className: X(e.hideLabelOnMobile && "hidden lg:inline"),
+					i && /* @__PURE__ */ l(i, { className: "w-3.5 h-3.5 shrink-0" }),
+					/* @__PURE__ */ l("span", {
+						className: Y(e.hideLabelOnMobile && "hidden lg:inline"),
 						children: e.label
 					}),
-					e.count !== void 0 && /* @__PURE__ */ c("span", {
-						className: X("px-1.5 py-0.5 rounded text-[10px] font-mono", r ? "bg-[var(--color-primary)]/20 text-[var(--color-primary-glow)] font-bold" : "bg-[var(--bg-elevated)] text-[var(--text-dim)] border border-[var(--border-subtle)]"),
+					e.count !== void 0 && /* @__PURE__ */ l("span", {
+						className: Y("px-1.5 py-0.5 rounded text-[10px] font-mono", r ? "bg-[var(--color-primary)]/20 text-[var(--color-primary-glow)] font-bold" : "bg-[var(--bg-elevated)] text-[var(--text-dim)] border border-[var(--border-subtle)]"),
 						children: e.count
 					})
 				]
@@ -2641,33 +2675,33 @@ function St({ tabs: e = [], activeTab: t, onChange: n, className: r }) {
 }
 //#endregion
 //#region src/components/ThemeSelector.jsx
-function Ct({ className: e, align: t = "right" }) {
-	let { theme: n, setTheme: r, availableThemes: i, currentThemeConfig: a } = Ye(), o = i.map((e) => ({
+function Tt({ className: e, align: t = "right" }) {
+	let { theme: n, setTheme: r, availableThemes: i, currentThemeConfig: a } = Ze(), o = i.map((e) => ({
 		label: e.name,
 		active: e.id === n,
 		onClick: () => r(e.id),
-		icon: () => /* @__PURE__ */ c("span", {
+		icon: () => /* @__PURE__ */ l("span", {
 			className: "w-3 h-3 rounded-full shrink-0 border border-white/20",
 			style: { backgroundColor: e.primaryHex }
 		})
-	})), s = /* @__PURE__ */ l("button", {
+	})), s = /* @__PURE__ */ u("button", {
 		type: "button",
-		className: X("flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-[var(--bg-subtle)] hover:bg-[var(--bg-hover)] border border-[var(--border-subtle)] text-xs font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors cursor-pointer", e),
+		className: Y("flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-[var(--bg-subtle)] hover:bg-[var(--bg-hover)] border border-[var(--border-subtle)] text-xs font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors cursor-pointer", e),
 		children: [
-			/* @__PURE__ */ c("span", {
+			/* @__PURE__ */ l("span", {
 				className: "w-2.5 h-2.5 rounded-full shadow-sm",
 				style: { backgroundColor: a.primaryHex }
 			}),
-			/* @__PURE__ */ c("span", {
+			/* @__PURE__ */ l("span", {
 				className: "font-semibold whitespace-nowrap",
 				children: a.name
 			}),
-			/* @__PURE__ */ c("svg", {
+			/* @__PURE__ */ l("svg", {
 				className: "w-3.5 h-3.5 text-[var(--text-dim)] ml-0.5",
 				fill: "none",
 				viewBox: "0 0 24 24",
 				stroke: "currentColor",
-				children: /* @__PURE__ */ c("path", {
+				children: /* @__PURE__ */ l("path", {
 					strokeLinecap: "round",
 					strokeLinejoin: "round",
 					strokeWidth: 2,
@@ -2676,7 +2710,7 @@ function Ct({ className: e, align: t = "right" }) {
 			})
 		]
 	});
-	return /* @__PURE__ */ c(rt, {
+	return /* @__PURE__ */ l(it, {
 		trigger: s,
 		items: o,
 		align: t
@@ -2684,7 +2718,7 @@ function Ct({ className: e, align: t = "right" }) {
 }
 //#endregion
 //#region src/lib/suiteUtils.js
-var wt = [
+var Et = [
 	{
 		id: "taskflow",
 		name: "TaskFlow",
@@ -2714,7 +2748,7 @@ var wt = [
 		color: "#F59E0B"
 	}
 ];
-function Tt(e) {
+function Dt(e) {
 	if (typeof window > "u") return "#";
 	try {
 		let t = `VITE_${e.toUpperCase()}_URL`;
@@ -2731,179 +2765,179 @@ function Tt(e) {
 }
 //#endregion
 //#region src/components/AppSwitcher.jsx
-function Et({ currentApp: e = "taskflow", className: t, align: n = "left" }) {
-	let [r, a] = s(!1), u = o(null);
+function Ot({ currentApp: e = "taskflow", className: t, align: n = "left" }) {
+	let [r, a] = c(!1), o = s(null);
 	i(() => {
 		function e(e) {
-			u.current && !u.current.contains(e.target) && a(!1);
+			o.current && !o.current.contains(e.target) && a(!1);
 		}
 		return r && document.addEventListener("mousedown", e), () => document.removeEventListener("mousedown", e);
 	}, [r]);
 	let d = typeof window < "u" && (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1" || window.location.hostname.endsWith(".local")), f = (e) => {
 		switch (e) {
-			case "taskflow": return /* @__PURE__ */ c("svg", {
+			case "taskflow": return /* @__PURE__ */ l("svg", {
 				viewBox: "0 0 24 24",
 				fill: "none",
 				stroke: "currentColor",
 				strokeWidth: "2.5",
 				className: "w-4 h-4",
-				children: /* @__PURE__ */ c("path", {
+				children: /* @__PURE__ */ l("path", {
 					strokeLinecap: "round",
 					strokeLinejoin: "round",
 					d: "M4.5 12.75l6 6 9-13.5"
 				})
 			});
-			case "budgetcast": return /* @__PURE__ */ c("svg", {
+			case "budgetcast": return /* @__PURE__ */ l("svg", {
 				viewBox: "0 0 24 24",
 				fill: "none",
 				stroke: "currentColor",
 				strokeWidth: "2",
 				className: "w-4 h-4",
-				children: /* @__PURE__ */ c("path", {
+				children: /* @__PURE__ */ l("path", {
 					strokeLinecap: "round",
 					strokeLinejoin: "round",
 					d: "M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"
 				})
 			});
-			case "tripplanner": return /* @__PURE__ */ c("svg", {
+			case "tripplanner": return /* @__PURE__ */ l("svg", {
 				viewBox: "0 0 24 24",
 				fill: "none",
 				stroke: "currentColor",
 				strokeWidth: "2",
 				className: "w-4 h-4",
-				children: /* @__PURE__ */ c("path", {
+				children: /* @__PURE__ */ l("path", {
 					strokeLinecap: "round",
 					strokeLinejoin: "round",
 					d: "M9 6.75V15m6-6v8.25m.53 3.72a.75.75 0 01-.82.08L9 18l-5.71 2.855A.75.75 0 012.25 20.19V6.44a.75.75 0 01.42-.67l6-3a.75.75 0 01.66 0l5.71 2.855a.75.75 0 01.42.67v13.75a.75.75 0 01-.93.72z"
 				})
 			});
-			case "bandido": return /* @__PURE__ */ c("svg", {
+			case "bandido": return /* @__PURE__ */ l("svg", {
 				viewBox: "0 0 24 24",
 				fill: "none",
 				stroke: "currentColor",
 				strokeWidth: "2",
 				className: "w-4 h-4",
-				children: /* @__PURE__ */ c("path", {
+				children: /* @__PURE__ */ l("path", {
 					strokeLinecap: "round",
 					strokeLinejoin: "round",
 					d: "M9 9l10.5-3m0 6.553v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 11-.99-3.467l2.31-.66V6.5m-8.368 4.755v5.06a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 01-.99-3.467l2.31-.66V9.75"
 				})
 			});
-			default: return /* @__PURE__ */ c("svg", {
+			default: return /* @__PURE__ */ l("svg", {
 				viewBox: "0 0 24 24",
 				fill: "none",
 				stroke: "currentColor",
 				strokeWidth: "2",
 				className: "w-4 h-4",
-				children: /* @__PURE__ */ c("path", {
+				children: /* @__PURE__ */ l("path", {
 					strokeLinecap: "round",
 					strokeLinejoin: "round",
 					d: "M9 6.75V15m6-6v8.25m.53 3.72a.75.75 0 01-.82.08L9 18l-5.71 2.855A.75.75 0 012.25 20.19V6.44a.75.75 0 01.42-.67l6-3a.75.75 0 01.66 0l5.71 2.855a.75.75 0 01.42.67v13.75a.75.75 0 01-.93.72z"
 				})
 			});
 		}
-	}, p = wt.filter((t) => t.id !== e);
-	return /* @__PURE__ */ l("div", {
+	}, p = Et.filter((t) => t.id !== e);
+	return /* @__PURE__ */ u("div", {
 		className: "relative inline-block text-left",
-		ref: u,
-		children: [/* @__PURE__ */ c("button", {
+		ref: o,
+		children: [/* @__PURE__ */ l("button", {
 			type: "button",
 			onClick: () => a((e) => !e),
-			className: X("p-2 rounded-xl text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-elevated)] border border-transparent hover:border-[var(--border-subtle)] transition-colors cursor-pointer flex items-center justify-center shrink-0", r && "bg-[var(--bg-elevated)] text-[var(--text-main)] border-[var(--border-subtle)]", t),
+			className: Y("p-2 rounded-xl text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-elevated)] border border-transparent hover:border-[var(--border-subtle)] transition-colors cursor-pointer flex items-center justify-center shrink-0", r && "bg-[var(--bg-elevated)] text-[var(--text-main)] border-[var(--border-subtle)]", t),
 			title: "JDLC Cloud Suite Apps",
 			"aria-label": "JDLC Cloud Suite Apps",
 			"aria-expanded": r,
-			children: /* @__PURE__ */ l("svg", {
+			children: /* @__PURE__ */ u("svg", {
 				viewBox: "0 0 20 20",
 				fill: "currentColor",
 				className: "w-4.5 h-4.5",
 				children: [
-					/* @__PURE__ */ c("circle", {
+					/* @__PURE__ */ l("circle", {
 						cx: "4",
 						cy: "4",
 						r: "1.8"
 					}),
-					/* @__PURE__ */ c("circle", {
+					/* @__PURE__ */ l("circle", {
 						cx: "10",
 						cy: "4",
 						r: "1.8"
 					}),
-					/* @__PURE__ */ c("circle", {
+					/* @__PURE__ */ l("circle", {
 						cx: "16",
 						cy: "4",
 						r: "1.8"
 					}),
-					/* @__PURE__ */ c("circle", {
+					/* @__PURE__ */ l("circle", {
 						cx: "4",
 						cy: "10",
 						r: "1.8"
 					}),
-					/* @__PURE__ */ c("circle", {
+					/* @__PURE__ */ l("circle", {
 						cx: "10",
 						cy: "10",
 						r: "1.8"
 					}),
-					/* @__PURE__ */ c("circle", {
+					/* @__PURE__ */ l("circle", {
 						cx: "16",
 						cy: "10",
 						r: "1.8"
 					}),
-					/* @__PURE__ */ c("circle", {
+					/* @__PURE__ */ l("circle", {
 						cx: "4",
 						cy: "16",
 						r: "1.8"
 					}),
-					/* @__PURE__ */ c("circle", {
+					/* @__PURE__ */ l("circle", {
 						cx: "10",
 						cy: "16",
 						r: "1.8"
 					}),
-					/* @__PURE__ */ c("circle", {
+					/* @__PURE__ */ l("circle", {
 						cx: "16",
 						cy: "16",
 						r: "1.8"
 					})
 				]
 			})
-		}), r && /* @__PURE__ */ l("div", {
-			className: X("absolute z-50 mt-2 w-72 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-medium)] p-2.5 shadow-2xl backdrop-blur-xl animate-in fade-in zoom-in-95 duration-150", n === "right" ? "right-0" : "left-0"),
+		}), r && /* @__PURE__ */ u("div", {
+			className: Y("absolute z-50 mt-2 w-72 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-medium)] p-2.5 shadow-2xl backdrop-blur-xl animate-in fade-in zoom-in-95 duration-150", n === "right" ? "right-0" : "left-0"),
 			children: [
-				/* @__PURE__ */ l("div", {
+				/* @__PURE__ */ u("div", {
 					className: "flex items-center justify-between px-2.5 py-1.5 mb-1.5 border-b border-[var(--border-subtle)]",
-					children: [/* @__PURE__ */ c("span", {
+					children: [/* @__PURE__ */ l("span", {
 						className: "text-xs font-bold tracking-tight text-[var(--text-main)] font-[var(--font-heading)]",
 						children: "JDLC Suite"
-					}), /* @__PURE__ */ c($, {
+					}), /* @__PURE__ */ l($, {
 						variant: d ? "subtle" : "primary",
 						size: "xs",
 						className: "font-mono text-[9px]",
 						children: d ? "Localhost" : "Cloud"
 					})]
 				}),
-				/* @__PURE__ */ c("div", {
+				/* @__PURE__ */ l("div", {
 					className: "space-y-1",
 					children: p.map((e) => {
-						let t = Tt(e.id);
-						return /* @__PURE__ */ l("a", {
+						let t = Dt(e.id);
+						return /* @__PURE__ */ u("a", {
 							href: t,
 							onClick: () => a(!1),
 							className: "flex items-center gap-3 p-2 rounded-xl transition-all hover:bg-[var(--bg-hover)] border border-transparent hover:border-[var(--border-subtle)] cursor-pointer text-[var(--text-muted)] hover:text-[var(--text-main)]",
-							children: [/* @__PURE__ */ c("div", {
+							children: [/* @__PURE__ */ l("div", {
 								className: "w-8 h-8 rounded-lg flex items-center justify-center text-white shrink-0 shadow-sm",
 								style: { backgroundColor: e.color },
 								children: f(e.id)
-							}), /* @__PURE__ */ l("div", {
+							}), /* @__PURE__ */ u("div", {
 								className: "flex-1 min-w-0",
-								children: [/* @__PURE__ */ l("div", {
+								children: [/* @__PURE__ */ u("div", {
 									className: "flex items-center justify-between gap-1.5",
-									children: [/* @__PURE__ */ c("span", {
+									children: [/* @__PURE__ */ l("span", {
 										className: "text-xs font-bold tracking-tight text-[var(--text-main)] font-[var(--font-heading)] truncate",
 										children: e.name
-									}), /* @__PURE__ */ c("span", {
+									}), /* @__PURE__ */ l("span", {
 										className: "text-[10px] text-slate-500 font-mono",
 										children: d ? `:${t.split(":").pop()}` : "open ↗"
 									})]
-								}), /* @__PURE__ */ c("p", {
+								}), /* @__PURE__ */ l("p", {
 									className: "text-[10px] text-slate-400 truncate mt-0.5",
 									children: e.description
 								})]
@@ -2911,10 +2945,10 @@ function Et({ currentApp: e = "taskflow", className: t, align: n = "left" }) {
 						}, e.id);
 					})
 				}),
-				/* @__PURE__ */ l("div", {
+				/* @__PURE__ */ u("div", {
 					className: "mt-2 pt-1.5 border-t border-[var(--border-subtle)] px-2.5 flex items-center justify-between text-[10px] text-slate-400",
-					children: [/* @__PURE__ */ c("span", { children: "JDLC Ecosystem" }), /* @__PURE__ */ c("a", {
-						href: Tt("main"),
+					children: [/* @__PURE__ */ l("span", { children: "JDLC Ecosystem" }), /* @__PURE__ */ l("a", {
+						href: Dt("main"),
 						className: "text-[var(--color-primary-glow)] hover:underline flex items-center gap-0.5",
 						children: "Portal Home ↗"
 					})]
@@ -2925,48 +2959,48 @@ function Et({ currentApp: e = "taskflow", className: t, align: n = "left" }) {
 }
 //#endregion
 //#region src/components/Toast.jsx
-var Dt = t(null);
-function Ot({ children: e, position: t = "bottom-right" }) {
-	let [r, i] = s([]), o = n((e) => {
+var kt = t(null);
+function At({ children: e, position: t = "bottom-right" }) {
+	let [r, i] = c([]), a = n((e) => {
 		i((t) => t.filter((t) => t.id !== e));
-	}, []), u = n(({ message: e, title: t, variant: n = "info", duration: r = 3500 }) => {
-		let a = Date.now().toString() + Math.random().toString(36).substring(2, 7), s = {
-			id: a,
+	}, []), s = n(({ message: e, title: t, variant: n = "info", duration: r = 3500 }) => {
+		let o = Date.now().toString() + Math.random().toString(36).substring(2, 7), s = {
+			id: o,
 			message: e,
 			title: t,
 			variant: n,
 			duration: r
 		};
 		return i((e) => [...e, s]), r > 0 && setTimeout(() => {
-			o(a);
-		}, r), a;
-	}, [o]), d = a(() => ({
-		show: (e, t) => u({
+			a(o);
+		}, r), o;
+	}, [a]), d = o(() => ({
+		show: (e, t) => s({
 			message: e,
 			...t
 		}),
-		success: (e, t) => u({
+		success: (e, t) => s({
 			message: e,
 			variant: "success",
 			...t
 		}),
-		error: (e, t) => u({
+		error: (e, t) => s({
 			message: e,
 			variant: "error",
 			...t
 		}),
-		warning: (e, t) => u({
+		warning: (e, t) => s({
 			message: e,
 			variant: "warning",
 			...t
 		}),
-		info: (e, t) => u({
+		info: (e, t) => s({
 			message: e,
 			variant: "info",
 			...t
 		}),
-		dismiss: o
-	}), [u, o]), f = {
+		dismiss: a
+	}), [s, a]), f = {
 		"top-right": "top-4 right-4 items-end",
 		"top-left": "top-4 left-4 items-start",
 		"bottom-right": "bottom-4 right-4 items-end",
@@ -2974,19 +3008,19 @@ function Ot({ children: e, position: t = "bottom-right" }) {
 		"top-center": "top-4 left-1/2 -translate-x-1/2 items-center",
 		"bottom-center": "bottom-4 left-1/2 -translate-x-1/2 items-center"
 	};
-	return /* @__PURE__ */ l(Dt.Provider, {
+	return /* @__PURE__ */ u(kt.Provider, {
 		value: d,
-		children: [e, /* @__PURE__ */ c("div", {
-			className: X("fixed z-50 pointer-events-none flex flex-col gap-2 p-4 max-w-sm w-full", f[t] || f["bottom-right"]),
-			children: r.map((e) => /* @__PURE__ */ c(At, {
+		children: [e, /* @__PURE__ */ l("div", {
+			className: Y("fixed z-50 pointer-events-none flex flex-col gap-2 p-4 max-w-sm w-full", f[t] || f["bottom-right"]),
+			children: r.map((e) => /* @__PURE__ */ l(Mt, {
 				item: e,
-				onDismiss: () => o(e.id)
+				onDismiss: () => a(e.id)
 			}, e.id))
 		})]
 	});
 }
-function kt() {
-	return r(Dt) || {
+function jt() {
+	return r(kt) || {
 		show: (e) => console.log("[Toast]", e),
 		success: (e) => console.log("[Toast Success]", e),
 		error: (e) => console.error("[Toast Error]", e),
@@ -2995,16 +3029,16 @@ function kt() {
 		dismiss: () => {}
 	};
 }
-function At({ item: e, onDismiss: t }) {
+function Mt({ item: e, onDismiss: t }) {
 	let n = {
 		success: {
 			border: "border-emerald-500/40",
 			badge: "bg-emerald-500/10 text-emerald-400 border-emerald-500/30",
-			icon: /* @__PURE__ */ c("svg", {
+			icon: /* @__PURE__ */ l("svg", {
 				viewBox: "0 0 20 20",
 				fill: "currentColor",
 				className: "w-4 h-4 text-emerald-400",
-				children: /* @__PURE__ */ c("path", {
+				children: /* @__PURE__ */ l("path", {
 					fillRule: "evenodd",
 					d: "M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z",
 					clipRule: "evenodd"
@@ -3014,11 +3048,11 @@ function At({ item: e, onDismiss: t }) {
 		error: {
 			border: "border-rose-500/40",
 			badge: "bg-rose-500/10 text-rose-400 border-rose-500/30",
-			icon: /* @__PURE__ */ c("svg", {
+			icon: /* @__PURE__ */ l("svg", {
 				viewBox: "0 0 20 20",
 				fill: "currentColor",
 				className: "w-4 h-4 text-rose-400",
-				children: /* @__PURE__ */ c("path", {
+				children: /* @__PURE__ */ l("path", {
 					fillRule: "evenodd",
 					d: "M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z",
 					clipRule: "evenodd"
@@ -3028,11 +3062,11 @@ function At({ item: e, onDismiss: t }) {
 		warning: {
 			border: "border-amber-500/40",
 			badge: "bg-amber-500/10 text-amber-400 border-amber-500/30",
-			icon: /* @__PURE__ */ c("svg", {
+			icon: /* @__PURE__ */ l("svg", {
 				viewBox: "0 0 20 20",
 				fill: "currentColor",
 				className: "w-4 h-4 text-amber-400",
-				children: /* @__PURE__ */ c("path", {
+				children: /* @__PURE__ */ l("path", {
 					fillRule: "evenodd",
 					d: "M8.485 2.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 2.495zM10 5a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0v-3.5A.75.75 0 0110 5zm0 9a1 1 0 100-2 1 1 0 000 2z",
 					clipRule: "evenodd"
@@ -3042,11 +3076,11 @@ function At({ item: e, onDismiss: t }) {
 		info: {
 			border: "border-[var(--color-primary-glow)]/40",
 			badge: "bg-[var(--color-primary)]/10 text-[var(--color-primary-glow)] border-[var(--color-primary)]/30",
-			icon: /* @__PURE__ */ c("svg", {
+			icon: /* @__PURE__ */ l("svg", {
 				viewBox: "0 0 20 20",
 				fill: "currentColor",
 				className: "w-4 h-4 text-[var(--color-primary-glow)]",
-				children: /* @__PURE__ */ c("path", {
+				children: /* @__PURE__ */ l("path", {
 					fillRule: "evenodd",
 					d: "M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a.75.75 0 000 1.5h.253a.25.25 0 01.244.304l-.459 2.066A1.75 1.75 0 0010.747 15H11a.75.75 0 000-1.5h-.253a.25.25 0 01-.244-.304l.459-2.066A1.75 1.75 0 009.253 9H9z",
 					clipRule: "evenodd"
@@ -3054,34 +3088,34 @@ function At({ item: e, onDismiss: t }) {
 			})
 		}
 	}, r = n[e.variant] || n.info;
-	return /* @__PURE__ */ l("div", {
+	return /* @__PURE__ */ u("div", {
 		role: "alert",
-		className: X("pointer-events-auto flex items-start gap-3 p-3.5 rounded-xl bg-[var(--bg-surface)]/95 border backdrop-blur-md shadow-xl text-slate-200 transition-all duration-200 animate-in fade-in slide-in-from-bottom-2", r.border),
+		className: Y("pointer-events-auto flex items-start gap-3 p-3.5 rounded-xl bg-[var(--bg-surface)]/95 border backdrop-blur-md shadow-xl text-slate-200 transition-all duration-200 animate-in fade-in slide-in-from-bottom-2", r.border),
 		children: [
-			/* @__PURE__ */ c("div", {
-				className: X("p-1 rounded-lg border shrink-0 mt-0.5", r.badge),
+			/* @__PURE__ */ l("div", {
+				className: Y("p-1 rounded-lg border shrink-0 mt-0.5", r.badge),
 				children: r.icon
 			}),
-			/* @__PURE__ */ l("div", {
+			/* @__PURE__ */ u("div", {
 				className: "flex-1 min-w-0 pr-2",
-				children: [e.title && /* @__PURE__ */ c("h4", {
+				children: [e.title && /* @__PURE__ */ l("h4", {
 					className: "text-xs font-bold text-slate-100 font-[var(--font-heading)] leading-tight mb-0.5",
 					children: e.title
-				}), /* @__PURE__ */ c("p", {
+				}), /* @__PURE__ */ l("p", {
 					className: "text-xs text-slate-300 leading-snug break-words",
 					children: e.message
 				})]
 			}),
-			/* @__PURE__ */ c("button", {
+			/* @__PURE__ */ l("button", {
 				type: "button",
 				onClick: t,
 				className: "p-1 rounded-md text-slate-400 hover:text-white hover:bg-[var(--bg-hover)] transition-colors cursor-pointer shrink-0",
 				"aria-label": "Close notification",
-				children: /* @__PURE__ */ c("svg", {
+				children: /* @__PURE__ */ l("svg", {
 					viewBox: "0 0 20 20",
 					fill: "currentColor",
 					className: "w-3.5 h-3.5",
-					children: /* @__PURE__ */ c("path", { d: "M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" })
+					children: /* @__PURE__ */ l("path", { d: "M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" })
 				})
 			})
 		]
@@ -3089,32 +3123,32 @@ function At({ item: e, onDismiss: t }) {
 }
 //#endregion
 //#region src/components/CommandPalette.jsx
-function jt({ isOpen: e, onClose: t, placeholder: n = "Type a command or search...", sections: r = [], currentApp: u = "taskflow", enableSuiteShortcuts: d = !0 }) {
-	let [f, p] = s(""), [m, h] = s(0), g = o(null), _ = o([]);
+function Nt({ isOpen: e, onClose: t, placeholder: n = "Type a command or search...", sections: r = [], currentApp: a = "taskflow", enableSuiteShortcuts: d = !0 }) {
+	let [f, p] = c(""), [m, h] = c(0), g = s(null), _ = s([]);
 	i(() => {
 		e && (p(""), h(0), setTimeout(() => {
 			g.current?.focus();
 		}, 50));
 	}, [e]);
-	let v = a(() => d ? {
+	let v = o(() => d ? {
 		id: "suite-apps",
 		heading: "JDLC Cloud Suite",
-		items: wt.filter((e) => e.id !== u).map((e) => ({
+		items: Et.filter((e) => e.id !== a).map((e) => ({
 			id: `suite-${e.id}`,
 			title: `Switch to ${e.name}`,
 			subtitle: e.description,
 			badge: "JDLC App",
-			icon: /* @__PURE__ */ c("span", {
+			icon: /* @__PURE__ */ l("span", {
 				className: "w-4 h-4 rounded flex items-center justify-center text-[10px] text-white shrink-0 font-bold",
 				style: { backgroundColor: e.color },
 				children: e.name[0]
 			}),
 			action: () => {
-				let t = Tt(e.id);
+				let t = Dt(e.id);
 				window.location.href = t;
 			}
 		}))
-	} : null, [d, u]), y = a(() => {
+	} : null, [d, a]), y = o(() => {
 		let e = [...r];
 		v && v.items.length > 0 && e.push(v);
 		let t = f.trim().toLowerCase();
@@ -3129,7 +3163,7 @@ function jt({ isOpen: e, onClose: t, placeholder: n = "Type a command or search.
 		r,
 		v,
 		f
-	]), b = a(() => {
+	]), b = o(() => {
 		let e = [];
 		return y.forEach((t) => {
 			(t.items || []).forEach((t) => {
@@ -3156,30 +3190,30 @@ function jt({ isOpen: e, onClose: t, placeholder: n = "Type a command or search.
 	};
 	if (!e) return null;
 	let S = 0;
-	return /* @__PURE__ */ l("div", {
+	return /* @__PURE__ */ u("div", {
 		className: "fixed inset-0 z-50 flex items-start justify-center pt-16 sm:pt-24 px-4 pb-6 animate-in fade-in duration-150",
 		role: "dialog",
 		"aria-modal": "true",
 		"aria-label": "Command Palette",
 		onClick: t,
-		children: [/* @__PURE__ */ c("div", { className: "fixed inset-0 bg-black/75 backdrop-blur-md transition-opacity" }), /* @__PURE__ */ l("div", {
+		children: [/* @__PURE__ */ l("div", { className: "fixed inset-0 bg-black/75 backdrop-blur-md transition-opacity" }), /* @__PURE__ */ u("div", {
 			className: "relative w-full max-w-xl bg-[var(--bg-surface)] border border-[var(--border-medium)] rounded-2xl shadow-2xl z-10 overflow-hidden flex flex-col max-h-[80vh] animate-in zoom-in-95 duration-150",
 			onClick: (e) => e.stopPropagation(),
 			children: [
-				/* @__PURE__ */ l("div", {
+				/* @__PURE__ */ u("div", {
 					className: "flex items-center gap-3 px-4 py-3.5 border-b border-[var(--border-subtle)] bg-[var(--bg-subtle)]/60",
 					children: [
-						/* @__PURE__ */ c("svg", {
+						/* @__PURE__ */ l("svg", {
 							viewBox: "0 0 20 20",
 							fill: "currentColor",
 							className: "w-5 h-5 text-slate-400 shrink-0",
-							children: /* @__PURE__ */ c("path", {
+							children: /* @__PURE__ */ l("path", {
 								fillRule: "evenodd",
 								d: "M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z",
 								clipRule: "evenodd"
 							})
 						}),
-						/* @__PURE__ */ c("input", {
+						/* @__PURE__ */ l("input", {
 							ref: g,
 							type: "text",
 							value: f,
@@ -3190,55 +3224,55 @@ function jt({ isOpen: e, onClose: t, placeholder: n = "Type a command or search.
 							placeholder: n,
 							className: "flex-1 bg-transparent text-sm font-medium text-slate-100 placeholder-slate-400 focus:outline-none"
 						}),
-						/* @__PURE__ */ c("kbd", {
+						/* @__PURE__ */ l("kbd", {
 							className: "hidden sm:inline-block px-2 py-0.5 text-[10px] font-mono font-semibold text-slate-400 bg-[var(--bg-elevated)] border border-[var(--border-subtle)] rounded-md shadow-xs",
 							children: "ESC"
 						})
 					]
 				}),
-				/* @__PURE__ */ c("div", {
+				/* @__PURE__ */ l("div", {
 					className: "p-2 overflow-y-auto space-y-4 max-h-[60vh]",
-					children: b.length === 0 ? /* @__PURE__ */ c("div", {
+					children: b.length === 0 ? /* @__PURE__ */ l("div", {
 						className: "p-8 text-center text-slate-400 text-xs",
 						children: "No matching commands or destinations found."
-					}) : y.map((e) => /* @__PURE__ */ l("div", {
+					}) : y.map((e) => /* @__PURE__ */ u("div", {
 						className: "space-y-1",
-						children: [e.heading && /* @__PURE__ */ c("div", {
+						children: [e.heading && /* @__PURE__ */ l("div", {
 							className: "px-2.5 py-1 text-[10px] font-bold tracking-wider text-slate-400 uppercase font-[var(--font-heading)]",
 							children: e.heading
 						}), e.items.map((e) => {
 							let n = S++;
-							return /* @__PURE__ */ l("button", {
+							return /* @__PURE__ */ u("button", {
 								ref: (e) => _.current[n] = e,
 								type: "button",
 								onClick: () => {
 									typeof e.action == "function" && e.action(), t();
 								},
 								onMouseEnter: () => h(n),
-								className: X("w-full flex items-center justify-between gap-3 px-3 py-2 rounded-xl text-left text-xs transition-colors cursor-pointer", n === m ? "bg-[var(--bg-hover)] text-white border border-[var(--border-subtle)]" : "text-slate-300 hover:text-white border border-transparent"),
-								children: [/* @__PURE__ */ l("div", {
+								className: Y("w-full flex items-center justify-between gap-3 px-3 py-2 rounded-xl text-left text-xs transition-colors cursor-pointer", n === m ? "bg-[var(--bg-hover)] text-white border border-[var(--border-subtle)]" : "text-slate-300 hover:text-white border border-transparent"),
+								children: [/* @__PURE__ */ u("div", {
 									className: "flex items-center gap-2.5 min-w-0",
-									children: [e.icon && /* @__PURE__ */ c("div", {
+									children: [e.icon && /* @__PURE__ */ l("div", {
 										className: "shrink-0",
 										children: e.icon
-									}), /* @__PURE__ */ l("div", {
+									}), /* @__PURE__ */ u("div", {
 										className: "truncate",
-										children: [/* @__PURE__ */ c("span", {
+										children: [/* @__PURE__ */ l("span", {
 											className: "font-semibold text-slate-100",
 											children: e.title
-										}), e.subtitle && /* @__PURE__ */ c("span", {
+										}), e.subtitle && /* @__PURE__ */ l("span", {
 											className: "text-slate-400 text-[11px] block truncate",
 											children: e.subtitle
 										})]
 									})]
-								}), /* @__PURE__ */ l("div", {
+								}), /* @__PURE__ */ u("div", {
 									className: "flex items-center gap-1.5 shrink-0",
-									children: [e.badge && /* @__PURE__ */ c($, {
+									children: [e.badge && /* @__PURE__ */ l($, {
 										variant: "subtle",
 										size: "xs",
 										className: "text-[9px] py-0 px-1 font-mono",
 										children: e.badge
-									}), e.shortcut && /* @__PURE__ */ c("kbd", {
+									}), e.shortcut && /* @__PURE__ */ l("kbd", {
 										className: "px-1.5 py-0.5 text-[10px] font-mono text-slate-400 bg-[var(--bg-elevated)] border border-[var(--border-subtle)] rounded shadow-xs",
 										children: e.shortcut
 									})]
@@ -3247,18 +3281,18 @@ function jt({ isOpen: e, onClose: t, placeholder: n = "Type a command or search.
 						})]
 					}, e.id || e.heading))
 				}),
-				/* @__PURE__ */ l("div", {
+				/* @__PURE__ */ u("div", {
 					className: "flex items-center justify-between px-4 py-2 border-t border-[var(--border-subtle)] bg-[var(--bg-subtle)]/40 text-[10px] text-slate-400",
-					children: [/* @__PURE__ */ l("div", {
+					children: [/* @__PURE__ */ u("div", {
 						className: "flex items-center gap-3",
-						children: [/* @__PURE__ */ l("span", { children: [/* @__PURE__ */ c("kbd", {
+						children: [/* @__PURE__ */ u("span", { children: [/* @__PURE__ */ l("kbd", {
 							className: "font-mono bg-[var(--bg-elevated)] px-1 rounded",
 							children: "↑↓"
-						}), " navigate"] }), /* @__PURE__ */ l("span", { children: [/* @__PURE__ */ c("kbd", {
+						}), " navigate"] }), /* @__PURE__ */ u("span", { children: [/* @__PURE__ */ l("kbd", {
 							className: "font-mono bg-[var(--bg-elevated)] px-1 rounded",
 							children: "↵"
 						}), " select"] })]
-					}), /* @__PURE__ */ c("span", {
+					}), /* @__PURE__ */ l("span", {
 						className: "font-medium text-slate-400",
 						children: "JDLC Suite Command"
 					})]
@@ -3269,8 +3303,8 @@ function jt({ isOpen: e, onClose: t, placeholder: n = "Type a command or search.
 }
 //#endregion
 //#region src/components/UserMenu.jsx
-function Mt({ user: e, displayName: t, avatarSeed: n, avatarSuit: r = null, status: a = "online", onSignIn: u, onSignOut: d, onOpenProfile: f, onOpenGuide: p, onStartTour: m, onOpenApiKey: h, onOpenAbout: g, aboutLabel: _ = "About App", appItems: v = [], extraMenuItems: y = [], className: b, align: x = "right" }) {
-	let [S, C] = s(!1), w = o(null), { currentThemeConfig: T } = Ye(), { suit: ee } = Ke(), te = r || ee || "notionists";
+function Pt({ user: e, displayName: t, avatarSeed: n, avatarSuit: r = null, status: a = "online", onSignIn: o, onSignOut: d, onOpenProfile: f, onOpenGuide: p, onStartTour: m, onOpenApiKey: h, onOpenAbout: g, aboutLabel: _ = "About App", appItems: v = [], extraMenuItems: y = [], className: b, align: x = "right" }) {
+	let [S, C] = c(!1), w = s(null), { currentThemeConfig: T } = Ze(), { suit: ee } = Je(), te = r || ee || "notionists";
 	i(() => {
 		function e(e) {
 			w.current && !w.current.contains(e.target) && C(!1);
@@ -3278,220 +3312,220 @@ function Mt({ user: e, displayName: t, avatarSeed: n, avatarSuit: r = null, stat
 		return S && document.addEventListener("mousedown", e), () => document.removeEventListener("mousedown", e);
 	}, [S]);
 	let E = t || e?.user_metadata?.displayName || e?.email?.split("@")[0] || "Guest User", ne = e?.email || "Local Offline Session", D = n || e?.email || E || "guest", O = !!e, k = [...v, ...y];
-	return /* @__PURE__ */ l("div", {
-		className: X("relative inline-block text-left", b),
+	return /* @__PURE__ */ u("div", {
+		className: Y("relative inline-block text-left", b),
 		ref: w,
-		children: [/* @__PURE__ */ l("button", {
+		children: [/* @__PURE__ */ u("button", {
 			type: "button",
 			onClick: () => C((e) => !e),
-			className: X("flex items-center gap-1.5 sm:gap-2 p-1 sm:pl-1.5 sm:pr-2.5 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-subtle)] text-[var(--text-main)] hover:border-[var(--border-medium)] hover:bg-[var(--bg-hover)] transition-all cursor-pointer", S && "border-[var(--border-medium)] bg-[var(--bg-elevated)]"),
+			className: Y("flex items-center gap-1.5 sm:gap-2 p-1 sm:pl-1.5 sm:pr-2.5 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-subtle)] text-[var(--text-main)] hover:border-[var(--border-medium)] hover:bg-[var(--bg-hover)] transition-all cursor-pointer", S && "border-[var(--border-medium)] bg-[var(--bg-elevated)]"),
 			title: O ? `Signed in as ${E}` : "Account & Preferences",
 			"aria-expanded": S,
 			children: [
-				/* @__PURE__ */ c(tt, {
+				/* @__PURE__ */ l(Q, {
 					seed: D,
 					name: E,
 					suit: te,
 					size: "xs",
 					status: O ? a : void 0
 				}),
-				/* @__PURE__ */ c("span", {
+				/* @__PURE__ */ l("span", {
 					className: "text-xs font-semibold max-w-[110px] truncate hidden sm:inline-block",
 					children: E
 				}),
-				/* @__PURE__ */ c("svg", {
+				/* @__PURE__ */ l("svg", {
 					viewBox: "0 0 20 20",
 					fill: "currentColor",
-					className: X("w-3.5 h-3.5 text-slate-400 transition-transform duration-150 hidden sm:block", S && "rotate-180"),
-					children: /* @__PURE__ */ c("path", {
+					className: Y("w-3.5 h-3.5 text-slate-400 transition-transform duration-150 hidden sm:block", S && "rotate-180"),
+					children: /* @__PURE__ */ l("path", {
 						fillRule: "evenodd",
 						d: "M5.22 8.22a.75.75 0 011.06 0L10 11.94l3.72-3.72a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.22 9.28a.75.75 0 010-1.06z",
 						clipRule: "evenodd"
 					})
 				})
 			]
-		}), S && /* @__PURE__ */ l("div", {
-			className: X("absolute z-50 mt-2 w-76 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-medium)] p-3 shadow-2xl backdrop-blur-xl animate-in fade-in zoom-in-95 duration-150", x === "right" ? "right-0" : "left-0"),
+		}), S && /* @__PURE__ */ u("div", {
+			className: Y("absolute z-50 mt-2 w-76 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-medium)] p-3 shadow-2xl backdrop-blur-xl animate-in fade-in zoom-in-95 duration-150", x === "right" ? "right-0" : "left-0"),
 			children: [
-				/* @__PURE__ */ l("div", {
+				/* @__PURE__ */ u("div", {
 					className: "flex items-center gap-3 p-2 bg-[var(--bg-elevated)]/80 rounded-xl border border-[var(--border-subtle)] mb-2",
-					children: [/* @__PURE__ */ c(tt, {
+					children: [/* @__PURE__ */ l(Q, {
 						seed: D,
 						name: E,
 						suit: te,
 						size: "md",
 						status: O ? a : void 0
-					}), /* @__PURE__ */ l("div", {
+					}), /* @__PURE__ */ u("div", {
 						className: "flex-1 min-w-0",
-						children: [/* @__PURE__ */ l("div", {
+						children: [/* @__PURE__ */ u("div", {
 							className: "flex items-center justify-between gap-1",
-							children: [/* @__PURE__ */ c("span", {
+							children: [/* @__PURE__ */ l("span", {
 								className: "font-bold text-xs text-[var(--text-main)] truncate font-[var(--font-heading)]",
 								children: E
-							}), /* @__PURE__ */ c($, {
+							}), /* @__PURE__ */ l($, {
 								variant: O ? "success" : "subtle",
 								size: "xs",
 								className: "font-mono text-[9px] py-0 px-1",
 								children: O ? "Connected" : "Guest"
 							})]
-						}), /* @__PURE__ */ c("p", {
+						}), /* @__PURE__ */ l("p", {
 							className: "text-[11px] text-[var(--text-dim)] truncate mt-0.5",
 							children: ne
 						})]
 					})]
 				}),
-				/* @__PURE__ */ l("div", {
+				/* @__PURE__ */ u("div", {
 					className: "px-2 py-1.5 flex items-center justify-between text-xs border-b border-[var(--border-subtle)]",
-					children: [/* @__PURE__ */ c("span", {
+					children: [/* @__PURE__ */ l("span", {
 						className: "text-[var(--text-muted)] font-medium",
 						children: "Theme"
-					}), /* @__PURE__ */ c(Ct, { align: "right" })]
+					}), /* @__PURE__ */ l(Tt, { align: "right" })]
 				}),
-				/* @__PURE__ */ l("div", {
+				/* @__PURE__ */ u("div", {
 					className: "px-2 py-1.5 flex items-center justify-between text-xs border-b border-[var(--border-subtle)]",
-					children: [/* @__PURE__ */ c("span", {
+					children: [/* @__PURE__ */ l("span", {
 						className: "text-[var(--text-muted)] font-medium",
 						children: "Avatar Set"
-					}), /* @__PURE__ */ c(it, {
+					}), /* @__PURE__ */ l(at, {
 						align: "right",
 						seed: D
 					})]
 				}),
-				/* @__PURE__ */ l("div", {
+				/* @__PURE__ */ u("div", {
 					className: "py-1 space-y-0.5 border-b border-[var(--border-subtle)]",
 					children: [
-						f && /* @__PURE__ */ l("button", {
+						f && /* @__PURE__ */ u("button", {
 							type: "button",
 							onClick: () => {
 								C(!1), f();
 							},
 							className: "w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-hover)] transition-colors cursor-pointer text-left",
-							children: [/* @__PURE__ */ c("svg", {
+							children: [/* @__PURE__ */ l("svg", {
 								viewBox: "0 0 20 20",
 								fill: "currentColor",
 								className: "w-4 h-4 text-[var(--text-dim)] shrink-0",
-								children: /* @__PURE__ */ c("path", { d: "M10 8a3 3 0 100-6 3 3 0 000 6zM3.465 14.493a1.23 1.23 0 00.41 1.412A9.957 9.957 0 0010 18c2.31 0 4.438-.784 6.131-2.1.43-.333.604-.903.408-1.41a7.002 7.002 0 00-13.074.003z" })
-							}), /* @__PURE__ */ c("span", { children: "Profile & Settings" })]
+								children: /* @__PURE__ */ l("path", { d: "M10 8a3 3 0 100-6 3 3 0 000 6zM3.465 14.493a1.23 1.23 0 00.41 1.412A9.957 9.957 0 0010 18c2.31 0 4.438-.784 6.131-2.1.43-.333.604-.903.408-1.41a7.002 7.002 0 00-13.074.003z" })
+							}), /* @__PURE__ */ l("span", { children: "Profile & Settings" })]
 						}),
-						p && /* @__PURE__ */ l("button", {
+						p && /* @__PURE__ */ u("button", {
 							type: "button",
 							onClick: () => {
 								C(!1), p();
 							},
 							className: "w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-hover)] transition-colors cursor-pointer text-left",
-							children: [/* @__PURE__ */ c("svg", {
+							children: [/* @__PURE__ */ l("svg", {
 								viewBox: "0 0 20 20",
 								fill: "currentColor",
 								className: "w-4 h-4 text-[var(--text-dim)] shrink-0",
-								children: /* @__PURE__ */ c("path", {
+								children: /* @__PURE__ */ l("path", {
 									fillRule: "evenodd",
 									d: "M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a.75.75 0 000 1.5h.253a.25.25 0 01.244.304l-.459 2.066A1.75 1.75 0 0010.747 15H11a.75.75 0 000-1.5h-.253a.25.25 0 01-.244-.304l.459-2.066A1.75 1.75 0 009.253 9H9z",
 									clipRule: "evenodd"
 								})
-							}), /* @__PURE__ */ c("span", { children: "Handbook & Guide" })]
+							}), /* @__PURE__ */ l("span", { children: "Handbook & Guide" })]
 						}),
-						m && /* @__PURE__ */ l("button", {
+						m && /* @__PURE__ */ u("button", {
 							type: "button",
 							onClick: () => {
 								C(!1), m();
 							},
 							className: "w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-hover)] transition-colors cursor-pointer text-left",
-							children: [/* @__PURE__ */ c("svg", {
+							children: [/* @__PURE__ */ l("svg", {
 								viewBox: "0 0 20 20",
 								fill: "currentColor",
 								className: "w-4 h-4 text-emerald-400 shrink-0",
-								children: /* @__PURE__ */ c("path", { d: "M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" })
-							}), /* @__PURE__ */ c("span", { children: "Interactive Tour" })]
+								children: /* @__PURE__ */ l("path", { d: "M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" })
+							}), /* @__PURE__ */ l("span", { children: "Interactive Tour" })]
 						}),
-						h && /* @__PURE__ */ l("button", {
+						h && /* @__PURE__ */ u("button", {
 							type: "button",
 							onClick: () => {
 								C(!1), h();
 							},
 							className: "w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-hover)] transition-colors cursor-pointer text-left",
-							children: [/* @__PURE__ */ c("svg", {
+							children: [/* @__PURE__ */ l("svg", {
 								viewBox: "0 0 20 20",
 								fill: "currentColor",
 								className: "w-4 h-4 text-amber-400 shrink-0",
-								children: /* @__PURE__ */ c("path", {
+								children: /* @__PURE__ */ l("path", {
 									fillRule: "evenodd",
 									d: "M8 7a5 5 0 113.61 4.804l-1.903 1.903A1 1 0 019 14H8v1a1 1 0 01-1 1H6v1a1 1 0 01-1 1H3a1 1 0 01-1-1v-2a1 1 0 01.293-.707l5.903-5.903A5 5 0 018 7zm2-3a3 3 0 100 6 3 3 0 000-6z",
 									clipRule: "evenodd"
 								})
-							}), /* @__PURE__ */ c("span", { children: "API Key Generator" })]
+							}), /* @__PURE__ */ l("span", { children: "API Key Generator" })]
 						})
 					]
 				}),
-				k.length > 0 && /* @__PURE__ */ c("div", {
+				k.length > 0 && /* @__PURE__ */ l("div", {
 					className: "py-1 space-y-0.5 border-b border-[var(--border-subtle)]",
-					children: k.map((e, t) => /* @__PURE__ */ l("button", {
+					children: k.map((e, t) => /* @__PURE__ */ u("button", {
 						type: "button",
 						onClick: () => {
 							C(!1), e.onClick?.();
 						},
-						className: X("w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs transition-colors cursor-pointer text-left", e.danger ? "text-rose-400 hover:bg-rose-500/10" : "text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-hover)]"),
-						children: [e.icon && /* @__PURE__ */ c("span", {
+						className: Y("w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs transition-colors cursor-pointer text-left", e.danger ? "text-rose-400 hover:bg-rose-500/10" : "text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-hover)]"),
+						children: [e.icon && /* @__PURE__ */ l("span", {
 							className: "w-4 h-4 shrink-0 text-[var(--text-dim)]",
 							children: e.icon
-						}), /* @__PURE__ */ c("span", {
+						}), /* @__PURE__ */ l("span", {
 							className: "truncate",
 							children: e.label
 						})]
 					}, t))
 				}),
-				g && /* @__PURE__ */ c("div", {
+				g && /* @__PURE__ */ l("div", {
 					className: "py-1 border-b border-[var(--border-subtle)]",
-					children: /* @__PURE__ */ l("button", {
+					children: /* @__PURE__ */ u("button", {
 						type: "button",
 						onClick: () => {
 							C(!1), g();
 						},
 						className: "w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-hover)] transition-colors cursor-pointer text-left",
-						children: [/* @__PURE__ */ c("svg", {
+						children: [/* @__PURE__ */ l("svg", {
 							viewBox: "0 0 20 20",
 							fill: "currentColor",
 							className: "w-4 h-4 text-sky-400 shrink-0",
-							children: /* @__PURE__ */ c("path", {
+							children: /* @__PURE__ */ l("path", {
 								fillRule: "evenodd",
 								d: "M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a.75.75 0 000 1.5h.253a.25.25 0 01.244.304l-.459 2.066A1.75 1.75 0 0010.747 15H11a.75.75 0 000-1.5h-.253a.25.25 0 01-.244-.304l.459-2.066A1.75 1.75 0 009.253 9H9z",
 								clipRule: "evenodd"
 							})
-						}), /* @__PURE__ */ c("span", { children: _ })]
+						}), /* @__PURE__ */ l("span", { children: _ })]
 					})
 				}),
-				/* @__PURE__ */ c("div", {
+				/* @__PURE__ */ l("div", {
 					className: "pt-1.5",
-					children: O ? /* @__PURE__ */ l("button", {
+					children: O ? /* @__PURE__ */ u("button", {
 						type: "button",
 						onClick: () => {
 							C(!1), d?.();
 						},
 						className: "w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-semibold text-rose-400 hover:bg-rose-500/10 hover:text-rose-300 transition-colors cursor-pointer",
-						children: [/* @__PURE__ */ c("span", { children: "Sign Out" }), /* @__PURE__ */ l("svg", {
+						children: [/* @__PURE__ */ l("span", { children: "Sign Out" }), /* @__PURE__ */ u("svg", {
 							viewBox: "0 0 20 20",
 							fill: "currentColor",
 							className: "w-4 h-4",
-							children: [/* @__PURE__ */ c("path", {
+							children: [/* @__PURE__ */ l("path", {
 								fillRule: "evenodd",
 								d: "M3 4.25A2.25 2.25 0 015.25 2h5.5A2.25 2.25 0 0113 4.25v2a.75.75 0 01-1.5 0v-2a.75.75 0 00-.75-.75h-5.5a.75.75 0 00-.75.75v11.5c0 .414.336.75.75.75h5.5a.75.75 0 00.75-.75v-2a.75.75 0 011.5 0v2A2.25 2.25 0 0110.75 18h-5.5A2.25 2.25 0 013 15.75V4.25z",
 								clipRule: "evenodd"
-							}), /* @__PURE__ */ c("path", {
+							}), /* @__PURE__ */ l("path", {
 								fillRule: "evenodd",
 								d: "M19 10a.75.75 0 00-.75-.75H8.704l2.523-2.523a.75.75 0 10-1.06-1.06l-3.81 3.81a.75.75 0 000 1.06l3.81 3.81a.75.75 0 101.06-1.06L8.704 10.75H18.25A.75.75 0 0019 10z",
 								clipRule: "evenodd"
 							})]
 						})]
-					}) : /* @__PURE__ */ l("button", {
+					}) : /* @__PURE__ */ u("button", {
 						type: "button",
 						onClick: () => {
-							C(!1), u?.();
+							C(!1), o?.();
 						},
 						className: "w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-semibold text-[var(--color-primary-glow)] hover:bg-[var(--color-primary)]/10 transition-colors cursor-pointer",
-						children: [/* @__PURE__ */ c("span", { children: "Sign In (Invite Only)" }), /* @__PURE__ */ c("svg", {
+						children: [/* @__PURE__ */ l("span", { children: "Sign In (Invite Only)" }), /* @__PURE__ */ l("svg", {
 							viewBox: "0 0 20 20",
 							fill: "currentColor",
 							className: "w-4 h-4",
-							children: /* @__PURE__ */ c("path", {
+							children: /* @__PURE__ */ l("path", {
 								fillRule: "evenodd",
 								d: "M3 10a.75.75 0 01.75-.75h9.544l-2.523-2.523a.75.75 0 111.06-1.06l3.81 3.81a.75.75 0 010 1.06l-3.81 3.81a.75.75 0 11-1.06-1.06l2.523-2.523H3.75A.75.75 0 013 10z",
 								clipRule: "evenodd"
@@ -3505,110 +3539,110 @@ function Mt({ user: e, displayName: t, avatarSeed: n, avatarSuit: r = null, stat
 }
 //#endregion
 //#region src/components/AboutAppModal.jsx
-function Nt({ isOpen: e, onClose: t, appName: n, appVersion: r = "1.0.0", appSubtitle: i, icon: a, accentColor: o = "text-[var(--color-primary-glow)]" }) {
-	return /* @__PURE__ */ c(xt, {
+function Ft({ isOpen: e, onClose: t, appName: n, appVersion: r = "1.0.0", appSubtitle: i, icon: a, accentColor: o = "text-[var(--color-primary-glow)]" }) {
+	return /* @__PURE__ */ l(Ct, {
 		isOpen: e,
 		onClose: t,
 		maxWidth: "max-w-lg",
-		children: /* @__PURE__ */ l("div", {
+		children: /* @__PURE__ */ u("div", {
 			className: "space-y-5",
 			children: [
-				/* @__PURE__ */ l("div", {
+				/* @__PURE__ */ u("div", {
 					className: "flex items-start gap-3.5 pb-4 border-b border-[var(--border-subtle)]",
-					children: [a ? /* @__PURE__ */ c("div", {
+					children: [a ? /* @__PURE__ */ l("div", {
 						className: `p-2.5 rounded-2xl bg-[var(--bg-elevated)] border border-[var(--border-medium)] ${o} shrink-0`,
-						children: /* @__PURE__ */ c(a, { className: "w-7 h-7" })
-					}) : /* @__PURE__ */ c("div", {
+						children: /* @__PURE__ */ l(a, { className: "w-7 h-7" })
+					}) : /* @__PURE__ */ l("div", {
 						className: "p-2.5 rounded-2xl bg-[var(--bg-elevated)] border border-[var(--border-medium)] text-[var(--color-primary-glow)] shrink-0",
-						children: /* @__PURE__ */ c("span", {
+						children: /* @__PURE__ */ l("span", {
 							className: "text-xl",
 							children: "✨"
 						})
-					}), /* @__PURE__ */ l("div", {
+					}), /* @__PURE__ */ u("div", {
 						className: "flex-1 min-w-0",
 						children: [
-							/* @__PURE__ */ l("div", {
+							/* @__PURE__ */ u("div", {
 								className: "flex items-center gap-2",
-								children: [/* @__PURE__ */ c("h3", {
+								children: [/* @__PURE__ */ l("h3", {
 									className: "font-bold text-lg text-[var(--text-main)] font-[var(--font-heading)]",
 									children: n
-								}), /* @__PURE__ */ l($, {
+								}), /* @__PURE__ */ u($, {
 									variant: "subtle",
 									size: "xs",
 									className: "font-mono",
 									children: ["v", r]
 								})]
 							}),
-							i && /* @__PURE__ */ c("p", {
+							i && /* @__PURE__ */ l("p", {
 								className: "text-xs text-[var(--text-muted)] mt-0.5",
 								children: i
 							}),
-							/* @__PURE__ */ c("p", {
+							/* @__PURE__ */ l("p", {
 								className: "text-[11px] text-[var(--text-dim)] mt-1 font-mono",
 								children: "Built on React 19 • @jdlc/ui Design System"
 							})
 						]
 					})]
 				}),
-				/* @__PURE__ */ l("div", {
+				/* @__PURE__ */ u("div", {
 					className: "rounded-xl border border-amber-500/30 bg-amber-500/10 p-3.5 space-y-1",
-					children: [/* @__PURE__ */ l("div", {
+					children: [/* @__PURE__ */ u("div", {
 						className: "flex items-center gap-1.5 text-xs font-bold text-amber-300",
-						children: [/* @__PURE__ */ c("span", { children: "🔐" }), /* @__PURE__ */ c("span", { children: "Invitation-Only Ecosystem" })]
-					}), /* @__PURE__ */ c("p", {
+						children: [/* @__PURE__ */ l("span", { children: "🔐" }), /* @__PURE__ */ l("span", { children: "Invitation-Only Ecosystem" })]
+					}), /* @__PURE__ */ l("p", {
 						className: "text-[11px] text-amber-200/90 leading-relaxed",
 						children: "JDLC applications are private and strictly invitation-only. Public registrations are permanently disabled. If you need account credentials or additional service permissions, please contact your network administrator."
 					})]
 				}),
-				/* @__PURE__ */ l("div", {
+				/* @__PURE__ */ u("div", {
 					className: "space-y-2 text-xs text-[var(--text-muted)] leading-relaxed",
-					children: [/* @__PURE__ */ l("h4", {
+					children: [/* @__PURE__ */ u("h4", {
 						className: "font-semibold text-[var(--text-main)] flex items-center gap-1.5",
-						children: [/* @__PURE__ */ c("span", { children: "🛡️" }), /* @__PURE__ */ c("span", { children: "Zero Tracking & Sovereign Data" })]
-					}), /* @__PURE__ */ c("p", { children: "Your activity is never tracked, monetized, or shared with third parties. All network traffic is isolated within private infrastructure or encrypted in-browser before syncing." })]
+						children: [/* @__PURE__ */ l("span", { children: "🛡️" }), /* @__PURE__ */ l("span", { children: "Zero Tracking & Sovereign Data" })]
+					}), /* @__PURE__ */ l("p", { children: "Your activity is never tracked, monetized, or shared with third parties. All network traffic is isolated within private infrastructure or encrypted in-browser before syncing." })]
 				}),
-				/* @__PURE__ */ l("div", {
+				/* @__PURE__ */ u("div", {
 					className: "rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-subtle)] p-3 space-y-1 text-xs",
 					children: [
-						/* @__PURE__ */ c("div", {
+						/* @__PURE__ */ l("div", {
 							className: "font-semibold text-[var(--text-main)]",
 							children: "JDLC Philosophy"
 						}),
-						/* @__PURE__ */ c("p", {
+						/* @__PURE__ */ l("p", {
 							className: "text-[11px] text-[var(--text-dim)] italic",
 							children: "“Stop paying without owning.” Self-hosted digital sovereignty and tools designed for high-performance productivity and privacy."
 						}),
-						/* @__PURE__ */ l("div", {
+						/* @__PURE__ */ u("div", {
 							className: "pt-2 flex items-center gap-3 text-[11px]",
 							children: [
-								/* @__PURE__ */ l("a", {
+								/* @__PURE__ */ u("a", {
 									href: "https://jdlc.se/how-tos",
 									target: "_blank",
 									rel: "noreferrer",
 									className: "text-[var(--color-primary-glow)] hover:underline font-medium inline-flex items-center gap-1",
-									children: [/* @__PURE__ */ c("span", { children: "Knowledge Hub & FAQs" }), /* @__PURE__ */ c("span", { children: "↗" })]
+									children: [/* @__PURE__ */ l("span", { children: "Knowledge Hub & FAQs" }), /* @__PURE__ */ l("span", { children: "↗" })]
 								}),
-								/* @__PURE__ */ c("span", {
+								/* @__PURE__ */ l("span", {
 									className: "text-[var(--text-dim)]",
 									children: "•"
 								}),
-								/* @__PURE__ */ l("a", {
+								/* @__PURE__ */ u("a", {
 									href: "https://jdlc.se/about",
 									target: "_blank",
 									rel: "noreferrer",
 									className: "text-[var(--color-primary-glow)] hover:underline font-medium inline-flex items-center gap-1",
-									children: [/* @__PURE__ */ c("span", { children: "About JDLC" }), /* @__PURE__ */ c("span", { children: "↗" })]
+									children: [/* @__PURE__ */ l("span", { children: "About JDLC" }), /* @__PURE__ */ l("span", { children: "↗" })]
 								})
 							]
 						})
 					]
 				}),
-				/* @__PURE__ */ l("div", {
+				/* @__PURE__ */ u("div", {
 					className: "flex items-center justify-between pt-2 border-t border-[var(--border-subtle)]",
-					children: [/* @__PURE__ */ c("span", {
+					children: [/* @__PURE__ */ l("span", {
 						className: "text-[10px] text-[var(--text-dim)]",
 						children: "© 2026 JDLC Suite"
-					}), /* @__PURE__ */ c(at, {
+					}), /* @__PURE__ */ l(ot, {
 						type: "button",
 						variant: "ghost",
 						size: "sm",
@@ -3622,161 +3656,161 @@ function Nt({ isOpen: e, onClose: t, appName: n, appVersion: r = "1.0.0", appSub
 }
 //#endregion
 //#region src/components/AppHeader.jsx
-function Pt({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "Flow", subtitle: r, icon: a, badge: o = "JDLC", statusBadge: u, onBrandClick: d, tabs: f, activeTab: p, onTabChange: m, centerContent: h, utilities: g, primaryAction: _, onOpenPalette: v, userMenu: y, showThemeSelector: b = !1, className: x, mobileBottomTabs: S = !1, showMobileDrawer: C = !1 }) {
-	let [w, T] = s(!1);
+function It({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "Flow", subtitle: r, icon: a, badge: o = "JDLC", statusBadge: s, onBrandClick: d, tabs: f, activeTab: p, onTabChange: m, centerContent: h, utilities: g, primaryAction: _, onOpenPalette: v, userMenu: y, showThemeSelector: b = !1, className: x, mobileBottomTabs: S = !1, showMobileDrawer: C = !1 }) {
+	let [w, T] = c(!1);
 	return i(() => (w ? document.body.style.overflow = "hidden" : document.body.style.overflow = "unset", () => {
 		document.body.style.overflow = "unset";
-	}), [w]), /* @__PURE__ */ l("header", {
-		className: X("sticky top-0 z-30 w-full border-b border-[var(--border-subtle)] bg-[var(--bg-root)]/90 backdrop-blur-md transition-colors duration-200", x),
-		children: [/* @__PURE__ */ l("div", {
+	}), [w]), /* @__PURE__ */ u("header", {
+		className: Y("sticky top-0 z-30 w-full border-b border-[var(--border-subtle)] bg-[var(--bg-root)]/90 backdrop-blur-md transition-colors duration-200", x),
+		children: [/* @__PURE__ */ u("div", {
 			className: "w-full px-3 sm:px-4 md:px-6 h-14 sm:h-16 flex items-center justify-between gap-2 sm:gap-3",
 			children: [
-				/* @__PURE__ */ l("div", {
+				/* @__PURE__ */ u("div", {
 					className: "flex items-center gap-2 sm:gap-2.5 shrink-0",
-					children: [/* @__PURE__ */ c(Et, { currentApp: e }), d ? /* @__PURE__ */ l("button", {
+					children: [/* @__PURE__ */ l(Ot, { currentApp: e }), d ? /* @__PURE__ */ u("button", {
 						type: "button",
 						onClick: d,
 						className: "flex items-center gap-2 sm:gap-2.5 hover:opacity-85 active:scale-[0.98] transition-all focus:outline-none rounded-xl cursor-pointer text-left",
 						title: "Go to start page",
-						children: [/* @__PURE__ */ c("div", {
+						children: [/* @__PURE__ */ l("div", {
 							className: "w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-[var(--color-primary)] to-[var(--color-accent)] flex items-center justify-center text-white shadow-md shadow-[var(--color-primary)]/20 shrink-0",
 							children: a
-						}), /* @__PURE__ */ l("div", {
+						}), /* @__PURE__ */ u("div", {
 							className: "block min-w-0",
-							children: [/* @__PURE__ */ l("div", {
+							children: [/* @__PURE__ */ u("div", {
 								className: "flex items-center gap-1.5 sm:gap-2",
 								children: [
-									/* @__PURE__ */ l("span", {
+									/* @__PURE__ */ u("span", {
 										className: "font-extrabold text-sm sm:text-base md:text-lg tracking-tight font-[var(--font-heading)] text-[var(--text-main)] truncate",
-										children: [t, /* @__PURE__ */ c("span", {
+										children: [t, /* @__PURE__ */ l("span", {
 											className: "text-[var(--color-primary-glow)]",
 											children: n
 										})]
 									}),
-									o && /* @__PURE__ */ c($, {
+									o && /* @__PURE__ */ l($, {
 										variant: "subtle",
 										size: "xs",
 										className: "hidden sm:inline-flex font-mono uppercase font-bold text-[9px] tracking-wider",
 										children: o
 									}),
-									u
+									s
 								]
-							}), r && /* @__PURE__ */ c("p", {
+							}), r && /* @__PURE__ */ l("p", {
 								className: "text-[11px] text-[var(--text-muted)] hidden lg:block leading-tight mt-0.5",
 								children: r
 							})]
 						})]
-					}) : /* @__PURE__ */ l("div", {
+					}) : /* @__PURE__ */ u("div", {
 						className: "flex items-center gap-2 sm:gap-2.5",
-						children: [/* @__PURE__ */ c("div", {
+						children: [/* @__PURE__ */ l("div", {
 							className: "w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-[var(--color-primary)] to-[var(--color-accent)] flex items-center justify-center text-white shadow-md shadow-[var(--color-primary)]/20 shrink-0",
 							children: a
-						}), /* @__PURE__ */ l("div", {
+						}), /* @__PURE__ */ u("div", {
 							className: "block min-w-0",
-							children: [/* @__PURE__ */ l("div", {
+							children: [/* @__PURE__ */ u("div", {
 								className: "flex items-center gap-1.5 sm:gap-2",
 								children: [
-									/* @__PURE__ */ l("span", {
+									/* @__PURE__ */ u("span", {
 										className: "font-extrabold text-sm sm:text-base md:text-lg tracking-tight font-[var(--font-heading)] text-[var(--text-main)] truncate",
-										children: [t, /* @__PURE__ */ c("span", {
+										children: [t, /* @__PURE__ */ l("span", {
 											className: "text-[var(--color-primary-glow)]",
 											children: n
 										})]
 									}),
-									o && /* @__PURE__ */ c($, {
+									o && /* @__PURE__ */ l($, {
 										variant: "subtle",
 										size: "xs",
 										className: "hidden sm:inline-flex font-mono uppercase font-bold text-[9px] tracking-wider",
 										children: o
 									}),
-									u
+									s
 								]
-							}), r && /* @__PURE__ */ c("p", {
+							}), r && /* @__PURE__ */ l("p", {
 								className: "text-[11px] text-[var(--text-muted)] hidden lg:block leading-tight mt-0.5",
 								children: r
 							})]
 						})]
 					})]
 				}),
-				/* @__PURE__ */ l("div", {
+				/* @__PURE__ */ u("div", {
 					className: "hidden sm:flex items-center justify-center flex-1 min-w-0 max-w-2xl mx-2",
-					children: [f && f.length > 0 && /* @__PURE__ */ c(St, {
+					children: [f && f.length > 0 && /* @__PURE__ */ l(wt, {
 						tabs: f,
 						activeTab: p,
 						onChange: m
 					}), h]
 				}),
-				/* @__PURE__ */ l("div", {
+				/* @__PURE__ */ u("div", {
 					className: "flex items-center gap-1.5 sm:gap-2.5 shrink-0",
 					children: [
-						/* @__PURE__ */ c("div", {
+						/* @__PURE__ */ l("div", {
 							className: "hidden sm:flex items-center gap-2",
 							children: g
 						}),
-						v && /* @__PURE__ */ l("button", {
+						v && /* @__PURE__ */ u("button", {
 							type: "button",
 							onClick: v,
 							className: "hidden lg:flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] bg-[var(--bg-elevated)] border border-[var(--border-subtle)] hover:border-[var(--border-medium)] transition-colors cursor-pointer",
 							title: "Open Command Palette (⌘K)",
-							children: [/* @__PURE__ */ c("svg", {
+							children: [/* @__PURE__ */ l("svg", {
 								viewBox: "0 0 20 20",
 								fill: "none",
 								stroke: "currentColor",
 								strokeWidth: "2",
 								className: "w-3.5 h-3.5",
-								children: /* @__PURE__ */ c("path", {
+								children: /* @__PURE__ */ l("path", {
 									strokeLinecap: "round",
 									strokeLinejoin: "round",
 									d: "M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM19 19l-4.35-4.35"
 								})
-							}), /* @__PURE__ */ c("kbd", {
+							}), /* @__PURE__ */ l("kbd", {
 								className: "text-[10px] font-mono opacity-80",
 								children: "⌘K"
 							})]
 						}),
 						_,
-						b && /* @__PURE__ */ c("div", {
+						b && /* @__PURE__ */ l("div", {
 							className: "hidden md:block",
-							children: /* @__PURE__ */ c(Ct, { align: "right" })
+							children: /* @__PURE__ */ l(Tt, { align: "right" })
 						}),
-						/* @__PURE__ */ c("div", { children: y })
+						/* @__PURE__ */ l("div", { children: y })
 					]
 				})
 			]
-		}), C && w && /* @__PURE__ */ l("div", {
+		}), C && w && /* @__PURE__ */ u("div", {
 			className: "md:hidden fixed inset-0 z-50 flex justify-end",
-			children: [/* @__PURE__ */ c("div", {
+			children: [/* @__PURE__ */ l("div", {
 				className: "fixed inset-0 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200",
 				onClick: () => T(!1)
-			}), /* @__PURE__ */ l("div", {
+			}), /* @__PURE__ */ u("div", {
 				className: "relative w-4/5 max-w-sm h-full bg-[var(--bg-surface)] border-l border-[var(--border-medium)] shadow-2xl flex flex-col z-10 animate-in slide-in-from-right duration-250",
 				children: [
-					/* @__PURE__ */ l("div", {
+					/* @__PURE__ */ u("div", {
 						className: "flex items-center justify-between p-4 border-b border-[var(--border-subtle)] bg-[var(--bg-subtle)]/70",
-						children: [/* @__PURE__ */ l("div", {
+						children: [/* @__PURE__ */ u("div", {
 							className: "flex items-center gap-2.5",
-							children: [/* @__PURE__ */ c("div", {
+							children: [/* @__PURE__ */ l("div", {
 								className: "w-8 h-8 rounded-xl bg-gradient-to-tr from-[var(--color-primary)] to-[var(--color-accent)] flex items-center justify-center text-white shadow-md shadow-[var(--color-primary)]/20",
 								children: a
-							}), /* @__PURE__ */ l("span", {
+							}), /* @__PURE__ */ u("span", {
 								className: "font-extrabold text-base font-[var(--font-heading)] text-[var(--text-main)]",
-								children: [t, /* @__PURE__ */ c("span", {
+								children: [t, /* @__PURE__ */ l("span", {
 									className: "text-[var(--color-primary-glow)]",
 									children: n
 								})]
 							})]
-						}), /* @__PURE__ */ c("button", {
+						}), /* @__PURE__ */ l("button", {
 							type: "button",
 							onClick: () => T(!1),
 							className: "p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-[var(--bg-hover)] transition-colors cursor-pointer",
 							"aria-label": "Close menu",
-							children: /* @__PURE__ */ c("svg", {
+							children: /* @__PURE__ */ l("svg", {
 								viewBox: "0 0 24 24",
 								fill: "none",
 								stroke: "currentColor",
 								strokeWidth: "2",
 								className: "w-5 h-5",
-								children: /* @__PURE__ */ c("path", {
+								children: /* @__PURE__ */ l("path", {
 									strokeLinecap: "round",
 									strokeLinejoin: "round",
 									d: "M6 18L18 6M6 6l12 12"
@@ -3784,74 +3818,74 @@ function Pt({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "F
 							})
 						})]
 					}),
-					/* @__PURE__ */ l("div", {
+					/* @__PURE__ */ u("div", {
 						className: "flex-1 overflow-y-auto p-4 space-y-5",
 						children: [
-							f && f.length > 0 && /* @__PURE__ */ l("div", { children: [/* @__PURE__ */ c("span", {
+							f && f.length > 0 && /* @__PURE__ */ u("div", { children: [/* @__PURE__ */ l("span", {
 								className: "text-[10px] font-mono uppercase tracking-wider text-[var(--text-dim)] font-semibold block mb-2 px-1",
 								children: "Navigation"
-							}), /* @__PURE__ */ c("div", {
+							}), /* @__PURE__ */ l("div", {
 								className: "space-y-1",
 								children: f.map((e) => {
 									let t = p === e.id, n = e.icon;
-									return /* @__PURE__ */ l("button", {
+									return /* @__PURE__ */ u("button", {
 										type: "button",
 										onClick: () => {
 											m?.(e.id), T(!1);
 										},
-										className: X("w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-medium transition-colors cursor-pointer text-left", t ? "bg-[var(--color-primary)]/15 text-[var(--color-primary-glow)] font-semibold border border-[var(--color-primary)]/30" : "text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-elevated)]"),
-										children: [/* @__PURE__ */ l("div", {
+										className: Y("w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-medium transition-colors cursor-pointer text-left", t ? "bg-[var(--color-primary)]/15 text-[var(--color-primary-glow)] font-semibold border border-[var(--color-primary)]/30" : "text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-elevated)]"),
+										children: [/* @__PURE__ */ u("div", {
 											className: "flex items-center gap-3",
-											children: [n && /* @__PURE__ */ c(n, { className: "w-4 h-4 shrink-0" }), /* @__PURE__ */ c("span", { children: e.label })]
-										}), e.count !== void 0 && /* @__PURE__ */ c("span", {
+											children: [n && /* @__PURE__ */ l(n, { className: "w-4 h-4 shrink-0" }), /* @__PURE__ */ l("span", { children: e.label })]
+										}), e.count !== void 0 && /* @__PURE__ */ l("span", {
 											className: "px-1.5 py-0.5 rounded text-[10px] font-mono bg-[var(--bg-elevated)] text-[var(--text-dim)] border border-[var(--border-subtle)]",
 											children: e.count
 										})]
 									}, e.id);
 								})
 							})] }),
-							g && /* @__PURE__ */ l("div", { children: [/* @__PURE__ */ c("span", {
+							g && /* @__PURE__ */ u("div", { children: [/* @__PURE__ */ l("span", {
 								className: "text-[10px] font-mono uppercase tracking-wider text-[var(--text-dim)] font-semibold block mb-2 px-1",
 								children: "Controls & Tools"
-							}), /* @__PURE__ */ c("div", {
+							}), /* @__PURE__ */ l("div", {
 								className: "p-2.5 rounded-xl bg-[var(--bg-subtle)] border border-[var(--border-subtle)]",
 								children: g
 							})] }),
-							v && /* @__PURE__ */ l("button", {
+							v && /* @__PURE__ */ u("button", {
 								type: "button",
 								onClick: () => {
 									T(!1), v();
 								},
 								className: "w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-medium bg-[var(--bg-elevated)] border border-[var(--border-subtle)] text-[var(--text-main)] hover:border-[var(--border-medium)] transition-colors cursor-pointer",
-								children: [/* @__PURE__ */ l("div", {
+								children: [/* @__PURE__ */ u("div", {
 									className: "flex items-center gap-2.5",
-									children: [/* @__PURE__ */ c("svg", {
+									children: [/* @__PURE__ */ l("svg", {
 										viewBox: "0 0 20 20",
 										fill: "none",
 										stroke: "currentColor",
 										strokeWidth: "2",
 										className: "w-4 h-4 text-slate-400",
-										children: /* @__PURE__ */ c("path", {
+										children: /* @__PURE__ */ l("path", {
 											strokeLinecap: "round",
 											strokeLinejoin: "round",
 											d: "M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM19 19l-4.35-4.35"
 										})
-									}), /* @__PURE__ */ c("span", { children: "Command Palette" })]
-								}), /* @__PURE__ */ c("kbd", {
+									}), /* @__PURE__ */ l("span", { children: "Command Palette" })]
+								}), /* @__PURE__ */ l("kbd", {
 									className: "text-[10px] font-mono opacity-70",
 									children: "⌘K"
 								})]
 							}),
-							b && /* @__PURE__ */ l("div", {
+							b && /* @__PURE__ */ u("div", {
 								className: "flex items-center justify-between p-3 rounded-xl bg-[var(--bg-subtle)] border border-[var(--border-subtle)]",
-								children: [/* @__PURE__ */ c("span", {
+								children: [/* @__PURE__ */ l("span", {
 									className: "text-xs font-medium text-[var(--text-muted)]",
 									children: "Theme"
-								}), /* @__PURE__ */ c(Ct, { align: "right" })]
+								}), /* @__PURE__ */ l(Tt, { align: "right" })]
 							})
 						]
 					}),
-					y && /* @__PURE__ */ c("div", {
+					y && /* @__PURE__ */ l("div", {
 						className: "p-3 border-t border-[var(--border-subtle)] bg-[var(--bg-subtle)]/50",
 						children: y
 					})
@@ -3862,29 +3896,29 @@ function Pt({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "F
 }
 //#endregion
 //#region src/components/MobileTabBar.jsx
-function Ft({ tabs: e = [], activeTab: t, onChange: n, className: r }) {
-	return !e || e.length === 0 ? null : /* @__PURE__ */ c("nav", {
+function Lt({ tabs: e = [], activeTab: t, onChange: n, className: r }) {
+	return !e || e.length === 0 ? null : /* @__PURE__ */ l("nav", {
 		"aria-label": "Primary Mobile Navigation",
-		className: X("sm:hidden fixed bottom-0 inset-x-0 z-40 bg-[var(--bg-root)]/95 backdrop-blur-md border-t border-[var(--border-subtle)] px-2 pt-1 pb-[max(env(safe-area-inset-bottom,0px),0.35rem)] shadow-lg transition-colors", r),
-		children: /* @__PURE__ */ c("div", {
+		className: Y("sm:hidden fixed bottom-0 inset-x-0 z-40 bg-[var(--bg-root)]/95 backdrop-blur-md border-t border-[var(--border-subtle)] px-2 pt-1 pb-[max(env(safe-area-inset-bottom,0px),0.35rem)] shadow-lg transition-colors", r),
+		children: /* @__PURE__ */ l("div", {
 			className: "flex items-center justify-around w-full max-w-md mx-auto",
 			children: e.map((e) => {
 				let r = t === e.id, i = e.icon;
-				return /* @__PURE__ */ l("button", {
+				return /* @__PURE__ */ u("button", {
 					type: "button",
 					onClick: () => n?.(e.id),
 					"aria-current": r ? "page" : void 0,
-					className: X("flex flex-col items-center justify-center flex-1 py-1 px-1 rounded-xl transition-all cursor-pointer select-none text-center min-w-0 relative", r ? "text-[var(--color-primary-glow)] font-semibold" : "text-[var(--text-muted)] hover:text-[var(--text-main)] active:scale-95"),
+					className: Y("flex flex-col items-center justify-center flex-1 py-1 px-1 rounded-xl transition-all cursor-pointer select-none text-center min-w-0 relative", r ? "text-[var(--color-primary-glow)] font-semibold" : "text-[var(--text-muted)] hover:text-[var(--text-main)] active:scale-95"),
 					children: [
-						r && /* @__PURE__ */ c("span", { className: "absolute inset-x-2 inset-y-0.5 rounded-lg bg-[var(--color-primary)]/15 -z-10 animate-in fade-in duration-150" }),
-						/* @__PURE__ */ l("div", {
+						r && /* @__PURE__ */ l("span", { className: "absolute inset-x-2 inset-y-0.5 rounded-lg bg-[var(--color-primary)]/15 -z-10 animate-in fade-in duration-150" }),
+						/* @__PURE__ */ u("div", {
 							className: "relative",
-							children: [i && /* @__PURE__ */ c(i, { className: "w-5 h-5 shrink-0" }), e.count !== void 0 && /* @__PURE__ */ c("span", {
+							children: [i && /* @__PURE__ */ l(i, { className: "w-5 h-5 shrink-0" }), e.count !== void 0 && /* @__PURE__ */ l("span", {
 								className: "absolute -top-1 -right-2 px-1 py-0.2 bg-[var(--color-primary)] text-white text-[9px] font-mono rounded-full font-bold shadow-sm",
 								children: e.count
 							})]
 						}),
-						/* @__PURE__ */ c("span", {
+						/* @__PURE__ */ l("span", {
 							className: "text-[10px] tracking-tight mt-0.5 truncate max-w-full",
 							children: e.shortLabel || e.label
 						})
@@ -3895,4 +3929,4 @@ function Ft({ tabs: e = [], activeTab: t, onChange: n, className: r }) {
 	});
 }
 //#endregion
-export { Z as AVATAR_SUITS, Nt as AboutAppModal, _t as Accordion, vt as AccordionItem, yt as Alert, Pt as AppHeader, Et as AppSwitcher, tt as Avatar, nt as AvatarGroup, Ge as AvatarProvider, it as AvatarSelector, $ as Badge, at as Button, ot as Card, ut as CardContent, lt as CardDescription, dt as CardFooter, st as CardHeader, ct as CardTitle, gt as Checkbox, jt as CommandPalette, Xe as DICEBEAR_SUITS, xt as Dialog, rt as Dropdown, ft as Input, Ft as MobileTabBar, wt as SUITE_APPS, mt as Select, bt as Spinner, ht as Switch, Q as THEMES, St as Tabs, pt as Textarea, Je as ThemeProvider, Ct as ThemeSelector, Ot as ToastProvider, Mt as UserMenu, X as cn, Ze as getDiceBearAvatarUrl, Tt as getSuiteAppUrl, Ke as useAvatar, Ye as useTheme, kt as useToast };
+export { X as AVATAR_SUITS, Ft as AboutAppModal, vt as Accordion, yt as AccordionItem, bt as Alert, It as AppHeader, Ot as AppSwitcher, Q as Avatar, rt as AvatarGroup, qe as AvatarProvider, at as AvatarSelector, $ as Badge, ot as Button, st as Card, dt as CardContent, ut as CardDescription, ft as CardFooter, ct as CardHeader, lt as CardTitle, _t as Checkbox, Nt as CommandPalette, Qe as DICEBEAR_SUITS, Ct as Dialog, it as Dropdown, pt as Input, Lt as MobileTabBar, Et as SUITE_APPS, ht as Select, xt as Spinner, gt as Switch, Z as THEMES, wt as Tabs, mt as Textarea, Xe as ThemeProvider, Tt as ThemeSelector, At as ToastProvider, St as Tooltip, Pt as UserMenu, Y as cn, $e as getDiceBearAvatarUrl, Dt as getSuiteAppUrl, Je as useAvatar, Ze as useTheme, jt as useToast };
