@@ -2650,22 +2650,22 @@ function Ct({ isOpen: e, onClose: t, title: n, description: r, subtitle: a, icon
 //#region src/components/Tabs.jsx
 function wt({ tabs: e = [], activeTab: t, onChange: n, className: r }) {
 	return /* @__PURE__ */ l("div", {
-		className: Y("inline-flex items-center p-1 bg-[var(--bg-subtle)] border border-[var(--border-subtle)] rounded-lg", r),
+		className: Y("inline-flex items-center p-1 bg-[var(--bg-subtle)] border border-[var(--border-subtle)] rounded-lg max-w-full overflow-x-auto no-scrollbar", r),
 		children: e.map((e) => {
 			let r = t === e.id, i = e.icon;
 			return /* @__PURE__ */ u("button", {
 				type: "button",
 				onClick: () => n(e.id),
 				title: e.label,
-				className: Y("flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 text-xs font-medium rounded-md transition-all duration-150 cursor-pointer select-none", r ? "bg-[var(--bg-elevated)] text-[var(--text-main)] shadow-sm border border-[var(--border-medium)]" : "text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-hover)]/60 font-medium"),
+				className: Y("flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 text-xs font-medium rounded-md transition-all duration-150 cursor-pointer select-none whitespace-nowrap shrink-0", r ? "bg-[var(--bg-elevated)] text-[var(--text-main)] shadow-sm border border-[var(--border-medium)]" : "text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-hover)]/60 font-medium"),
 				children: [
 					i && /* @__PURE__ */ l(i, { className: "w-3.5 h-3.5 shrink-0" }),
 					/* @__PURE__ */ l("span", {
-						className: Y(e.hideLabelOnMobile && "hidden lg:inline"),
+						className: Y("whitespace-nowrap", e.hideLabelOnMobile && "hidden lg:inline"),
 						children: e.label
 					}),
 					e.count !== void 0 && /* @__PURE__ */ l("span", {
-						className: Y("px-1.5 py-0.5 rounded text-[10px] font-mono", r ? "bg-[var(--color-primary)]/20 text-[var(--color-primary-glow)] font-bold" : "bg-[var(--bg-elevated)] text-[var(--text-dim)] border border-[var(--border-subtle)]"),
+						className: Y("px-1.5 py-0.5 rounded text-[10px] font-mono shrink-0", r ? "bg-[var(--color-primary)]/20 text-[var(--color-primary-glow)] font-bold" : "bg-[var(--bg-elevated)] text-[var(--text-dim)] border border-[var(--border-subtle)]"),
 						children: e.count
 					})
 				]
@@ -3733,7 +3733,7 @@ function It({ currentApp: e = "taskflow", appName: t = "Task", appAccent: n = "F
 					})]
 				}),
 				/* @__PURE__ */ u("div", {
-					className: "hidden sm:flex items-center justify-center flex-1 min-w-0 max-w-2xl mx-2",
+					className: "hidden sm:flex items-center justify-center flex-1 min-w-0 mx-2",
 					children: [f && f.length > 0 && /* @__PURE__ */ l(wt, {
 						tabs: f,
 						activeTab: p,

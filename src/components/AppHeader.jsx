@@ -116,7 +116,7 @@ export function AppHeader({
         </div>
 
         {/* Zone 2: Navigation & Context (Center - visible inline on Tablet and Desktop >= sm) */}
-        <div className="hidden sm:flex items-center justify-center flex-1 min-w-0 max-w-2xl mx-2">
+        <div className="hidden sm:flex items-center justify-center flex-1 min-w-0 mx-2">
           {tabs && tabs.length > 0 && (
             <Tabs tabs={tabs} activeTab={activeTab} onChange={onTabChange} />
           )}
