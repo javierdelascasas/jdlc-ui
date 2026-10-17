@@ -31,6 +31,11 @@ export {
 } from './components/Card.jsx';
 export { Badge } from './components/Badge.jsx';
 export { Input, Textarea, Select } from './components/Input.jsx';
+export { Switch } from './components/Switch.jsx';
+export { Checkbox } from './components/Checkbox.jsx';
+export { Accordion, AccordionItem } from './components/Accordion.jsx';
+export { Alert } from './components/Alert.jsx';
+export { Spinner } from './components/Spinner.jsx';
 export { Dialog } from './components/Dialog.jsx';
 export { Dropdown } from './components/Dropdown.jsx';
 export { Tabs } from './components/Tabs.jsx';
